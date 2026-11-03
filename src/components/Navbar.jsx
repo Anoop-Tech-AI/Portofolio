@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Menu, X, FileText, Terminal } from 'lucide-react';
+import { motion } from 'motion/react';
 
 const NAV_LINKS = [
   { num: '01', name: 'About', href: '#about' },
@@ -51,8 +52,10 @@ export default function Navbar({ onOpenResume }) {
         <div className="flex items-center justify-between">
           
           {/* Logo / Monogram */}
-          <a 
+          <motion.a 
             href="#" 
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
             className="group flex items-center space-x-2.5 text-white focus:outline-none"
             aria-label="Anoop Home"
           >
@@ -63,22 +66,29 @@ export default function Navbar({ onOpenResume }) {
               <span className="font-extrabold text-white">ANOOP</span>
               <span className="text-zinc-500 text-xs ml-1">//dev</span>
             </div>
-          </a>
+          </motion.a>
 
-          {/* Desktop Nav Links */}
-          <nav className="hidden lg:flex items-center space-x-1 bg-[#12141a]/80 border border-white/[0.07] px-3.5 py-1.5 rounded-full backdrop-blur-md">
+          {/* Desktop Nav Links with animated layoutId indicator */}
+          <nav className="hidden lg:flex items-center space-x-1 bg-[#12141a]/85 border border-white/[0.07] px-3.5 py-1.5 rounded-full backdrop-blur-md">
             {NAV_LINKS.map((link) => {
               const isActive = activeSection === link.href.substring(1);
               return (
                 <a
                   key={link.name}
                   href={link.href}
-                  className={`px-3 py-1 text-xs font-mono rounded-full transition-all duration-200 flex items-center space-x-1 ${
+                  className={`relative px-3 py-1 text-xs font-mono rounded-full transition-colors duration-150 flex items-center space-x-1 ${
                     isActive 
-                      ? 'text-amber-300 bg-amber-500/15 border border-amber-500/30 font-semibold' 
+                      ? 'text-amber-300 font-semibold' 
                       : 'text-zinc-400 hover:text-zinc-100 hover:bg-white/[0.04]'
                   }`}
                 >
+                  {isActive && (
+                    <motion.span
+                      layoutId="nav-active-pill"
+                      className="absolute inset-0 rounded-full bg-amber-500/15 border border-amber-500/30 -z-10"
+                      transition={{ type: 'spring', stiffness: 400, damping: 32 }}
+                    />
+                  )}
                   <span className="text-[10px] text-zinc-500">{link.num}.</span>
                   <span>{link.name}</span>
                 </a>
@@ -86,22 +96,26 @@ export default function Navbar({ onOpenResume }) {
             })}
           </nav>
 
-          {/* Right Action Buttons */}
+          {/* Right Action Buttons with microinteractions */}
           <div className="hidden sm:flex items-center space-x-3">
-            <button
+            <motion.button
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
               onClick={onOpenResume}
               className="inline-flex items-center space-x-1.5 px-3.5 py-1.5 text-xs font-mono rounded-lg text-zinc-300 bg-[#12141a] hover:text-white hover:bg-[#181a23] border border-white/[0.08] hover:border-white/[0.16] transition-all cursor-pointer"
             >
               <FileText className="w-3.5 h-3.5 text-amber-400" />
               <span>Resume</span>
-            </button>
+            </motion.button>
 
-            <a
+            <motion.a
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
               href="#contact"
               className="inline-flex items-center space-x-1.5 px-4 py-1.5 text-xs font-mono uppercase tracking-wider rounded-lg bg-amber-500 hover:bg-amber-400 text-black font-bold transition-all shadow-[0_0_15px_rgba(245,158,11,0.2)]"
             >
               <span>Get in Touch</span>
-            </a>
+            </motion.a>
           </div>
 
           {/* Mobile Hamburger Button */}

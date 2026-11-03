@@ -4,14 +4,20 @@ import {
   GitBranch, 
   CheckCircle2, 
   Clock, 
-  Cpu
+  Cpu,
+  Activity,
+  Layers
 } from 'lucide-react';
+import { motion } from 'motion/react';
 import { projectsData } from '../data/portfolioData';
 import { GithubIcon } from './Icons';
 import ProjectModal from './ProjectModal';
+import { fadeUp, VIEW } from '../hooks/useAnimations';
 
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState(null);
+  const [activeRetailStage, setActiveRetailStage] = useState(null);
+  const [activeMedStage, setActiveMedStage] = useState(null);
 
   const retailMind = projectsData.find(p => p.id === 'retailmind-ai');
   const medSafe = projectsData.find(p => p.id === 'medsafe-ai');
@@ -23,7 +29,13 @@ export default function Projects() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Editorial Section Header */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-8 mb-16 border-b border-white/[0.08]">
+        <motion.div 
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={VIEW}
+          className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-8 mb-16 border-b border-white/[0.08]"
+        >
           <div>
             <span className="text-xs font-mono uppercase tracking-widest text-amber-400 font-semibold block mb-1">
               04 // ENGINEERING SHOWCASE
@@ -35,7 +47,7 @@ export default function Projects() {
           <p className="text-xs sm:text-sm font-mono text-zinc-400 max-w-md">
             Individual project architectures demonstrating Agentic AI, RAG retrieval, clinical data normalization, and container orchestration.
           </p>
-        </div>
+        </motion.div>
 
         <div className="space-y-14">
           
@@ -43,9 +55,13 @@ export default function Projects() {
               SHOWCASE 1: RetailMind-AI (FLAGSHIP SHOWCASE)
              ======================================================== */}
           {retailMind && (
-            <div 
+            <motion.div 
               id={`project-${retailMind.id}`}
-              className="relative rounded-2xl bg-[#12141c] border border-amber-500/20 overflow-hidden shadow-2xl p-6 sm:p-10 transition-all hover:border-amber-500/35"
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={VIEW}
+              className="relative rounded-2xl bg-[#12141c] border border-amber-500/20 overflow-hidden shadow-2xl p-6 sm:p-10 transition-all hover:border-amber-500/40"
             >
               {/* Subtle accent glow */}
               <div className="absolute top-0 right-0 w-80 h-80 bg-amber-500/[0.04] rounded-full blur-3xl pointer-events-none" />
@@ -73,14 +89,18 @@ export default function Projects() {
                   </div>
 
                   <div className="flex items-center gap-3">
-                    <button
+                    <motion.button
+                      whileHover={{ scale: 1.03 }}
+                      whileTap={{ scale: 0.97 }}
                       onClick={() => setSelectedProject(retailMind)}
-                      className="px-4 py-2 text-xs font-mono rounded-lg bg-[#161822] hover:bg-[#1d202d] text-zinc-200 border border-white/[0.08] transition-colors flex items-center gap-1.5"
+                      className="px-4 py-2 text-xs font-mono rounded-lg bg-[#161822] hover:bg-[#1d202d] text-zinc-200 border border-white/[0.08] transition-colors flex items-center gap-1.5 cursor-pointer"
                     >
                       <GitBranch className="w-3.5 h-3.5 text-amber-400" />
                       <span>Pipeline Specs</span>
-                    </button>
-                    <a
+                    </motion.button>
+                    <motion.a
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
                       href={retailMind.githubPlaceholder}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -88,7 +108,7 @@ export default function Projects() {
                       title="GitHub Repository (Placeholder)"
                     >
                       <GithubIcon className="w-4 h-4" />
-                    </a>
+                    </motion.a>
                   </div>
                 </div>
 
@@ -130,30 +150,54 @@ export default function Projects() {
                     <div className="flex items-center justify-between text-xs font-mono text-zinc-400 uppercase tracking-wider pb-1">
                       <span className="flex items-center gap-1.5 text-amber-400">
                         <Cpu className="w-3.5 h-3.5" />
-                        Execution Pipeline Diagram
+                        Sequential Architecture Pipeline
                       </span>
-                      <span className="text-[10px] text-zinc-500">6 Stages</span>
+                      <span className="text-[10px] text-zinc-500 font-mono">6 Stages • Hover to inspect</span>
                     </div>
 
-                    <div className="space-y-2 p-4 rounded-xl bg-[#0d0f15] border border-white/[0.06]">
-                      {retailMind.architecture.map((step) => (
-                        <div 
-                          key={step.step}
-                          className="p-2.5 rounded-lg bg-[#13151e] border border-white/[0.04] flex items-start space-x-3 text-xs"
-                        >
-                          <span className="w-6 h-6 rounded-md bg-amber-500/10 text-amber-300 border border-amber-500/20 font-mono text-[11px] flex items-center justify-center shrink-0">
-                            {step.step}
-                          </span>
-                          <div>
-                            <span className="font-semibold text-white block">
-                              {step.name}
+                    {/* Staggered sequential stages with connecting indicators */}
+                    <div className="space-y-2 p-4 rounded-xl bg-[#0d0f15] border border-white/[0.06] relative">
+                      {retailMind.architecture.map((step, idx) => {
+                        const isHovered = activeRetailStage === step.step;
+                        return (
+                          <motion.div 
+                            key={step.step}
+                            initial={{ opacity: 0, x: -14 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={VIEW}
+                            transition={{ duration: 0.35, delay: 0.15 + idx * 0.08, ease: 'easeOut' }}
+                            onMouseEnter={() => setActiveRetailStage(step.step)}
+                            onMouseLeave={() => setActiveRetailStage(null)}
+                            whileHover={{ scale: 1.015 }}
+                            className={`p-2.5 rounded-lg border transition-all flex items-start space-x-3 text-xs cursor-pointer ${
+                              isHovered 
+                                ? 'bg-[#181a26] border-amber-500/50 shadow-[0_0_12px_rgba(245,158,11,0.15)]'
+                                : 'bg-[#13151e] border-white/[0.04]'
+                            }`}
+                          >
+                            <span className={`w-6 h-6 rounded-md font-mono text-[11px] flex items-center justify-center shrink-0 transition-colors ${
+                              isHovered
+                                ? 'bg-amber-500 text-black font-bold'
+                                : 'bg-amber-500/10 text-amber-300 border border-amber-500/20'
+                            }`}>
+                              {step.step}
                             </span>
-                            <span className="text-[11px] text-zinc-400">
-                              {step.desc}
-                            </span>
-                          </div>
-                        </div>
-                      ))}
+                            <div className="flex-1">
+                              <span className={`font-semibold block transition-colors ${
+                                isHovered ? 'text-amber-300' : 'text-white'
+                              }`}>
+                                {step.name}
+                              </span>
+                              <span className="text-[11px] text-zinc-400">
+                                {step.desc}
+                              </span>
+                            </div>
+                            {idx < retailMind.architecture.length - 1 && (
+                              <span className="text-zinc-600 font-mono text-[10px] self-center">↓</span>
+                            )}
+                          </motion.div>
+                        );
+                      })}
                     </div>
                   </div>
 
@@ -166,27 +210,32 @@ export default function Projects() {
                   </span>
                   <div className="flex flex-wrap gap-2">
                     {retailMind.technologies.map((tech) => (
-                      <span
+                      <motion.span
                         key={tech}
-                        className="px-2.5 py-1 text-xs font-mono rounded bg-[#151722] text-zinc-300 border border-white/[0.06]"
+                        whileHover={{ scale: 1.05 }}
+                        className="px-2.5 py-1 text-xs font-mono rounded bg-[#151722] text-zinc-300 border border-white/[0.06] cursor-default"
                       >
                         {tech}
-                      </span>
+                      </motion.span>
                     ))}
                   </div>
                 </div>
 
               </div>
-            </div>
+            </motion.div>
           )}
 
           {/* ========================================================
               SHOWCASE 2: MedSafe AI (HEALTHCARE CASE STUDY)
              ======================================================== */}
           {medSafe && (
-            <div 
+            <motion.div 
               id={`project-${medSafe.id}`}
-              className="relative rounded-2xl bg-[#12151f] border border-sky-500/20 overflow-hidden shadow-xl p-6 sm:p-9 transition-all hover:border-sky-500/35"
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={VIEW}
+              className="relative rounded-2xl bg-[#12151f] border border-sky-500/20 overflow-hidden shadow-xl p-6 sm:p-9 transition-all hover:border-sky-500/40"
             >
               <div className="space-y-6">
                 
@@ -194,7 +243,8 @@ export default function Projects() {
                 <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-5 border-b border-white/[0.06]">
                   <div>
                     <div className="flex items-center gap-2 mb-2">
-                      <span className="text-[11px] font-mono px-2.5 py-0.5 rounded-full bg-sky-500/10 text-sky-300 border border-sky-500/30">
+                      <span className="text-[11px] font-mono px-2.5 py-0.5 rounded-full bg-sky-500/10 text-sky-300 border border-sky-500/30 flex items-center gap-1">
+                        <Activity className="w-3 h-3 text-sky-400" />
                         HEALTHCARE AI
                       </span>
                       <span className="text-[11px] font-mono px-2.5 py-0.5 rounded-full bg-zinc-900 text-zinc-400 border border-zinc-800">
@@ -211,13 +261,17 @@ export default function Projects() {
                   </div>
 
                   <div className="flex items-center gap-3">
-                    <button
+                    <motion.button
+                      whileHover={{ scale: 1.03 }}
+                      whileTap={{ scale: 0.97 }}
                       onClick={() => setSelectedProject(medSafe)}
-                      className="px-3.5 py-1.5 text-xs font-mono rounded-lg bg-[#161a27] hover:bg-[#1d2233] text-zinc-200 border border-white/[0.08] transition-colors"
+                      className="px-3.5 py-1.5 text-xs font-mono rounded-lg bg-[#161a27] hover:bg-[#1d2233] text-zinc-200 border border-white/[0.08] transition-colors cursor-pointer"
                     >
                       View Specs
-                    </button>
-                    <a
+                    </motion.button>
+                    <motion.a
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
                       href={medSafe.githubPlaceholder}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -225,7 +279,7 @@ export default function Projects() {
                       title="GitHub Repository (Placeholder)"
                     >
                       <GithubIcon className="w-3.5 h-3.5" />
-                    </a>
+                    </motion.a>
                   </div>
                 </div>
 
@@ -248,32 +302,55 @@ export default function Projects() {
                     </div>
                   </div>
 
-                  {/* Architecture sequence */}
+                  {/* Architecture sequence with clinical pipeline animation */}
                   <div className="lg:col-span-5 p-4 rounded-xl bg-[#0e111a] border border-white/[0.06] space-y-2">
-                    <span className="text-xs font-mono text-sky-400 uppercase tracking-wider block mb-2">
+                    <span className="text-xs font-mono text-sky-400 uppercase tracking-wider block mb-2 flex items-center gap-1.5">
+                      <Layers className="w-3 h-3 text-sky-400" />
                       Clinical Document Flow
                     </span>
-                    {medSafe.architecture.map((node) => (
-                      <div key={node.step} className="p-2 rounded bg-[#141724] border border-white/[0.04] text-xs">
-                        <span className="font-mono text-sky-300 mr-2">{node.step}.</span>
-                        <span className="font-semibold text-zinc-200">{node.name}:</span>
-                        <span className="text-zinc-400 ml-1.5">{node.desc}</span>
-                      </div>
-                    ))}
+                    {medSafe.architecture.map((node, i) => {
+                      const isHovered = activeMedStage === node.step;
+                      return (
+                        <motion.div 
+                          key={node.step} 
+                          initial={{ opacity: 0, x: -10 }}
+                          whileInView={{ opacity: 1, x: 0 }}
+                          viewport={VIEW}
+                          transition={{ duration: 0.3, delay: 0.12 + i * 0.07 }}
+                          onMouseEnter={() => setActiveMedStage(node.step)}
+                          onMouseLeave={() => setActiveMedStage(null)}
+                          className={`p-2 rounded border text-xs transition-colors cursor-pointer ${
+                            isHovered
+                              ? 'bg-[#181d2e] border-sky-400/50 shadow-[0_0_10px_rgba(56,189,248,0.15)]'
+                              : 'bg-[#141724] border-white/[0.04]'
+                          }`}
+                        >
+                          <span className="font-mono text-sky-300 mr-2">{node.step}.</span>
+                          <span className={`font-semibold ${isHovered ? 'text-sky-200' : 'text-zinc-200'}`}>
+                            {node.name}:
+                          </span>
+                          <span className="text-zinc-400 ml-1.5">{node.desc}</span>
+                        </motion.div>
+                      );
+                    })}
                   </div>
                 </div>
 
                 {/* Tech pills */}
                 <div className="pt-3 border-t border-white/[0.06] flex flex-wrap gap-1.5">
                   {medSafe.technologies.map((t) => (
-                    <span key={t} className="px-2 py-0.5 text-xs font-mono rounded bg-[#161a27] text-zinc-300 border border-white/[0.06]">
+                    <motion.span 
+                      key={t} 
+                      whileHover={{ scale: 1.05 }}
+                      className="px-2 py-0.5 text-xs font-mono rounded bg-[#161a27] text-zinc-300 border border-white/[0.06] cursor-default"
+                    >
                       {t}
-                    </span>
+                    </motion.span>
                   ))}
                 </div>
 
               </div>
-            </div>
+            </motion.div>
           )}
 
           {/* ========================================================
@@ -283,9 +360,14 @@ export default function Projects() {
             
             {/* Student Management System */}
             {studentCrud && (
-              <div 
+              <motion.div 
                 id={`project-${studentCrud.id}`}
-                className="p-6 sm:p-7 rounded-xl bg-[#121419] border border-white/[0.06] hover:border-emerald-500/30 transition-all flex flex-col justify-between shadow-lg"
+                variants={fadeUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={VIEW}
+                whileHover={{ y: -3, borderColor: 'rgba(16,185,129,0.3)' }}
+                className="p-6 sm:p-7 rounded-xl bg-[#121419] border border-white/[0.06] transition-all flex flex-col justify-between shadow-lg"
               >
                 <div>
                   <div className="flex items-center justify-between mb-3">
@@ -326,7 +408,7 @@ export default function Projects() {
                   <div className="flex justify-between items-center text-xs">
                     <button
                       onClick={() => setSelectedProject(studentCrud)}
-                      className="text-emerald-400 hover:text-emerald-300 font-mono flex items-center gap-1"
+                      className="text-emerald-400 hover:text-emerald-300 font-mono flex items-center gap-1 cursor-pointer"
                     >
                       <span>Inspect Endpoints</span>
                       <ArrowUpRight className="w-3.5 h-3.5" />
@@ -342,14 +424,19 @@ export default function Projects() {
                     </a>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             )}
 
             {/* DevOps & CI/CD Practice */}
             {devops && (
-              <div 
+              <motion.div 
                 id={`project-${devops.id}`}
-                className="p-6 sm:p-7 rounded-xl bg-[#121419] border border-white/[0.06] hover:border-purple-500/30 transition-all flex flex-col justify-between shadow-lg"
+                variants={fadeUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={VIEW}
+                whileHover={{ y: -3, borderColor: 'rgba(168,85,247,0.3)' }}
+                className="p-6 sm:p-7 rounded-xl bg-[#121419] border border-white/[0.06] transition-all flex flex-col justify-between shadow-lg"
               >
                 <div>
                   <div className="flex items-center justify-between mb-3">
@@ -390,7 +477,7 @@ export default function Projects() {
                   <div className="flex justify-between items-center text-xs">
                     <button
                       onClick={() => setSelectedProject(devops)}
-                      className="text-purple-400 hover:text-purple-300 font-mono flex items-center gap-1"
+                      className="text-purple-400 hover:text-purple-300 font-mono flex items-center gap-1 cursor-pointer"
                     >
                       <span>Pipeline Manifests</span>
                       <ArrowUpRight className="w-3.5 h-3.5" />
@@ -406,7 +493,7 @@ export default function Projects() {
                     </a>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             )}
 
           </div>

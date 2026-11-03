@@ -1,4 +1,5 @@
 import { Mail, ArrowUp } from 'lucide-react';
+import { motion } from 'motion/react';
 import { GithubIcon, LinkedinIcon } from './Icons';
 import { personalInfo } from '../data/portfolioData';
 
@@ -17,16 +18,18 @@ export default function Footer() {
           {/* Brand & Credit */}
           <div className="flex flex-col items-center sm:items-start space-y-1 text-center sm:text-left">
             <p className="text-sm font-medium text-zinc-200 font-mono">
-              Designed & Built by <span className="text-amber-400 font-bold">Anoop</span>.
+              Designed &amp; Built by <span className="text-amber-400 font-bold">Anoop</span>.
             </p>
             <p className="text-xs text-zinc-500 font-mono">
-              © {currentYear} Anoop • Computer Science & Engineering (KMIT '28)
+              © {currentYear} Anoop • Computer Science &amp; Engineering (KMIT '28)
             </p>
           </div>
 
           {/* Social Icons */}
           <div className="flex items-center space-x-3">
-            <a
+            <motion.a
+              whileHover={{ scale: 1.08 }}
+              whileTap={{ scale: 0.92 }}
               href={personalInfo.socials.github}
               target="_blank"
               rel="noopener noreferrer"
@@ -35,9 +38,11 @@ export default function Footer() {
               title="GitHub Profile"
             >
               <GithubIcon className="w-4 h-4" />
-            </a>
+            </motion.a>
 
-            <a
+            <motion.a
+              whileHover={{ scale: 1.08 }}
+              whileTap={{ scale: 0.92 }}
               href={personalInfo.socials.linkedin}
               target="_blank"
               rel="noopener noreferrer"
@@ -46,25 +51,29 @@ export default function Footer() {
               title="LinkedIn Profile"
             >
               <LinkedinIcon className="w-4 h-4" />
-            </a>
+            </motion.a>
 
-            <a
+            <motion.a
+              whileHover={{ scale: 1.08 }}
+              whileTap={{ scale: 0.92 }}
               href={personalInfo.socials.email}
               className="p-2 rounded-lg bg-[#111319] border border-white/[0.06] text-zinc-400 hover:text-amber-400 hover:border-white/[0.16] transition-colors"
               aria-label="Email Anoop"
               title="Email Anoop"
             >
               <Mail className="w-4 h-4" />
-            </a>
+            </motion.a>
 
-            <button
+            <motion.button
+              whileHover={{ scale: 1.08 }}
+              whileTap={{ scale: 0.92 }}
               onClick={scrollToTop}
               className="p-2 rounded-lg bg-[#111319] border border-white/[0.06] text-zinc-400 hover:text-amber-400 hover:border-amber-400/40 transition-colors ml-2 cursor-pointer"
               aria-label="Scroll to top"
               title="Back to Top"
             >
               <ArrowUp className="w-4 h-4" />
-            </button>
+            </motion.button>
           </div>
 
         </div>

@@ -1,4 +1,6 @@
+import { motion } from 'motion/react';
 import { currentlyExploring } from '../data/portfolioData';
+import { fadeUp, VIEW } from '../hooks/useAnimations';
 
 export default function CurrentlyExploring() {
   return (
@@ -6,7 +8,13 @@ export default function CurrentlyExploring() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-6 mb-10 border-b border-white/[0.08]">
+        <motion.div 
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={VIEW}
+          className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-6 mb-10 border-b border-white/[0.08]"
+        >
           <div>
             <span className="text-xs font-mono uppercase tracking-widest text-amber-400 font-semibold block mb-1">
               ACTIVE FRONTIERS
@@ -18,14 +26,20 @@ export default function CurrentlyExploring() {
           <p className="text-xs sm:text-sm font-mono text-zinc-400 max-w-md">
             Architectures, algorithms, and models under ongoing exploration and research.
           </p>
-        </div>
+        </motion.div>
 
-        {/* Exploring Cards Grid */}
+        {/* Exploring Cards Grid with Staggered Entrance */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {currentlyExploring.map((item, idx) => (
-            <div
+            <motion.div
               key={idx}
-              className="p-5 rounded-xl bg-[#12141a] border border-white/[0.06] hover:border-amber-400/30 transition-all flex flex-col justify-between group shadow-sm"
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={VIEW}
+              custom={0.1 + idx * 0.08}
+              whileHover={{ y: -3, borderColor: 'rgba(245,158,11,0.3)' }}
+              className="p-5 rounded-xl bg-[#12141a] border border-white/[0.06] transition-all flex flex-col justify-between group shadow-sm"
             >
               <div>
                 <div className="flex items-center justify-between mb-2.5">
@@ -49,7 +63,7 @@ export default function CurrentlyExploring() {
                 <span>Active Track</span>
                 <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
 

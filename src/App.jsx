@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Navbar from './components/Navbar';
 import ScrollProgress from './components/ScrollProgress';
+import AnimatedBackground from './components/AnimatedBackground';
 import Hero from './components/Hero';
 import About from './components/About';
 import Timeline from './components/Timeline';
@@ -18,8 +19,8 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-[#0c0d10] text-zinc-100 relative selection:bg-amber-500/20 selection:text-amber-200">
-      {/* Noise texture overlay for editorial depth — z-0 stays below content */}
-      <div className="fixed inset-0 pointer-events-none z-0 noise-overlay opacity-25" />
+      {/* Dynamic, GPU-friendly background with ambient grid, orbs, and noise */}
+      <AnimatedBackground />
 
       {/* Top reading progress line */}
       <ScrollProgress />

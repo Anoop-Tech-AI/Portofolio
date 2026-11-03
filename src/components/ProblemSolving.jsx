@@ -7,7 +7,9 @@ import {
   ExternalLink, 
   Zap
 } from 'lucide-react';
+import { motion } from 'motion/react';
 import { problemSolvingData } from '../data/portfolioData';
+import { fadeUp, VIEW } from '../hooks/useAnimations';
 
 export default function ProblemSolving() {
   const getPillarIcon = (icon) => {
@@ -25,7 +27,13 @@ export default function ProblemSolving() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Editorial Section Header */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-8 mb-12 border-b border-white/[0.08]">
+        <motion.div 
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={VIEW}
+          className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-8 mb-12 border-b border-white/[0.08]"
+        >
           <div>
             <span className="text-xs font-mono uppercase tracking-widest text-amber-400 font-semibold block mb-1">
               05 // COMPUTATIONAL RIGOR
@@ -37,17 +45,23 @@ export default function ProblemSolving() {
           <p className="text-xs sm:text-sm font-mono text-zinc-400 max-w-md">
             Mathematical abstractions, asymptotic bounds, and competitive coding in modern C++.
           </p>
-        </div>
+        </motion.div>
 
-        {/* 4 Pillars Grid */}
+        {/* 4 Pillars Grid with Staggered Motion */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
           {problemSolvingData.pillars.map((pillar, idx) => (
-            <div
+            <motion.div
               key={idx}
-              className="p-5 rounded-xl bg-[#12141a] border border-white/[0.06] hover:border-white/[0.14] transition-all flex flex-col justify-between group shadow-lg"
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={VIEW}
+              custom={0.1 + idx * 0.08}
+              whileHover={{ y: -3, borderColor: 'rgba(245,158,11,0.25)' }}
+              className="p-5 rounded-xl bg-[#12141a] border border-white/[0.06] transition-all flex flex-col justify-between group shadow-lg"
             >
               <div>
-                <div className="p-2 rounded-lg bg-[#0e1015] border border-white/[0.06] w-fit mb-3.5">
+                <div className="p-2 rounded-lg bg-[#0e1015] border border-white/[0.06] w-fit mb-3.5 group-hover:border-amber-400/40 transition-colors">
                   {getPillarIcon(pillar.icon)}
                 </div>
                 <h3 className="text-sm font-bold text-white mb-1.5 group-hover:text-amber-300 transition-colors tracking-tight">
@@ -57,20 +71,33 @@ export default function ProblemSolving() {
                   {pillar.desc}
                 </p>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
 
         {/* Algorithmic Methodology Workflow */}
-        <div className="p-6 sm:p-8 rounded-xl bg-[#111319] border border-white/[0.06] mb-12">
+        <motion.div 
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={VIEW}
+          className="p-6 sm:p-8 rounded-xl bg-[#111319] border border-white/[0.06] mb-12 shadow-xl"
+        >
           <div className="flex items-center space-x-2 text-xs font-mono uppercase tracking-widest text-amber-400 mb-6">
             <Zap className="w-3.5 h-3.5" />
             <span>Disciplined Problem Solving Protocol</span>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {problemSolvingData.approachSteps.map((step) => (
-              <div key={step.step} className="space-y-2 border-l border-white/[0.06] pl-4">
+            {problemSolvingData.approachSteps.map((step, idx) => (
+              <motion.div 
+                key={step.step} 
+                initial={{ opacity: 0, x: -10 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={VIEW}
+                transition={{ duration: 0.35, delay: 0.15 + idx * 0.09 }}
+                className="space-y-2 border-l border-white/[0.06] pl-4"
+              >
                 <span className="text-xl font-bold font-mono text-zinc-600 block">
                   {step.step}
                 </span>
@@ -80,13 +107,19 @@ export default function ProblemSolving() {
                 <p className="text-xs text-zinc-400 leading-relaxed">
                   {step.desc}
                 </p>
-              </div>
+              </motion.div>
             ))}
           </div>
-        </div>
+        </motion.div>
 
         {/* Coding Platform Profiles / Placeholders */}
-        <div className="p-6 rounded-xl bg-[#0f1116] border border-white/[0.06]">
+        <motion.div 
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={VIEW}
+          className="p-6 rounded-xl bg-[#0f1116] border border-white/[0.06]"
+        >
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-6 pb-4 border-b border-white/[0.05]">
             <span className="text-xs font-mono uppercase tracking-widest text-zinc-400">
               Computational Profiles & Challenge Tracks
@@ -97,13 +130,18 @@ export default function ProblemSolving() {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {problemSolvingData.platforms.map((platform) => (
-              <a
+            {problemSolvingData.platforms.map((platform, idx) => (
+              <motion.a
                 key={platform.name}
                 href={platform.placeholder}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-4 rounded-lg bg-[#14161f] border border-white/[0.06] hover:border-amber-400/40 hover:bg-[#181b26] transition-all text-left group"
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={VIEW}
+                transition={{ duration: 0.35, delay: 0.1 + idx * 0.07 }}
+                whileHover={{ y: -3, scale: 1.02 }}
+                className="p-4 rounded-lg bg-[#14161f] border border-white/[0.06] hover:border-amber-400/40 hover:bg-[#181b26] transition-all text-left group shadow-sm"
               >
                 <div className="flex items-center justify-between mb-1">
                   <span className="text-sm font-bold text-white group-hover:text-amber-300 transition-colors font-mono">
@@ -117,10 +155,10 @@ export default function ProblemSolving() {
                 <span className="text-[10px] text-zinc-500 font-mono inline-block px-1.5 py-0.5 rounded bg-[#0c0d12] border border-white/[0.05]">
                   {platform.focus}
                 </span>
-              </a>
+              </motion.a>
             ))}
           </div>
-        </div>
+        </motion.div>
 
       </div>
     </section>

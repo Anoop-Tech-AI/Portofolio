@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Check, Copy } from 'lucide-react';
+import { Check, Copy, RotateCcw } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
 const COMMANDS = {
@@ -20,7 +20,7 @@ const COMMANDS = {
     ]
   },
   'git log': {
-    label: 'git log --oneline',
+    label: 'git log --oneline -n 6',
     output: [
       { text: "a9f3c21  RetailMind-AI: integrate BGE-M3 embeddings + ChromaDB retrieval", type: "success" },
       { text: "4b81e09  RetailMind-AI: architect LangGraph multi-agent query pipeline", type: "success" },
@@ -60,8 +60,8 @@ const TABS = [
   { key: 'echo',        label: '$ echo' },
 ];
 
-// Simple typewriter hook
-function useTypewriter(text, speed = 28, trigger = 0) {
+// Character-by-character typewriter hook with reactive replay
+function useTypewriter(text, speed = 24, trigger = 0) {
   const [displayed, setDisplayed] = useState('');
   const timerRef = useRef(null);
 
@@ -87,10 +87,14 @@ export default function InteractiveTerminal() {
   const [copied, setCopied] = useState(false);
 
   const currentCommand = COMMANDS[activeTab];
-  const typedLabel = useTypewriter(currentCommand.label, 26, tabTrigger);
+  const typedLabel = useTypewriter(currentCommand.label, 24, tabTrigger);
 
   const handleTabSwitch = (key) => {
     setActiveTab(key);
+    setTabTrigger(t => t + 1);
+  };
+
+  const handleReplay = () => {
     setTabTrigger(t => t + 1);
   };
 
@@ -115,68 +119,86 @@ export default function InteractiveTerminal() {
           </span>
         </div>
 
-        <button
-          onClick={handleCopy}
-          aria-label="Copy terminal output"
-          className="flex items-center space-x-1.5 px-2 py-1 rounded text-[11px] font-mono text-zinc-500 hover:text-zinc-200 hover:bg-white/[0.04] transition-colors"
-        >
-          {copied ? (
-            <>
-              <Check className="w-3 h-3 text-emerald-400" />
-              <span className="text-emerald-400">copied</span>
-            </>
-          ) : (
-            <>
-              <Copy className="w-3 h-3" />
-              <span>copy</span>
-            </>
-          )}
-        </button>
+        <div className="flex items-center space-x-1">
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.92 }}
+            onClick={handleReplay}
+            aria-label="Replay command"
+            title="Replay command"
+            className="p-1 rounded text-zinc-500 hover:text-zinc-200 hover:bg-white/[0.04] transition-colors"
+          >
+            <RotateCcw className="w-3.5 h-3.5" />
+          </motion.button>
+
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.92 }}
+            onClick={handleCopy}
+            aria-label="Copy terminal output"
+            className="flex items-center space-x-1.5 px-2 py-1 rounded text-[11px] font-mono text-zinc-500 hover:text-zinc-200 hover:bg-white/[0.04] transition-colors"
+          >
+            {copied ? (
+              <>
+                <Check className="w-3 h-3 text-emerald-400" />
+                <span className="text-emerald-400">copied</span>
+              </>
+            ) : (
+              <>
+                <Copy className="w-3 h-3" />
+                <span>copy</span>
+              </>
+            )}
+          </motion.button>
+        </div>
       </div>
 
-      {/* ── Command Tab Bar ── */}
-      <div className="flex items-center gap-1 px-3 py-2 bg-[#0f1118] border-b border-white/[0.04] overflow-x-auto">
+      {/* ── Command Tab Bar with Staggered Motion ── */}
+      <div className="flex items-center gap-1.5 px-3 py-2 bg-[#0f1118] border-b border-white/[0.04] overflow-x-auto">
         {TABS.map(({ key, label }) => (
-          <button
+          <motion.button
             key={key}
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.97 }}
             onClick={() => handleTabSwitch(key)}
             className={`px-2.5 py-1 rounded text-[11px] font-mono whitespace-nowrap transition-all border ${
               activeTab === key
-                ? 'bg-amber-500/12 text-amber-300 border-amber-500/28 font-semibold'
+                ? 'bg-amber-500/15 text-amber-300 border-amber-500/35 font-semibold shadow-[0_0_10px_rgba(245,158,11,0.12)]'
                 : 'text-zinc-500 hover:text-zinc-300 hover:bg-white/[0.03] border-transparent'
             }`}
           >
             {label}
-          </button>
+          </motion.button>
         ))}
       </div>
 
       {/* ── Terminal Viewport ── */}
       <div className="p-4 sm:p-5 font-mono text-xs sm:text-[13px] leading-relaxed min-h-[240px] select-text">
         
-        {/* Prompt line with typewriter */}
-        <div className="flex items-center space-x-1.5 text-zinc-500 mb-3">
+        {/* Prompt line with typewriter and blinking cursor */}
+        <div className="flex items-center space-x-1.5 text-zinc-500 mb-3 flex-wrap">
           <span className="text-emerald-400 font-bold">anoop</span>
           <span className="text-zinc-600">@</span>
           <span className="text-sky-400">kmit</span>
           <span className="text-zinc-600">:</span>
           <span className="text-zinc-400">~/workspace</span>
           <span className="text-zinc-600">$</span>
-          <span className="text-zinc-100 ml-1">{typedLabel}</span>
-          <span
+          <span className="text-zinc-100 ml-1 font-semibold">{typedLabel}</span>
+          <motion.span
             className="inline-block w-[7px] h-[14px] bg-amber-400 ml-0.5"
-            style={{ animation: 'termBlink 1s step-end infinite' }}
+            animate={{ opacity: [1, 0, 1] }}
+            transition={{ duration: 0.9, repeat: Infinity, ease: 'linear' }}
           />
         </div>
 
-        {/* Output lines */}
+        {/* Staggered Output lines */}
         <AnimatePresence mode="wait">
           <motion.div
-            key={activeTab}
-            initial={{ opacity: 0, y: 6 }}
-            animate={{ opacity: 1, y: 0 }}
+            key={`${activeTab}-${tabTrigger}`}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
             exit={{ opacity: 0, y: -4 }}
-            transition={{ duration: 0.16, ease: 'easeOut' }}
+            transition={{ duration: 0.15 }}
             className="space-y-[5px]"
           >
             {currentCommand.output.map((line, idx) => {
@@ -192,9 +214,9 @@ export default function InteractiveTerminal() {
               return (
                 <motion.p
                   key={idx}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.1, delay: idx * 0.035 }}
+                  initial={{ opacity: 0, x: -6 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.22, delay: 0.12 + idx * 0.045, ease: 'easeOut' }}
                   className={colorMap[line.type] ?? 'text-zinc-400'}
                 >
                   {line.text}
@@ -208,7 +230,7 @@ export default function InteractiveTerminal() {
       {/* ── Status Bar ── */}
       <div className="flex items-center justify-between px-4 py-2 bg-[#0a0b0e] border-t border-white/[0.04] text-[10px] font-mono text-zinc-600">
         <div className="flex items-center space-x-2">
-          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 inline-block" />
+          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 inline-block animate-pulse" />
           <span>KMIT, Hyderabad · Class of 2028</span>
         </div>
         <span>bash · UTF-8</span>

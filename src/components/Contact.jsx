@@ -8,8 +8,10 @@ import {
   AlertCircle, 
   ExternalLink
 } from 'lucide-react';
+import { motion } from 'motion/react';
 import { GithubIcon, LinkedinIcon } from './Icons';
 import { personalInfo } from '../data/portfolioData';
+import { fadeUp, slideLeft, VIEW } from '../hooks/useAnimations';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -84,7 +86,13 @@ export default function Contact() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Editorial Section Header */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-8 mb-14 border-b border-white/[0.08]">
+        <motion.div 
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={VIEW}
+          className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-8 mb-14 border-b border-white/[0.08]"
+        >
           <div>
             <span className="text-xs font-mono uppercase tracking-widest text-amber-400 font-semibold block mb-1">
               06 // INITIATE COLLABORATION
@@ -96,12 +104,19 @@ export default function Contact() {
           <p className="text-xs sm:text-sm font-mono text-zinc-400 max-w-md">
             Open for software engineering internships, technical collaborations, and intelligent system discussions.
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
           
           {/* Contact Details & Socials */}
-          <div className="lg:col-span-5 space-y-6">
+          <motion.div 
+            variants={slideLeft}
+            initial="hidden"
+            whileInView="visible"
+            viewport={VIEW}
+            custom={0.1}
+            className="lg:col-span-5 space-y-6"
+          >
             <div className="p-6 sm:p-7 rounded-xl bg-[#12141a] border border-white/[0.06] shadow-xl space-y-6">
               <h3 className="text-base font-bold text-white tracking-tight font-mono uppercase">
                 Contact Coordinates
@@ -115,9 +130,11 @@ export default function Contact() {
                       <Mail className="w-3.5 h-3.5 text-amber-400" />
                       Email Address
                     </span>
-                    <button
+                    <motion.button
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
                       onClick={handleCopyEmail}
-                      className="inline-flex items-center space-x-1 text-[11px] font-mono text-zinc-400 hover:text-amber-400 transition-colors"
+                      className="inline-flex items-center space-x-1 text-[11px] font-mono text-zinc-400 hover:text-amber-400 transition-colors cursor-pointer"
                       title="Copy email to clipboard"
                     >
                       {copiedEmail ? (
@@ -131,7 +148,7 @@ export default function Contact() {
                           <span>Copy</span>
                         </>
                       )}
-                    </button>
+                    </motion.button>
                   </div>
                   <span className="text-xs sm:text-sm font-mono text-zinc-200 break-all">
                     {personalInfo.email}
@@ -162,39 +179,50 @@ export default function Contact() {
                   Developer Networks
                 </h4>
                 <div className="grid grid-cols-2 gap-3">
-                  <a
+                  <motion.a
+                    whileHover={{ scale: 1.02, borderColor: 'rgba(255,255,255,0.2)' }}
+                    whileTap={{ scale: 0.98 }}
                     href={personalInfo.socials.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-3 rounded-lg bg-[#0e1015] border border-white/[0.06] hover:border-white/[0.18] transition-all flex items-center justify-between group"
+                    className="p-3 rounded-lg bg-[#0e1015] border border-white/[0.06] transition-all flex items-center justify-between group"
                   >
                     <div className="flex items-center space-x-2">
                       <GithubIcon className="w-4 h-4 text-zinc-300" />
                       <span className="text-xs font-mono text-zinc-200">GitHub</span>
                     </div>
                     <ExternalLink className="w-3 h-3 text-zinc-600 group-hover:text-amber-400" />
-                  </a>
+                  </motion.a>
 
-                  <a
+                  <motion.a
+                    whileHover={{ scale: 1.02, borderColor: 'rgba(56,189,248,0.3)' }}
+                    whileTap={{ scale: 0.98 }}
                     href={personalInfo.socials.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-3 rounded-lg bg-[#0e1015] border border-white/[0.06] hover:border-white/[0.18] transition-all flex items-center justify-between group"
+                    className="p-3 rounded-lg bg-[#0e1015] border border-white/[0.06] transition-all flex items-center justify-between group"
                   >
                     <div className="flex items-center space-x-2">
                       <LinkedinIcon className="w-4 h-4 text-sky-400" />
                       <span className="text-xs font-mono text-zinc-200">LinkedIn</span>
                     </div>
                     <ExternalLink className="w-3 h-3 text-zinc-600 group-hover:text-sky-400" />
-                  </a>
+                  </motion.a>
                 </div>
               </div>
 
             </div>
-          </div>
+          </motion.div>
 
           {/* Contact Form with Validation */}
-          <div className="lg:col-span-7">
+          <motion.div 
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={VIEW}
+            custom={0.2}
+            className="lg:col-span-7"
+          >
             <div className="p-6 sm:p-7 rounded-xl bg-[#12141a] border border-white/[0.06] shadow-xl relative">
               
               <div className="mb-6">
@@ -207,13 +235,17 @@ export default function Contact() {
               </div>
 
               {statusNotification && (
-                <div className="p-4 mb-6 rounded-lg bg-amber-500/[0.08] border border-amber-500/25 text-xs flex items-start space-x-3">
+                <motion.div 
+                  initial={{ opacity: 0, y: -6 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="p-4 mb-6 rounded-lg bg-amber-500/[0.08] border border-amber-500/25 text-xs flex items-start space-x-3"
+                >
                   <AlertCircle className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
                   <div>
                     <h5 className="font-semibold text-amber-300 font-mono">{statusNotification.title}</h5>
                     <p className="text-zinc-300 mt-0.5 leading-relaxed">{statusNotification.description}</p>
                   </div>
-                </div>
+                </motion.div>
               )}
 
               <form onSubmit={handleSubmit} className="space-y-4" noValidate>
@@ -307,18 +339,20 @@ export default function Contact() {
                   )}
                 </div>
 
-                {/* Submit button */}
-                <button
+                {/* Submit button with microinteractions */}
+                <motion.button
+                  whileHover={{ scale: 1.015 }}
+                  whileTap={{ scale: 0.985 }}
                   type="submit"
                   className="w-full inline-flex items-center justify-center space-x-2 py-3 px-6 rounded-lg bg-amber-500 hover:bg-amber-400 text-black font-mono font-bold text-xs uppercase tracking-wider transition-all shadow-[0_0_15px_rgba(245,158,11,0.25)] cursor-pointer"
                 >
                   <Send className="w-3.5 h-3.5" />
                   <span>Send Message via Email Client</span>
-                </button>
+                </motion.button>
               </form>
 
             </div>
-          </div>
+          </motion.div>
 
         </div>
 
