@@ -10,17 +10,17 @@ export default function Footer() {
   };
 
   return (
-    <footer className="py-12 relative z-10 bg-[#07080c] border-t border-zinc-900 text-zinc-400">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <footer className="py-12 relative z-10 bg-[#07080a] border-t border-white/[0.06] text-zinc-400">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
           
           {/* Brand & Credit */}
           <div className="flex flex-col items-center sm:items-start space-y-1 text-center sm:text-left">
-            <p className="text-sm font-medium text-zinc-200">
-              Designed & Built by <span className="text-cyan-400 font-semibold">Anoop</span>.
+            <p className="text-sm font-medium text-zinc-200 font-mono">
+              Designed & Built by <span className="text-amber-400 font-bold">Anoop</span>.
             </p>
-            <p className="text-xs text-zinc-400">
-              © {currentYear} Anoop • All rights reserved.
+            <p className="text-xs text-zinc-500 font-mono">
+              © {currentYear} Anoop • Computer Science & Engineering (KMIT '28)
             </p>
           </div>
 
@@ -30,7 +30,7 @@ export default function Footer() {
               href={personalInfo.socials.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-400 hover:text-white hover:border-zinc-700 transition-colors"
+              className="p-2 rounded-lg bg-[#111319] border border-white/[0.06] text-zinc-400 hover:text-white hover:border-white/[0.16] transition-colors"
               aria-label="GitHub Profile"
               title="GitHub Profile"
             >
@@ -41,7 +41,7 @@ export default function Footer() {
               href={personalInfo.socials.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-400 hover:text-sky-400 hover:border-zinc-700 transition-colors"
+              className="p-2 rounded-lg bg-[#111319] border border-white/[0.06] text-zinc-400 hover:text-sky-400 hover:border-white/[0.16] transition-colors"
               aria-label="LinkedIn Profile"
               title="LinkedIn Profile"
             >
@@ -50,7 +50,7 @@ export default function Footer() {
 
             <a
               href={personalInfo.socials.email}
-              className="p-2 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-400 hover:text-cyan-400 hover:border-zinc-700 transition-colors"
+              className="p-2 rounded-lg bg-[#111319] border border-white/[0.06] text-zinc-400 hover:text-amber-400 hover:border-white/[0.16] transition-colors"
               aria-label="Email Anoop"
               title="Email Anoop"
             >
@@ -59,7 +59,7 @@ export default function Footer() {
 
             <button
               onClick={scrollToTop}
-              className="p-2 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-400 hover:text-white hover:border-cyan-500/40 transition-colors ml-2"
+              className="p-2 rounded-lg bg-[#111319] border border-white/[0.06] text-zinc-400 hover:text-amber-400 hover:border-amber-400/40 transition-colors ml-2 cursor-pointer"
               aria-label="Scroll to top"
               title="Back to Top"
             >

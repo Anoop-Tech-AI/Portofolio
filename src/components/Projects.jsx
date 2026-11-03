@@ -1,156 +1,421 @@
 import { useState } from 'react';
 import { 
-  FolderGit2, 
   ArrowUpRight, 
   GitBranch, 
   CheckCircle2, 
-  Clock 
+  Clock, 
+  Cpu
 } from 'lucide-react';
 import { projectsData } from '../data/portfolioData';
+import { GithubIcon } from './Icons';
 import ProjectModal from './ProjectModal';
 
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState(null);
-  const [activeFilter, setActiveFilter] = useState('All');
 
-  const filters = ['All', 'AI / Machine Learning', 'AI & Full-Stack', 'Backend & Database', 'DevOps & Cloud'];
-
-  const filteredProjects = activeFilter === 'All'
-    ? projectsData
-    : projectsData.filter((p) => p.category === activeFilter);
+  const retailMind = projectsData.find(p => p.id === 'retailmind-ai');
+  const medSafe = projectsData.find(p => p.id === 'medsafe-ai');
+  const studentCrud = projectsData.find(p => p.id === 'student-management-system');
+  const devops = projectsData.find(p => p.id === 'devops-cicd-practice');
 
   return (
-    <section id="projects" className="py-24 relative z-10 bg-[#0c0e14]/50 border-t border-zinc-900">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="projects" className="py-24 relative z-10 border-t border-white/[0.06] bg-[#0b0c10]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Header */}
-        <div className="flex flex-col items-center text-center mb-14">
-          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-mono uppercase tracking-widest mb-3">
-            <FolderGit2 className="w-3.5 h-3.5" />
-            <span>Applied Engineering</span>
+        {/* Editorial Section Header */}
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-8 mb-16 border-b border-white/[0.08]">
+          <div>
+            <span className="text-xs font-mono uppercase tracking-widest text-amber-400 font-semibold block mb-1">
+              04 // ENGINEERING SHOWCASE
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+              Featured Projects
+            </h2>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-            Featured Projects
-          </h2>
-          <p className="mt-3 text-sm text-zinc-400 max-w-2xl">
-            Selected engineering projects demonstrating autonomous AI agents, retrieval-augmented generation, backend REST architectures, and containerized deployment workflows.
+          <p className="text-xs sm:text-sm font-mono text-zinc-400 max-w-md">
+            Individual project architectures demonstrating Agentic AI, RAG retrieval, clinical data normalization, and container orchestration.
           </p>
-          <div className="w-12 h-1 bg-gradient-to-r from-cyan-400 to-sky-500 rounded-full mt-3" />
         </div>
 
-        {/* Category Filters */}
-        <div className="flex flex-wrap items-center justify-center gap-2 mb-10">
-          {filters.map((filter) => (
-            <button
-              key={filter}
-              onClick={() => setActiveFilter(filter)}
-              className={`px-3.5 py-1.5 text-xs font-medium rounded-lg transition-all ${
-                activeFilter === filter
-                  ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 font-semibold shadow-sm'
-                  : 'text-zinc-400 hover:text-white bg-zinc-900/60 border border-zinc-800/80 hover:bg-zinc-800'
-              }`}
+        <div className="space-y-14">
+          
+          {/* ========================================================
+              SHOWCASE 1: RetailMind-AI (FLAGSHIP SHOWCASE)
+             ======================================================== */}
+          {retailMind && (
+            <div 
+              id={`project-${retailMind.id}`}
+              className="relative rounded-2xl bg-[#12141c] border border-amber-500/20 overflow-hidden shadow-2xl p-6 sm:p-10 transition-all hover:border-amber-500/35"
             >
-              {filter}
-            </button>
-          ))}
-        </div>
+              {/* Subtle accent glow */}
+              <div className="absolute top-0 right-0 w-80 h-80 bg-amber-500/[0.04] rounded-full blur-3xl pointer-events-none" />
 
-        {/* Project Cards Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-7">
-          {filteredProjects.map((project) => (
-            <div
-              key={project.id}
-              className="group relative p-6 sm:p-7 rounded-2xl bg-[#11131a]/90 border border-zinc-800/80 hover:border-zinc-700 transition-all duration-300 flex flex-col justify-between shadow-xl overflow-hidden hover:-translate-y-1"
-            >
-              {/* Ambient hover top glow */}
-              <div className="absolute top-0 right-0 w-36 h-36 bg-cyan-500/5 group-hover:bg-cyan-500/10 rounded-full blur-2xl transition-all pointer-events-none" />
+              <div className="space-y-8">
+                {/* Meta & Title Row */}
+                <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-6 border-b border-white/[0.06]">
+                  <div>
+                    <div className="flex flex-wrap items-center gap-2 mb-2">
+                      <span className="text-[11px] font-mono px-2.5 py-0.5 rounded-full bg-amber-500/10 text-amber-300 border border-amber-500/30">
+                        FLAGSHIP PROJECT
+                      </span>
+                      <span className="text-[11px] font-mono px-2.5 py-0.5 rounded-full bg-zinc-900 text-zinc-400 border border-zinc-800 flex items-center gap-1.5">
+                        <Clock className="w-3 h-3 text-amber-400" />
+                        {retailMind.status}
+                      </span>
+                    </div>
 
-              <div>
-                {/* Meta line: category + status badge */}
-                <div className="flex items-center justify-between gap-2 mb-3">
-                  <span className="text-xs font-mono text-zinc-400">
-                    {project.category}
-                  </span>
-                  <span className={`inline-flex items-center space-x-1 text-[11px] font-mono px-2.5 py-0.5 rounded-full border ${project.badgeColor}`}>
-                    {project.statusType === 'completed' ? (
-                      <CheckCircle2 className="w-3 h-3 mr-1" />
-                    ) : (
-                      <Clock className="w-3 h-3 mr-1" />
-                    )}
-                    <span>{project.status}</span>
-                  </span>
+                    <h3 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
+                      {retailMind.title}
+                    </h3>
+                    <p className="text-sm sm:text-base text-amber-300/90 font-medium mt-1">
+                      {retailMind.subtitle}
+                    </p>
+                  </div>
+
+                  <div className="flex items-center gap-3">
+                    <button
+                      onClick={() => setSelectedProject(retailMind)}
+                      className="px-4 py-2 text-xs font-mono rounded-lg bg-[#161822] hover:bg-[#1d202d] text-zinc-200 border border-white/[0.08] transition-colors flex items-center gap-1.5"
+                    >
+                      <GitBranch className="w-3.5 h-3.5 text-amber-400" />
+                      <span>Pipeline Specs</span>
+                    </button>
+                    <a
+                      href={retailMind.githubPlaceholder}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-2.5 rounded-lg bg-[#161822] text-zinc-400 hover:text-white border border-white/[0.08] transition-colors"
+                      title="GitHub Repository (Placeholder)"
+                    >
+                      <GithubIcon className="w-4 h-4" />
+                    </a>
+                  </div>
                 </div>
 
-                {/* Project Title & Subtitle */}
-                <h3 className="text-xl sm:text-2xl font-bold text-white group-hover:text-cyan-300 transition-colors tracking-tight">
-                  {project.title}
-                </h3>
-                <p className="text-xs sm:text-sm text-cyan-400/90 font-medium mt-1 mb-4">
-                  {project.subtitle}
-                </p>
-
-                {/* Description */}
-                <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed mb-5">
-                  {project.description}
-                </p>
-
-                {/* Architecture Highlights for Pipeline Projects */}
-                {project.architecture && (
-                  <div className="mb-5 p-3 rounded-xl bg-zinc-950/60 border border-zinc-800/80">
-                    <div className="flex items-center space-x-1.5 text-[11px] font-mono text-zinc-400 uppercase tracking-wider mb-2">
-                      <GitBranch className="w-3 h-3 text-cyan-400" />
-                      <span>Pipeline Architecture:</span>
+                {/* Two-Column Problem & Architecture Overview */}
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                  
+                  {/* Left: Problem & Solution Description */}
+                  <div className="lg:col-span-6 space-y-4 text-xs sm:text-sm">
+                    <div>
+                      <h4 className="text-xs font-mono uppercase tracking-widest text-zinc-400 mb-1.5">
+                        Problem Statement
+                      </h4>
+                      <p className="text-zinc-300 leading-relaxed">
+                        {retailMind.problemStatement}
+                      </p>
                     </div>
-                    <div className="flex flex-wrap items-center gap-1.5 text-[11px] text-zinc-300 font-mono">
-                      {project.architecture.map((node, i) => (
-                        <span key={i} className="inline-flex items-center">
-                          <span className="px-2 py-0.5 rounded bg-zinc-900 border border-zinc-800 text-zinc-200">
-                            {node}
+
+                    <div className="pt-2">
+                      <h4 className="text-xs font-mono uppercase tracking-widest text-zinc-400 mb-1.5">
+                        Engineered Solution
+                      </h4>
+                      <p className="text-zinc-300 leading-relaxed">
+                        {retailMind.solution}
+                      </p>
+                    </div>
+
+                    <div className="p-3.5 rounded-xl bg-[#0e1017] border border-white/[0.06] text-xs">
+                      <span className="text-amber-400 font-mono font-semibold block mb-1">
+                        Anoop's Contribution:
+                      </span>
+                      <p className="text-zinc-400 leading-relaxed">
+                        {retailMind.contribution}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Right: Interactive 6-Stage Architecture Flow Diagram */}
+                  <div className="lg:col-span-6 space-y-3">
+                    <div className="flex items-center justify-between text-xs font-mono text-zinc-400 uppercase tracking-wider pb-1">
+                      <span className="flex items-center gap-1.5 text-amber-400">
+                        <Cpu className="w-3.5 h-3.5" />
+                        Execution Pipeline Diagram
+                      </span>
+                      <span className="text-[10px] text-zinc-500">6 Stages</span>
+                    </div>
+
+                    <div className="space-y-2 p-4 rounded-xl bg-[#0d0f15] border border-white/[0.06]">
+                      {retailMind.architecture.map((step) => (
+                        <div 
+                          key={step.step}
+                          className="p-2.5 rounded-lg bg-[#13151e] border border-white/[0.04] flex items-start space-x-3 text-xs"
+                        >
+                          <span className="w-6 h-6 rounded-md bg-amber-500/10 text-amber-300 border border-amber-500/20 font-mono text-[11px] flex items-center justify-center shrink-0">
+                            {step.step}
                           </span>
-                          {i < project.architecture.length - 1 && (
-                            <span className="text-zinc-600 mx-1">→</span>
-                          )}
-                        </span>
+                          <div>
+                            <span className="font-semibold text-white block">
+                              {step.name}
+                            </span>
+                            <span className="text-[11px] text-zinc-400">
+                              {step.desc}
+                            </span>
+                          </div>
+                        </div>
                       ))}
                     </div>
                   </div>
-                )}
-              </div>
 
-              {/* Bottom Section: Tech Stack & Action Button */}
-              <div className="pt-4 border-t border-zinc-800/80">
-                <div className="flex flex-wrap gap-1.5 mb-4">
-                  {project.technologies.map((tech) => (
-                    <span
-                      key={tech}
-                      className="px-2.5 py-0.5 text-[11px] font-mono rounded bg-zinc-900/90 text-zinc-400 border border-zinc-800"
+                </div>
+
+                {/* Tech Stack Pills */}
+                <div className="pt-4 border-t border-white/[0.06]">
+                  <span className="text-[11px] font-mono uppercase tracking-widest text-zinc-500 block mb-2">
+                    Technologies & Frameworks
+                  </span>
+                  <div className="flex flex-wrap gap-2">
+                    {retailMind.technologies.map((tech) => (
+                      <span
+                        key={tech}
+                        className="px-2.5 py-1 text-xs font-mono rounded bg-[#151722] text-zinc-300 border border-white/[0.06]"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          )}
+
+          {/* ========================================================
+              SHOWCASE 2: MedSafe AI (HEALTHCARE CASE STUDY)
+             ======================================================== */}
+          {medSafe && (
+            <div 
+              id={`project-${medSafe.id}`}
+              className="relative rounded-2xl bg-[#12151f] border border-sky-500/20 overflow-hidden shadow-xl p-6 sm:p-9 transition-all hover:border-sky-500/35"
+            >
+              <div className="space-y-6">
+                
+                {/* Header */}
+                <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-5 border-b border-white/[0.06]">
+                  <div>
+                    <div className="flex items-center gap-2 mb-2">
+                      <span className="text-[11px] font-mono px-2.5 py-0.5 rounded-full bg-sky-500/10 text-sky-300 border border-sky-500/30">
+                        HEALTHCARE AI
+                      </span>
+                      <span className="text-[11px] font-mono px-2.5 py-0.5 rounded-full bg-zinc-900 text-zinc-400 border border-zinc-800">
+                        {medSafe.status}
+                      </span>
+                    </div>
+
+                    <h3 className="text-xl sm:text-3xl font-extrabold text-white tracking-tight">
+                      {medSafe.title}
+                    </h3>
+                    <p className="text-xs sm:text-sm text-sky-300 font-medium mt-0.5">
+                      {medSafe.subtitle}
+                    </p>
+                  </div>
+
+                  <div className="flex items-center gap-3">
+                    <button
+                      onClick={() => setSelectedProject(medSafe)}
+                      className="px-3.5 py-1.5 text-xs font-mono rounded-lg bg-[#161a27] hover:bg-[#1d2233] text-zinc-200 border border-white/[0.08] transition-colors"
                     >
-                      {tech}
+                      View Specs
+                    </button>
+                    <a
+                      href={medSafe.githubPlaceholder}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-2 rounded-lg bg-[#161a27] text-zinc-400 hover:text-white border border-white/[0.08]"
+                      title="GitHub Repository (Placeholder)"
+                    >
+                      <GithubIcon className="w-3.5 h-3.5" />
+                    </a>
+                  </div>
+                </div>
+
+                {/* Content Grid */}
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start text-xs sm:text-sm">
+                  <div className="lg:col-span-7 space-y-4">
+                    <div>
+                      <h4 className="text-xs font-mono uppercase tracking-widest text-zinc-400 mb-1">Problem & Impact</h4>
+                      <p className="text-zinc-300 leading-relaxed">{medSafe.problemStatement}</p>
+                    </div>
+
+                    <div>
+                      <h4 className="text-xs font-mono uppercase tracking-widest text-zinc-400 mb-1">Automated Safety Solution</h4>
+                      <p className="text-zinc-300 leading-relaxed">{medSafe.solution}</p>
+                    </div>
+
+                    <div className="p-3 rounded-lg bg-[#0e111a] border border-white/[0.06] text-xs">
+                      <span className="text-sky-400 font-mono font-semibold block mb-0.5">Contribution:</span>
+                      <span className="text-zinc-400">{medSafe.contribution}</span>
+                    </div>
+                  </div>
+
+                  {/* Architecture sequence */}
+                  <div className="lg:col-span-5 p-4 rounded-xl bg-[#0e111a] border border-white/[0.06] space-y-2">
+                    <span className="text-xs font-mono text-sky-400 uppercase tracking-wider block mb-2">
+                      Clinical Document Flow
+                    </span>
+                    {medSafe.architecture.map((node) => (
+                      <div key={node.step} className="p-2 rounded bg-[#141724] border border-white/[0.04] text-xs">
+                        <span className="font-mono text-sky-300 mr-2">{node.step}.</span>
+                        <span className="font-semibold text-zinc-200">{node.name}:</span>
+                        <span className="text-zinc-400 ml-1.5">{node.desc}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Tech pills */}
+                <div className="pt-3 border-t border-white/[0.06] flex flex-wrap gap-1.5">
+                  {medSafe.technologies.map((t) => (
+                    <span key={t} className="px-2 py-0.5 text-xs font-mono rounded bg-[#161a27] text-zinc-300 border border-white/[0.06]">
+                      {t}
                     </span>
                   ))}
                 </div>
 
-                <div className="flex items-center justify-between pt-1">
-                  <span className="text-[11px] text-zinc-400 italic">
-                    {project.statusType === 'completed' ? 'Verified Implementation' : 'In Active Iteration'}
-                  </span>
-
-                  <button
-                    onClick={() => setSelectedProject(project)}
-                    className="inline-flex items-center space-x-1.5 text-xs font-semibold text-cyan-400 hover:text-cyan-300 transition-colors group-hover:translate-x-0.5"
-                  >
-                    <span>View Architecture</span>
-                    <ArrowUpRight className="w-3.5 h-3.5" />
-                  </button>
-                </div>
               </div>
             </div>
-          ))}
+          )}
+
+          {/* ========================================================
+              SHOWCASES 3 & 4: STUDENT CRUD & DEVOPS PRACTICE (2-COL)
+             ======================================================== */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            
+            {/* Student Management System */}
+            {studentCrud && (
+              <div 
+                id={`project-${studentCrud.id}`}
+                className="p-6 sm:p-7 rounded-xl bg-[#121419] border border-white/[0.06] hover:border-emerald-500/30 transition-all flex flex-col justify-between shadow-lg"
+              >
+                <div>
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="text-xs font-mono text-zinc-400">
+                      {studentCrud.category}
+                    </span>
+                    <span className="text-[11px] font-mono px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 flex items-center gap-1">
+                      <CheckCircle2 className="w-3 h-3" />
+                      {studentCrud.status}
+                    </span>
+                  </div>
+
+                  <h3 className="text-xl font-bold text-white tracking-tight mb-1">
+                    {studentCrud.title}
+                  </h3>
+                  <p className="text-xs font-mono text-emerald-400/90 mb-3">
+                    {studentCrud.subtitle}
+                  </p>
+
+                  <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed mb-4">
+                    {studentCrud.solution}
+                  </p>
+
+                  <div className="p-3 rounded-lg bg-[#0e1014] border border-white/[0.05] text-xs mb-4">
+                    <span className="text-zinc-500 font-mono block mb-0.5">CONTRIBUTION:</span>
+                    <span className="text-zinc-300">{studentCrud.contribution}</span>
+                  </div>
+                </div>
+
+                <div className="pt-4 border-t border-white/[0.06]">
+                  <div className="flex flex-wrap gap-1.5 mb-3">
+                    {studentCrud.technologies.map(t => (
+                      <span key={t} className="px-2 py-0.5 text-[11px] font-mono rounded bg-zinc-900 text-zinc-400 border border-zinc-800">
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="flex justify-between items-center text-xs">
+                    <button
+                      onClick={() => setSelectedProject(studentCrud)}
+                      className="text-emerald-400 hover:text-emerald-300 font-mono flex items-center gap-1"
+                    >
+                      <span>Inspect Endpoints</span>
+                      <ArrowUpRight className="w-3.5 h-3.5" />
+                    </button>
+                    <a
+                      href={studentCrud.githubPlaceholder}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-zinc-500 hover:text-white"
+                      title="GitHub"
+                    >
+                      <GithubIcon className="w-3.5 h-3.5" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* DevOps & CI/CD Practice */}
+            {devops && (
+              <div 
+                id={`project-${devops.id}`}
+                className="p-6 sm:p-7 rounded-xl bg-[#121419] border border-white/[0.06] hover:border-purple-500/30 transition-all flex flex-col justify-between shadow-lg"
+              >
+                <div>
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="text-xs font-mono text-zinc-400">
+                      {devops.category}
+                    </span>
+                    <span className="text-[11px] font-mono px-2 py-0.5 rounded-full bg-purple-500/10 text-purple-400 border border-purple-500/20 flex items-center gap-1">
+                      <Clock className="w-3 h-3" />
+                      {devops.status}
+                    </span>
+                  </div>
+
+                  <h3 className="text-xl font-bold text-white tracking-tight mb-1">
+                    {devops.title}
+                  </h3>
+                  <p className="text-xs font-mono text-purple-400/90 mb-3">
+                    {devops.subtitle}
+                  </p>
+
+                  <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed mb-4">
+                    {devops.solution}
+                  </p>
+
+                  <div className="p-3 rounded-lg bg-[#0e1014] border border-white/[0.05] text-xs mb-4">
+                    <span className="text-zinc-500 font-mono block mb-0.5">INFRASTRUCTURE WORKFLOW:</span>
+                    <span className="text-zinc-300">Git Push → Jenkins Pipeline → Maven Build → Docker Container → Minikube Pod</span>
+                  </div>
+                </div>
+
+                <div className="pt-4 border-t border-white/[0.06]">
+                  <div className="flex flex-wrap gap-1.5 mb-3">
+                    {devops.technologies.map(t => (
+                      <span key={t} className="px-2 py-0.5 text-[11px] font-mono rounded bg-zinc-900 text-zinc-400 border border-zinc-800">
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="flex justify-between items-center text-xs">
+                    <button
+                      onClick={() => setSelectedProject(devops)}
+                      className="text-purple-400 hover:text-purple-300 font-mono flex items-center gap-1"
+                    >
+                      <span>Pipeline Manifests</span>
+                      <ArrowUpRight className="w-3.5 h-3.5" />
+                    </button>
+                    <a
+                      href={devops.githubPlaceholder}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-zinc-500 hover:text-white"
+                      title="GitHub"
+                    >
+                      <GithubIcon className="w-3.5 h-3.5" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+            )}
+
+          </div>
+
         </div>
 
       </div>
 
-      {/* Project Details Modal */}
+      {/* Modal for Deep Pipeline Specs */}
       <ProjectModal
         project={selectedProject}
         isOpen={!!selectedProject}

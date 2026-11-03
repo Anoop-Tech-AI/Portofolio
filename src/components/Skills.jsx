@@ -7,21 +7,22 @@ import {
   Wrench, 
   Layers, 
   Search, 
-  Terminal,
-  Cpu
+  Cpu,
+  ArrowUpRight
 } from 'lucide-react';
-import { skillCategories } from '../data/portfolioData';
+import { skillCategories, projectsData } from '../data/portfolioData';
 
 export default function Skills() {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
+  const [activeSkillHighlight, setActiveSkillHighlight] = useState(null);
 
   const getCategoryIcon = (iconName) => {
     switch (iconName) {
-      case 'Code2': return <Code2 className="w-4 h-4 text-sky-400" />;
-      case 'Globe': return <Globe className="w-4 h-4 text-emerald-400" />;
-      case 'Database': return <Database className="w-4 h-4 text-amber-400" />;
-      case 'BrainCircuit': return <BrainCircuit className="w-4 h-4 text-cyan-400" />;
+      case 'Code2': return <Code2 className="w-4 h-4 text-amber-400" />;
+      case 'BrainCircuit': return <BrainCircuit className="w-4 h-4 text-amber-400" />;
+      case 'Globe': return <Globe className="w-4 h-4 text-sky-400" />;
+      case 'Database': return <Database className="w-4 h-4 text-emerald-400" />;
       case 'Wrench': return <Wrench className="w-4 h-4 text-purple-400" />;
       case 'Layers': return <Layers className="w-4 h-4 text-rose-400" />;
       default: return <Cpu className="w-4 h-4 text-zinc-400" />;
@@ -33,62 +34,77 @@ export default function Skills() {
       .filter((cat) => selectedCategory === 'all' || cat.id === selectedCategory)
       .map((cat) => {
         if (!searchQuery.trim()) return cat;
-        const matchingSkills = cat.skills.filter((skill) =>
-          skill.toLowerCase().includes(searchQuery.toLowerCase())
-        );
+        const q = searchQuery.toLowerCase();
+        const activeMatches = cat.activelyUsed.filter((s) => s.toLowerCase().includes(q));
+        const exploringMatches = cat.exploring.filter((s) => s.toLowerCase().includes(q));
+        
         return {
           ...cat,
-          skills: matchingSkills
+          activelyUsed: activeMatches,
+          exploring: exploringMatches
         };
       })
-      .filter((cat) => cat.skills.length > 0);
+      .filter((cat) => cat.activelyUsed.length > 0 || cat.exploring.length > 0);
   }, [selectedCategory, searchQuery]);
 
+  // Find projects that use this skill
+  const relatedProjectsForSkill = useMemo(() => {
+    if (!activeSkillHighlight) return [];
+    const skillNorm = activeSkillHighlight.toLowerCase();
+    return projectsData.filter((project) => 
+      project.technologies.some((tech) => tech.toLowerCase().includes(skillNorm) || skillNorm.includes(tech.toLowerCase()))
+    );
+  }, [activeSkillHighlight]);
+
   const totalSkillCount = useMemo(() => {
-    return skillCategories.reduce((acc, cat) => acc + cat.skills.length, 0);
+    return skillCategories.reduce(
+      (acc, cat) => acc + cat.activelyUsed.length + cat.exploring.length, 
+      0
+    );
   }, []);
 
   return (
-    <section id="skills" className="py-24 relative z-10 border-t border-zinc-900">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="skills" className="py-24 relative z-10 border-t border-white/[0.06]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Header */}
-        <div className="flex flex-col items-center text-center mb-14">
-          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-mono uppercase tracking-widest mb-3">
-            <Terminal className="w-3.5 h-3.5" />
-            <span>Technical Capabilities</span>
+        {/* Editorial Section Header */}
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-8 mb-12 border-b border-white/[0.08]">
+          <div>
+            <span className="text-xs font-mono uppercase tracking-widest text-amber-400 font-semibold block mb-1">
+              03 // TECHNICAL TOOLING
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+              Skills & Architecture
+            </h2>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-            Technical Skills
-          </h2>
-          <p className="mt-3 text-sm text-zinc-400 max-w-xl">
-            A comprehensive catalog of {totalSkillCount} languages, frameworks, AI architectures, and computer science fundamentals.
+          <p className="text-xs sm:text-sm font-mono text-zinc-400 max-w-md">
+            Cataloging {totalSkillCount} languages, systems, and AI frameworks separated by production usage and active research.
           </p>
-          <div className="w-12 h-1 bg-gradient-to-r from-cyan-400 to-sky-500 rounded-full mt-3" />
         </div>
 
-        {/* Filter Controls & Search */}
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-10">
+        {/* Legend & Filter Controls */}
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-8">
+          
           {/* Category Tabs */}
-          <div className="flex flex-wrap items-center justify-center gap-1.5 p-1 rounded-xl bg-zinc-900/80 border border-zinc-800 max-w-full overflow-x-auto">
+          <div className="flex flex-wrap items-center gap-1.5 p-1 rounded-xl bg-[#121419] border border-white/[0.06]">
             <button
               onClick={() => setSelectedCategory('all')}
-              className={`px-3 py-1.5 text-xs font-medium rounded-lg transition-all ${
+              className={`px-3 py-1.5 text-xs font-mono rounded-lg transition-all ${
                 selectedCategory === 'all'
-                  ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 font-semibold'
-                  : 'text-zinc-400 hover:text-white hover:bg-zinc-800/60'
+                  ? 'bg-amber-500/15 text-amber-300 border border-amber-500/30 font-semibold'
+                  : 'text-zinc-400 hover:text-white hover:bg-white/[0.03]'
               }`}
             >
-              All ({totalSkillCount})
+              All Categories ({totalSkillCount})
             </button>
             {skillCategories.map((cat) => (
               <button
                 key={cat.id}
                 onClick={() => setSelectedCategory(cat.id)}
-                className={`px-3 py-1.5 text-xs font-medium rounded-lg transition-all ${
+                className={`px-3 py-1.5 text-xs font-mono rounded-lg transition-all ${
                   selectedCategory === cat.id
-                    ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 font-semibold'
-                    : 'text-zinc-400 hover:text-white hover:bg-zinc-800/60'
+                    ? 'bg-amber-500/15 text-amber-300 border border-amber-500/30 font-semibold'
+                    : 'text-zinc-400 hover:text-white hover:bg-white/[0.03]'
                 }`}
               >
                 {cat.title}
@@ -96,66 +112,148 @@ export default function Skills() {
             ))}
           </div>
 
-          {/* Quick Search Bar */}
-          <div className="relative w-full md:w-64">
+          {/* Search bar */}
+          <div className="relative w-full lg:w-72">
             <Search className="w-4 h-4 text-zinc-500 absolute left-3 top-1/2 -translate-y-1/2" />
             <input
               type="text"
-              placeholder="Filter skills (e.g. RAG, Python)..."
+              placeholder="Filter by keyword (e.g. C++, RAG, Docker)..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-9 pr-3 py-1.5 rounded-lg bg-zinc-900/90 border border-zinc-800 text-xs text-white placeholder-zinc-500 focus:outline-none focus:border-cyan-500/60 transition-colors"
+              className="w-full pl-9 pr-3 py-1.5 rounded-lg bg-[#121419] border border-white/[0.08] text-xs font-mono text-white placeholder-zinc-500 focus:outline-none focus:border-amber-500/50 transition-colors"
             />
           </div>
         </div>
 
-        {/* Skill Category Cards Grid */}
+        {/* Legend indicator bar */}
+        <div className="flex flex-wrap items-center gap-4 text-xs font-mono text-zinc-400 mb-8 px-1">
+          <span className="flex items-center gap-1.5">
+            <span className="w-2 h-2 rounded-full bg-emerald-400 inline-block" />
+            <span>Actively Used in Projects</span>
+          </span>
+          <span className="flex items-center gap-1.5">
+            <span className="w-2 h-2 rounded-full bg-amber-400 inline-block" />
+            <span>Currently Exploring / Prototyping</span>
+          </span>
+          {activeSkillHighlight && (
+            <span className="text-amber-300 ml-auto flex items-center gap-1">
+              <span>Selected: <strong>{activeSkillHighlight}</strong></span>
+              <button 
+                onClick={() => setActiveSkillHighlight(null)}
+                className="text-[10px] underline ml-1 hover:text-white"
+              >
+                (clear)
+              </button>
+            </span>
+          )}
+        </div>
+
+        {/* Categories Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredCategories.map((cat) => (
             <div
               key={cat.id}
-              className="p-6 rounded-2xl bg-[#11131a]/80 border border-zinc-800/80 hover:border-zinc-700/90 transition-all duration-200 flex flex-col justify-between group shadow-lg"
+              className="p-6 rounded-xl bg-[#12141a] border border-white/[0.06] hover:border-white/[0.12] transition-all flex flex-col justify-between group shadow-lg"
             >
               <div>
                 {/* Header */}
-                <div className="flex items-center justify-between pb-4 border-b border-zinc-800/70 mb-4">
+                <div className="flex items-center justify-between pb-3 mb-4 border-b border-white/[0.05]">
                   <div className="flex items-center space-x-2.5">
-                    <div className="p-2 rounded-lg bg-zinc-900 border border-zinc-800">
+                    <div className="p-2 rounded-lg bg-[#0e1015] border border-white/[0.06]">
                       {getCategoryIcon(cat.iconName)}
                     </div>
                     <div>
-                      <h3 className="text-sm font-bold text-white group-hover:text-cyan-300 transition-colors">
+                      <h3 className="text-sm font-bold text-white tracking-tight group-hover:text-amber-300 transition-colors">
                         {cat.title}
                       </h3>
-                      <p className="text-[11px] text-zinc-500 leading-tight">
+                      <p className="text-[11px] text-zinc-500">
                         {cat.description}
                       </p>
                     </div>
                   </div>
-                  <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-zinc-800/80 text-zinc-400 border border-zinc-700/50">
-                    {cat.skills.length}
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-zinc-900 text-zinc-400 border border-zinc-800">
+                    {cat.activelyUsed.length + cat.exploring.length}
                   </span>
                 </div>
 
-                {/* Skill Pills */}
-                <div className="flex flex-wrap gap-2 pt-1">
-                  {cat.skills.map((skill) => (
-                    <span
-                      key={skill}
-                      className="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-mono bg-zinc-900/90 text-zinc-300 border border-zinc-800 hover:border-cyan-500/40 hover:text-cyan-300 hover:bg-zinc-800/80 transition-all cursor-default"
-                    >
-                      {skill}
+                {/* Actively Used Technologies */}
+                {cat.activelyUsed.length > 0 && (
+                  <div className="mb-4">
+                    <span className="text-[10px] font-mono uppercase tracking-wider text-emerald-400/90 block mb-2 flex items-center gap-1">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                      Actively Applied
                     </span>
-                  ))}
-                </div>
+                    <div className="flex flex-wrap gap-1.5">
+                      {cat.activelyUsed.map((skill) => {
+                        const isSelected = activeSkillHighlight === skill;
+                        return (
+                          <button
+                            key={skill}
+                            onClick={() => setActiveSkillHighlight(isSelected ? null : skill)}
+                            className={`px-2.5 py-1 text-xs font-mono rounded-md border transition-all text-left ${
+                              isSelected
+                                ? 'bg-amber-500/20 border-amber-400 text-amber-200 font-semibold'
+                                : 'bg-[#0f1116] border-white/[0.06] text-zinc-300 hover:border-white/[0.2] hover:text-white'
+                            }`}
+                          >
+                            {skill}
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
+                )}
+
+                {/* Exploring Technologies */}
+                {cat.exploring.length > 0 && (
+                  <div>
+                    <span className="text-[10px] font-mono uppercase tracking-wider text-amber-400/90 block mb-2 flex items-center gap-1">
+                      <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
+                      Exploring & Researching
+                    </span>
+                    <div className="flex flex-wrap gap-1.5">
+                      {cat.exploring.map((skill) => {
+                        const isSelected = activeSkillHighlight === skill;
+                        return (
+                          <button
+                            key={skill}
+                            onClick={() => setActiveSkillHighlight(isSelected ? null : skill)}
+                            className={`px-2 py-0.5 text-[11px] font-mono rounded-md border transition-all text-left ${
+                              isSelected
+                                ? 'bg-amber-500/20 border-amber-400 text-amber-200 font-semibold'
+                                : 'bg-[#0f1116]/60 border-amber-500/15 text-zinc-400 hover:border-amber-500/30 hover:text-amber-300'
+                            }`}
+                          >
+                            {skill}
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           ))}
         </div>
 
-        {filteredCategories.length === 0 && (
-          <div className="text-center py-12 text-zinc-500 text-sm">
-            No technical skills found matching "{searchQuery}".
+        {/* Skill to Project Connection Card */}
+        {activeSkillHighlight && relatedProjectsForSkill.length > 0 && (
+          <div className="mt-8 p-5 rounded-xl bg-amber-500/[0.04] border border-amber-500/20 text-xs font-mono animate-fadeIn">
+            <span className="text-amber-400 font-semibold block mb-2">
+              Projects applying '{activeSkillHighlight}':
+            </span>
+            <div className="flex flex-wrap gap-2">
+              {relatedProjectsForSkill.map((proj) => (
+                <a
+                  key={proj.id}
+                  href={`#project-${proj.id}`}
+                  className="inline-flex items-center space-x-1.5 px-3 py-1 rounded bg-[#13151c] border border-white/[0.1] text-zinc-200 hover:text-amber-300 hover:border-amber-400/40 transition-colors"
+                >
+                  <span>{proj.title}</span>
+                  <ArrowUpRight className="w-3 h-3 text-zinc-500" />
+                </a>
+              ))}
+            </div>
           </div>
         )}
 

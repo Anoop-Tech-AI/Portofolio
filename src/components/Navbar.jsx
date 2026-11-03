@@ -2,13 +2,12 @@ import { useState, useEffect } from 'react';
 import { Menu, X, FileText, Terminal } from 'lucide-react';
 
 const NAV_LINKS = [
-  { name: 'About', href: '#about' },
-  { name: 'Education', href: '#education' },
-  { name: 'Skills', href: '#skills' },
-  { name: 'Projects', href: '#projects' },
-  { name: 'Problem Solving', href: '#problem-solving' },
-  { name: 'Exploring', href: '#exploring' },
-  { name: 'Contact', href: '#contact' },
+  { num: '01', name: 'About', href: '#about' },
+  { num: '02', name: 'Journey', href: '#journey' },
+  { num: '03', name: 'Skills', href: '#skills' },
+  { num: '04', name: 'Projects', href: '#projects' },
+  { num: '05', name: 'DSA', href: '#problem-solving' },
+  { num: '06', name: 'Contact', href: '#contact' },
 ];
 
 export default function Navbar({ onOpenResume }) {
@@ -20,9 +19,8 @@ export default function Navbar({ onOpenResume }) {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
 
-      // Active section detection
-      const sections = ['about', 'education', 'skills', 'projects', 'problem-solving', 'exploring', 'contact'];
-      const scrollPosition = window.scrollY + 120;
+      const sections = ['about', 'journey', 'skills', 'projects', 'problem-solving', 'contact'];
+      const scrollPosition = window.scrollY + 140;
 
       for (const sectionId of sections) {
         const el = document.getElementById(sectionId);
@@ -45,7 +43,7 @@ export default function Navbar({ onOpenResume }) {
     <header 
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
         isScrolled 
-          ? 'bg-[#090a0f]/80 backdrop-blur-md border-b border-white/[0.08] shadow-[0_4px_20px_rgba(0,0,0,0.4)] py-3' 
+          ? 'bg-[#0c0d10]/90 backdrop-blur-md border-b border-white/[0.08] shadow-[0_4px_24px_rgba(0,0,0,0.5)] py-3' 
           : 'bg-transparent py-5'
       }`}
     >
@@ -55,33 +53,34 @@ export default function Navbar({ onOpenResume }) {
           {/* Logo / Monogram */}
           <a 
             href="#" 
-            className="group flex items-center space-x-2 text-white font-bold tracking-wider focus:outline-none"
+            className="group flex items-center space-x-2.5 text-white focus:outline-none"
             aria-label="Anoop Home"
           >
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-500/20 to-sky-600/20 border border-cyan-500/30 flex items-center justify-center text-cyan-400 group-hover:border-cyan-400 transition-colors">
+            <div className="w-8 h-8 rounded-lg bg-[#14161d] border border-white/[0.1] group-hover:border-amber-400/60 flex items-center justify-center text-amber-400 transition-colors">
               <Terminal className="w-4 h-4" />
             </div>
-            <div className="flex items-center text-base sm:text-lg">
-              <span className="font-extrabold tracking-widest text-white">ANOOP</span>
-              <span className="text-cyan-400 font-mono text-sm ml-1">.dev</span>
+            <div className="flex items-center text-sm sm:text-base tracking-wider font-mono">
+              <span className="font-extrabold text-white">ANOOP</span>
+              <span className="text-zinc-500 text-xs ml-1">//dev</span>
             </div>
           </a>
 
           {/* Desktop Nav Links */}
-          <nav className="hidden md:flex items-center space-x-1 lg:space-x-2 bg-[#11131a]/70 border border-white/[0.07] px-3 py-1.5 rounded-full backdrop-blur-md">
+          <nav className="hidden lg:flex items-center space-x-1 bg-[#12141a]/80 border border-white/[0.07] px-3.5 py-1.5 rounded-full backdrop-blur-md">
             {NAV_LINKS.map((link) => {
               const isActive = activeSection === link.href.substring(1);
               return (
                 <a
                   key={link.name}
                   href={link.href}
-                  className={`px-3 py-1 text-xs font-medium rounded-full transition-all duration-200 ${
+                  className={`px-3 py-1 text-xs font-mono rounded-full transition-all duration-200 flex items-center space-x-1 ${
                     isActive 
-                      ? 'text-cyan-300 bg-cyan-500/10 shadow-[0_0_12px_rgba(56,189,248,0.2)] font-semibold' 
+                      ? 'text-amber-300 bg-amber-500/15 border border-amber-500/30 font-semibold' 
                       : 'text-zinc-400 hover:text-zinc-100 hover:bg-white/[0.04]'
                   }`}
                 >
-                  {link.name}
+                  <span className="text-[10px] text-zinc-500">{link.num}.</span>
+                  <span>{link.name}</span>
                 </a>
               );
             })}
@@ -91,35 +90,35 @@ export default function Navbar({ onOpenResume }) {
           <div className="hidden sm:flex items-center space-x-3">
             <button
               onClick={onOpenResume}
-              className="inline-flex items-center space-x-1.5 px-3.5 py-1.5 text-xs font-medium rounded-lg text-zinc-300 bg-zinc-900/90 hover:text-white hover:bg-zinc-800 border border-zinc-800/80 hover:border-zinc-700 transition-all cursor-pointer"
+              className="inline-flex items-center space-x-1.5 px-3.5 py-1.5 text-xs font-mono rounded-lg text-zinc-300 bg-[#12141a] hover:text-white hover:bg-[#181a23] border border-white/[0.08] hover:border-white/[0.16] transition-all cursor-pointer"
             >
-              <FileText className="w-3.5 h-3.5 text-cyan-400" />
+              <FileText className="w-3.5 h-3.5 text-amber-400" />
               <span>Resume</span>
             </button>
 
             <a
               href="#contact"
-              className="inline-flex items-center space-x-1.5 px-4 py-1.5 text-xs font-medium rounded-lg bg-gradient-to-r from-cyan-500 to-sky-500 text-black font-semibold hover:opacity-90 transition-all shadow-[0_0_16px_rgba(56,189,248,0.25)]"
+              className="inline-flex items-center space-x-1.5 px-4 py-1.5 text-xs font-mono uppercase tracking-wider rounded-lg bg-amber-500 hover:bg-amber-400 text-black font-bold transition-all shadow-[0_0_15px_rgba(245,158,11,0.2)]"
             >
               <span>Get in Touch</span>
             </a>
           </div>
 
           {/* Mobile Hamburger Button */}
-          <div className="md:hidden flex items-center space-x-2">
+          <div className="lg:hidden flex items-center space-x-2">
             <button
               onClick={onOpenResume}
-              className="p-2 text-zinc-300 hover:text-white rounded-lg bg-zinc-900 border border-zinc-800 text-xs flex items-center gap-1"
+              className="p-2 text-zinc-300 hover:text-white rounded-lg bg-[#14161e] border border-white/[0.08] text-xs flex items-center gap-1 font-mono"
               aria-label="View Resume"
             >
-              <FileText className="w-3.5 h-3.5 text-cyan-400" />
+              <FileText className="w-3.5 h-3.5 text-amber-400" />
             </button>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-lg text-zinc-400 hover:text-white hover:bg-zinc-900 border border-zinc-800/80 focus:outline-none"
+              className="p-2 rounded-lg text-zinc-400 hover:text-white hover:bg-zinc-900 border border-white/[0.08] focus:outline-none"
               aria-label="Toggle navigation menu"
             >
-              {mobileMenuOpen ? <X className="w-5 h-5 text-cyan-400" /> : <Menu className="w-5 h-5" />}
+              {mobileMenuOpen ? <X className="w-5 h-5 text-amber-400" /> : <Menu className="w-5 h-5" />}
             </button>
           </div>
         </div>
@@ -127,8 +126,8 @@ export default function Navbar({ onOpenResume }) {
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="md:hidden mt-2 mx-4 p-4 rounded-2xl bg-[#0e1017]/95 border border-zinc-800/90 backdrop-blur-xl shadow-2xl transition-all animate-fadeIn">
-          <nav className="flex flex-col space-y-1">
+        <div className="lg:hidden mt-2 mx-4 p-4 rounded-xl bg-[#0f1117] border border-white/[0.1] backdrop-blur-xl shadow-2xl transition-all animate-fadeIn">
+          <nav className="flex flex-col space-y-1 font-mono text-xs">
             {NAV_LINKS.map((link) => {
               const isActive = activeSection === link.href.substring(1);
               return (
@@ -136,32 +135,35 @@ export default function Navbar({ onOpenResume }) {
                   key={link.name}
                   href={link.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className={`px-3 py-2 text-sm rounded-lg transition-colors flex items-center justify-between ${
+                  className={`px-3 py-2.5 rounded-lg transition-colors flex items-center justify-between ${
                     isActive 
-                      ? 'text-cyan-300 bg-cyan-500/10 font-semibold' 
-                      : 'text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800/50'
+                      ? 'text-amber-300 bg-amber-500/15 font-semibold' 
+                      : 'text-zinc-400 hover:text-zinc-100 hover:bg-white/[0.04]'
                   }`}
                 >
-                  <span>{link.name}</span>
-                  {isActive && <div className="w-1.5 h-1.5 rounded-full bg-cyan-400" />}
+                  <span className="flex items-center space-x-2">
+                    <span className="text-zinc-600">{link.num}.</span>
+                    <span>{link.name}</span>
+                  </span>
+                  {isActive && <div className="w-1.5 h-1.5 rounded-full bg-amber-400" />}
                 </a>
               );
             })}
-            <div className="pt-3 mt-2 border-t border-zinc-800/80 flex flex-col gap-2">
+            <div className="pt-3 mt-2 border-t border-white/[0.06] flex flex-col gap-2">
               <button
                 onClick={() => {
                   setMobileMenuOpen(false);
                   onOpenResume();
                 }}
-                className="w-full flex items-center justify-center space-x-2 py-2.5 text-xs font-medium rounded-lg text-zinc-200 bg-zinc-900 border border-zinc-700/80"
+                className="w-full flex items-center justify-center space-x-2 py-2 text-xs font-mono text-zinc-200 bg-[#151722] border border-white/[0.08] rounded-lg"
               >
-                <FileText className="w-4 h-4 text-cyan-400" />
+                <FileText className="w-3.5 h-3.5 text-amber-400" />
                 <span>View Resume</span>
               </button>
               <a
                 href="#contact"
                 onClick={() => setMobileMenuOpen(false)}
-                className="w-full text-center py-2.5 text-xs font-semibold rounded-lg bg-gradient-to-r from-cyan-500 to-sky-500 text-black shadow-md"
+                className="w-full text-center py-2 text-xs font-mono uppercase tracking-wider font-bold rounded-lg bg-amber-500 text-black shadow-md"
               >
                 Contact Me
               </a>

@@ -3,7 +3,7 @@ import Navbar from './components/Navbar';
 import ScrollProgress from './components/ScrollProgress';
 import Hero from './components/Hero';
 import About from './components/About';
-import Education from './components/Education';
+import Timeline from './components/Timeline';
 import Skills from './components/Skills';
 import Projects from './components/Projects';
 import ProblemSolving from './components/ProblemSolving';
@@ -17,18 +17,21 @@ export default function App() {
   const [isResumeOpen, setIsResumeOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-[#090a0f] text-zinc-100 relative selection:bg-cyan-500/20 selection:text-cyan-200">
-      {/* Scroll indicator bar at top */}
+    <div className="min-h-screen bg-[#0c0d10] text-zinc-100 relative selection:bg-amber-500/20 selection:text-amber-200">
+      {/* Noise texture overlay for editorial depth — z-0 stays below content */}
+      <div className="fixed inset-0 pointer-events-none z-0 noise-overlay opacity-25" />
+
+      {/* Top reading progress line */}
       <ScrollProgress />
 
-      {/* Main Header navigation */}
+      {/* Editorial Navigation */}
       <Navbar onOpenResume={() => setIsResumeOpen(true)} />
 
-      {/* Content Sections */}
-      <main>
+      {/* Main Content Sections */}
+      <main className="relative z-10">
         <Hero onOpenResume={() => setIsResumeOpen(true)} />
         <About />
-        <Education />
+        <Timeline />
         <Skills />
         <Projects />
         <ProblemSolving />
@@ -36,7 +39,7 @@ export default function App() {
         <Contact />
       </main>
 
-      {/* Footer */}
+      {/* Editorial Footer */}
       <Footer />
 
       {/* Floating Back to Top Button */}
