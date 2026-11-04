@@ -249,7 +249,7 @@ export default function InteractiveTerminal() {
           type: "success",
         },
         {
-          text: "  Action:       Scroll to #contact or use the mascot!",
+          text: "  Action:       Scroll to #contact to send a message!",
           type: "primary",
         },
       ]);
