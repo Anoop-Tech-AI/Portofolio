@@ -124,8 +124,7 @@ code, .font-mono, pre {
 }
 
 .animate-mascot-wave {
-  animation: mascotWave 1.2s ease-in-out;
-  transform-origin: bottom left;
+  animation: mascotWave 1.1s ease-in-out infinite;
 }
 
 @keyframes mascotBreathe {
@@ -135,6 +134,24 @@ code, .font-mono, pre {
 
 .animate-mascot-idle {
   animation: mascotBreathe 3s ease-in-out infinite;
+}
+
+@keyframes duckWaddle {
+  0%, 100% { transform: rotate(0deg) translateY(0px); }
+  25% { transform: rotate(-3deg) translateY(-3px); }
+  75% { transform: rotate(3deg) translateY(-3px); }
+}
+
+.animate-duck-waddle {
+  animation: duckWaddle 0.45s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-mascot-wave,
+  .animate-mascot-idle,
+  .animate-duck-waddle {
+    animation: none !important;
+  }
 }
 
 /* ─── Section transition: left border accent rule ─── */

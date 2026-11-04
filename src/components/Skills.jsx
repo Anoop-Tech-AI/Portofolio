@@ -22,8 +22,8 @@ export default function Skills() {
   const getCategoryIcon = (iconName) => {
     switch (iconName) {
       case 'Code2': return <Code2 className="w-4 h-4 text-amber-600 dark:text-amber-400" />;
-      case 'BrainCircuit': return <BrainCircuit className="w-4 h-4 text-amber-600 dark:text-amber-400" />;
       case 'Globe': return <Globe className="w-4 h-4 text-sky-600 dark:text-sky-400" />;
+      case 'BrainCircuit': return <BrainCircuit className="w-4 h-4 text-amber-600 dark:text-amber-400" />;
       case 'Database': return <Database className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />;
       case 'Wrench': return <Wrench className="w-4 h-4 text-purple-600 dark:text-purple-400" />;
       case 'Layers': return <Layers className="w-4 h-4 text-rose-600 dark:text-rose-400" />;
@@ -49,7 +49,6 @@ export default function Skills() {
       .filter((cat) => cat.activelyUsed.length > 0 || cat.exploring.length > 0);
   }, [selectedCategory, searchQuery]);
 
-  // Find projects that use this skill
   const relatedProjectsForSkill = useMemo(() => {
     if (!activeSkillHighlight) return [];
     const skillNorm = activeSkillHighlight.toLowerCase();
@@ -86,7 +85,7 @@ export default function Skills() {
             </h2>
           </div>
           <p className="text-xs sm:text-sm font-mono text-zinc-600 dark:text-zinc-400 max-w-md">
-            Cataloging {totalSkillCount} languages, systems, and AI frameworks separated by production usage and active research.
+            Visually cataloged across 6 core domains: Programming, Web Development, AI/ML, Databases, Developer Tools, and Core CS.
           </p>
         </motion.div>
 
@@ -105,7 +104,7 @@ export default function Skills() {
                   : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-black/[0.04] dark:hover:bg-white/[0.03]'
               }`}
             >
-              All Categories ({totalSkillCount})
+              All Domains ({totalSkillCount})
             </motion.button>
             {skillCategories.map((cat) => (
               <motion.button
@@ -129,7 +128,7 @@ export default function Skills() {
             <Search className="w-4 h-4 text-zinc-400 dark:text-zinc-500 absolute left-3 top-1/2 -translate-y-1/2" />
             <input
               type="text"
-              placeholder="Filter by keyword (e.g. C++, RAG, Docker)..."
+              placeholder="Search skill (e.g. C++, RAG, Docker)..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full pl-9 pr-3 py-1.5 rounded-lg bg-white dark:bg-[#121419] border border-black/[0.1] dark:border-white/[0.08] text-xs font-mono text-zinc-900 dark:text-white placeholder-zinc-400 dark:placeholder-zinc-500 focus:outline-none focus:border-amber-500 transition-colors shadow-sm"
@@ -141,11 +140,11 @@ export default function Skills() {
         <div className="flex flex-wrap items-center gap-4 text-xs font-mono text-zinc-600 dark:text-zinc-400 mb-8 px-1">
           <span className="flex items-center gap-1.5">
             <span className="w-2 h-2 rounded-full bg-emerald-500 inline-block" />
-            <span>Actively Used in Projects</span>
+            <span>Applied in Projects</span>
           </span>
           <span className="flex items-center gap-1.5">
             <span className="w-2 h-2 rounded-full bg-amber-500 inline-block" />
-            <span>Currently Exploring / Prototyping</span>
+            <span>Research &amp; Exploration</span>
           </span>
           {activeSkillHighlight && (
             <span className="text-amber-700 dark:text-amber-300 ml-auto flex items-center gap-1">
@@ -160,7 +159,7 @@ export default function Skills() {
           )}
         </div>
 
-        {/* Categories Grid with Staggered Entrance */}
+        {/* Categories Grid (6 Core Domains) */}
         <motion.div 
           layout
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
@@ -175,10 +174,10 @@ export default function Skills() {
                 viewport={VIEW}
                 transition={{ duration: 0.4, delay: idx * 0.06 }}
                 whileHover={{ y: -3, borderColor: 'rgba(245,158,11,0.4)' }}
-                className="p-6 rounded-xl bg-white dark:bg-[#12141a] border border-black/[0.08] dark:border-white/[0.06] transition-all flex flex-col justify-between group shadow-sm dark:shadow-lg"
+                className="p-6 rounded-2xl bg-white dark:bg-[#12141a] border border-black/[0.08] dark:border-white/[0.06] transition-all flex flex-col justify-between group shadow-sm dark:shadow-lg"
               >
                 <div>
-                  {/* Header */}
+                  {/* Category Header */}
                   <div className="flex items-center justify-between pb-3 mb-4 border-b border-black/[0.06] dark:border-white/[0.05]">
                     <div className="flex items-center space-x-2.5">
                       <div className="p-2 rounded-lg bg-zinc-100 dark:bg-[#0e1015] border border-black/[0.06] dark:border-white/[0.06]">
@@ -188,7 +187,7 @@ export default function Skills() {
                         <h3 className="text-sm font-bold text-zinc-900 dark:text-white tracking-tight group-hover:text-amber-700 dark:group-hover:text-amber-300 transition-colors">
                           {cat.title}
                         </h3>
-                        <p className="text-[11px] text-zinc-500 dark:text-zinc-500">
+                        <p className="text-[11px] text-zinc-500 dark:text-zinc-500 line-clamp-1">
                           {cat.description}
                         </p>
                       </div>
@@ -203,7 +202,7 @@ export default function Skills() {
                     <div className="mb-4">
                       <span className="text-[10px] font-mono uppercase tracking-wider text-emerald-700 dark:text-emerald-400/90 mb-2 flex items-center gap-1 font-semibold">
                         <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                        Actively Applied
+                        Applied Stack
                       </span>
                       <div className="flex flex-wrap gap-1.5">
                         {cat.activelyUsed.map((skill) => {
@@ -233,7 +232,7 @@ export default function Skills() {
                     <div>
                       <span className="text-[10px] font-mono uppercase tracking-wider text-amber-700 dark:text-amber-400/90 mb-2 flex items-center gap-1 font-semibold">
                         <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
-                        Exploring & Researching
+                        Research &amp; Prototyping
                       </span>
                       <div className="flex flex-wrap gap-1.5">
                         {cat.exploring.map((skill) => {
@@ -263,14 +262,14 @@ export default function Skills() {
           </AnimatePresence>
         </motion.div>
 
-        {/* Skill to Project Connection Card with Animation */}
+        {/* Skill-to-Project Connection Drawer */}
         <AnimatePresence>
           {activeSkillHighlight && relatedProjectsForSkill.length > 0 && (
             <motion.div 
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
-              className="mt-8 p-5 rounded-xl bg-amber-500/[0.08] dark:bg-amber-500/[0.04] border border-amber-500/30 text-xs font-mono"
+              className="mt-8 p-5 rounded-2xl bg-amber-500/[0.08] dark:bg-amber-500/[0.04] border border-amber-500/30 text-xs font-mono"
             >
               <span className="text-amber-800 dark:text-amber-400 font-semibold block mb-2">
                 Projects applying '{activeSkillHighlight}':
@@ -282,7 +281,7 @@ export default function Skills() {
                     whileHover={{ scale: 1.03 }}
                     whileTap={{ scale: 0.97 }}
                     href={`#project-${proj.id}`}
-                    className="inline-flex items-center space-x-1.5 px-3 py-1 rounded bg-white dark:bg-[#13151c] border border-black/[0.1] dark:border-white/[0.1] text-zinc-800 dark:text-zinc-200 hover:text-amber-700 dark:hover:text-amber-300 hover:border-amber-500/50 transition-colors shadow-sm"
+                    className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-lg bg-white dark:bg-[#13151c] border border-black/[0.1] dark:border-white/[0.1] text-zinc-800 dark:text-zinc-200 hover:text-amber-700 dark:hover:text-amber-300 hover:border-amber-500/50 transition-colors shadow-xs"
                   >
                     <span>{proj.title}</span>
                     <ArrowUpRight className="w-3 h-3 text-zinc-400 dark:text-zinc-500" />

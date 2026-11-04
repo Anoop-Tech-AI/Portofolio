@@ -1,5 +1,5 @@
 // Portfolio Data Configuration for Anoop
-// Editorial developer identity, authentic timeline, skills, and projects
+// Authentic developer identity, milestones, skills, and projects
 
 export const personalInfo = {
   name: "ANOOP",
@@ -11,34 +11,34 @@ export const personalInfo = {
   ],
   tagline: "Building Intelligent Solutions Through Code.",
   role: "Computer Science & Engineering Student",
-  specialization: "Software Development • Artificial Intelligence & Machine Learning",
   institution: "Keshav Memorial Institute of Technology (KMIT)",
   institutionShort: "KMIT, Hyderabad",
+  degree: "B.Tech in Computer Science and Engineering",
+  academicCredentials: "KMIT Hyderabad | B.Tech CSE | 2028",
   expectedGraduation: "2028",
-  cgpa: "Placeholder (In Progress)",
+  cgpa: "Academic Record In Progress",
   location: "Hyderabad, Telangana, India",
-  email: "anoop.developer.placeholder@example.com", // Placeholder
+  email: "anoop.developer.placeholder@example.com",
   socials: {
-    github: "https://github.com/placeholder-anoop", // Placeholder
-    linkedin: "https://linkedin.com/in/placeholder-anoop", // Placeholder
+    github: "https://github.com/placeholder-anoop",
+    linkedin: "https://linkedin.com/in/placeholder-anoop",
     email: "mailto:anoop.developer.placeholder@example.com",
-    leetcode: "https://leetcode.com/placeholder-anoop", // Placeholder
-    codeforces: "https://codeforces.com/profile/placeholder-anoop", // Placeholder
-    hackerrank: "https://hackerrank.com/placeholder-anoop", // Placeholder
+    leetcode: "https://leetcode.com/placeholder-anoop",
+    codeforces: "https://codeforces.com/profile/placeholder-anoop",
+    hackerrank: "https://hackerrank.com/placeholder-anoop",
   },
   interests: [
-    "Software Development",
-    "Artificial Intelligence & Machine Learning",
-    "Full-Stack Development",
-    "Data Structures & Algorithms"
+    { title: "Software Engineering", desc: "Clean architecture, fault-tolerant backends & modular systems" },
+    { title: "Artificial Intelligence", desc: "Agentic workflows, RAG pipelines, BGE-M3 & vector search" },
+    { title: "Data Structures & Algorithms", desc: "Asymptotic bounds, competitive programming & C++ STL" }
   ],
-  bioIntro: "I'm a Computer Science and Engineering student at KMIT, Hyderabad, passionate about software engineering, machine learning, and solving real-world challenges through technology.",
-  personalNarrative: {
-    story: "My fascination with software began not just with writing code, but with understanding what happens underneath the syntax. When I started programming, I quickly realized that the most rewarding engineering happens at the intersection of solid algorithms and practical system design.",
-    aiMotivation: "What excites me about Artificial Intelligence isn't just the ability to call APIs — it's the underlying mechanics. Exploring how vector spaces capture semantic nuance, how retrieval-augmented generation grounds language models in verified facts, and how autonomous agent loops can reason through multi-step workflows.",
-    learningApproach: "I believe in understanding technologies from first principles rather than treating frameworks as black boxes. Whether that means writing clean C++ to master memory and time complexity, structuring resilient REST backends, or fine-tuning embedding models for search.",
-    aspiration: "My goal is to develop into a disciplined software engineer capable of designing scalable, fault-tolerant backends and intelligent systems that make a tangible difference."
-  }
+  bioIntro: "I'm a Computer Science and Engineering student passionate about software development, artificial intelligence and solving real-world problems through technology.",
+  aboutParagraphs: [
+    "I am an undergraduate Computer Science and Engineering student at Keshav Memorial Institute of Technology (KMIT), Hyderabad, graduating in 2028. My engineering journey centers on building reliable backends, exploring modern AI systems, and sharpening algorithmic problem solving.",
+    "What excites me most about software is understanding what happens beneath the syntax. Rather than treating libraries as black boxes, I focus on first principles — mastering memory management and computational complexity in C++, designing clean RESTful microservices in Node.js and FastAPI, and exploring vector embeddings.",
+    "In Artificial Intelligence, I focus on practical architectures: Retrieval-Augmented Generation (RAG) that grounds LLMs in verified facts, and multi-agent systems using LangGraph to break complex workflows into verifiable autonomous steps.",
+    "My goal is to grow into a disciplined software engineer capable of designing scalable, fault-tolerant systems and context-aware applications that create tangible impact."
+  ]
 };
 
 export const educationData = {
@@ -51,7 +51,7 @@ export const educationData = {
   cgpaPlaceholder: "Academic Record In Progress (Will update upon semester evaluations)",
   highlights: [
     "Rigorous computational curriculum spanning data structures, system architecture, and algorithmic design.",
-    "Active participant in technical coding clubs, programming contests, and hands-on laboratory hackathons.",
+    "Active participant in technical coding clubs, programming contests, and laboratory hackathons.",
     "Independent research into Agentic AI workflows, vector databases, and full-stack systems engineering."
   ]
 };
@@ -68,9 +68,9 @@ export const developmentTimeline = [
   },
   {
     year: "2024 – 2025",
-    title: "Core Programming & Algorithmic Rigor",
-    tagline: "Mastering C++, Java & Object-Oriented Principles",
-    description: "Transitioned to C++ and Java. Developed disciplined habits in memory management, Standard Template Library (STL), object-oriented software design, and competitive coding fundamentals.",
+    title: "Core Programming Fundamentals & Algorithmic Rigor",
+    tagline: "Mastering Java, C++ & Object-Oriented Principles",
+    description: "Transitioned to Java and C++. Developed disciplined habits in memory management, Standard Template Library (STL), object-oriented software design, and competitive coding fundamentals.",
     status: "Foundations",
     skillsGained: ["C++", "Java", "OOP", "Data Structures", "Algorithm Design"]
   },
@@ -100,106 +100,111 @@ export const developmentTimeline = [
   }
 ];
 
+// The 6 Skill Groups as explicitly organized in Section 10:
+// 1. PROGRAMMING: Java, Python, C++, JavaScript
+// 2. WEB: HTML, CSS, React, Node.js, Express.js, REST APIs
+// 3. AI/ML: Machine Learning, Deep Learning, ANN, TensorFlow, Keras, NLP, Sentiment Analysis, RAG, Agentic AI
+// 4. DATABASES: SQL, MongoDB, MongoDB Atlas
+// 5. TOOLS: Git, GitHub, Docker, Kubernetes, Jenkins, Linux, Jupyter Notebook, FastAPI
+// 6. CORE CS: DSA, Algorithms, DBMS, Computer Networks, Software Engineering, OOP
 export const skillCategories = [
   {
     id: "programming",
-    title: "Programming Languages",
+    title: "Programming",
     iconName: "Code2",
-    description: "Core languages for high-performance systems and scripting",
-    activelyUsed: ["C++", "Python", "Java", "JavaScript"],
+    description: "Core languages for high-performance systems, algorithms, and backend scripting",
+    activelyUsed: ["Java", "Python", "C++", "JavaScript"],
     exploring: [],
     relatedProjects: ["retailmind-ai", "medsafe-ai", "student-management-system", "devops-cicd-practice"]
   },
   {
+    id: "web",
+    title: "Web Development",
+    iconName: "Globe",
+    description: "Full-stack application engineering, responsive client interfaces, and RESTful APIs",
+    activelyUsed: ["React", "Node.js", "Express.js", "REST APIs", "HTML", "CSS"],
+    exploring: [],
+    relatedProjects: ["medsafe-ai", "student-management-system"]
+  },
+  {
     id: "ai-ml",
-    title: "AI & Machine Learning",
+    title: "AI/ML",
     iconName: "BrainCircuit",
-    description: "Semantic search, neural architectures, and reasoning loops",
+    description: "Semantic vector search, retrieval-augmented generation, neural nets, and agent loops",
     activelyUsed: [
-      "Artificial Intelligence",
       "Machine Learning",
       "Deep Learning",
-      "Natural Language Processing",
+      "NLP",
       "Sentiment Analysis",
-      "Retrieval-Augmented Generation (RAG)",
-      "Data Preprocessing",
-      "Feature Engineering"
+      "RAG"
     ],
     exploring: [
-      "AI Agents",
-      "LangGraph / CrewAI",
-      "Large Language Models",
-      "BGE-M3 Embeddings",
+      "Agentic AI",
       "TensorFlow",
       "Keras",
-      "Model Evaluation"
+      "ANN"
     ],
     relatedProjects: ["retailmind-ai", "medsafe-ai"]
   },
   {
-    id: "web",
-    title: "Web & Backend Development",
-    iconName: "Globe",
-    description: "Full-stack application engineering and RESTful APIs",
-    activelyUsed: ["React.js", "Node.js", "Express.js", "REST APIs", "HTML5", "CSS3", "JavaScript"],
-    exploring: ["FastAPI", "Microservices Architecture"],
-    relatedProjects: ["medsafe-ai", "student-management-system"]
-  },
-  {
     id: "databases",
-    title: "Databases & Storage",
+    title: "Databases",
     iconName: "Database",
-    description: "Relational, document, and vector storage engines",
+    description: "Relational querying, document storage, and vector embedding persistence",
     activelyUsed: ["SQL", "MongoDB", "MongoDB Atlas"],
-    exploring: ["ChromaDB", "FAISS Vector Store"],
+    exploring: [],
     relatedProjects: ["retailmind-ai", "student-management-system"]
   },
   {
     id: "tools",
-    title: "DevOps & Tooling",
+    title: "Developer Tools",
     iconName: "Wrench",
-    description: "Containerization, version control, and developer workflows",
-    activelyUsed: ["Git", "GitHub", "Linux", "VS Code", "Postman"],
-    exploring: ["Docker", "Kubernetes", "Jenkins", "Minikube", "Jupyter Notebook"],
+    description: "Containerization, automated build workflows, version control, and developer environments",
+    activelyUsed: ["Git", "GitHub", "Linux", "FastAPI"],
+    exploring: ["Docker", "Kubernetes", "Jenkins", "Jupyter Notebook"],
     relatedProjects: ["devops-cicd-practice", "retailmind-ai"]
   },
   {
     id: "core-cs",
     title: "Core Computer Science",
     iconName: "Layers",
-    description: "Asymptotic analysis and foundational principles",
+    description: "Theoretical computation, algorithmic discipline, and system architecture principles",
     activelyUsed: [
-      "Data Structures and Algorithms",
-      "Object-Oriented Programming",
-      "Algorithm Design",
-      "Problem Solving"
+      "DSA",
+      "Algorithms",
+      "OOP"
     ],
     exploring: [
-      "Database Management Systems",
+      "DBMS",
       "Computer Networks",
-      "Software Engineering Architecture"
+      "Software Engineering"
     ],
     relatedProjects: ["retailmind-ai", "student-management-system"]
   }
 ];
 
+// Projects Data with Complete 8-Point Detail Specs
 export const projectsData = [
   {
     id: "retailmind-ai",
     title: "RetailMind-AI",
     subtitle: "Agentic Retail Recommendation System with Memory and RAG",
     tagline: "Flagship AI Project • Multi-Agent Pipeline",
-    problemStatement: "Traditional eCommerce search engines rely on rudimentary keyword matching and global star ratings, failing to understand nuanced customer queries or synthesize thousands of authentic customer review aspects into explainable buying decisions.",
+    shortDescription: "A multi-agent recommendation engine that combines dense vector retrieval (BGE-M3), sentiment analysis, and conversational memory to provide explainable buying guidance on the Amazon Reviews Dataset.",
+    problemStatement: "Traditional eCommerce search engines rely on rudimentary keyword matching and global star ratings. They fail to understand nuanced customer intent, cannot remember conversational preferences across sessions, and leave thousands of detailed customer review aspects unanalyzed.",
     solution: "Architecting a multi-agent recommendation engine powered by RAG and contextual memory. The system ingests the Amazon Reviews Dataset, vectorizes semantic feedback via BGE-M3 embeddings into ChromaDB/FAISS, and extracts sentiment and aspect ratings to present explainable, auditable product guidance.",
     architecture: [
-      { step: "01", name: "Query Understanding", desc: "Deconstructs intent, user constraints, and budget parameters." },
-      { step: "02", name: "RAG Retrieval", desc: "Dense vector retrieval with BGE-M3 and hybrid semantic ranking." },
-      { step: "03", name: "Conversational Memory", desc: "Preserves user context across iterative clarification rounds." },
-      { step: "04", name: "Sentiment & Aspect Analysis", desc: "Parses authentic review nuances (durability, value, quality)." },
-      { step: "05", name: "Multi-Factor Ranking", desc: "Balances relevance, user sentiment, and objective product metrics." },
-      { step: "06", name: "Explainable Output", desc: "Generates clear natural language rationale for recommendations." }
+      { step: "01", name: "Query Understanding", desc: "Deconstructs natural language intent, budget constraints, and feature priorities into structured search filters." },
+      { step: "02", name: "RAG Retrieval", desc: "Dense vector retrieval with BGE-M3 embeddings over ChromaDB with hybrid semantic similarity matching." },
+      { step: "03", name: "Memory", desc: "Preserves user constraints, historical queries, and iterative refinement context using LangGraph state." },
+      { step: "04", name: "Sentiment & Aspect Analysis", desc: "Parses authentic customer review text for specific aspect sentiments (durability, battery life, ergonomics)." },
+      { step: "05", name: "Ranking", desc: "Synthesizes vector similarity, aspect satisfaction scores, price filters, and review confidence metrics." },
+      { step: "06", name: "Explainable Recommendations", desc: "Generates natural language purchase rationale with cited review evidence and pros/cons comparison." }
     ],
-    contribution: "Designed the multi-stage agentic workflow, configured the embedding and vector retrieval pipeline, and integrated review sentiment parsing.",
+    contribution: "Designed the multi-stage agentic workflow, configured the BGE-M3 embedding and ChromaDB vector retrieval pipeline, and built the aspect sentiment parsing modules.",
+    implementationDetails: "Built using Python and LangGraph for cyclic agent coordination. Text data is preprocessed from the Amazon Reviews corpus, chunked by product aspect, and embedded with BGE-M3 dense vectors. State checkpoints preserve user dialogue across iterative queries.",
+    challenges: "Handling ambiguous queries (e.g., 'lightweight laptop with good cooling under budget') while mitigating retrieval hallucinations; addressed by enforcing strict threshold reranking and dual-aspect verification.",
+    futureImprovements: "Implementing hybrid BM25 + dense search reranking, migrating vector indexing to Qdrant cluster, and adding real-time price monitoring webhooks.",
     technologies: [
       "Python",
       "LangGraph / CrewAI",
@@ -213,38 +218,42 @@ export const projectsData = [
     status: "Under Development",
     statusType: "in-progress",
     category: "AI / Machine Learning",
-    badgeColor: "text-amber-400 bg-amber-400/10 border-amber-400/20",
+    badgeColor: "text-amber-700 bg-amber-500/10 border-amber-500/30 dark:text-amber-300",
     themeAccent: "amber",
     githubPlaceholder: "https://github.com/placeholder-anoop/RetailMind-AI"
   },
   {
     id: "medsafe-ai",
     title: "MedSafe AI",
-    subtitle: "Detection of Medication Errors & Dangerous Drug Interactions",
+    subtitle: "AI-Based Detection of Medication Errors and Dangerous Drug Interactions",
     tagline: "Healthcare Intelligence • Clinical Document Analysis",
-    problemStatement: "Adverse drug interactions and handwritten prescription misinterpretations pose critical healthcare hazards. Clinicians and patients need rapid, reliable automated screening of prescribed drugs against verified medical interaction matrices.",
+    shortDescription: "A clinical safety tool built with FastAPI and React that parses raw prescription records, extracts pharmacological entities, and screens against drug-drug conflict matrices.",
+    problemStatement: "Adverse drug events and misread prescription dosages represent critical healthcare risks worldwide. Clinicians and patients lack fast, accessible automated tools to cross-reference multi-drug regimens against verified interaction matrices.",
     solution: "Engineered a clinical safety tool that processes raw clinical and prescription records, extracts pharmacological entities (drug names, dosages, frequencies), normalizes data into structured JSON, and flags dangerous pharmacological conflicts.",
     architecture: [
-      { step: "01", name: "Prescription Ingestion", desc: "Captures unstructured prescription text or scanned inputs." },
-      { step: "02", name: "Document Parsing & NER", desc: "Extracts active drug entities, dosages, and regimens." },
-      { step: "03", name: "JSON Normalization", desc: "Standardizes extracted clinical data for downstream verification." },
-      { step: "04", name: "Conflict Engine", desc: "Evaluates multi-drug combinations against interaction rules." },
-      { step: "05", name: "Clinical Alerts", desc: "Surfaces severity-ranked warnings on a reactive dashboard." }
+      { step: "01", name: "Prescription Ingestion", desc: "Accepts raw prescription text, doctor notes, or parsed digital medical records." },
+      { step: "02", name: "Document Parsing & NER", desc: "Custom medical entity recognition extracting active drug substances, dosages, and regimens." },
+      { step: "03", name: "JSON Normalization", desc: "Maps extracted entities to canonical pharmaceutical standards (RxNorm / FDA database identifiers)." },
+      { step: "04", name: "Conflict Engine", desc: "Evaluates multi-drug combinations against pharmacological interaction matrices and contraindication rules." },
+      { step: "05", name: "Clinical Alerts", desc: "Ranks conflicting medication pairs by severity (High / Moderate / Low) and renders reactive warnings." }
     ],
-    contribution: "Developed the FastAPI backend pipeline for document processing, structured JSON schema mapping, and React dashboard interface.",
+    contribution: "Developed the FastAPI asynchronous backend for medical text processing, structured JSON schema validation, and the responsive React clinical alert interface.",
+    implementationDetails: "Designed a clean FastAPI service with Pydantic validation schemas. Document parsing standardizes variations in drug brand names to generic pharmaceutical compounds before rule-matrix lookup.",
+    challenges: "Accurately handling compound names with spelling typos and varying dosage formats (e.g., '500mg BID' vs '0.5g twice daily'); addressed through regex normalization rules and canonical dictionary matching.",
+    futureImprovements: "Integrating BioBERT / ClinicalBERT for enhanced named entity recognition and adding patient allergy profile cross-referencing.",
     technologies: [
       "Python",
       "FastAPI",
       "React",
       "Vite",
-      "AI/ML",
       "Document Processing",
+      "AI/ML",
       "JSON"
     ],
     status: "Under Development",
     statusType: "in-progress",
     category: "Healthcare AI & Full-Stack",
-    badgeColor: "text-sky-400 bg-sky-400/10 border-sky-400/20",
+    badgeColor: "text-sky-700 bg-sky-500/10 border-sky-500/30 dark:text-sky-300",
     themeAccent: "sky",
     githubPlaceholder: "https://github.com/placeholder-anoop/MedSafe-AI"
   },
@@ -253,16 +262,20 @@ export const projectsData = [
     title: "Student Management System",
     subtitle: "Modular Student CRUD Service with Mongoose",
     tagline: "Backend Engineering • RESTful API",
-    problemStatement: "Educational registries require dependable, structured data persistence with strict validation, predictable response structures, and efficient querying.",
+    shortDescription: "A robust Node.js and Express RESTful service featuring full CRUD capabilities, strict Mongoose schema validation, input sanitization, and structured controller routing.",
+    problemStatement: "Educational record portals require reliable data persistence with strict input hygiene, transactional safety, predictable error codes, and modular maintainability as schemas evolve.",
     solution: "Developed a clean RESTful backend service with full Create, Read, Update, and Delete operations for student academic records, incorporating input sanitization, schema constraints, and modular router/controller organization.",
     architecture: [
-      { step: "01", name: "Express Routing", desc: "Clean REST endpoints handling HTTP CRUD verbs." },
-      { step: "02", name: "Validation Middleware", desc: "Ensures type safety, required fields, and data hygiene." },
-      { step: "03", name: "Controller Logic", desc: "Decoupled business logic coordinating data flows." },
-      { step: "04", name: "Mongoose Schema", desc: "Strict schema constraints, indexes, and transformations." },
-      { step: "05", name: "MongoDB Persistence", desc: "High-throughput document storage and querying." }
+      { step: "01", name: "Express Routing", desc: "Clean REST endpoints handling HTTP CRUD verbs with standardized response structures." },
+      { step: "02", name: "Validation Middleware", desc: "Guards incoming payloads against invalid types, injection, and missing required attributes." },
+      { step: "03", name: "Controller Logic", desc: "Decoupled business logic coordinating data processing and response status codes." },
+      { step: "04", name: "Mongoose Schema", desc: "Strict schema constraints, compound indexes, and pre-save normalization hooks." },
+      { step: "05", name: "MongoDB Persistence", desc: "Persistent document storage with reliable querying and error handling." }
     ],
-    contribution: "Implemented the entire backend architecture, API contract definitions, Mongoose schemas, and route integration tests.",
+    contribution: "Implemented the entire backend architecture, API contract definitions, Mongoose schemas, validation middleware, and automated route testing.",
+    implementationDetails: "Organized following the MVC controller-service-repository pattern. Routes are decoupled from database persistence layers, enabling simple testing with Jest and Postman collections.",
+    challenges: "Preventing partial state mutations on complex multi-field updates; resolved by adopting atomic `$set` operations and strict schema pre-validation hooks.",
+    futureImprovements: "Adding JWT role-based access control (Admin / Faculty / Student) and containerizing the service with Docker Compose for one-click setup.",
     technologies: [
       "Node.js",
       "Express.js",
@@ -273,7 +286,7 @@ export const projectsData = [
     status: "Completed Project",
     statusType: "completed",
     category: "Backend & Database",
-    badgeColor: "text-emerald-400 bg-emerald-400/10 border-emerald-400/20",
+    badgeColor: "text-emerald-700 bg-emerald-500/10 border-emerald-500/30 dark:text-emerald-400",
     themeAccent: "emerald",
     githubPlaceholder: "https://github.com/placeholder-anoop/Student-Management-System"
   },
@@ -282,30 +295,32 @@ export const projectsData = [
     title: "DevOps & CI/CD Practice",
     subtitle: "Automated Build, Containerization & Orchestration",
     tagline: "Infrastructure Practice • Container Workflows",
-    problemStatement: "Modern software reliability depends on deterministic builds, environment isolation, and automated validation before shipping code to production.",
+    shortDescription: "Hands-on continuous integration and deployment pipeline automating Git commits into Maven builds, Docker container packaging, and local Kubernetes deployment.",
+    problemStatement: "Manual software deployment leads to environment drift, configuration inconsistencies, and deployment delays. Modern software engineering demands automated validation pipelines.",
     solution: "Practiced and configured an end-to-end continuous integration and deployment pipeline that automates code commits into Maven builds, packages applications into Docker images, and deploys them to local Minikube Kubernetes pods.",
     architecture: [
-      { step: "01", name: "Git Webhook Trigger", desc: "Automated event fired upon code commits." },
-      { step: "02", name: "Jenkins Pipeline", desc: "Orchestrates multi-stage build and testing lifecycle." },
-      { step: "03", name: "Maven Build & Test", desc: "Compiles Java application and runs test suites." },
-      { step: "04", name: "Docker Image Build", desc: "Creates lightweight, containerized execution environment." },
-      { step: "05", name: "Kubernetes Pod Deploy", desc: "Orchestrates container deployment in local Minikube cluster." }
+      { step: "01", name: "Git Webhook Trigger", desc: "Automated event fired upon code commits to main or release branches." },
+      { step: "02", name: "Jenkins Pipeline", desc: "Declarative multi-stage pipeline managing clean build, test execution, and image tagging." },
+      { step: "03", name: "Maven Build & Test", desc: "Compiles Java application artifacts, runs unit test suites, and verifies code stability." },
+      { step: "04", name: "Docker Image Build", desc: "Multi-stage Dockerfile creating optimized, lightweight container images." },
+      { step: "05", name: "Kubernetes Pod Deploy", desc: "Deploys containerized pods and services into a local Minikube cluster with health checks." }
     ],
-    contribution: "Authored Dockerfiles, Jenkinsfile automation scripts, and Kubernetes deployment/service YAML manifests.",
+    contribution: "Authored Dockerfiles, declarative Jenkinsfile pipelines, and Kubernetes deployment and service YAML manifests.",
+    implementationDetails: "Constructed reproducible multi-stage Dockerfiles that keep image sizes minimal. Built a declarative Jenkins pipeline containing lint, test, build, and deploy stages with status reporting.",
+    challenges: "Managing service discovery and resource limits within local Minikube pods; solved through tailored service definitions, NodePort exposure, and memory boundaries.",
+    futureImprovements: "Integrating GitHub Actions workflows, Helm charts for packaging, and automated vulnerability scanning with Trivy.",
     technologies: [
-      "Git",
-      "GitHub",
-      "Jenkins",
       "Docker",
       "Kubernetes",
+      "Jenkins",
       "Maven",
-      "Java",
-      "Minikube"
+      "Git",
+      "GitHub"
     ],
     status: "Hands-on Practice / Labs",
     statusType: "in-progress",
     category: "DevOps & Cloud",
-    badgeColor: "text-purple-400 bg-purple-400/10 border-purple-400/20",
+    badgeColor: "text-purple-700 bg-purple-500/10 border-purple-500/30 dark:text-purple-400",
     themeAccent: "purple",
     githubPlaceholder: "https://github.com/placeholder-anoop/DevOps-Practice"
   }
@@ -313,7 +328,7 @@ export const projectsData = [
 
 export const problemSolvingData = {
   headline: "Algorithmic Precision & Computational Discipline",
-  description: "Approaching problems not through trial and error, but through disciplined mathematical abstraction, algorithmic paradigms, and asymptotic optimization.",
+  description: "Approaching problems through disciplined mathematical abstraction, asymptotic optimization, and C++ Standard Template Library implementations.",
   pillars: [
     {
       title: "Data Structures & Algorithms",
@@ -337,10 +352,10 @@ export const problemSolvingData = {
     }
   ],
   approachSteps: [
-    { step: "01", title: "Constraint & Bounds Analysis", desc: "Isolate inputs (n ≤ 10⁵), deduce target time complexity O(n log n) or O(n), and identify corner states." },
-    { step: "02", title: "Invariant & Paradigm Mapping", desc: "Map to proven paradigms: Two-Pointers, Monotonic Queue, Binary Search on Answer, or DP." },
-    { step: "03", title: "Space-Time Trade-off Optimization", desc: "Weigh auxiliary memory vs runtime; verify space bounds and cache locality." },
-    { step: "04", title: "Idiomatic & Guarded Code", desc: "Implement clean C++/Python with zero off-by-one errors and clear invariants." }
+    { step: "01", title: "Constraint Analysis", desc: "Analyze input bounds (n ≤ 10⁵), deduce target time complexity O(n log n) or O(n), and identify edge states." },
+    { step: "02", title: "Paradigm Mapping", desc: "Map to proven paradigms: Two-Pointers, Monotonic Queue, Binary Search on Answer, Graph Traversal, or DP." },
+    { step: "03", title: "Space-Time Trade-off", desc: "Weigh auxiliary memory vs runtime; verify space bounds and cache locality." },
+    { step: "04", title: "Guarded Implementation", desc: "Write clean C++/Python code with zero off-by-one errors and clear invariant assertions." }
   ],
   platforms: [
     { name: "LeetCode", placeholder: "https://leetcode.com/placeholder-anoop", status: "Active Coding Profile", focus: "Data Structures & Algorithms" },
@@ -352,45 +367,27 @@ export const problemSolvingData = {
 
 export const currentlyExploring = [
   {
-    title: "Advanced AI Systems",
-    desc: "Autonomous multi-agent orchestration patterns, tool calling, and structured output verification.",
-    tag: "Next-Gen AI",
+    title: "Multi-Agent Systems",
+    desc: "Autonomous agent coordination patterns, state management, and tool-calling validation using LangGraph.",
+    tag: "Agentic AI",
     badge: "Active Focus"
   },
   {
-    title: "Agentic AI",
-    desc: "Autonomous reasoning loops, stateful task execution frameworks like LangGraph and CrewAI.",
-    tag: "Agentic Frameworks",
+    title: "Dense Vector Search",
+    desc: "BGE-M3 embeddings, hybrid dense-sparse retrieval, reranking, and ChromaDB vector indexing.",
+    tag: "RAG & Retrieval",
     badge: "Building"
   },
   {
-    title: "Large Language Models",
-    desc: "Context window mechanics, attention mechanisms, tokenization, and prompt optimization strategies.",
-    tag: "Generative Models",
-    badge: "Research"
-  },
-  {
-    title: "Retrieval-Augmented Generation",
-    desc: "Hybrid search, sparse & dense embedding models (BGE-M3), vector indexing, and reranking pipelines.",
-    tag: "RAG & Search",
-    badge: "Core Project"
-  },
-  {
-    title: "Full-Stack Development",
-    desc: "Modern reactive interfaces paired with resilient RESTful and asynchronous backend microservices.",
-    tag: "React & Node",
+    title: "FastAPI Microservices",
+    desc: "Asynchronous Python backends, Pydantic data contracts, and RESTful documentation.",
+    tag: "Backend",
     badge: "Applied"
   },
   {
-    title: "Advanced DSA",
-    desc: "Advanced graph theory (SCCs, Network Flow), Segment Trees, Trie optimizations, and Fenwick trees.",
+    title: "Advanced DSA in C++",
+    desc: "Graph algorithms (SCCs, Dijkstra, BFS/DFS), Segment Trees, Trie optimizations, and Fenwick trees.",
     tag: "Algorithms",
     badge: "Continuous"
-  },
-  {
-    title: "Software Engineering",
-    desc: "Clean architecture, SOLID principles, design patterns, testing strategies, and maintainability.",
-    tag: "Systems Design",
-    badge: "Foundational"
   }
 ];

@@ -1,4 +1,4 @@
-import { ArrowRight, Download, Mail, ChevronDown } from 'lucide-react';
+import { ArrowRight, Download, Mail, ChevronDown, Code2, BrainCircuit, Binary } from 'lucide-react';
 import { motion } from 'motion/react';
 import { GithubIcon, LinkedinIcon } from './Icons';
 import { personalInfo } from '../data/portfolioData';
@@ -70,13 +70,15 @@ const floatVariant = {
   },
 };
 
+const INTEREST_ICONS = [Code2, BrainCircuit, Binary];
+
 export default function Hero({ onOpenResume }) {
   return (
     <section
       id="hero"
       className="relative min-h-[92vh] flex items-center justify-center pt-28 pb-16 overflow-hidden"
     >
-      {/* Ambient glows */}
+      {/* Ambient background glows */}
       <div className="absolute inset-0 bg-editorial-grid opacity-60 dark:opacity-60 pointer-events-none" />
       <div className="absolute top-1/4 right-1/4 w-[480px] h-[320px] bg-amber-500/[0.06] dark:bg-amber-500/[0.05] rounded-full blur-[130px] pointer-events-none animate-pulse-slow" />
       <div className="absolute bottom-1/4 left-10 w-[380px] h-[280px] bg-sky-500/[0.04] dark:bg-sky-500/[0.03] rounded-full blur-[140px] pointer-events-none" />
@@ -84,14 +86,14 @@ export default function Hero({ onOpenResume }) {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
 
-          {/* ── LEFT COLUMN ── */}
+          {/* ── LEFT COLUMN: High-Impact Personal Identity ── */}
           <div className="lg:col-span-7 space-y-6 text-left">
 
             {/* Status Pills */}
             <div className="flex flex-wrap items-center gap-2">
               {[
-                { text: 'KMIT, Hyderabad (2024 – 2028)', dot: true },
-                { text: 'Seeking Internships', accent: true },
+                { text: 'KMIT, Hyderabad (Class of 2028)', dot: true },
+                { text: 'Seeking Software & AI Internships', accent: true },
               ].map((pill, i) => (
                 <motion.div
                   key={pill.text}
@@ -113,7 +115,7 @@ export default function Hero({ onOpenResume }) {
               ))}
             </div>
 
-            {/* Heading Block */}
+            {/* Name & Headline */}
             <div>
               <motion.p
                 initial={{ opacity: 0, y: -8 }}
@@ -140,23 +142,23 @@ export default function Hero({ onOpenResume }) {
               </h1>
             </div>
 
-            {/* Subtitle */}
+            {/* Professional Identity Subtitle */}
             <motion.div
               variants={subtitleVariant}
               initial="hidden"
               animate="visible"
-              className="space-y-2 border-l-2 border-amber-500/60 pl-4 py-0.5"
+              className="space-y-1 border-l-2 border-amber-500/70 pl-4 py-0.5"
             >
               <p className="text-sm sm:text-base font-semibold text-zinc-800 dark:text-zinc-200">
                 Computer Science &amp; Engineering Student •{' '}
                 <span className="text-amber-700 dark:text-amber-300 font-bold">KMIT, Hyderabad</span>
               </p>
-              <p className="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 font-mono">
-                Software Engineering | Artificial Intelligence &amp; Machine Learning | Data Structures &amp; Algorithms
+              <p className="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 font-mono">
+                B.Tech CSE • Expected Graduation: 2028
               </p>
             </motion.div>
 
-            {/* Bio intro */}
+            {/* Strong Single Introduction */}
             <motion.p
               variants={descVariant}
               initial="hidden"
@@ -166,13 +168,39 @@ export default function Hero({ onOpenResume }) {
               {personalInfo.bioIntro}
             </motion.p>
 
-            {/* CTA Buttons */}
+            {/* 3 Core Professional Interests */}
+            <motion.div 
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.95 }}
+              className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 pt-1"
+            >
+              {personalInfo.interests.map((interest, idx) => {
+                const Icon = INTEREST_ICONS[idx] || Code2;
+                return (
+                  <div
+                    key={interest.title}
+                    className="p-3 rounded-xl bg-white dark:bg-[#12141a] border border-black/[0.08] dark:border-white/[0.06] shadow-xs hover:border-amber-500/40 transition-colors"
+                  >
+                    <div className="flex items-center space-x-2 mb-1 text-xs font-mono font-bold text-zinc-900 dark:text-white">
+                      <Icon className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400 shrink-0" />
+                      <span>{interest.title}</span>
+                    </div>
+                    <p className="text-[11px] text-zinc-500 dark:text-zinc-400 leading-tight">
+                      {interest.desc}
+                    </p>
+                  </div>
+                );
+              })}
+            </motion.div>
+
+            {/* Primary Action Buttons */}
             <div className="flex flex-wrap items-center gap-3 pt-2">
               {[
                 {
                   type: 'link',
                   href: '#projects',
-                  label: 'Explore Projects',
+                  label: 'Explore My Work',
                   icon: <ArrowRight className="w-3.5 h-3.5" />,
                   cls: 'bg-amber-500 hover:bg-amber-400 text-black font-bold shadow-[0_4px_16px_rgba(245,158,11,0.28)] hover:shadow-[0_6px_22px_rgba(245,158,11,0.44)]',
                 },
@@ -228,7 +256,7 @@ export default function Hero({ onOpenResume }) {
               animate="visible"
               className="flex items-center space-x-4 pt-3 border-t border-black/[0.08] dark:border-white/[0.06] text-xs font-mono text-zinc-600 dark:text-zinc-400"
             >
-              <span className="text-zinc-500 uppercase tracking-widest text-[11px] font-semibold">Links:</span>
+              <span className="text-zinc-500 uppercase tracking-widest text-[11px] font-semibold">Connect:</span>
               {[
                 { href: personalInfo.socials.github, icon: <GithubIcon className="w-3.5 h-3.5" />, label: 'GitHub', color: 'hover:text-amber-600 dark:hover:text-amber-400' },
                 { href: personalInfo.socials.linkedin, icon: <LinkedinIcon className="w-3.5 h-3.5" />, label: 'LinkedIn', color: 'hover:text-sky-600 dark:hover:text-sky-400' },
@@ -250,7 +278,7 @@ export default function Hero({ onOpenResume }) {
             </motion.div>
           </div>
 
-          {/* ── RIGHT COLUMN: Terminal with float ── */}
+          {/* ── RIGHT COLUMN: Terminal Workspace ── */}
           <motion.div
             variants={terminalVariant}
             initial="hidden"
@@ -269,7 +297,7 @@ export default function Hero({ onOpenResume }) {
         </div>
       </div>
 
-      {/* Scroll hint */}
+      {/* Scroll indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
