@@ -1,19 +1,19 @@
-import { useState } from 'react';
-import Navbar from './components/Navbar';
-import ScrollProgress from './components/ScrollProgress';
-import AnimatedBackground from './components/AnimatedBackground';
-import Hero from './components/Hero';
-import About from './components/About';
-import Timeline from './components/Timeline';
-import Skills from './components/Skills';
-import Projects from './components/Projects';
-import ProblemSolving from './components/ProblemSolving';
-import CurrentlyExploring from './components/CurrentlyExploring';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
-import BackToTop from './components/BackToTop';
-import DeveloperMascot from './components/DeveloperMascot';
-import ResumeModal from './components/ResumeModal';
+import { useState } from "react";
+import Navbar from "./components/Navbar";
+import ScrollProgress from "./components/ScrollProgress";
+import AnimatedBackground from "./components/AnimatedBackground";
+import Hero from "./components/Hero";
+import About from "./components/About";
+import Timeline from "./components/Timeline";
+import Skills from "./components/Skills";
+import Projects from "./components/Projects";
+import ProblemSolving from "./components/ProblemSolving";
+import CurrentlyExploring from "./components/CurrentlyExploring";
+import Contact from "./components/Contact";
+import Footer from "./components/Footer";
+import BackToTop from "./components/BackToTop";
+import DeveloperMascot from "./components/DeveloperMascot";
+import ResumeModal from "./components/ResumeModal";
 
 export default function App() {
   const [isResumeOpen, setIsResumeOpen] = useState(false);
@@ -51,9 +51,9 @@ export default function App() {
       <DeveloperMascot onOpenResume={() => setIsResumeOpen(true)} />
 
       {/* Resume Modal */}
-      <ResumeModal 
-        isOpen={isResumeOpen} 
-        onClose={() => setIsResumeOpen(false)} 
+      <ResumeModal
+        isOpen={isResumeOpen}
+        onClose={() => setIsResumeOpen(false)}
       />
     </div>
   );

@@ -1,38 +1,33 @@
-import { useEffect } from 'react';
-import { 
-  X, 
-  CheckCircle2, 
-  Clock, 
-  ExternalLink 
-} from 'lucide-react';
-import { GithubIcon } from './Icons';
+import { useEffect } from "react";
+import { X, CheckCircle2, Clock, ExternalLink } from "lucide-react";
+import { GithubIcon } from "./Icons";
 
 export default function ProjectModal({ project, isOpen, onClose }) {
   useEffect(() => {
     const handleKeyDown = (e) => {
-      if (e.key === 'Escape') onClose();
+      if (e.key === "Escape") onClose();
     };
     if (isOpen) {
-      document.body.style.overflow = 'hidden';
-      window.addEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = "hidden";
+      window.addEventListener("keydown", handleKeyDown);
     }
     return () => {
-      document.body.style.overflow = 'unset';
-      window.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = "unset";
+      window.removeEventListener("keydown", handleKeyDown);
     };
   }, [isOpen, onClose]);
 
   if (!isOpen || !project) return null;
 
   return (
-    <div 
+    <div
       className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/60 dark:bg-black/85 backdrop-blur-md animate-fadeIn"
       onClick={onClose}
       role="dialog"
       aria-modal="true"
       aria-labelledby="modal-project-title"
     >
-      <div 
+      <div
         className="relative w-full max-w-3xl bg-white dark:bg-[#12141c] border border-black/[0.08] dark:border-white/[0.08] rounded-2xl shadow-2xl p-6 sm:p-8 text-zinc-900 dark:text-zinc-100 max-h-[90vh] overflow-y-auto"
         onClick={(e) => e.stopPropagation()}
       >
@@ -43,22 +38,27 @@ export default function ProjectModal({ project, isOpen, onClose }) {
         <div className="flex items-start justify-between pb-5 border-b border-black/[0.06] dark:border-white/[0.06]">
           <div>
             <div className="flex flex-wrap items-center gap-2 mb-1.5">
-              <span className={`text-[11px] font-mono font-medium px-2.5 py-0.5 rounded-full border ${project.badgeColor}`}>
+              <span
+                className={`text-[11px] font-mono font-medium px-2.5 py-0.5 rounded-full border ${project.badgeColor}`}
+              >
                 {project.status}
               </span>
               <span className="text-xs text-zinc-500 dark:text-zinc-400 font-mono">
                 {project.category}
               </span>
             </div>
-            <h3 id="modal-project-title" className="text-2xl sm:text-3xl font-extrabold text-zinc-900 dark:text-white tracking-tight">
+            <h3
+              id="modal-project-title"
+              className="text-2xl sm:text-3xl font-extrabold text-zinc-900 dark:text-white tracking-tight"
+            >
               {project.title}
             </h3>
             <p className="text-xs sm:text-sm text-amber-700 dark:text-amber-300/90 font-medium mt-0.5">
               {project.subtitle}
             </p>
           </div>
-          
-          <button 
+
+          <button
             onClick={onClose}
             className="p-1.5 text-zinc-500 hover:text-zinc-900 dark:hover:text-white rounded-lg hover:bg-black/[0.05] dark:hover:bg-white/[0.05] transition-colors cursor-pointer"
             aria-label="Close project modal"
@@ -69,7 +69,6 @@ export default function ProjectModal({ project, isOpen, onClose }) {
 
         {/* All 8 Progressive Disclosure Specifications */}
         <div className="py-6 space-y-6 text-xs sm:text-sm">
-          
           {/* 1. Problem Statement */}
           <div>
             <h4 className="text-xs font-mono uppercase tracking-widest text-zinc-500 dark:text-zinc-400 mb-1.5 font-bold flex items-center gap-1.5">
@@ -102,12 +101,15 @@ export default function ProjectModal({ project, isOpen, onClose }) {
               <div className="p-4 rounded-xl bg-zinc-50 dark:bg-[#0c0d12] border border-black/[0.06] dark:border-white/[0.06] space-y-2">
                 <div className="grid grid-cols-1 gap-2">
                   {project.architecture.map((item, idx) => {
-                    const stepNum = typeof item === 'object' ? item.step : `0${idx + 1}`;
-                    const stepName = typeof item === 'object' ? item.name : item;
-                    const stepDesc = typeof item === 'object' ? item.desc : null;
+                    const stepNum =
+                      typeof item === "object" ? item.step : `0${idx + 1}`;
+                    const stepName =
+                      typeof item === "object" ? item.name : item;
+                    const stepDesc =
+                      typeof item === "object" ? item.desc : null;
 
                     return (
-                      <div 
+                      <div
                         key={idx}
                         className="p-3 rounded-lg bg-white dark:bg-[#14161f] border border-black/[0.06] dark:border-white/[0.04] flex items-start space-x-3 text-xs"
                       >
@@ -115,8 +117,14 @@ export default function ProjectModal({ project, isOpen, onClose }) {
                           {stepNum}
                         </span>
                         <div>
-                          <span className="font-semibold text-zinc-900 dark:text-zinc-100 block">{stepName}</span>
-                          {stepDesc && <span className="text-[11px] text-zinc-600 dark:text-zinc-400 mt-0.5 block">{stepDesc}</span>}
+                          <span className="font-semibold text-zinc-900 dark:text-zinc-100 block">
+                            {stepName}
+                          </span>
+                          {stepDesc && (
+                            <span className="text-[11px] text-zinc-600 dark:text-zinc-400 mt-0.5 block">
+                              {stepDesc}
+                            </span>
+                          )}
                         </div>
                       </div>
                     );
@@ -134,7 +142,7 @@ export default function ProjectModal({ project, isOpen, onClose }) {
             </h4>
             <div className="flex flex-wrap gap-2">
               {project.technologies.map((tech) => (
-                <span 
+                <span
                   key={tech}
                   className="px-3 py-1 rounded-lg text-xs font-mono bg-zinc-100 dark:bg-[#14161f] border border-black/[0.08] dark:border-white/[0.06] text-zinc-800 dark:text-zinc-300 font-medium"
                 >
@@ -199,14 +207,16 @@ export default function ProjectModal({ project, isOpen, onClose }) {
           {/* Repository & Development Status */}
           <div className="pt-2 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs font-mono">
             <div className="flex items-center space-x-2 text-zinc-500">
-              {project.statusType === 'completed' ? (
+              {project.statusType === "completed" ? (
                 <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
               ) : (
                 <Clock className="w-4 h-4 text-amber-600 dark:text-amber-400 shrink-0" />
               )}
-              <span>Status: <strong>{project.status}</strong></span>
+              <span>
+                Status: <strong>{project.status}</strong>
+              </span>
             </div>
-            
+
             {project.githubPlaceholder && (
               <a
                 href={project.githubPlaceholder}
@@ -220,7 +230,6 @@ export default function ProjectModal({ project, isOpen, onClose }) {
               </a>
             )}
           </div>
-
         </div>
 
         {/* Modal Footer */}
@@ -232,7 +241,6 @@ export default function ProjectModal({ project, isOpen, onClose }) {
             Close Specs
           </button>
         </div>
-
       </div>
     </div>
   );

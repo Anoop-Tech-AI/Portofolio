@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
-import { motion } from 'motion/react';
-import { Sparkles, ChevronRight } from 'lucide-react';
+import { useState, useEffect } from "react";
+import { motion } from "motion/react";
+import { Sparkles, ChevronRight } from "lucide-react";
 
 /**
  * ByteDialogue
@@ -13,8 +13,8 @@ export default function ByteDialogue({
   onAdvance,
   showAdvanceHint = true,
 }) {
-  const currentLine = dialogueList[currentStep] || '';
-  const [displayedText, setDisplayedText] = useState('');
+  const currentLine = dialogueList[currentStep] || "";
+  const [displayedText, setDisplayedText] = useState("");
 
   // Smooth typewriter / word reveal effect for the current dialogue
   useEffect(() => {
@@ -39,7 +39,7 @@ export default function ByteDialogue({
         initial={{ opacity: 0, y: 18, scale: 0.94 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         exit={{ opacity: 0, y: -12, scale: 0.96 }}
-        transition={{ type: 'spring', damping: 24, stiffness: 320 }}
+        transition={{ type: "spring", damping: 24, stiffness: 320 }}
         onClick={onAdvance}
         className="relative bg-[#11141e]/95 backdrop-blur-md text-white p-5 sm:p-6 rounded-2xl sm:rounded-3xl border border-amber-500/40 shadow-[0_16px_50px_rgba(245,158,11,0.22)] cursor-pointer group"
       >
@@ -50,7 +50,9 @@ export default function ByteDialogue({
             <span className="text-xs font-mono font-bold tracking-wider uppercase text-amber-400 flex items-center space-x-1">
               <span>BYTE</span>
               <span className="text-zinc-500 font-normal">•</span>
-              <span className="text-zinc-400 font-normal">Anoop's Companion</span>
+              <span className="text-zinc-400 font-normal">
+                Anoop's Companion
+              </span>
             </span>
           </div>
 

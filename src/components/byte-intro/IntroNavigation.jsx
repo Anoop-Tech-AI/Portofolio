@@ -1,5 +1,5 @@
-import { motion } from 'motion/react';
-import { FolderCode, User, Cpu, ArrowRight } from 'lucide-react';
+import { motion } from "motion/react";
+import { FolderCode, User, Cpu, ArrowRight } from "lucide-react";
 
 /**
  * IntroNavigation
@@ -9,37 +9,43 @@ import { FolderCode, User, Cpu, ArrowRight } from 'lucide-react';
 export default function IntroNavigation({ onSelectOption, onHoverOption }) {
   const options = [
     {
-      id: 'projects',
+      id: "projects",
       label: "Explore Anoop's Projects",
-      badge: 'RetailMind-AI, MedSafe & more',
-      section: 'projects',
+      badge: "RetailMind-AI, MedSafe & more",
+      section: "projects",
       icon: FolderCode,
-      color: 'amber',
-      borderHover: 'hover:border-amber-400 hover:shadow-[0_0_30px_rgba(245,158,11,0.35)]',
-      iconBg: 'bg-amber-500/20 text-amber-400 group-hover:bg-amber-500 group-hover:text-black',
-      btnBg: 'bg-[#181c28]/95',
+      color: "amber",
+      borderHover:
+        "hover:border-amber-400 hover:shadow-[0_0_30px_rgba(245,158,11,0.35)]",
+      iconBg:
+        "bg-amber-500/20 text-amber-400 group-hover:bg-amber-500 group-hover:text-black",
+      btnBg: "bg-[#181c28]/95",
     },
     {
-      id: 'about',
-      label: 'Meet Anoop',
-      badge: 'B.Tech CSE @ KMIT Hyderabad',
-      section: 'about',
+      id: "about",
+      label: "Meet Anoop",
+      badge: "B.Tech CSE @ KMIT Hyderabad",
+      section: "about",
       icon: User,
-      color: 'emerald',
-      borderHover: 'hover:border-emerald-400 hover:shadow-[0_0_30px_rgba(16,185,129,0.3)]',
-      iconBg: 'bg-emerald-500/20 text-emerald-400 group-hover:bg-emerald-500 group-hover:text-black',
-      btnBg: 'bg-[#181c28]/95',
+      color: "emerald",
+      borderHover:
+        "hover:border-emerald-400 hover:shadow-[0_0_30px_rgba(16,185,129,0.3)]",
+      iconBg:
+        "bg-emerald-500/20 text-emerald-400 group-hover:bg-emerald-500 group-hover:text-black",
+      btnBg: "bg-[#181c28]/95",
     },
     {
-      id: 'skills',
-      label: 'Discover His Skills',
-      badge: 'AI/ML, Python, C++, React & Tools',
-      section: 'skills',
+      id: "skills",
+      label: "Discover His Skills",
+      badge: "AI/ML, Python, C++, React & Tools",
+      section: "skills",
       icon: Cpu,
-      color: 'sky',
-      borderHover: 'hover:border-sky-400 hover:shadow-[0_0_30px_rgba(56,189,248,0.3)]',
-      iconBg: 'bg-sky-500/20 text-sky-400 group-hover:bg-sky-500 group-hover:text-black',
-      btnBg: 'bg-[#181c28]/95',
+      color: "sky",
+      borderHover:
+        "hover:border-sky-400 hover:shadow-[0_0_30px_rgba(56,189,248,0.3)]",
+      iconBg:
+        "bg-sky-500/20 text-sky-400 group-hover:bg-sky-500 group-hover:text-black",
+      btnBg: "bg-[#181c28]/95",
     },
   ];
 
@@ -48,14 +54,16 @@ export default function IntroNavigation({ onSelectOption, onHoverOption }) {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.15, duration: 0.5, ease: 'easeOut' }}
+        transition={{ delay: 0.15, duration: 0.5, ease: "easeOut" }}
         className="space-y-3"
       >
         <div className="flex items-center justify-between px-1 mb-1">
           <p className="text-xs font-mono uppercase tracking-widest text-zinc-400 font-semibold">
             Choose Where To Begin:
           </p>
-          <span className="text-[11px] font-mono text-amber-400/80">Press 1, 2, or 3</span>
+          <span className="text-[11px] font-mono text-amber-400/80">
+            Press 1, 2, or 3
+          </span>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
@@ -76,7 +84,9 @@ export default function IntroNavigation({ onSelectOption, onHoverOption }) {
               >
                 <div>
                   <div className="flex items-center justify-between mb-3">
-                    <div className={`w-9 h-9 rounded-xl flex items-center justify-center transition-colors duration-200 ${opt.iconBg}`}>
+                    <div
+                      className={`w-9 h-9 rounded-xl flex items-center justify-center transition-colors duration-200 ${opt.iconBg}`}
+                    >
                       <Icon className="w-5 h-5" />
                     </div>
                     <span className="text-[11px] font-mono text-zinc-500 group-hover:text-white transition-colors">
@@ -104,4 +114,3 @@ export default function IntroNavigation({ onSelectOption, onHoverOption }) {
     </div>
   );
 }
-

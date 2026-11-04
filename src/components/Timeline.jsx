@@ -1,14 +1,16 @@
-import { motion } from 'motion/react';
-import { developmentTimeline } from '../data/portfolioData';
-import { fadeUp, VIEW } from '../hooks/useAnimations';
+import { motion } from "motion/react";
+import { developmentTimeline } from "../data/portfolioData";
+import { fadeUp, VIEW } from "../hooks/useAnimations";
 
 export default function Timeline() {
   return (
-    <section id="journey" className="py-24 relative z-10 border-t border-black/[0.08] dark:border-white/[0.06] bg-transparent dark:bg-[#0a0b0e]">
+    <section
+      id="journey"
+      className="py-24 relative z-10 border-t border-black/[0.08] dark:border-white/[0.06] bg-transparent dark:bg-[#0a0b0e]"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
         {/* Editorial Section Header */}
-        <motion.div 
+        <motion.div
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
@@ -24,20 +26,21 @@ export default function Timeline() {
             </h2>
           </div>
           <p className="text-xs sm:text-sm font-mono text-zinc-600 dark:text-zinc-400 max-w-md">
-            The progression of technical foundations, system architectures, and intelligent software engineering.
+            The progression of technical foundations, system architectures, and
+            intelligent software engineering.
           </p>
         </motion.div>
 
         {/* Timeline Stream */}
         <div className="relative">
           {/* Vertical spine line with scaleY entrance */}
-          <motion.div 
+          <motion.div
             initial={{ scaleY: 0 }}
             whileInView={{ scaleY: 1 }}
             viewport={VIEW}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            style={{ transformOrigin: 'top' }}
-            className="absolute left-4 sm:left-1/2 top-4 bottom-4 w-px bg-gradient-to-b from-amber-500/50 via-black/[0.1] dark:via-white/[0.1] to-transparent -translate-x-1/2" 
+            style={{ transformOrigin: "top" }}
+            className="absolute left-4 sm:left-1/2 top-4 bottom-4 w-px bg-gradient-to-b from-amber-500/50 via-black/[0.1] dark:via-white/[0.1] to-transparent -translate-x-1/2"
           />
 
           <div className="space-y-12 sm:space-y-16">
@@ -48,33 +51,43 @@ export default function Timeline() {
                 <div
                   key={index}
                   className={`relative flex flex-col sm:flex-row items-start ${
-                    isEven ? 'sm:flex-row-reverse' : ''
+                    isEven ? "sm:flex-row-reverse" : ""
                   }`}
                 >
                   {/* Central Node Icon with pop scale */}
-                  <motion.div 
+                  <motion.div
                     initial={{ scale: 0, opacity: 0 }}
                     whileInView={{ scale: 1, opacity: 1 }}
                     viewport={VIEW}
-                    transition={{ duration: 0.35, delay: 0.15 + index * 0.08, ease: 'backOut' }}
+                    transition={{
+                      duration: 0.35,
+                      delay: 0.15 + index * 0.08,
+                      ease: "backOut",
+                    }}
                     className="absolute left-4 sm:left-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-white dark:bg-[#13151c] border border-amber-500/60 flex items-center justify-center text-amber-500 z-10 shadow-sm dark:shadow-[0_0_12px_rgba(245,158,11,0.25)]"
                   >
                     <span className="w-2.5 h-2.5 rounded-full bg-amber-500" />
                   </motion.div>
 
                   {/* Content Card with staggered entrance */}
-                  <motion.div 
+                  <motion.div
                     initial={{ opacity: 0, x: isEven ? 28 : -28 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={VIEW}
-                    transition={{ duration: 0.5, delay: 0.1 + index * 0.1, ease: [0.22, 1, 0.36, 1] }}
+                    transition={{
+                      duration: 0.5,
+                      delay: 0.1 + index * 0.1,
+                      ease: [0.22, 1, 0.36, 1],
+                    }}
                     className="ml-12 sm:ml-0 sm:w-1/2 sm:px-8 w-full"
                   >
-                    <motion.div 
-                      whileHover={{ y: -3, borderColor: 'rgba(245,158,11,0.4)' }}
+                    <motion.div
+                      whileHover={{
+                        y: -3,
+                        borderColor: "rgba(245,158,11,0.4)",
+                      }}
                       className="p-6 rounded-xl bg-white dark:bg-[#12141a] border border-black/[0.08] dark:border-white/[0.06] transition-all duration-300 shadow-sm dark:shadow-xl group"
                     >
-
                       {/* Meta header */}
                       <div className="flex items-center justify-between gap-2 mb-2 pb-2 border-b border-black/[0.06] dark:border-white/[0.04]">
                         <span className="text-xs font-mono font-bold text-amber-800 dark:text-amber-400 px-2 py-0.5 rounded bg-amber-500/10 border border-amber-500/30">
@@ -110,7 +123,6 @@ export default function Timeline() {
                           </motion.span>
                         ))}
                       </div>
-
                     </motion.div>
                   </motion.div>
 
@@ -120,9 +132,7 @@ export default function Timeline() {
               );
             })}
           </div>
-
         </div>
-
       </div>
     </section>
   );

@@ -1,8 +1,8 @@
-import { useState } from 'react';
-import { 
-  ArrowUpRight, 
-  CheckCircle2, 
-  Clock, 
+import { useState } from "react";
+import {
+  ArrowUpRight,
+  CheckCircle2,
+  Clock,
   Cpu,
   Activity,
   Layers,
@@ -11,13 +11,13 @@ import {
   Brain,
   Sparkles,
   Sliders,
-  FileCheck
-} from 'lucide-react';
-import { motion } from 'motion/react';
-import { projectsData } from '../data/portfolioData';
-import { GithubIcon } from './Icons';
-import ProjectModal from './ProjectModal';
-import { fadeUp, VIEW } from '../hooks/useAnimations';
+  FileCheck,
+} from "lucide-react";
+import { motion } from "motion/react";
+import { projectsData } from "../data/portfolioData";
+import { GithubIcon } from "./Icons";
+import ProjectModal from "./ProjectModal";
+import { fadeUp, VIEW } from "../hooks/useAnimations";
 
 const RETAIL_STAGES = [
   {
@@ -25,75 +25,90 @@ const RETAIL_STAGES = [
     name: "Query Understanding",
     icon: Search,
     shortDesc: "Deconstructs natural language intent, constraints, and budget.",
-    purpose: "Analyzes raw user input to isolate product category, price ceiling, and mandatory attributes while discarding noisy filler words.",
-    input: "Raw natural language user query (e.g., 'lightweight wireless mouse for coding under $50')",
-    output: "Structured filter JSON with intent tags, budget ceiling, and key required features."
+    purpose:
+      "Analyzes raw user input to isolate product category, price ceiling, and mandatory attributes while discarding noisy filler words.",
+    input:
+      "Raw natural language user query (e.g., 'lightweight wireless mouse for coding under $50')",
+    output:
+      "Structured filter JSON with intent tags, budget ceiling, and key required features.",
   },
   {
     step: "02",
     name: "RAG Retrieval",
     icon: Database,
     shortDesc: "Dense BGE-M3 vector search over ChromaDB product embeddings.",
-    purpose: "Bypasses brittle keyword matching by projecting queries into semantic vector space, retrieving products with true semantic affinity.",
+    purpose:
+      "Bypasses brittle keyword matching by projecting queries into semantic vector space, retrieving products with true semantic affinity.",
     input: "Structured intent vectors encoded via BGE-M3 model.",
-    output: "Top-k candidate catalog items with similarity distance scores."
+    output: "Top-k candidate catalog items with similarity distance scores.",
   },
   {
     step: "03",
     name: "Memory",
     icon: Brain,
-    shortDesc: "LangGraph state buffer preserving multi-turn conversational context.",
-    purpose: "Maintains ongoing conversation history so follow-up queries ('what about battery life?') retain previous constraints without restarting.",
+    shortDesc:
+      "LangGraph state buffer preserving multi-turn conversational context.",
+    purpose:
+      "Maintains ongoing conversation history so follow-up queries ('what about battery life?') retain previous constraints without restarting.",
     input: "Current turn dialogue + historical state buffer.",
-    output: "Contextualized conversation state passed to downstream agents."
+    output: "Contextualized conversation state passed to downstream agents.",
   },
   {
     step: "04",
     name: "Sentiment & Aspect Analysis",
     icon: Sparkles,
     shortDesc: "Extracts fine-grained review sentiments on specific aspects.",
-    purpose: "Analyzes thousands of authentic customer reviews from the Amazon dataset to calculate aspect-level scores (durability, comfort, build quality).",
+    purpose:
+      "Analyzes thousands of authentic customer reviews from the Amazon dataset to calculate aspect-level scores (durability, comfort, build quality).",
     input: "Raw review corpus for top candidate items.",
-    output: "Aspect score matrix with positive/negative ratio breakdowns."
+    output: "Aspect score matrix with positive/negative ratio breakdowns.",
   },
   {
     step: "05",
     name: "Ranking",
     icon: Sliders,
-    shortDesc: "Multi-factor objective ranking balancing constraints and sentiment.",
-    purpose: "Synthesizes vector proximity, verified aspect sentiment, rating distributions, and budget constraints into a Pareto-optimal priority list.",
+    shortDesc:
+      "Multi-factor objective ranking balancing constraints and sentiment.",
+    purpose:
+      "Synthesizes vector proximity, verified aspect sentiment, rating distributions, and budget constraints into a Pareto-optimal priority list.",
     input: "Candidate items + aspect sentiment scores + user constraints.",
-    output: "Ordered recommendation rankings with weighted confidence scores."
+    output: "Ordered recommendation rankings with weighted confidence scores.",
   },
   {
     step: "06",
     name: "Explainable Recommendations",
     icon: FileCheck,
-    shortDesc: "Synthesizes natural language rationale citing authentic review evidence.",
-    purpose: "Generates honest, verifiable buying rationale explaining *why* each product was selected, citing real pros and cons extracted from reviews.",
+    shortDesc:
+      "Synthesizes natural language rationale citing authentic review evidence.",
+    purpose:
+      "Generates honest, verifiable buying rationale explaining *why* each product was selected, citing real pros and cons extracted from reviews.",
     input: "Top ranked product + aspect breakdown + user constraints.",
-    output: "Audited natural language recommendation with cited evidence."
-  }
+    output: "Audited natural language recommendation with cited evidence.",
+  },
 ];
 
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState(null);
   const [activeStageIndex, setActiveStageIndex] = useState(0);
 
-  const retailMind = projectsData.find(p => p.id === 'retailmind-ai');
-  const medSafe = projectsData.find(p => p.id === 'medsafe-ai');
-  const studentCrud = projectsData.find(p => p.id === 'student-management-system');
-  const devops = projectsData.find(p => p.id === 'devops-cicd-practice');
+  const retailMind = projectsData.find((p) => p.id === "retailmind-ai");
+  const medSafe = projectsData.find((p) => p.id === "medsafe-ai");
+  const studentCrud = projectsData.find(
+    (p) => p.id === "student-management-system",
+  );
+  const devops = projectsData.find((p) => p.id === "devops-cicd-practice");
 
   const currentStage = RETAIL_STAGES[activeStageIndex];
   const CurrentStageIcon = currentStage.icon;
 
   return (
-    <section id="projects" className="py-24 relative z-10 border-t border-black/[0.08] dark:border-white/[0.06] bg-transparent dark:bg-[#0b0c10]">
+    <section
+      id="projects"
+      className="py-24 relative z-10 border-t border-black/[0.08] dark:border-white/[0.06] bg-transparent dark:bg-[#0b0c10]"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
         {/* Section Header */}
-        <motion.div 
+        <motion.div
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
@@ -109,17 +124,18 @@ export default function Projects() {
             </h2>
           </div>
           <p className="text-xs sm:text-sm font-mono text-zinc-600 dark:text-zinc-400 max-w-md">
-            Progressive engineering showcases. Short summaries upfront — click "Explore Project" to inspect detailed architectures and specifications.
+            Progressive engineering showcases. Short summaries upfront — click
+            "Explore Project" to inspect detailed architectures and
+            specifications.
           </p>
         </motion.div>
 
         <div className="space-y-12">
-          
           {/* ========================================================
               PROJECT 1: RETAILMIND-AI (FLAGSHIP SHOWCASE)
              ======================================================== */}
           {retailMind && (
-            <motion.div 
+            <motion.div
               id={`project-${retailMind.id}`}
               variants={fadeUp}
               initial="hidden"
@@ -131,7 +147,6 @@ export default function Projects() {
               <div className="absolute top-0 right-0 w-80 h-80 bg-amber-500/[0.05] dark:bg-amber-500/[0.04] rounded-full blur-3xl pointer-events-none" />
 
               <div className="space-y-6">
-                
                 {/* Header & Meta Row */}
                 <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-5 border-b border-black/[0.06] dark:border-white/[0.06]">
                   <div>
@@ -204,8 +219,8 @@ export default function Projects() {
                           onClick={() => setActiveStageIndex(i)}
                           className={`p-2.5 rounded-xl border text-left transition-all cursor-pointer flex flex-col justify-between ${
                             isSelected
-                              ? 'bg-amber-500/15 border-amber-500 text-amber-900 dark:text-amber-200 shadow-xs'
-                              : 'bg-zinc-50 dark:bg-[#13151f] border-black/[0.06] dark:border-white/[0.05] text-zinc-700 dark:text-zinc-300 hover:border-amber-500/40'
+                              ? "bg-amber-500/15 border-amber-500 text-amber-900 dark:text-amber-200 shadow-xs"
+                              : "bg-zinc-50 dark:bg-[#13151f] border-black/[0.06] dark:border-white/[0.05] text-zinc-700 dark:text-zinc-300 hover:border-amber-500/40"
                           }`}
                         >
                           <div className="flex items-center justify-between mb-1.5">
@@ -226,7 +241,9 @@ export default function Projects() {
                   <div className="p-4 rounded-xl bg-zinc-50 dark:bg-[#0e1017] border border-black/[0.06] dark:border-white/[0.06] text-xs space-y-2">
                     <div className="flex items-center space-x-2 text-amber-700 dark:text-amber-400 font-mono font-bold">
                       <CurrentStageIcon className="w-4 h-4" />
-                      <span>Stage {currentStage.step}: {currentStage.name}</span>
+                      <span>
+                        Stage {currentStage.step}: {currentStage.name}
+                      </span>
                     </div>
                     <p className="text-zinc-700 dark:text-zinc-300 leading-relaxed">
                       {currentStage.purpose}
@@ -234,11 +251,17 @@ export default function Projects() {
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-2 border-t border-black/[0.06] dark:border-white/[0.04] text-[11px] font-mono">
                       <div>
                         <span className="text-zinc-500 block">INPUT DATA:</span>
-                        <span className="text-zinc-700 dark:text-zinc-300">{currentStage.input}</span>
+                        <span className="text-zinc-700 dark:text-zinc-300">
+                          {currentStage.input}
+                        </span>
                       </div>
                       <div>
-                        <span className="text-zinc-500 block">OUTPUT ARTIFACT:</span>
-                        <span className="text-zinc-700 dark:text-zinc-300">{currentStage.output}</span>
+                        <span className="text-zinc-500 block">
+                          OUTPUT ARTIFACT:
+                        </span>
+                        <span className="text-zinc-700 dark:text-zinc-300">
+                          {currentStage.output}
+                        </span>
                       </div>
                     </div>
                   </div>
@@ -250,7 +273,7 @@ export default function Projects() {
                     Tech Stack:
                   </span>
                   {retailMind.technologies.map((t) => (
-                    <span 
+                    <span
                       key={t}
                       className="px-2.5 py-0.5 text-xs font-mono rounded bg-zinc-100 dark:bg-[#151722] text-zinc-800 dark:text-zinc-300 border border-black/[0.06] dark:border-white/[0.06]"
                     >
@@ -258,7 +281,6 @@ export default function Projects() {
                     </span>
                   ))}
                 </div>
-
               </div>
             </motion.div>
           )}
@@ -267,7 +289,7 @@ export default function Projects() {
               PROJECT 2: MEDSAFE AI (HEALTHCARE CASE STUDY)
              ======================================================== */}
           {medSafe && (
-            <motion.div 
+            <motion.div
               id={`project-${medSafe.id}`}
               variants={fadeUp}
               initial="hidden"
@@ -276,7 +298,6 @@ export default function Projects() {
               className="relative rounded-2xl bg-white dark:bg-[#12151f] border border-sky-500/30 dark:border-sky-500/20 overflow-hidden shadow-sm dark:shadow-xl p-6 sm:p-9 transition-all hover:border-sky-500/50"
             >
               <div className="space-y-5">
-                
                 {/* Header */}
                 <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-5 border-b border-black/[0.06] dark:border-white/[0.06]">
                   <div>
@@ -334,9 +355,16 @@ export default function Projects() {
                   </span>
                   <div className="grid grid-cols-2 sm:grid-cols-5 gap-2">
                     {medSafe.architecture.map((n) => (
-                      <div key={n.step} className="p-2 rounded-lg bg-white dark:bg-[#141724] border border-black/[0.06] dark:border-white/[0.04]">
-                        <span className="text-[10px] font-mono text-sky-700 dark:text-sky-300 font-bold block">{n.step}</span>
-                        <span className="font-semibold text-zinc-900 dark:text-zinc-200 block text-[11px] truncate">{n.name}</span>
+                      <div
+                        key={n.step}
+                        className="p-2 rounded-lg bg-white dark:bg-[#141724] border border-black/[0.06] dark:border-white/[0.04]"
+                      >
+                        <span className="text-[10px] font-mono text-sky-700 dark:text-sky-300 font-bold block">
+                          {n.step}
+                        </span>
+                        <span className="font-semibold text-zinc-900 dark:text-zinc-200 block text-[11px] truncate">
+                          {n.name}
+                        </span>
                       </div>
                     ))}
                   </div>
@@ -348,7 +376,7 @@ export default function Projects() {
                     Tech Stack:
                   </span>
                   {medSafe.technologies.map((t) => (
-                    <span 
+                    <span
                       key={t}
                       className="px-2.5 py-0.5 text-xs font-mono rounded bg-zinc-100 dark:bg-[#161a27] text-zinc-800 dark:text-zinc-300 border border-black/[0.06] dark:border-white/[0.06]"
                     >
@@ -356,7 +384,6 @@ export default function Projects() {
                     </span>
                   ))}
                 </div>
-
               </div>
             </motion.div>
           )}
@@ -365,10 +392,9 @@ export default function Projects() {
               PROJECTS 3 & 4: 2-COLUMN GRID (STUDENT CRUD & DEVOPS)
              ======================================================== */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            
             {/* Student Management System */}
             {studentCrud && (
-              <motion.div 
+              <motion.div
                 id={`project-${studentCrud.id}`}
                 variants={fadeUp}
                 initial="hidden"
@@ -403,8 +429,11 @@ export default function Projects() {
 
                   {/* Tech stack */}
                   <div className="flex flex-wrap gap-1.5 pt-2">
-                    {studentCrud.technologies.map(t => (
-                      <span key={t} className="px-2 py-0.5 text-[11px] font-mono rounded bg-zinc-100 dark:bg-zinc-900 text-zinc-700 dark:text-zinc-400 border border-black/[0.06] dark:border-zinc-800">
+                    {studentCrud.technologies.map((t) => (
+                      <span
+                        key={t}
+                        className="px-2 py-0.5 text-[11px] font-mono rounded bg-zinc-100 dark:bg-zinc-900 text-zinc-700 dark:text-zinc-400 border border-black/[0.06] dark:border-zinc-800"
+                      >
                         {t}
                       </span>
                     ))}
@@ -437,7 +466,7 @@ export default function Projects() {
 
             {/* DevOps & CI/CD Practice */}
             {devops && (
-              <motion.div 
+              <motion.div
                 id={`project-${devops.id}`}
                 variants={fadeUp}
                 initial="hidden"
@@ -472,8 +501,11 @@ export default function Projects() {
 
                   {/* Tech stack */}
                   <div className="flex flex-wrap gap-1.5 pt-2">
-                    {devops.technologies.map(t => (
-                      <span key={t} className="px-2 py-0.5 text-[11px] font-mono rounded bg-zinc-100 dark:bg-zinc-900 text-zinc-700 dark:text-zinc-400 border border-black/[0.06] dark:border-zinc-800">
+                    {devops.technologies.map((t) => (
+                      <span
+                        key={t}
+                        className="px-2 py-0.5 text-[11px] font-mono rounded bg-zinc-100 dark:bg-zinc-900 text-zinc-700 dark:text-zinc-400 border border-black/[0.06] dark:border-zinc-800"
+                      >
                         {t}
                       </span>
                     ))}
@@ -503,11 +535,8 @@ export default function Projects() {
                 </div>
               </motion.div>
             )}
-
           </div>
-
         </div>
-
       </div>
 
       {/* 8-Point Detailed Project Specifications Modal */}

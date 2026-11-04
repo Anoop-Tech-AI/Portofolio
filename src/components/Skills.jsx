@@ -1,49 +1,68 @@
-import { useState, useMemo } from 'react';
-import { 
-  Code2, 
-  Globe, 
-  Database, 
-  BrainCircuit, 
-  Wrench, 
-  Layers, 
-  Search, 
+import { useState, useMemo } from "react";
+import {
+  Code2,
+  Globe,
+  Database,
+  BrainCircuit,
+  Wrench,
+  Layers,
+  Search,
   Cpu,
-  ArrowUpRight
-} from 'lucide-react';
-import { motion, AnimatePresence } from 'motion/react';
-import { skillCategories, projectsData } from '../data/portfolioData';
-import { fadeUp, VIEW } from '../hooks/useAnimations';
+  ArrowUpRight,
+} from "lucide-react";
+import { motion, AnimatePresence } from "motion/react";
+import { skillCategories, projectsData } from "../data/portfolioData";
+import { fadeUp, VIEW } from "../hooks/useAnimations";
 
 export default function Skills() {
-  const [selectedCategory, setSelectedCategory] = useState('all');
-  const [searchQuery, setSearchQuery] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState("all");
+  const [searchQuery, setSearchQuery] = useState("");
   const [activeSkillHighlight, setActiveSkillHighlight] = useState(null);
 
   const getCategoryIcon = (iconName) => {
     switch (iconName) {
-      case 'Code2': return <Code2 className="w-4 h-4 text-amber-600 dark:text-amber-400" />;
-      case 'Globe': return <Globe className="w-4 h-4 text-sky-600 dark:text-sky-400" />;
-      case 'BrainCircuit': return <BrainCircuit className="w-4 h-4 text-amber-600 dark:text-amber-400" />;
-      case 'Database': return <Database className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />;
-      case 'Wrench': return <Wrench className="w-4 h-4 text-purple-600 dark:text-purple-400" />;
-      case 'Layers': return <Layers className="w-4 h-4 text-rose-600 dark:text-rose-400" />;
-      default: return <Cpu className="w-4 h-4 text-zinc-600 dark:text-zinc-400" />;
+      case "Code2":
+        return <Code2 className="w-4 h-4 text-amber-600 dark:text-amber-400" />;
+      case "Globe":
+        return <Globe className="w-4 h-4 text-sky-600 dark:text-sky-400" />;
+      case "BrainCircuit":
+        return (
+          <BrainCircuit className="w-4 h-4 text-amber-600 dark:text-amber-400" />
+        );
+      case "Database":
+        return (
+          <Database className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+        );
+      case "Wrench":
+        return (
+          <Wrench className="w-4 h-4 text-purple-600 dark:text-purple-400" />
+        );
+      case "Layers":
+        return <Layers className="w-4 h-4 text-rose-600 dark:text-rose-400" />;
+      default:
+        return <Cpu className="w-4 h-4 text-zinc-600 dark:text-zinc-400" />;
     }
   };
 
   const filteredCategories = useMemo(() => {
     return skillCategories
-      .filter((cat) => selectedCategory === 'all' || cat.id === selectedCategory)
+      .filter(
+        (cat) => selectedCategory === "all" || cat.id === selectedCategory,
+      )
       .map((cat) => {
         if (!searchQuery.trim()) return cat;
         const q = searchQuery.toLowerCase();
-        const activeMatches = cat.activelyUsed.filter((s) => s.toLowerCase().includes(q));
-        const exploringMatches = cat.exploring.filter((s) => s.toLowerCase().includes(q));
-        
+        const activeMatches = cat.activelyUsed.filter((s) =>
+          s.toLowerCase().includes(q),
+        );
+        const exploringMatches = cat.exploring.filter((s) =>
+          s.toLowerCase().includes(q),
+        );
+
         return {
           ...cat,
           activelyUsed: activeMatches,
-          exploring: exploringMatches
+          exploring: exploringMatches,
         };
       })
       .filter((cat) => cat.activelyUsed.length > 0 || cat.exploring.length > 0);
@@ -52,24 +71,30 @@ export default function Skills() {
   const relatedProjectsForSkill = useMemo(() => {
     if (!activeSkillHighlight) return [];
     const skillNorm = activeSkillHighlight.toLowerCase();
-    return projectsData.filter((project) => 
-      project.technologies.some((tech) => tech.toLowerCase().includes(skillNorm) || skillNorm.includes(tech.toLowerCase()))
+    return projectsData.filter((project) =>
+      project.technologies.some(
+        (tech) =>
+          tech.toLowerCase().includes(skillNorm) ||
+          skillNorm.includes(tech.toLowerCase()),
+      ),
     );
   }, [activeSkillHighlight]);
 
   const totalSkillCount = useMemo(() => {
     return skillCategories.reduce(
-      (acc, cat) => acc + cat.activelyUsed.length + cat.exploring.length, 
-      0
+      (acc, cat) => acc + cat.activelyUsed.length + cat.exploring.length,
+      0,
     );
   }, []);
 
   return (
-    <section id="skills" className="py-24 relative z-10 border-t border-black/[0.08] dark:border-white/[0.06]">
+    <section
+      id="skills"
+      className="py-24 relative z-10 border-t border-black/[0.08] dark:border-white/[0.06]"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
         {/* Editorial Section Header */}
-        <motion.div 
+        <motion.div
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
@@ -85,23 +110,23 @@ export default function Skills() {
             </h2>
           </div>
           <p className="text-xs sm:text-sm font-mono text-zinc-600 dark:text-zinc-400 max-w-md">
-            Visually cataloged across 6 core domains: Programming, Web Development, AI/ML, Databases, Developer Tools, and Core CS.
+            Visually cataloged across 6 core domains: Programming, Web
+            Development, AI/ML, Databases, Developer Tools, and Core CS.
           </p>
         </motion.div>
 
         {/* Legend & Filter Controls */}
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-8">
-          
           {/* Category Tabs */}
           <div className="flex flex-wrap items-center gap-1.5 p-1 rounded-xl bg-zinc-100 dark:bg-[#121419] border border-black/[0.08] dark:border-white/[0.06]">
             <motion.button
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              onClick={() => setSelectedCategory('all')}
+              onClick={() => setSelectedCategory("all")}
               className={`px-3 py-1.5 text-xs font-mono rounded-lg transition-all cursor-pointer ${
-                selectedCategory === 'all'
-                  ? 'bg-amber-500/20 text-amber-900 dark:text-amber-300 border border-amber-500/40 font-semibold shadow-sm'
-                  : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-black/[0.04] dark:hover:bg-white/[0.03]'
+                selectedCategory === "all"
+                  ? "bg-amber-500/20 text-amber-900 dark:text-amber-300 border border-amber-500/40 font-semibold shadow-sm"
+                  : "text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-black/[0.04] dark:hover:bg-white/[0.03]"
               }`}
             >
               All Domains ({totalSkillCount})
@@ -114,8 +139,8 @@ export default function Skills() {
                 onClick={() => setSelectedCategory(cat.id)}
                 className={`px-3 py-1.5 text-xs font-mono rounded-lg transition-all cursor-pointer ${
                   selectedCategory === cat.id
-                    ? 'bg-amber-500/20 text-amber-900 dark:text-amber-300 border border-amber-500/40 font-semibold shadow-sm'
-                    : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-black/[0.04] dark:hover:bg-white/[0.03]'
+                    ? "bg-amber-500/20 text-amber-900 dark:text-amber-300 border border-amber-500/40 font-semibold shadow-sm"
+                    : "text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-black/[0.04] dark:hover:bg-white/[0.03]"
                 }`}
               >
                 {cat.title}
@@ -148,8 +173,10 @@ export default function Skills() {
           </span>
           {activeSkillHighlight && (
             <span className="text-amber-700 dark:text-amber-300 ml-auto flex items-center gap-1">
-              <span>Selected: <strong>{activeSkillHighlight}</strong></span>
-              <button 
+              <span>
+                Selected: <strong>{activeSkillHighlight}</strong>
+              </span>
+              <button
                 onClick={() => setActiveSkillHighlight(null)}
                 className="text-[10px] underline ml-1 hover:text-zinc-900 dark:hover:text-white cursor-pointer"
               >
@@ -160,7 +187,7 @@ export default function Skills() {
         </div>
 
         {/* Categories Grid (6 Core Domains) */}
-        <motion.div 
+        <motion.div
           layout
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
         >
@@ -173,7 +200,7 @@ export default function Skills() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={VIEW}
                 transition={{ duration: 0.4, delay: idx * 0.06 }}
-                whileHover={{ y: -3, borderColor: 'rgba(245,158,11,0.4)' }}
+                whileHover={{ y: -3, borderColor: "rgba(245,158,11,0.4)" }}
                 className="p-6 rounded-2xl bg-white dark:bg-[#12141a] border border-black/[0.08] dark:border-white/[0.06] transition-all flex flex-col justify-between group shadow-sm dark:shadow-lg"
               >
                 <div>
@@ -212,11 +239,15 @@ export default function Skills() {
                               key={skill}
                               whileHover={{ scale: 1.04 }}
                               whileTap={{ scale: 0.96 }}
-                              onClick={() => setActiveSkillHighlight(isSelected ? null : skill)}
+                              onClick={() =>
+                                setActiveSkillHighlight(
+                                  isSelected ? null : skill,
+                                )
+                              }
                               className={`px-2.5 py-1 text-xs font-mono rounded-md border transition-all text-left cursor-pointer ${
                                 isSelected
-                                  ? 'bg-amber-500/20 border-amber-500 text-amber-900 dark:text-amber-200 font-semibold shadow-sm'
-                                  : 'bg-zinc-50 dark:bg-[#0f1116] border-black/[0.08] dark:border-white/[0.06] text-zinc-800 dark:text-zinc-300 hover:border-black/[0.2] dark:hover:border-white/[0.2] hover:text-black dark:hover:text-white'
+                                  ? "bg-amber-500/20 border-amber-500 text-amber-900 dark:text-amber-200 font-semibold shadow-sm"
+                                  : "bg-zinc-50 dark:bg-[#0f1116] border-black/[0.08] dark:border-white/[0.06] text-zinc-800 dark:text-zinc-300 hover:border-black/[0.2] dark:hover:border-white/[0.2] hover:text-black dark:hover:text-white"
                               }`}
                             >
                               {skill}
@@ -242,11 +273,15 @@ export default function Skills() {
                               key={skill}
                               whileHover={{ scale: 1.04 }}
                               whileTap={{ scale: 0.96 }}
-                              onClick={() => setActiveSkillHighlight(isSelected ? null : skill)}
+                              onClick={() =>
+                                setActiveSkillHighlight(
+                                  isSelected ? null : skill,
+                                )
+                              }
                               className={`px-2 py-0.5 text-[11px] font-mono rounded-md border transition-all text-left cursor-pointer ${
                                 isSelected
-                                  ? 'bg-amber-500/20 border-amber-500 text-amber-900 dark:text-amber-200 font-semibold shadow-sm'
-                                  : 'bg-amber-500/5 dark:bg-[#0f1116]/60 border-amber-500/20 dark:border-amber-500/15 text-zinc-700 dark:text-zinc-400 hover:border-amber-500/40 hover:text-amber-800 dark:hover:text-amber-300'
+                                  ? "bg-amber-500/20 border-amber-500 text-amber-900 dark:text-amber-200 font-semibold shadow-sm"
+                                  : "bg-amber-500/5 dark:bg-[#0f1116]/60 border-amber-500/20 dark:border-amber-500/15 text-zinc-700 dark:text-zinc-400 hover:border-amber-500/40 hover:text-amber-800 dark:hover:text-amber-300"
                               }`}
                             >
                               {skill}
@@ -265,7 +300,7 @@ export default function Skills() {
         {/* Skill-to-Project Connection Drawer */}
         <AnimatePresence>
           {activeSkillHighlight && relatedProjectsForSkill.length > 0 && (
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
@@ -291,7 +326,6 @@ export default function Skills() {
             </motion.div>
           )}
         </AnimatePresence>
-
       </div>
     </section>
   );

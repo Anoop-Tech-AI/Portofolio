@@ -1,0 +1,26 @@
+export const BYTE_ASSETS = {
+  hero: "/mascot/byte_hero.png",
+  poses: {
+    waving: "/mascot/byte_waving.png",
+    pointing: "/mascot/byte_pointing.png",
+    excited: "/mascot/byte_excited.png",
+    typing: "/mascot/byte_typing.png",
+    thinking: "/mascot/byte_idle_thinking.png",
+    cool: "/mascot/byte_cool.png",
+    celebrating: "/mascot/byte_celebrating.png",
+    reading: "/mascot/byte_reading.png",
+    sleeping: "/mascot/byte_sleeping.png",
+  },
+  walkCycle: [
+    "/mascot/byte_walk_01.png",
+    "/mascot/byte_walk_02.png",
+    "/mascot/byte_walk_03.png",
+    "/mascot/byte_walk_04.png",
+    "/mascot/byte_walk_05.png",
+    "/mascot/byte_walk_06.png",
+    "/mascot/byte_walk_07.png",
+    "/mascot/byte_walk_08.png",
+    "/mascot/byte_walk_09.png",
+    "/mascot/byte_walk_10.png",
+  ],
+};

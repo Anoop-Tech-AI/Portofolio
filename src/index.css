@@ -7,17 +7,25 @@
     scroll-behavior: smooth;
     color-scheme: light;
   }
-  
+
   html.dark {
     color-scheme: dark;
   }
 
   body {
     @apply bg-[#F8F8F5] text-[#202124] antialiased overflow-x-hidden;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family:
+      "Inter",
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      Roboto,
+      sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition:
+      background-color 0.3s ease,
+      color 0.3s ease;
   }
 
   .dark body {
@@ -68,13 +76,13 @@
 /* ─── Editorial subtle grid background ─── */
 .bg-editorial-grid {
   background-size: 52px 52px;
-  background-image: 
+  background-image:
     linear-gradient(to right, rgba(0, 0, 0, 0.038) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(0, 0, 0, 0.038) 1px, transparent 1px);
 }
 
 .dark .bg-editorial-grid {
-  background-image: 
+  background-image:
     linear-gradient(to right, rgba(255, 255, 255, 0.022) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(255, 255, 255, 0.022) 1px, transparent 1px);
 }
@@ -88,8 +96,12 @@
 
 /* ─── Fade-in animation (used in modals) ─── */
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .animate-fadeIn {
@@ -97,8 +109,10 @@
 }
 
 /* ─── Editorial font rendering for mono code blocks ─── */
-code, .font-mono, pre {
-  font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+code,
+.font-mono,
+pre {
+  font-family: "JetBrains Mono", "Fira Code", "Cascadia Code", monospace;
 }
 
 /* ─── Smooth focus ring for accessibility ─── */
@@ -110,17 +124,34 @@ code, .font-mono, pre {
 
 /* ─── Custom cursor blink in terminal ─── */
 @keyframes termBlink {
-  0%, 49% { opacity: 1; }
-  50%, 100% { opacity: 0; }
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
 }
 
 /* ─── Mascot waving & subtle idle keyframes ─── */
 @keyframes mascotWave {
-  0%, 100% { transform: rotate(0deg); }
-  20% { transform: rotate(18deg); }
-  40% { transform: rotate(-8deg); }
-  60% { transform: rotate(14deg); }
-  80% { transform: rotate(-4deg); }
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  20% {
+    transform: rotate(18deg);
+  }
+  40% {
+    transform: rotate(-8deg);
+  }
+  60% {
+    transform: rotate(14deg);
+  }
+  80% {
+    transform: rotate(-4deg);
+  }
 }
 
 .animate-mascot-wave {
@@ -128,8 +159,13 @@ code, .font-mono, pre {
 }
 
 @keyframes mascotBreathe {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-3px); }
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
 }
 
 .animate-mascot-idle {
@@ -137,9 +173,16 @@ code, .font-mono, pre {
 }
 
 @keyframes duckWaddle {
-  0%, 100% { transform: rotate(0deg) translateY(0px); }
-  25% { transform: rotate(-3deg) translateY(-3px); }
-  75% { transform: rotate(3deg) translateY(-3px); }
+  0%,
+  100% {
+    transform: rotate(0deg) translateY(0px);
+  }
+  25% {
+    transform: rotate(-3deg) translateY(-3px);
+  }
+  75% {
+    transform: rotate(3deg) translateY(-3px);
+  }
 }
 
 .animate-duck-waddle {
@@ -148,13 +191,23 @@ code, .font-mono, pre {
 
 /* ─── Large BYTE articulated walk cycle keyframes ─── */
 @keyframes duckFootLeft {
-  0%, 100% { transform: rotate(-15deg) translateY(-4px); }
-  50% { transform: rotate(14deg) translateY(3px); }
+  0%,
+  100% {
+    transform: rotate(-15deg) translateY(-4px);
+  }
+  50% {
+    transform: rotate(14deg) translateY(3px);
+  }
 }
 
 @keyframes duckFootRight {
-  0%, 100% { transform: rotate(14deg) translateY(3px); }
-  50% { transform: rotate(-15deg) translateY(-4px); }
+  0%,
+  100% {
+    transform: rotate(14deg) translateY(3px);
+  }
+  50% {
+    transform: rotate(-15deg) translateY(-4px);
+  }
 }
 
 .animate-duck-foot-left {
@@ -166,8 +219,13 @@ code, .font-mono, pre {
 }
 
 @keyframes duckWingSwing {
-  0%, 100% { transform: rotate(-14deg); }
-  50% { transform: rotate(18deg); }
+  0%,
+  100% {
+    transform: rotate(-14deg);
+  }
+  50% {
+    transform: rotate(18deg);
+  }
 }
 
 .animate-duck-wing-swing {

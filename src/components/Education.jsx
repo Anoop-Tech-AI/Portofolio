@@ -1,11 +1,19 @@
-import { GraduationCap, Calendar, MapPin, Award, BookCheck } from 'lucide-react';
-import { educationData } from '../data/portfolioData';
+import {
+  GraduationCap,
+  Calendar,
+  MapPin,
+  Award,
+  BookCheck,
+} from "lucide-react";
+import { educationData } from "../data/portfolioData";
 
 export default function Education() {
   return (
-    <section id="education" className="py-24 relative z-10 bg-[#0c0e14]/40 border-t border-zinc-900">
+    <section
+      id="education"
+      className="py-24 relative z-10 bg-[#0c0e14]/40 border-t border-zinc-900"
+    >
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        
         {/* Section Header */}
         <div className="flex flex-col items-center text-center mb-16">
           <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-mono uppercase tracking-widest mb-3">
@@ -39,7 +47,9 @@ export default function Education() {
             </div>
 
             <div className="flex flex-col sm:items-start lg:items-end space-y-1 text-xs text-zinc-400">
-              <span className="text-sm font-semibold text-zinc-200">{educationData.institution}</span>
+              <span className="text-sm font-semibold text-zinc-200">
+                {educationData.institution}
+              </span>
               <span className="flex items-center gap-1.5 text-zinc-400">
                 <MapPin className="w-3.5 h-3.5 text-teal-400" />
                 {educationData.location}
@@ -63,7 +73,8 @@ export default function Education() {
                   {educationData.cgpaPlaceholder}
                 </span>
                 <p className="text-xs text-zinc-500 mt-1">
-                  Official cumulative grade point average will be updated as semester transcripts are formalized.
+                  Official cumulative grade point average will be updated as
+                  semester transcripts are formalized.
                 </p>
               </div>
             </div>
@@ -78,7 +89,8 @@ export default function Education() {
                   Systems, Algorithms & Intelligent Architectures
                 </span>
                 <p className="text-xs text-zinc-500 mt-1">
-                  Rigorous computer science curriculum blending foundational theory with practical application engineering.
+                  Rigorous computer science curriculum blending foundational
+                  theory with practical application engineering.
                 </p>
               </div>
             </div>
@@ -91,19 +103,19 @@ export default function Education() {
             </h4>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
               {educationData.highlights.map((point, idx) => (
-                <div 
+                <div
                   key={idx}
                   className="p-3.5 rounded-lg bg-zinc-900/40 border border-zinc-800/70 text-xs text-zinc-300 leading-relaxed"
                 >
-                  <span className="text-cyan-400 font-mono block mb-1">0{idx + 1}.</span>
+                  <span className="text-cyan-400 font-mono block mb-1">
+                    0{idx + 1}.
+                  </span>
                   {point}
                 </div>
               ))}
             </div>
           </div>
-
         </div>
-
       </div>
     </section>
   );

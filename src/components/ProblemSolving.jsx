@@ -1,33 +1,42 @@
-import { 
-  Binary, 
-  Cpu, 
-  Terminal, 
-  Target, 
-  Code2, 
-  ExternalLink, 
-  Zap
-} from 'lucide-react';
-import { motion } from 'motion/react';
-import { problemSolvingData } from '../data/portfolioData';
-import { fadeUp, VIEW } from '../hooks/useAnimations';
+import {
+  Binary,
+  Cpu,
+  Terminal,
+  Target,
+  Code2,
+  ExternalLink,
+  Zap,
+} from "lucide-react";
+import { motion } from "motion/react";
+import { problemSolvingData } from "../data/portfolioData";
+import { fadeUp, VIEW } from "../hooks/useAnimations";
 
 export default function ProblemSolving() {
   const getPillarIcon = (icon) => {
     switch (icon) {
-      case 'Cpu': return <Cpu className="w-4 h-4 text-amber-600 dark:text-amber-400" />;
-      case 'Terminal': return <Terminal className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />;
-      case 'Binary': return <Binary className="w-4 h-4 text-sky-600 dark:text-sky-400" />;
-      case 'Target': return <Target className="w-4 h-4 text-rose-600 dark:text-rose-400" />;
-      default: return <Code2 className="w-4 h-4 text-zinc-600 dark:text-zinc-400" />;
+      case "Cpu":
+        return <Cpu className="w-4 h-4 text-amber-600 dark:text-amber-400" />;
+      case "Terminal":
+        return (
+          <Terminal className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+        );
+      case "Binary":
+        return <Binary className="w-4 h-4 text-sky-600 dark:text-sky-400" />;
+      case "Target":
+        return <Target className="w-4 h-4 text-rose-600 dark:text-rose-400" />;
+      default:
+        return <Code2 className="w-4 h-4 text-zinc-600 dark:text-zinc-400" />;
     }
   };
 
   return (
-    <section id="problem-solving" className="py-24 relative z-10 border-t border-black/[0.08] dark:border-white/[0.06]">
+    <section
+      id="problem-solving"
+      className="py-24 relative z-10 border-t border-black/[0.08] dark:border-white/[0.06]"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
         {/* Editorial Section Header */}
-        <motion.div 
+        <motion.div
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
@@ -43,7 +52,8 @@ export default function ProblemSolving() {
             </h2>
           </div>
           <p className="text-xs sm:text-sm font-mono text-zinc-600 dark:text-zinc-400 max-w-md">
-            Mathematical abstractions, asymptotic bounds, and competitive coding in modern C++.
+            Mathematical abstractions, asymptotic bounds, and competitive coding
+            in modern C++.
           </p>
         </motion.div>
 
@@ -57,7 +67,7 @@ export default function ProblemSolving() {
               whileInView="visible"
               viewport={VIEW}
               custom={0.1 + idx * 0.08}
-              whileHover={{ y: -3, borderColor: 'rgba(245,158,11,0.4)' }}
+              whileHover={{ y: -3, borderColor: "rgba(245,158,11,0.4)" }}
               className="p-5 rounded-xl bg-white dark:bg-[#12141a] border border-black/[0.08] dark:border-white/[0.06] transition-all flex flex-col justify-between group shadow-sm dark:shadow-lg"
             >
               <div>
@@ -76,7 +86,7 @@ export default function ProblemSolving() {
         </div>
 
         {/* Algorithmic Methodology Workflow */}
-        <motion.div 
+        <motion.div
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
@@ -90,8 +100,8 @@ export default function ProblemSolving() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {problemSolvingData.approachSteps.map((step, idx) => (
-              <motion.div 
-                key={step.step} 
+              <motion.div
+                key={step.step}
                 initial={{ opacity: 0, x: -10 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={VIEW}
@@ -113,7 +123,7 @@ export default function ProblemSolving() {
         </motion.div>
 
         {/* Coding Platform Profiles / Placeholders */}
-        <motion.div 
+        <motion.div
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
@@ -159,7 +169,6 @@ export default function ProblemSolving() {
             ))}
           </div>
         </motion.div>
-
       </div>
     </section>
   );

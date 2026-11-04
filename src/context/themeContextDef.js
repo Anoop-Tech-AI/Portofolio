@@ -1,8 +1,7 @@
-import { createContext } from 'react';
+import { createContext } from "react";
 
 export const ThemeContext = createContext({
-  theme: 'light',
+  theme: "light",
   toggleTheme: () => {},
   setTheme: () => {},
 });
-

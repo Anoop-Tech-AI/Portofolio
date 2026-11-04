@@ -1,24 +1,24 @@
-import { useState } from 'react';
-import { 
-  Mail, 
-  MapPin, 
-  Send, 
-  Check, 
-  Copy, 
-  AlertCircle, 
-  ExternalLink
-} from 'lucide-react';
-import { motion } from 'motion/react';
-import { GithubIcon, LinkedinIcon } from './Icons';
-import { personalInfo } from '../data/portfolioData';
-import { fadeUp, slideLeft, VIEW } from '../hooks/useAnimations';
+import { useState } from "react";
+import {
+  Mail,
+  MapPin,
+  Send,
+  Check,
+  Copy,
+  AlertCircle,
+  ExternalLink,
+} from "lucide-react";
+import { motion } from "motion/react";
+import { GithubIcon, LinkedinIcon } from "./Icons";
+import { personalInfo } from "../data/portfolioData";
+import { fadeUp, slideLeft, VIEW } from "../hooks/useAnimations";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
   });
 
   const [errors, setErrors] = useState({});
@@ -28,25 +28,25 @@ export default function Contact() {
   const validate = () => {
     const errs = {};
     if (!formData.name.trim()) {
-      errs.name = 'Name is required';
+      errs.name = "Name is required";
     } else if (formData.name.trim().length < 2) {
-      errs.name = 'Name must be at least 2 characters';
+      errs.name = "Name must be at least 2 characters";
     }
 
     if (!formData.email.trim()) {
-      errs.email = 'Email is required';
+      errs.email = "Email is required";
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())) {
-      errs.email = 'Please provide a valid email address';
+      errs.email = "Please provide a valid email address";
     }
 
     if (!formData.subject.trim()) {
-      errs.subject = 'Subject is required';
+      errs.subject = "Subject is required";
     }
 
     if (!formData.message.trim()) {
-      errs.message = 'Message is required';
+      errs.message = "Message is required";
     } else if (formData.message.trim().length < 10) {
-      errs.message = 'Message must be at least 10 characters long';
+      errs.message = "Message must be at least 10 characters long";
     }
 
     setErrors(errs);
@@ -58,9 +58,11 @@ export default function Contact() {
     if (!validate()) return;
 
     // Direct mailto generation with encoded parameters
-    const subjectEncoded = encodeURIComponent(`[Portfolio Inquiry] ${formData.subject}`);
+    const subjectEncoded = encodeURIComponent(
+      `[Portfolio Inquiry] ${formData.subject}`,
+    );
     const bodyEncoded = encodeURIComponent(
-      `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+      `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`,
     );
     const mailtoUrl = `mailto:${personalInfo.email}?subject=${subjectEncoded}&body=${bodyEncoded}`;
 
@@ -69,9 +71,10 @@ export default function Contact() {
 
     // Honest status notification without pretending background delivery happened
     setStatusNotification({
-      type: 'info',
-      title: 'Email Client Opened & Draft Prepared',
-      description: 'Your validated message has been loaded into your default email client. (Direct backend forwarding can be activated via Formspree or EmailJS).'
+      type: "info",
+      title: "Email Client Opened & Draft Prepared",
+      description:
+        "Your validated message has been loaded into your default email client. (Direct backend forwarding can be activated via Formspree or EmailJS).",
     });
   };
 
@@ -82,11 +85,13 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-24 relative z-10 border-t border-black/[0.08] dark:border-white/[0.06]">
+    <section
+      id="contact"
+      className="py-24 relative z-10 border-t border-black/[0.08] dark:border-white/[0.06]"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
         {/* Editorial Section Header */}
-        <motion.div 
+        <motion.div
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
@@ -102,14 +107,14 @@ export default function Contact() {
             </h2>
           </div>
           <p className="text-xs sm:text-sm font-mono text-zinc-600 dark:text-zinc-400 max-w-md">
-            Open for software engineering internships, technical collaborations, and intelligent system discussions.
+            Open for software engineering internships, technical collaborations,
+            and intelligent system discussions.
           </p>
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
-          
           {/* Contact Details & Socials */}
-          <motion.div 
+          <motion.div
             variants={slideLeft}
             initial="hidden"
             whileInView="visible"
@@ -121,7 +126,7 @@ export default function Contact() {
               <h3 className="text-base font-bold text-zinc-900 dark:text-white tracking-tight font-mono uppercase">
                 Contact Coordinates
               </h3>
-              
+
               <div className="space-y-4">
                 {/* Email Item with copy */}
                 <div className="p-4 rounded-xl bg-zinc-50 dark:bg-[#0e1015] border border-black/[0.06] dark:border-white/[0.06]">
@@ -140,7 +145,9 @@ export default function Contact() {
                       {copiedEmail ? (
                         <>
                           <Check className="w-3 h-3 text-emerald-600 dark:text-emerald-400" />
-                          <span className="text-emerald-600 dark:text-emerald-400 font-semibold">Copied</span>
+                          <span className="text-emerald-600 dark:text-emerald-400 font-semibold">
+                            Copied
+                          </span>
                         </>
                       ) : (
                         <>
@@ -180,7 +187,10 @@ export default function Contact() {
                 </h4>
                 <div className="grid grid-cols-2 gap-3">
                   <motion.a
-                    whileHover={{ scale: 1.02, borderColor: 'rgba(217,119,6,0.5)' }}
+                    whileHover={{
+                      scale: 1.02,
+                      borderColor: "rgba(217,119,6,0.5)",
+                    }}
                     whileTap={{ scale: 0.98 }}
                     href={personalInfo.socials.github}
                     target="_blank"
@@ -189,13 +199,18 @@ export default function Contact() {
                   >
                     <div className="flex items-center space-x-2">
                       <GithubIcon className="w-4 h-4 text-zinc-700 dark:text-zinc-300" />
-                      <span className="text-xs font-mono text-zinc-800 dark:text-zinc-200">GitHub</span>
+                      <span className="text-xs font-mono text-zinc-800 dark:text-zinc-200">
+                        GitHub
+                      </span>
                     </div>
                     <ExternalLink className="w-3 h-3 text-zinc-400 group-hover:text-amber-600 dark:group-hover:text-amber-400" />
                   </motion.a>
 
                   <motion.a
-                    whileHover={{ scale: 1.02, borderColor: 'rgba(56,189,248,0.5)' }}
+                    whileHover={{
+                      scale: 1.02,
+                      borderColor: "rgba(56,189,248,0.5)",
+                    }}
                     whileTap={{ scale: 0.98 }}
                     href={personalInfo.socials.linkedin}
                     target="_blank"
@@ -204,18 +219,19 @@ export default function Contact() {
                   >
                     <div className="flex items-center space-x-2">
                       <LinkedinIcon className="w-4 h-4 text-sky-600 dark:text-sky-400" />
-                      <span className="text-xs font-mono text-zinc-800 dark:text-zinc-200">LinkedIn</span>
+                      <span className="text-xs font-mono text-zinc-800 dark:text-zinc-200">
+                        LinkedIn
+                      </span>
                     </div>
                     <ExternalLink className="w-3 h-3 text-zinc-400 group-hover:text-sky-600 dark:group-hover:text-sky-400" />
                   </motion.a>
                 </div>
               </div>
-
             </div>
           </motion.div>
 
           {/* Contact Form with Validation */}
-          <motion.div 
+          <motion.div
             variants={fadeUp}
             initial="hidden"
             whileInView="visible"
@@ -224,7 +240,6 @@ export default function Contact() {
             className="lg:col-span-7"
           >
             <div className="p-6 sm:p-7 rounded-xl bg-white dark:bg-[#12141a] border border-black/[0.08] dark:border-white/[0.06] shadow-sm dark:shadow-xl relative">
-              
               <div className="mb-6">
                 <h3 className="text-base font-bold text-zinc-900 dark:text-white tracking-tight font-mono uppercase">
                   Transmit Message
@@ -235,15 +250,19 @@ export default function Contact() {
               </div>
 
               {statusNotification && (
-                <motion.div 
+                <motion.div
                   initial={{ opacity: 0, y: -6 }}
                   animate={{ opacity: 1, y: 0 }}
                   className="p-4 mb-6 rounded-lg bg-amber-500/10 border border-amber-500/30 text-xs flex items-start space-x-3"
                 >
                   <AlertCircle className="w-4 h-4 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
                   <div>
-                    <h5 className="font-semibold text-amber-800 dark:text-amber-300 font-mono">{statusNotification.title}</h5>
-                    <p className="text-zinc-700 dark:text-zinc-300 mt-0.5 leading-relaxed">{statusNotification.description}</p>
+                    <h5 className="font-semibold text-amber-800 dark:text-amber-300 font-mono">
+                      {statusNotification.title}
+                    </h5>
+                    <p className="text-zinc-700 dark:text-zinc-300 mt-0.5 leading-relaxed">
+                      {statusNotification.description}
+                    </p>
                   </div>
                 </motion.div>
               )}
@@ -253,7 +272,10 @@ export default function Contact() {
                   {/* Name */}
                   <div>
                     <label className="block text-xs font-mono text-zinc-600 dark:text-zinc-400 mb-1.5 font-medium">
-                      Your Name <span className="text-amber-600 dark:text-amber-400">*</span>
+                      Your Name{" "}
+                      <span className="text-amber-600 dark:text-amber-400">
+                        *
+                      </span>
                     </label>
                     <input
                       type="text"
@@ -264,18 +286,25 @@ export default function Contact() {
                       }}
                       placeholder="e.g. Linus Torvalds"
                       className={`w-full px-3.5 py-2.5 rounded-lg bg-zinc-50 dark:bg-[#0e1015] border text-xs font-mono text-zinc-900 dark:text-white placeholder-zinc-400 dark:placeholder-zinc-600 focus:outline-none transition-colors ${
-                        errors.name ? 'border-red-500 focus:border-red-500' : 'border-black/[0.1] dark:border-white/[0.08] focus:border-amber-500'
+                        errors.name
+                          ? "border-red-500 focus:border-red-500"
+                          : "border-black/[0.1] dark:border-white/[0.08] focus:border-amber-500"
                       }`}
                     />
                     {errors.name && (
-                      <p className="text-[11px] font-mono text-red-500 mt-1">{errors.name}</p>
+                      <p className="text-[11px] font-mono text-red-500 mt-1">
+                        {errors.name}
+                      </p>
                     )}
                   </div>
 
                   {/* Email */}
                   <div>
                     <label className="block text-xs font-mono text-zinc-600 dark:text-zinc-400 mb-1.5 font-medium">
-                      Your Email <span className="text-amber-600 dark:text-amber-400">*</span>
+                      Your Email{" "}
+                      <span className="text-amber-600 dark:text-amber-400">
+                        *
+                      </span>
                     </label>
                     <input
                       type="email"
@@ -286,11 +315,15 @@ export default function Contact() {
                       }}
                       placeholder="e.g. linus@example.com"
                       className={`w-full px-3.5 py-2.5 rounded-lg bg-zinc-50 dark:bg-[#0e1015] border text-xs font-mono text-zinc-900 dark:text-white placeholder-zinc-400 dark:placeholder-zinc-600 focus:outline-none transition-colors ${
-                        errors.email ? 'border-red-500 focus:border-red-500' : 'border-black/[0.1] dark:border-white/[0.08] focus:border-amber-500'
+                        errors.email
+                          ? "border-red-500 focus:border-red-500"
+                          : "border-black/[0.1] dark:border-white/[0.08] focus:border-amber-500"
                       }`}
                     />
                     {errors.email && (
-                      <p className="text-[11px] font-mono text-red-500 mt-1">{errors.email}</p>
+                      <p className="text-[11px] font-mono text-red-500 mt-1">
+                        {errors.email}
+                      </p>
                     )}
                   </div>
                 </div>
@@ -298,44 +331,60 @@ export default function Contact() {
                 {/* Subject */}
                 <div>
                   <label className="block text-xs font-mono text-zinc-600 dark:text-zinc-400 mb-1.5 font-medium">
-                    Subject <span className="text-amber-600 dark:text-amber-400">*</span>
+                    Subject{" "}
+                    <span className="text-amber-600 dark:text-amber-400">
+                      *
+                    </span>
                   </label>
                   <input
                     type="text"
                     value={formData.subject}
                     onChange={(e) => {
                       setFormData({ ...formData, subject: e.target.value });
-                      if (errors.subject) setErrors({ ...errors, subject: null });
+                      if (errors.subject)
+                        setErrors({ ...errors, subject: null });
                     }}
                     placeholder="Internship Opportunity / System Architecture Discussion"
                     className={`w-full px-3.5 py-2.5 rounded-lg bg-zinc-50 dark:bg-[#0e1015] border text-xs font-mono text-zinc-900 dark:text-white placeholder-zinc-400 dark:placeholder-zinc-600 focus:outline-none transition-colors ${
-                      errors.subject ? 'border-red-500 focus:border-red-500' : 'border-black/[0.1] dark:border-white/[0.08] focus:border-amber-500'
+                      errors.subject
+                        ? "border-red-500 focus:border-red-500"
+                        : "border-black/[0.1] dark:border-white/[0.08] focus:border-amber-500"
                     }`}
                   />
                   {errors.subject && (
-                    <p className="text-[11px] font-mono text-red-500 mt-1">{errors.subject}</p>
+                    <p className="text-[11px] font-mono text-red-500 mt-1">
+                      {errors.subject}
+                    </p>
                   )}
                 </div>
 
                 {/* Message */}
                 <div>
                   <label className="block text-xs font-mono text-zinc-600 dark:text-zinc-400 mb-1.5 font-medium">
-                    Message <span className="text-amber-600 dark:text-amber-400">*</span>
+                    Message{" "}
+                    <span className="text-amber-600 dark:text-amber-400">
+                      *
+                    </span>
                   </label>
                   <textarea
                     rows={4}
                     value={formData.message}
                     onChange={(e) => {
                       setFormData({ ...formData, message: e.target.value });
-                      if (errors.message) setErrors({ ...errors, message: null });
+                      if (errors.message)
+                        setErrors({ ...errors, message: null });
                     }}
                     placeholder="Enter message text (min. 10 characters)..."
                     className={`w-full px-3.5 py-2.5 rounded-lg bg-zinc-50 dark:bg-[#0e1015] border text-xs font-mono text-zinc-900 dark:text-white placeholder-zinc-400 dark:placeholder-zinc-600 focus:outline-none transition-colors resize-none ${
-                      errors.message ? 'border-red-500 focus:border-red-500' : 'border-black/[0.1] dark:border-white/[0.08] focus:border-amber-500'
+                      errors.message
+                        ? "border-red-500 focus:border-red-500"
+                        : "border-black/[0.1] dark:border-white/[0.08] focus:border-amber-500"
                     }`}
                   />
                   {errors.message && (
-                    <p className="text-[11px] font-mono text-red-500 mt-1">{errors.message}</p>
+                    <p className="text-[11px] font-mono text-red-500 mt-1">
+                      {errors.message}
+                    </p>
                   )}
                 </div>
 
@@ -350,12 +399,9 @@ export default function Contact() {
                   <span>Send Message via Email Client</span>
                 </motion.button>
               </form>
-
             </div>
           </motion.div>
-
         </div>
-
       </div>
     </section>
   );

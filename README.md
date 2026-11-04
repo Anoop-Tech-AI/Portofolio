@@ -11,9 +11,9 @@ Built with **React**, **Vite**, **Tailwind CSS**, and **Lucide Icons** following
 - **Aesthetic & Theme:** Sophisticated dark charcoal background (`#090a0f`) with subtle grid textures, ambient radial glow accents, and glassmorphic card panels.
 - **Hero Section:**
   - Name: **ANOOP** with developer monogram.
-  - Main Heading: *"Building Intelligent Solutions Through Code."*
+  - Main Heading: _"Building Intelligent Solutions Through Code."_
   - Bio & Focus: Highlighting Software Development, Artificial Intelligence & Machine Learning, Full-Stack Development, and Data Structures & Algorithms.
-  - Quick CTAs: *Explore My Work*, *Download Resume* (modal & direct PDF download), and *Contact Me*.
+  - Quick CTAs: _Explore My Work_, _Download Resume_ (modal & direct PDF download), and _Contact Me_.
 - **About Me:**
   - Complete narrative on academic journey at KMIT Hyderabad, deep technological curiosity, and dedication to first-principles thinking.
   - Core philosophy cards: First-Principles Understanding, Intelligent & Scalable Systems, and Continuous Exploration.
@@ -40,7 +40,7 @@ Built with **React**, **Vite**, **Tailwind CSS**, and **Lucide Icons** following
 - **Currently Exploring:**
   - Active study tracks in Advanced AI Systems, Agentic AI, Large Language Models, RAG, Full-Stack, and Advanced DSA.
 - **Contact Section:**
-  - Heading: *"Have an interesting idea? Let's build something."*
+  - Heading: _"Have an interesting idea? Let's build something."_
   - Verified contact form with client-side validation for name, email, subject, and message.
   - Honest submission architecture: pre-formats and initiates message in user's default email client without falsely claiming backend transmission.
   - One-click email copy button with feedback toast.

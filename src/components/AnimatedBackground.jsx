@@ -1,11 +1,14 @@
-import { motion } from 'motion/react';
-import { useReducedMotion } from '../hooks/useAnimations';
+import { motion } from "motion/react";
+import { useReducedMotion } from "../hooks/useAnimations";
 
 export default function AnimatedBackground() {
   const shouldReduceMotion = useReducedMotion();
 
   return (
-    <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden" aria-hidden="true">
+    <div
+      className="fixed inset-0 pointer-events-none z-0 overflow-hidden"
+      aria-hidden="true"
+    >
       {/* 1. Subtle moving editorial grid */}
       <div className="absolute inset-0 bg-editorial-grid opacity-75 dark:opacity-50" />
 
@@ -23,7 +26,7 @@ export default function AnimatedBackground() {
             transition={{
               duration: 22,
               repeat: Infinity,
-              ease: 'easeInOut',
+              ease: "easeInOut",
             }}
           />
 
@@ -38,7 +41,7 @@ export default function AnimatedBackground() {
             transition={{
               duration: 26,
               repeat: Infinity,
-              ease: 'easeInOut',
+              ease: "easeInOut",
             }}
           />
 
@@ -52,7 +55,7 @@ export default function AnimatedBackground() {
             transition={{
               duration: 30,
               repeat: Infinity,
-              ease: 'easeInOut',
+              ease: "easeInOut",
             }}
           />
         </>
