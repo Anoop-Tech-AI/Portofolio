@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, FileText, Terminal } from 'lucide-react';
+import { Menu, X, FileText, Terminal, Sun, Moon } from 'lucide-react';
 import { motion } from 'motion/react';
+import { useTheme } from '../hooks/useTheme';
 
 const NAV_LINKS = [
   { num: '01', name: 'About', href: '#about' },
@@ -15,6 +16,7 @@ export default function Navbar({ onOpenResume }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('hero');
+  const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -44,7 +46,7 @@ export default function Navbar({ onOpenResume }) {
     <header 
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
         isScrolled 
-          ? 'bg-[#0c0d10]/90 backdrop-blur-md border-b border-white/[0.08] shadow-[0_4px_24px_rgba(0,0,0,0.5)] py-3' 
+          ? 'bg-[#F8F8F5]/90 dark:bg-[#0c0d10]/90 backdrop-blur-md border-b border-black/[0.08] dark:border-white/[0.08] shadow-[0_4px_24px_rgba(0,0,0,0.06)] dark:shadow-[0_4px_24px_rgba(0,0,0,0.5)] py-3' 
           : 'bg-transparent py-5'
       }`}
     >
@@ -56,20 +58,20 @@ export default function Navbar({ onOpenResume }) {
             href="#" 
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
-            className="group flex items-center space-x-2.5 text-white focus:outline-none"
+            className="group flex items-center space-x-2.5 text-zinc-900 dark:text-white focus:outline-none"
             aria-label="Anoop Home"
           >
-            <div className="w-8 h-8 rounded-lg bg-[#14161d] border border-white/[0.1] group-hover:border-amber-400/60 flex items-center justify-center text-amber-400 transition-colors">
+            <div className="w-8 h-8 rounded-lg bg-amber-500/10 dark:bg-[#14161d] border border-amber-500/30 dark:border-white/[0.1] group-hover:border-amber-500/70 flex items-center justify-center text-amber-600 dark:text-amber-400 transition-colors">
               <Terminal className="w-4 h-4" />
             </div>
             <div className="flex items-center text-sm sm:text-base tracking-wider font-mono">
-              <span className="font-extrabold text-white">ANOOP</span>
+              <span className="font-extrabold text-zinc-900 dark:text-white">ANOOP</span>
               <span className="text-zinc-500 text-xs ml-1">//dev</span>
             </div>
           </motion.a>
 
           {/* Desktop Nav Links with animated layoutId indicator */}
-          <nav className="hidden lg:flex items-center space-x-1 bg-[#12141a]/85 border border-white/[0.07] px-3.5 py-1.5 rounded-full backdrop-blur-md">
+          <nav className="hidden lg:flex items-center space-x-1 bg-white/80 dark:bg-[#12141a]/85 border border-black/[0.08] dark:border-white/[0.07] px-3.5 py-1.5 rounded-full backdrop-blur-md shadow-sm">
             {NAV_LINKS.map((link) => {
               const isActive = activeSection === link.href.substring(1);
               return (
@@ -78,8 +80,8 @@ export default function Navbar({ onOpenResume }) {
                   href={link.href}
                   className={`relative px-3 py-1 text-xs font-mono rounded-full transition-colors duration-150 flex items-center space-x-1 ${
                     isActive 
-                      ? 'text-amber-300 font-semibold' 
-                      : 'text-zinc-400 hover:text-zinc-100 hover:bg-white/[0.04]'
+                      ? 'text-amber-700 dark:text-amber-300 font-semibold' 
+                      : 'text-zinc-600 hover:text-zinc-900 hover:bg-black/[0.03] dark:text-zinc-400 dark:hover:text-zinc-100 dark:hover:bg-white/[0.04]'
                   }`}
                 >
                   {isActive && (
@@ -89,25 +91,44 @@ export default function Navbar({ onOpenResume }) {
                       transition={{ type: 'spring', stiffness: 400, damping: 32 }}
                     />
                   )}
-                  <span className="text-[10px] text-zinc-500">{link.num}.</span>
+                  <span className="text-[10px] text-zinc-400 dark:text-zinc-500">{link.num}.</span>
                   <span>{link.name}</span>
                 </a>
               );
             })}
           </nav>
 
-          {/* Right Action Buttons with microinteractions */}
-          <div className="hidden sm:flex items-center space-x-3">
+          {/* Right Action Buttons with Theme Switcher & Microinteractions */}
+          <div className="hidden sm:flex items-center space-x-2.5">
+            
+            {/* Theme Switcher Button */}
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.92 }}
+              onClick={toggleTheme}
+              aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+              title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+              className="p-2 rounded-lg bg-zinc-100 hover:bg-zinc-200 dark:bg-[#14161f] dark:hover:bg-[#1b1e2a] text-zinc-700 dark:text-zinc-300 border border-black/[0.08] dark:border-white/[0.08] transition-colors cursor-pointer"
+            >
+              {theme === 'dark' ? (
+                <Sun className="w-4 h-4 text-amber-400 transition-transform hover:rotate-45" />
+              ) : (
+                <Moon className="w-4 h-4 text-zinc-700 transition-transform hover:-rotate-12" />
+              )}
+            </motion.button>
+
+            {/* Resume Button */}
             <motion.button
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
               onClick={onOpenResume}
-              className="inline-flex items-center space-x-1.5 px-3.5 py-1.5 text-xs font-mono rounded-lg text-zinc-300 bg-[#12141a] hover:text-white hover:bg-[#181a23] border border-white/[0.08] hover:border-white/[0.16] transition-all cursor-pointer"
+              className="inline-flex items-center space-x-1.5 px-3.5 py-1.5 text-xs font-mono rounded-lg text-zinc-700 dark:text-zinc-300 bg-zinc-100 hover:bg-zinc-200 dark:bg-[#12141a] dark:hover:bg-[#181a23] border border-black/[0.08] dark:border-white/[0.08] hover:border-black/[0.16] dark:hover:border-white/[0.16] transition-all cursor-pointer"
             >
-              <FileText className="w-3.5 h-3.5 text-amber-400" />
+              <FileText className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />
               <span>Resume</span>
             </motion.button>
 
+            {/* Contact CTA Button */}
             <motion.a
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
@@ -118,21 +139,35 @@ export default function Navbar({ onOpenResume }) {
             </motion.a>
           </div>
 
-          {/* Mobile Hamburger Button */}
+          {/* Mobile Hamburger & Controls */}
           <div className="lg:hidden flex items-center space-x-2">
+            {/* Mobile Theme Toggle */}
+            <button
+              onClick={toggleTheme}
+              className="p-2 rounded-lg bg-zinc-100 dark:bg-[#14161e] border border-black/[0.08] dark:border-white/[0.08] text-zinc-700 dark:text-zinc-300 text-xs flex items-center"
+              aria-label="Toggle theme"
+            >
+              {theme === 'dark' ? (
+                <Sun className="w-4 h-4 text-amber-400" />
+              ) : (
+                <Moon className="w-4 h-4 text-zinc-700" />
+              )}
+            </button>
+
             <button
               onClick={onOpenResume}
-              className="p-2 text-zinc-300 hover:text-white rounded-lg bg-[#14161e] border border-white/[0.08] text-xs flex items-center gap-1 font-mono"
+              className="p-2 text-zinc-700 dark:text-zinc-300 rounded-lg bg-zinc-100 dark:bg-[#14161e] border border-black/[0.08] dark:border-white/[0.08] text-xs flex items-center gap-1 font-mono"
               aria-label="View Resume"
             >
-              <FileText className="w-3.5 h-3.5 text-amber-400" />
+              <FileText className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />
             </button>
+
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-lg text-zinc-400 hover:text-white hover:bg-zinc-900 border border-white/[0.08] focus:outline-none"
+              className="p-2 rounded-lg text-zinc-700 dark:text-zinc-400 hover:bg-black/[0.05] dark:hover:bg-zinc-900 border border-black/[0.08] dark:border-white/[0.08] focus:outline-none"
               aria-label="Toggle navigation menu"
             >
-              {mobileMenuOpen ? <X className="w-5 h-5 text-amber-400" /> : <Menu className="w-5 h-5" />}
+              {mobileMenuOpen ? <X className="w-5 h-5 text-amber-500" /> : <Menu className="w-5 h-5" />}
             </button>
           </div>
         </div>
@@ -140,7 +175,7 @@ export default function Navbar({ onOpenResume }) {
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="lg:hidden mt-2 mx-4 p-4 rounded-xl bg-[#0f1117] border border-white/[0.1] backdrop-blur-xl shadow-2xl transition-all animate-fadeIn">
+        <div className="lg:hidden mt-2 mx-4 p-4 rounded-xl bg-white/95 dark:bg-[#0f1117]/95 border border-black/[0.08] dark:border-white/[0.1] backdrop-blur-xl shadow-2xl transition-all animate-fadeIn">
           <nav className="flex flex-col space-y-1 font-mono text-xs">
             {NAV_LINKS.map((link) => {
               const isActive = activeSection === link.href.substring(1);
@@ -151,33 +186,33 @@ export default function Navbar({ onOpenResume }) {
                   onClick={() => setMobileMenuOpen(false)}
                   className={`px-3 py-2.5 rounded-lg transition-colors flex items-center justify-between ${
                     isActive 
-                      ? 'text-amber-300 bg-amber-500/15 font-semibold' 
-                      : 'text-zinc-400 hover:text-zinc-100 hover:bg-white/[0.04]'
+                      ? 'text-amber-700 dark:text-amber-300 bg-amber-500/15 font-semibold' 
+                      : 'text-zinc-600 hover:text-zinc-900 hover:bg-black/[0.04] dark:text-zinc-400 dark:hover:text-zinc-100 dark:hover:bg-white/[0.04]'
                   }`}
                 >
                   <span className="flex items-center space-x-2">
-                    <span className="text-zinc-600">{link.num}.</span>
+                    <span className="text-zinc-400 dark:text-zinc-600">{link.num}.</span>
                     <span>{link.name}</span>
                   </span>
-                  {isActive && <div className="w-1.5 h-1.5 rounded-full bg-amber-400" />}
+                  {isActive && <div className="w-1.5 h-1.5 rounded-full bg-amber-500" />}
                 </a>
               );
             })}
-            <div className="pt-3 mt-2 border-t border-white/[0.06] flex flex-col gap-2">
+            <div className="pt-3 mt-2 border-t border-black/[0.06] dark:border-white/[0.06] flex flex-col gap-2">
               <button
                 onClick={() => {
                   setMobileMenuOpen(false);
                   onOpenResume();
                 }}
-                className="w-full flex items-center justify-center space-x-2 py-2 text-xs font-mono text-zinc-200 bg-[#151722] border border-white/[0.08] rounded-lg"
+                className="w-full flex items-center justify-center space-x-2 py-2 text-xs font-mono text-zinc-800 dark:text-zinc-200 bg-zinc-100 dark:bg-[#151722] border border-black/[0.08] dark:border-white/[0.08] rounded-lg cursor-pointer"
               >
-                <FileText className="w-3.5 h-3.5 text-amber-400" />
+                <FileText className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />
                 <span>View Resume</span>
               </button>
               <a
                 href="#contact"
                 onClick={() => setMobileMenuOpen(false)}
-                className="w-full text-center py-2 text-xs font-mono uppercase tracking-wider font-bold rounded-lg bg-amber-500 text-black shadow-md"
+                className="w-full text-center py-2 text-xs font-mono uppercase tracking-wider font-bold rounded-lg bg-amber-500 text-black shadow-md cursor-pointer"
               >
                 Contact Me
               </a>

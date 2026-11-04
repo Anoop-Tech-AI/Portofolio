@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" class="dark">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/code-icon.svg" />
@@ -7,7 +7,21 @@
     <meta name="description" content="Anoop — Computer Science & Engineering student at KMIT Hyderabad. Aspiring Software Engineer & AI Engineer passionate about intelligent systems, full-stack development, and algorithmic problem solving." />
     <meta name="keywords" content="Anoop, Portfolio, Software Engineer, AI Engineer, Computer Science, KMIT, Machine Learning, RAG, React, Node.js, Python, Developer" />
     <meta name="author" content="Anoop" />
-    <meta name="theme-color" content="#0c0d10" />
+    <meta name="theme-color" content="#F8F8F5" />
+
+    <!-- Script to prevent flash of wrong theme -->
+    <script>
+      (function() {
+        try {
+          var stored = localStorage.getItem('anoop_theme');
+          if (stored === 'dark') {
+            document.documentElement.classList.add('dark');
+          } else {
+            document.documentElement.classList.remove('dark');
+          }
+        } catch (e) {}
+      })();
+    </script>
     
     <!-- Open Graph / Meta -->
     <meta property="og:type" content="website" />
@@ -21,7 +35,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   </head>
-  <body class="bg-[#090a0f] text-zinc-100 min-h-screen">
+  <body class="min-h-screen transition-colors duration-300">
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
