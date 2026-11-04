@@ -13,7 +13,6 @@ import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import BackToTop from "./components/BackToTop";
 import ResumeModal from "./components/ResumeModal";
-import MiniByteAssistant from "./components/byte/MiniByteAssistant";
 
 export default function App() {
   const [isResumeOpen, setIsResumeOpen] = useState(false);
@@ -37,7 +36,6 @@ export default function App() {
 
       <Footer />
       <BackToTop />
-      <MiniByteAssistant />
 
       <ResumeModal
         isOpen={isResumeOpen}
