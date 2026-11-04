@@ -146,10 +146,41 @@ code, .font-mono, pre {
   animation: duckWaddle 0.45s ease-in-out infinite;
 }
 
+/* ─── Large BYTE articulated walk cycle keyframes ─── */
+@keyframes duckFootLeft {
+  0%, 100% { transform: rotate(-15deg) translateY(-4px); }
+  50% { transform: rotate(14deg) translateY(3px); }
+}
+
+@keyframes duckFootRight {
+  0%, 100% { transform: rotate(14deg) translateY(3px); }
+  50% { transform: rotate(-15deg) translateY(-4px); }
+}
+
+.animate-duck-foot-left {
+  animation: duckFootLeft 0.45s ease-in-out infinite;
+}
+
+.animate-duck-foot-right {
+  animation: duckFootRight 0.45s ease-in-out infinite;
+}
+
+@keyframes duckWingSwing {
+  0%, 100% { transform: rotate(-14deg); }
+  50% { transform: rotate(18deg); }
+}
+
+.animate-duck-wing-swing {
+  animation: duckWingSwing 0.45s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .animate-mascot-wave,
   .animate-mascot-idle,
-  .animate-duck-waddle {
+  .animate-duck-waddle,
+  .animate-duck-foot-left,
+  .animate-duck-foot-right,
+  .animate-duck-wing-swing {
     animation: none !important;
   }
 }
