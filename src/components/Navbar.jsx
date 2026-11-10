@@ -51,7 +51,7 @@ export default function Navbar({ onOpenResume }) {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
           ? "bg-[#F8F8F5]/90 dark:bg-[#0c0d10]/90 backdrop-blur-md border-b border-black/[0.08] dark:border-white/[0.08] shadow-[0_4px_24px_rgba(0,0,0,0.06)] dark:shadow-[0_4px_24px_rgba(0,0,0,0.5)] py-3"
           : "bg-transparent py-5"
