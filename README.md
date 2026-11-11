@@ -28,7 +28,6 @@ Built with **React**, **Vite**, **Tailwind CSS**, and **Lucide Icons** following
   - Zero arbitrary percentages; cleanly presented tags and categories.
 - **Featured Projects:**
   - **RetailMind-AI:** Agentic Retail Recommendation System with Memory, RAG (BGE-M3, ChromaDB/FAISS), Amazon Reviews Dataset, and interactive multi-step pipeline breakdown.
-  - **MedSafe AI:** AI-based clinical document processing and drug-drug interaction detection using Python, FastAPI, and React.
   - **Student Management System:** Complete Node.js / Express / MongoDB / Mongoose RESTful CRUD application.
   - **DevOps & CI/CD Practice:** Automated containerization and orchestration workflows with Jenkins, Docker, Kubernetes, and Maven.
   - Clear differentiation between **Completed Projects** and **Under Development** initiatives.

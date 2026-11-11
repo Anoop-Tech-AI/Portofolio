@@ -100,7 +100,7 @@ export const developmentTimeline = [
     title: "Intelligent Systems, RAG & Agentic AI",
     tagline: "Pioneering Context-Aware Software",
     description:
-      "Ventured deeply into modern AI architectures. Architecting RetailMind-AI using LangGraph, BGE-M3 embeddings, and ChromaDB vector search; prototyping MedSafe AI with FastAPI and document extraction.",
+      "Ventured deeply into modern AI architectures. Architecting RetailMind-AI using LangGraph, BGE-M3 embeddings, and ChromaDB vector search for multi-agent retrieval-augmented generation.",
     status: "Active Exploration",
     skillsGained: [
       "Python",
@@ -135,7 +135,7 @@ export const skillCategories = [
       "Core languages for high-performance systems, algorithms, and backend scripting",
     activelyUsed: ["Java", "Python", "C++", "JavaScript"],
     exploring: [],
-    relatedProjects: ["retailmind-ai", "medsafe-ai"],
+    relatedProjects: ["retailmind-ai"],
   },
   {
     id: "web",
@@ -152,7 +152,7 @@ export const skillCategories = [
       "CSS",
     ],
     exploring: [],
-    relatedProjects: ["medsafe-ai"],
+    relatedProjects: [],
   },
   {
     id: "ai-ml",
@@ -168,7 +168,7 @@ export const skillCategories = [
       "RAG",
     ],
     exploring: ["Agentic AI", "TensorFlow", "Keras", "ANN"],
-    relatedProjects: ["retailmind-ai", "medsafe-ai"],
+    relatedProjects: ["retailmind-ai"],
   },
   {
     id: "databases",
@@ -271,70 +271,6 @@ export const projectsData = [
       "text-amber-700 bg-amber-500/10 border-amber-500/30 dark:text-amber-300",
     themeAccent: "amber",
     githubPlaceholder: "https://github.com/placeholder-anoop/RetailMind-AI",
-  },
-  {
-    id: "medsafe-ai",
-    title: "MedSafe AI",
-    subtitle:
-      "AI-Based Detection of Medication Errors and Dangerous Drug Interactions",
-    tagline: "Healthcare Intelligence • Clinical Document Analysis",
-    shortDescription:
-      "A clinical safety tool built with FastAPI and React that parses raw prescription records, extracts pharmacological entities, and screens against drug-drug conflict matrices.",
-    problemStatement:
-      "Adverse drug events and misread prescription dosages represent critical healthcare risks worldwide. Clinicians and patients lack fast, accessible automated tools to cross-reference multi-drug regimens against verified interaction matrices.",
-    solution:
-      "Engineered a clinical safety tool that processes raw clinical and prescription records, extracts pharmacological entities (drug names, dosages, frequencies), normalizes data into structured JSON, and flags dangerous pharmacological conflicts.",
-    architecture: [
-      {
-        step: "01",
-        name: "Prescription Ingestion",
-        desc: "Accepts raw prescription text, doctor notes, or parsed digital medical records.",
-      },
-      {
-        step: "02",
-        name: "Document Parsing & NER",
-        desc: "Custom medical entity recognition extracting active drug substances, dosages, and regimens.",
-      },
-      {
-        step: "03",
-        name: "JSON Normalization",
-        desc: "Maps extracted entities to canonical pharmaceutical standards (RxNorm / FDA database identifiers).",
-      },
-      {
-        step: "04",
-        name: "Conflict Engine",
-        desc: "Evaluates multi-drug combinations against pharmacological interaction matrices and contraindication rules.",
-      },
-      {
-        step: "05",
-        name: "Clinical Alerts",
-        desc: "Ranks conflicting medication pairs by severity (High / Moderate / Low) and renders reactive warnings.",
-      },
-    ],
-    contribution:
-      "Developed the FastAPI asynchronous backend for medical text processing, structured JSON schema validation, and the responsive React clinical alert interface.",
-    implementationDetails:
-      "Designed a clean FastAPI service with Pydantic validation schemas. Document parsing standardizes variations in drug brand names to generic pharmaceutical compounds before rule-matrix lookup.",
-    challenges:
-      "Accurately handling compound names with spelling typos and varying dosage formats (e.g., '500mg BID' vs '0.5g twice daily'); addressed through regex normalization rules and canonical dictionary matching.",
-    futureImprovements:
-      "Integrating BioBERT / ClinicalBERT for enhanced named entity recognition and adding patient allergy profile cross-referencing.",
-    technologies: [
-      "Python",
-      "FastAPI",
-      "React",
-      "Vite",
-      "Document Processing",
-      "AI/ML",
-      "JSON",
-    ],
-    status: "Under Development",
-    statusType: "in-progress",
-    category: "Healthcare AI & Full-Stack",
-    badgeColor:
-      "text-sky-700 bg-sky-500/10 border-sky-500/30 dark:text-sky-300",
-    themeAccent: "sky",
-    githubPlaceholder: "https://github.com/placeholder-anoop/MedSafe-AI",
   },
 ];
 

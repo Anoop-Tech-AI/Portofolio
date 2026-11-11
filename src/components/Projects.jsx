@@ -4,8 +4,6 @@ import {
   CheckCircle2,
   Clock,
   Cpu,
-  Activity,
-  Layers,
   Search,
   Database,
   Brain,
@@ -92,7 +90,6 @@ export default function Projects() {
   const [activeStageIndex, setActiveStageIndex] = useState(0);
 
   const retailMind = projectsData.find((p) => p.id === "retailmind-ai");
-  const medSafe = projectsData.find((p) => p.id === "medsafe-ai");
 
   const currentStage = RETAIL_STAGES[activeStageIndex];
   const CurrentStageIcon = currentStage.icon;
@@ -165,9 +162,9 @@ export default function Projects() {
                   <div className="flex items-center gap-2.5">
                     <button
                       onClick={() => setSelectedProject(retailMind)}
-                      className="px-4 py-2 text-xs font-mono font-semibold rounded-lg bg-amber-500 hover:bg-amber-400 text-black shadow-sm transition-all flex items-center gap-1.5 cursor-pointer"
+                      className="px-5 py-2 text-xs font-mono font-bold rounded-full bg-amber-500 hover:bg-amber-400 text-black shadow-sm transition-all flex items-center gap-1.5 cursor-pointer hover:-translate-y-0.5 hover:shadow-md"
                     >
-                      <span>Explore Project</span>
+                      <span>Explore &amp; Playground</span>
                       <ArrowUpRight className="w-3.5 h-3.5" />
                     </button>
                     {retailMind.githubPlaceholder && (
@@ -264,102 +261,6 @@ export default function Projects() {
                     <span
                       key={t}
                       className="px-3 py-1 text-xs font-mono rounded-full bg-zinc-100 dark:bg-[#151722] text-zinc-800 dark:text-zinc-300 border border-black/[0.06] dark:border-white/[0.06] transition-all hover:-translate-y-0.5 hover:border-amber-500/40 hover:shadow-xs"
-                    >
-                      {t}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
-          )}
-
-          {medSafe && (
-            <motion.div
-              id={`project-${medSafe.id}`}
-              variants={fadeUp}
-              initial="hidden"
-              whileInView="visible"
-              viewport={VIEW}
-              className="relative rounded-3xl bg-white dark:bg-[#12151f] border border-sky-500/30 dark:border-sky-500/20 overflow-hidden shadow-sm dark:shadow-xl p-7 sm:p-10 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-sky-500/50"
-            >
-              <div className="space-y-5">
-                
-                <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-5 border-b border-black/[0.06] dark:border-white/[0.06]">
-                  <div>
-                    <div className="flex items-center gap-2 mb-2">
-                      <span className="text-[11px] font-mono px-2.5 py-0.5 rounded-full bg-sky-500/10 text-sky-700 dark:text-sky-300 border border-sky-500/30 flex items-center gap-1 font-semibold">
-                        <Activity className="w-3 h-3 text-sky-600 dark:text-sky-400" />
-                        HEALTHCARE AI
-                      </span>
-                      <span className="text-[11px] font-mono px-2.5 py-0.5 rounded-full bg-zinc-100 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 border border-black/[0.06] dark:border-zinc-800">
-                        {medSafe.status}
-                      </span>
-                    </div>
-
-                    <h3 className="text-2xl sm:text-3xl font-extrabold text-zinc-900 dark:text-white tracking-tight">
-                      {medSafe.title}
-                    </h3>
-                    <p className="text-xs sm:text-sm text-sky-700 dark:text-sky-300 font-medium mt-0.5">
-                      {medSafe.subtitle}
-                    </p>
-                  </div>
-
-                  <div className="flex items-center gap-2.5">
-                    <button
-                      onClick={() => setSelectedProject(medSafe)}
-                      className="px-4 py-2 text-xs font-mono font-semibold rounded-lg bg-sky-500 hover:bg-sky-400 text-white shadow-sm transition-all flex items-center gap-1.5 cursor-pointer"
-                    >
-                      <span>Explore Project</span>
-                      <ArrowUpRight className="w-3.5 h-3.5" />
-                    </button>
-                    {medSafe.githubPlaceholder && (
-                      <a
-                        href={medSafe.githubPlaceholder}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="p-2.5 rounded-lg bg-zinc-100 hover:bg-zinc-200 dark:bg-[#161a27] text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white border border-black/[0.08] dark:border-white/[0.08]"
-                        title="GitHub Repository"
-                      >
-                        <GithubIcon className="w-4 h-4" />
-                      </a>
-                    )}
-                  </div>
-                </div>
-
-                <p className="text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed max-w-3xl">
-                  {medSafe.shortDescription}
-                </p>
-
-                <div className="p-3.5 rounded-xl bg-zinc-50 dark:bg-[#0e111a] border border-black/[0.06] dark:border-white/[0.06] text-xs">
-                  <span className="text-xs font-mono text-sky-700 dark:text-sky-400 uppercase tracking-wider block mb-2 font-bold flex items-center gap-1.5">
-                    <Layers className="w-3.5 h-3.5" />
-                    Clinical Safety Pipeline
-                  </span>
-                  <div className="grid grid-cols-2 sm:grid-cols-5 gap-2.5">
-                    {medSafe.architecture.map((n) => (
-                      <div
-                        key={n.step}
-                        className="p-3 rounded-2xl bg-white dark:bg-[#141724] border border-black/[0.06] dark:border-white/[0.04] transition-all duration-200 hover:-translate-y-1 hover:shadow-sm"
-                      >
-                        <span className="w-5 h-5 rounded-full bg-sky-500/15 border border-sky-500/30 flex items-center justify-center text-[10px] font-mono text-sky-700 dark:text-sky-300 font-bold mb-1">
-                          {n.step}
-                        </span>
-                        <span className="font-semibold text-zinc-900 dark:text-zinc-200 block text-[11px] truncate">
-                          {n.name}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="pt-2 border-t border-black/[0.06] dark:border-white/[0.06] flex flex-wrap items-center gap-1.5">
-                  <span className="text-[11px] font-mono uppercase tracking-wider text-zinc-500 mr-2 font-semibold">
-                    Tech Stack:
-                  </span>
-                  {medSafe.technologies.map((t) => (
-                    <span
-                      key={t}
-                      className="px-3 py-1 text-xs font-mono rounded-full bg-zinc-100 dark:bg-[#161a27] text-zinc-800 dark:text-zinc-300 border border-black/[0.06] dark:border-white/[0.06] transition-all hover:-translate-y-0.5 hover:border-sky-500/40 hover:shadow-xs"
                     >
                       {t}
                     </span>

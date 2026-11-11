@@ -46,11 +46,11 @@ const PRESET_COMMANDS = {
         type: "success",
       },
       {
-        text: "c72ad44  MedSafe AI: FastAPI prescription NER extraction endpoints",
+        text: "7d0e3a1  RetailMind-AI: benchmark hybrid BM25 and dense vector rankers",
         type: "muted",
       },
       {
-        text: "8f1d90e  MedSafe AI: React alert dashboard + JSON normalization",
+        text: "1a82f45  algorithms: optimize graph traversal & dynamic programming suite",
         type: "muted",
       },
     ],
@@ -62,12 +62,8 @@ const PRESET_COMMANDS = {
         text: "drwx  RetailMind-AI/       [flagship] agentic RAG · LangGraph · BGE-M3",
         type: "accent",
       },
-      {
-        text: "drwx  MedSafe-AI/          [healthcare] clinical NER · FastAPI · React",
-        type: "accent",
-      },
       { text: "", type: "break" },
-      { text: "2 engineering repositories cataloged", type: "muted" },
+      { text: "1 engineering repository cataloged", type: "muted" },
     ],
   },
   echo: {
