@@ -9,7 +9,7 @@ export default function CurrentlyExploring() {
       className="py-20 relative z-10 border-t border-black/[0.08] dark:border-white/[0.06] bg-transparent dark:bg-[#090a0d]"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
+        
         <motion.div
           variants={fadeUp}
           initial="hidden"
@@ -31,7 +31,6 @@ export default function CurrentlyExploring() {
           </p>
         </motion.div>
 
-        {/* Exploring Cards Grid with Staggered Entrance */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {currentlyExploring.map((item, idx) => (
             <motion.div

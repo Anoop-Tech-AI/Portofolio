@@ -1,9 +1,3 @@
-/**
- * Swarm Rebuild - Environment and Viewport Geometry Detector
- * Tribute to Joel Califa (https://califa.github.io/swarm-site/)
- * Adapted from Dhvanil Patel (https://github.com/DhvanilPatel/swarm-cursors)
- */
-
 import { pageBackground } from "../capture/pageBg.js";
 
 export function detectEnv() {
@@ -78,4 +72,3 @@ export function detectEnv() {
 
   return env;
 }
-

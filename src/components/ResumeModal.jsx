@@ -10,12 +10,11 @@ import {
 import { motion, AnimatePresence } from "motion/react";
 
 export default function ResumeModal({ isOpen, onClose }) {
-  const [fileStatus, setFileStatus] = useState("checking"); // 'available' | 'missing' | 'checking'
+  const [fileStatus, setFileStatus] = useState("checking"); 
 
   useEffect(() => {
     if (!isOpen) return;
 
-    // Check if public/resume.pdf exists via HEAD request
     let isMounted = true;
     fetch("/resume.pdf", { method: "HEAD" })
       .then((res) => {
@@ -51,10 +50,9 @@ export default function ResumeModal({ isOpen, onClose }) {
           className="relative w-full max-w-lg bg-white dark:bg-[#12141c] border border-black/[0.08] dark:border-white/[0.08] rounded-2xl shadow-2xl p-6 sm:p-8 text-zinc-900 dark:text-zinc-100 overflow-hidden"
           onClick={(e) => e.stopPropagation()}
         >
-          {/* Ambient subtle glow */}
+          
           <div className="absolute -top-16 -right-16 w-36 h-36 bg-amber-500/[0.08] dark:bg-amber-500/[0.05] rounded-full blur-2xl pointer-events-none" />
 
-          {/* Modal Header */}
           <div className="flex items-center justify-between pb-4 border-b border-black/[0.06] dark:border-white/[0.06]">
             <div className="flex items-center space-x-3">
               <div className="p-2.5 rounded-lg bg-amber-500/15 text-amber-700 dark:text-amber-400 border border-amber-500/30">

@@ -1,9 +1,3 @@
-/**
- * Swarm Rebuild - Shadow DOM Component Styles (High-DPI & Polish)
- * Tribute to Joel Califa (https://califa.github.io/swarm-site/)
- * Adapted from Dhvanil Patel (https://github.com/DhvanilPatel/swarm-cursors)
- */
-
 export const STYLE = `
 :host{all:initial}
 *{box-sizing:border-box}

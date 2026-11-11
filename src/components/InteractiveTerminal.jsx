@@ -249,14 +249,13 @@ export default function InteractiveTerminal() {
           type: "success",
         },
         {
-          text: "  Action:       Scroll to #contact or use the mascot!",
+          text: "  Action:       Scroll to #contact or click 'GET IN TOUCH' above",
           type: "primary",
         },
       ]);
       return;
     }
 
-    // Default unrecognized
     setCustomHistory([
       { text: `bash: command not found: ${cmd}`, type: "muted" },
       {
@@ -275,7 +274,7 @@ export default function InteractiveTerminal() {
 
   return (
     <div className="w-full max-w-xl mx-auto lg:max-w-none rounded-xl overflow-hidden border border-black/[0.08] dark:border-white/[0.08] bg-white dark:bg-[#0d0e13] shadow-[0_12px_40px_rgba(0,0,0,0.08)] dark:shadow-[0_24px_60px_rgba(0,0,0,0.5)] transition-colors">
-      {/* ── Title Bar ── */}
+      
       <div className="flex items-center justify-between px-4 py-2.5 bg-zinc-100/90 dark:bg-[#13151d] border-b border-black/[0.06] dark:border-white/[0.06]">
         <div className="flex items-center space-x-1.5">
           <span className="w-2.5 h-2.5 rounded-full bg-[#ff5f57]" />
@@ -322,7 +321,6 @@ export default function InteractiveTerminal() {
         </div>
       </div>
 
-      {/* ── Command Tab Bar with Staggered Motion ── */}
       <div className="flex items-center gap-1.5 px-3 py-2 bg-zinc-50 dark:bg-[#0f1118] border-b border-black/[0.06] dark:border-white/[0.04] overflow-x-auto">
         {TABS.map(({ key, label }) => (
           <motion.button
@@ -341,9 +339,8 @@ export default function InteractiveTerminal() {
         ))}
       </div>
 
-      {/* ── Terminal Viewport ── */}
       <div className="p-4 sm:p-5 font-mono text-xs sm:text-[13px] leading-relaxed min-h-[240px] select-text">
-        {/* Prompt line with typewriter and blinking cursor */}
+        
         <div className="flex items-center space-x-1.5 text-zinc-500 dark:text-zinc-400 mb-3 flex-wrap">
           <span className="text-emerald-600 dark:text-emerald-400 font-bold">
             anoop
@@ -365,7 +362,6 @@ export default function InteractiveTerminal() {
           />
         </div>
 
-        {/* Staggered Output lines */}
         <AnimatePresence mode="wait">
           <motion.div
             key={`${activeTab}-${tabTrigger}-${customHistory.length}`}
@@ -407,7 +403,6 @@ export default function InteractiveTerminal() {
           </motion.div>
         </AnimatePresence>
 
-        {/* ── Interactive Command Input Prompt ── */}
         <form
           onSubmit={handleCommandSubmit}
           className="mt-4 pt-3 border-t border-black/[0.05] dark:border-white/[0.05] flex items-center gap-2"
@@ -433,7 +428,6 @@ export default function InteractiveTerminal() {
         </form>
       </div>
 
-      {/* ── Status Bar ── */}
       <div className="flex items-center justify-between px-4 py-2 bg-zinc-100 dark:bg-[#0a0b0e] border-t border-black/[0.06] dark:border-white/[0.04] text-[10px] font-mono text-zinc-600 dark:text-zinc-500">
         <div className="flex items-center space-x-2">
           <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block animate-pulse" />

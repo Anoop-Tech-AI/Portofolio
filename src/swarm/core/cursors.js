@@ -1,9 +1,3 @@
-/**
- * Swarm Rebuild - High-DPI Cursor SVG Shapes and Hotspot Definitions
- * Tribute to Joel Califa (https://califa.github.io/swarm-site/)
- * Adapted from Dhvanil Patel (https://github.com/DhvanilPatel/swarm-cursors)
- */
-
 export const ARROW_D =
   "M4.6 3.9 C4.2 3.1 4.9 2.4 5.7 2.8 L20.6 9.4 C21.5 9.8 21.4 11.1 20.4 11.3 L13.9 12.9 C13.4 13 13 13.4 12.9 13.9 L11.3 20.4 C11.1 21.4 9.8 21.5 9.4 20.6 Z";
 

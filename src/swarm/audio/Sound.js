@@ -1,17 +1,6 @@
-/**
- * Swarm Rebuild - Procedural Web Audio API Synthesizer
- * Tribute to Joel Califa (https://califa.github.io/swarm-site/)
- * Adapted from Dhvanil Patel (https://github.com/DhvanilPatel/swarm-cursors)
- */
-
 import { clamp, rand } from "../core/constants.js";
 
-// A glass piano in E. Every finished piece of the page plays one note of the
-// E major pentatonic, quantized to a soft 16th-note grid, so a busy swarm comes
-// out as a generative melody: big sections low, small things high, pitch rising
-// left to right, panned to where the cursor is. Typing and clicks are quiet
-// paper ticks underneath. All synthesized; no audio files.
-export const PENTA = [0, 2, 4, 7, 9]; // E F# G# B C#
+export const PENTA = [0, 2, 4, 7, 9]; 
 export const E2 = 40;
 export const mtof = (m) => 440 * Math.pow(2, (m - 69) / 12);
 export let soundPref = true;
@@ -28,8 +17,8 @@ export class Sound {
     this.lastKey = new Map();
     this.keyTimes = [];
     this.pressTimes = [];
-    this.ends = []; // when each sounding piano voice dies out
-    this.fakeNow = null; // offline renders drive the clock explicitly
+    this.ends = []; 
+    this.fakeNow = null; 
   }
 
   init(offline) {
@@ -72,7 +61,6 @@ export class Sound {
     return this.fakeNow != null ? this.fakeNow : this.ctx.currentTime;
   }
 
-  // Generated room: decaying stereo noise, darkened as it rings out.
   impulse(secs, decay) {
     const sr = this.ctx.sampleRate;
     const n = Math.floor(sr * secs);
@@ -441,4 +429,3 @@ export class Sound {
     setTimeout(() => ctx.close().catch(() => {}), (after + 0.2) * 1000);
   }
 }
-

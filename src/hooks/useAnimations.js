@@ -1,7 +1,3 @@
-/**
- * useReducedMotion — respects prefers-reduced-motion
- * Returns true when the user has requested less motion.
- */
 import { useEffect, useState } from "react";
 
 export function useReducedMotion() {
@@ -23,10 +19,6 @@ export function useReducedMotion() {
   return reduced;
 }
 
-/**
- * Shared animation variants used across sections.
- * All durations intentionally short for perceived snappiness.
- */
 export const fadeUp = {
   hidden: { opacity: 0, y: 22 },
   visible: (delay = 0) => ({
@@ -60,5 +52,4 @@ export const staggerContainer = {
   },
 };
 
-/** Shared viewport trigger — fires once when 15% of element is visible */
 export const VIEW = { once: true, amount: 0.15 };

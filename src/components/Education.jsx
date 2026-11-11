@@ -14,7 +14,7 @@ export default function Education() {
       className="py-24 relative z-10 bg-[#0c0e14]/40 border-t border-zinc-900"
     >
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
+        
         <div className="flex flex-col items-center text-center mb-16">
           <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-mono uppercase tracking-widest mb-3">
             <GraduationCap className="w-3.5 h-3.5" />
@@ -26,9 +26,8 @@ export default function Education() {
           <div className="w-12 h-1 bg-gradient-to-r from-cyan-400 to-sky-500 rounded-full mt-3" />
         </div>
 
-        {/* Education Highlight Card */}
         <div className="relative p-6 sm:p-10 rounded-2xl bg-[#11131a]/90 border border-zinc-800/90 shadow-2xl backdrop-blur-md overflow-hidden">
-          {/* Subtle Ambient glow */}
+          
           <div className="absolute top-0 right-0 w-72 h-72 bg-cyan-500/5 rounded-full blur-3xl pointer-events-none" />
 
           <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-zinc-800/80">
@@ -61,7 +60,6 @@ export default function Education() {
             </div>
           </div>
 
-          {/* Academic Standing & CGPA status */}
           <div className="py-6 border-b border-zinc-800/80 grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="p-4 rounded-xl bg-zinc-900/60 border border-zinc-800 flex items-start space-x-3">
               <Award className="w-5 h-5 text-amber-400 shrink-0 mt-0.5" />
@@ -96,7 +94,6 @@ export default function Education() {
             </div>
           </div>
 
-          {/* Key Academic Focus Points */}
           <div className="pt-6">
             <h4 className="text-xs font-mono uppercase tracking-widest text-zinc-400 mb-3">
               Academic Pursuits & Coursework Emphasis

@@ -1,9 +1,3 @@
-/**
- * Swarm Rebuild - Shadow DOM View and Multi-Layer Renderer
- * Tribute to Joel Califa (https://califa.github.io/swarm-site/)
- * Adapted from Dhvanil Patel (https://github.com/DhvanilPatel/swarm-cursors)
- */
-
 import { f1, clamp, RULER, RED, BLUE } from "../core/constants.js";
 import { STYLE } from "../core/styles.js";
 import { HOT, cursorSVG, IMG_ICON } from "../core/cursors.js";
@@ -74,7 +68,6 @@ export class View {
       this.bg.style.backgroundRepeat = pb.repeat;
     }
 
-    // Dynamic theme reactivity during swarm execution
     const syncTheme = () => {
       const isDark = document.documentElement.classList.contains("dark");
       this.bg.style.backgroundColor = isDark ? "#0c0d10" : "#F8F8F5";
@@ -408,7 +401,6 @@ export class View {
     let s = "";
     let b = "";
 
-    // Cursor Motion Particle Trails
     for (const c of E.cursors) {
       if (!c.trail || c.trail.length < 2) continue;
       const pts = c.trail.map((p) => `${X(p.x, c.sticky)},${Y(p.y, c.sticky)}`).join(" ");
@@ -601,4 +593,3 @@ export class View {
     this.renderRulers(E);
   }
 }
-

@@ -12,7 +12,6 @@ import { GithubIcon, LinkedinIcon } from "./Icons";
 import { personalInfo } from "../data/portfolioData";
 import InteractiveTerminal from "./InteractiveTerminal";
 
-/* ─── Animation variants ─── */
 const HEADLINE_LINES = [
   { text: "I BUILD SOFTWARE.", color: "text-zinc-900 dark:text-zinc-100" },
   {
@@ -102,16 +101,16 @@ export default function Hero({ onOpenResume }) {
       id="hero"
       className="relative min-h-[92vh] flex items-center justify-center pt-28 pb-16 overflow-hidden"
     >
-      {/* Ambient background glows */}
+      
       <div className="absolute inset-0 bg-editorial-grid opacity-60 dark:opacity-60 pointer-events-none" />
       <div className="absolute top-1/4 right-1/4 w-[480px] h-[320px] bg-amber-500/[0.06] dark:bg-amber-500/[0.05] rounded-full blur-[130px] pointer-events-none animate-pulse-slow" />
       <div className="absolute bottom-1/4 left-10 w-[380px] h-[280px] bg-sky-500/[0.04] dark:bg-sky-500/[0.03] rounded-full blur-[140px] pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
-          {/* ── LEFT COLUMN: High-Impact Personal Identity ── */}
+          
           <div className="lg:col-span-7 space-y-6 text-left">
-            {/* Status Pills */}
+            
             <div className="flex flex-wrap items-center gap-2">
               {[
                 { text: "KMIT, Hyderabad (Class of 2028)", dot: true },
@@ -137,7 +136,6 @@ export default function Hero({ onOpenResume }) {
               ))}
             </div>
 
-            {/* Name & Headline */}
             <div>
               <motion.p
                 initial={{ opacity: 0, y: -8 }}

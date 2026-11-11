@@ -31,10 +31,9 @@ export default function ProjectModal({ project, isOpen, onClose }) {
         className="relative w-full max-w-3xl bg-white dark:bg-[#12141c] border border-black/[0.08] dark:border-white/[0.08] rounded-2xl shadow-2xl p-6 sm:p-8 text-zinc-900 dark:text-zinc-100 max-h-[90vh] overflow-y-auto"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Subtle accent glow */}
+        
         <div className="absolute top-0 right-0 w-48 h-48 bg-amber-500/[0.06] dark:bg-amber-500/[0.04] rounded-full blur-3xl pointer-events-none" />
 
-        {/* Modal Header */}
         <div className="flex items-start justify-between pb-5 border-b border-black/[0.06] dark:border-white/[0.06]">
           <div>
             <div className="flex flex-wrap items-center gap-2 mb-1.5">
@@ -67,9 +66,8 @@ export default function ProjectModal({ project, isOpen, onClose }) {
           </button>
         </div>
 
-        {/* All 8 Progressive Disclosure Specifications */}
         <div className="py-6 space-y-6 text-xs sm:text-sm">
-          {/* 1. Problem Statement */}
+          
           <div>
             <h4 className="text-xs font-mono uppercase tracking-widest text-zinc-500 dark:text-zinc-400 mb-1.5 font-bold flex items-center gap-1.5">
               <span className="text-amber-600 dark:text-amber-400">01.</span>
@@ -80,7 +78,6 @@ export default function ProjectModal({ project, isOpen, onClose }) {
             </p>
           </div>
 
-          {/* 2. Proposed Solution */}
           <div>
             <h4 className="text-xs font-mono uppercase tracking-widest text-zinc-500 dark:text-zinc-400 mb-1.5 font-bold flex items-center gap-1.5">
               <span className="text-amber-600 dark:text-amber-400">02.</span>
@@ -91,7 +88,6 @@ export default function ProjectModal({ project, isOpen, onClose }) {
             </p>
           </div>
 
-          {/* 3. Architecture & Execution Stages */}
           {project.architecture && (
             <div>
               <h4 className="text-xs font-mono uppercase tracking-widest text-zinc-500 dark:text-zinc-400 mb-2 font-bold flex items-center gap-1.5">
@@ -134,7 +130,6 @@ export default function ProjectModal({ project, isOpen, onClose }) {
             </div>
           )}
 
-          {/* 4. Technologies Used */}
           <div>
             <h4 className="text-xs font-mono uppercase tracking-widest text-zinc-500 dark:text-zinc-400 mb-2 font-bold flex items-center gap-1.5">
               <span className="text-amber-600 dark:text-amber-400">04.</span>
@@ -152,7 +147,6 @@ export default function ProjectModal({ project, isOpen, onClose }) {
             </div>
           </div>
 
-          {/* 5. Anoop's Contribution */}
           {project.contribution && (
             <div>
               <h4 className="text-xs font-mono uppercase tracking-widest text-zinc-500 dark:text-zinc-400 mb-1.5 font-bold flex items-center gap-1.5">
@@ -165,7 +159,6 @@ export default function ProjectModal({ project, isOpen, onClose }) {
             </div>
           )}
 
-          {/* 6. Implementation Details */}
           {project.implementationDetails && (
             <div>
               <h4 className="text-xs font-mono uppercase tracking-widest text-zinc-500 dark:text-zinc-400 mb-1.5 font-bold flex items-center gap-1.5">
@@ -178,7 +171,6 @@ export default function ProjectModal({ project, isOpen, onClose }) {
             </div>
           )}
 
-          {/* 7. Challenges & Trade-offs */}
           {project.challenges && (
             <div>
               <h4 className="text-xs font-mono uppercase tracking-widest text-zinc-500 dark:text-zinc-400 mb-1.5 font-bold flex items-center gap-1.5">
@@ -191,7 +183,6 @@ export default function ProjectModal({ project, isOpen, onClose }) {
             </div>
           )}
 
-          {/* 8. Future Improvements */}
           {project.futureImprovements && (
             <div>
               <h4 className="text-xs font-mono uppercase tracking-widest text-zinc-500 dark:text-zinc-400 mb-1.5 font-bold flex items-center gap-1.5">
@@ -204,7 +195,6 @@ export default function ProjectModal({ project, isOpen, onClose }) {
             </div>
           )}
 
-          {/* Repository & Development Status */}
           <div className="pt-2 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs font-mono">
             <div className="flex items-center space-x-2 text-zinc-500">
               {project.statusType === "completed" ? (
@@ -232,7 +222,6 @@ export default function ProjectModal({ project, isOpen, onClose }) {
           </div>
         </div>
 
-        {/* Modal Footer */}
         <div className="pt-4 border-t border-black/[0.06] dark:border-white/[0.06] flex justify-end">
           <button
             onClick={onClose}

@@ -1,6 +1,3 @@
-// Portfolio Data Configuration for Anoop
-// Authentic developer identity, milestones, skills, and projects
-
 export const personalInfo = {
   name: "ANOOP",
   firstName: "Anoop",
@@ -67,7 +64,6 @@ export const educationData = {
   ],
 };
 
-// Personal Developer Journey Timeline (Authentic milestones)
 export const developmentTimeline = [
   {
     year: "2024",
@@ -131,13 +127,6 @@ export const developmentTimeline = [
   },
 ];
 
-// The 6 Skill Groups as explicitly organized in Section 10:
-// 1. PROGRAMMING: Java, Python, C++, JavaScript
-// 2. WEB: HTML, CSS, React, Node.js, Express.js, REST APIs
-// 3. AI/ML: Machine Learning, Deep Learning, ANN, TensorFlow, Keras, NLP, Sentiment Analysis, RAG, Agentic AI
-// 4. DATABASES: SQL, MongoDB, MongoDB Atlas
-// 5. TOOLS: Git, GitHub, Docker, Kubernetes, Jenkins, Linux, Jupyter Notebook, FastAPI
-// 6. CORE CS: DSA, Algorithms, DBMS, Computer Networks, Software Engineering, OOP
 export const skillCategories = [
   {
     id: "programming",
@@ -219,7 +208,6 @@ export const skillCategories = [
   },
 ];
 
-// Projects Data with Complete 8-Point Detail Specs
 export const projectsData = [
   {
     id: "retailmind-ai",

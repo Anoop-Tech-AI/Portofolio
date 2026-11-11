@@ -9,7 +9,7 @@ export default function Timeline() {
       className="py-24 relative z-10 border-t border-black/[0.08] dark:border-white/[0.06] bg-transparent dark:bg-[#0a0b0e]"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Editorial Section Header */}
+        
         <motion.div
           variants={fadeUp}
           initial="hidden"
@@ -19,7 +19,7 @@ export default function Timeline() {
         >
           <div>
             <span className="text-xs font-mono uppercase tracking-widest text-amber-700 dark:text-amber-400 font-bold block mb-1">
-              02 // CHRONOLOGICAL MILESTONES
+              02 
             </span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-zinc-900 dark:text-white tracking-tight">
               My Development Journey
@@ -31,9 +31,8 @@ export default function Timeline() {
           </p>
         </motion.div>
 
-        {/* Timeline Stream */}
         <div className="relative">
-          {/* Vertical spine line with scaleY entrance */}
+          
           <motion.div
             initial={{ scaleY: 0 }}
             whileInView={{ scaleY: 1 }}
@@ -54,7 +53,7 @@ export default function Timeline() {
                     isEven ? "sm:flex-row-reverse" : ""
                   }`}
                 >
-                  {/* Central Node Icon with pop scale */}
+                  
                   <motion.div
                     initial={{ scale: 0, opacity: 0 }}
                     whileInView={{ scale: 1, opacity: 1 }}
@@ -69,7 +68,6 @@ export default function Timeline() {
                     <span className="w-2.5 h-2.5 rounded-full bg-amber-500" />
                   </motion.div>
 
-                  {/* Content Card with staggered entrance */}
                   <motion.div
                     initial={{ opacity: 0, x: isEven ? 28 : -28 }}
                     whileInView={{ opacity: 1, x: 0 }}
@@ -88,7 +86,7 @@ export default function Timeline() {
                       }}
                       className="p-6 rounded-xl bg-white dark:bg-[#12141a] border border-black/[0.08] dark:border-white/[0.06] transition-all duration-300 shadow-sm dark:shadow-xl group"
                     >
-                      {/* Meta header */}
+                      
                       <div className="flex items-center justify-between gap-2 mb-2 pb-2 border-b border-black/[0.06] dark:border-white/[0.04]">
                         <span className="text-xs font-mono font-bold text-amber-800 dark:text-amber-400 px-2 py-0.5 rounded bg-amber-500/10 border border-amber-500/30">
                           {item.year}
@@ -98,7 +96,6 @@ export default function Timeline() {
                         </span>
                       </div>
 
-                      {/* Title & Tagline */}
                       <h3 className="text-base sm:text-lg font-bold text-zinc-900 dark:text-white group-hover:text-amber-700 dark:group-hover:text-amber-300 transition-colors tracking-tight">
                         {item.title}
                       </h3>
@@ -106,12 +103,10 @@ export default function Timeline() {
                         {item.tagline}
                       </p>
 
-                      {/* Description */}
                       <p className="text-xs sm:text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed mb-4">
                         {item.description}
                       </p>
 
-                      {/* Gained Skills / Focus Pills */}
                       <div className="flex flex-wrap gap-1.5 pt-2 border-t border-black/[0.06] dark:border-white/[0.04]">
                         {item.skillsGained.map((skill) => (
                           <motion.span
@@ -126,7 +121,6 @@ export default function Timeline() {
                     </motion.div>
                   </motion.div>
 
-                  {/* Empty counterpart spacer for symmetry */}
                   <div className="hidden sm:block sm:w-1/2" />
                 </div>
               );

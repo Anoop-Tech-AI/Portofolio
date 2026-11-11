@@ -59,7 +59,7 @@ export default function Navbar({ onOpenResume }) {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
-          {/* Logo / Monogram */}
+          
           <motion.a
             href="#"
             whileHover={{ scale: 1.02 }}
@@ -74,11 +74,10 @@ export default function Navbar({ onOpenResume }) {
               <span className="font-extrabold text-zinc-900 dark:text-white">
                 ANOOP
               </span>
-              <span className="text-zinc-500 text-xs ml-1">//dev</span>
+              <span className="text-zinc-500 text-xs ml-1">{"//dev"}</span>
             </div>
           </motion.a>
 
-          {/* Desktop Nav Links with animated layoutId indicator */}
           <nav className="hidden lg:flex items-center space-x-1 bg-white/80 dark:bg-[#12141a]/85 border border-black/[0.08] dark:border-white/[0.07] px-3.5 py-1.5 rounded-full backdrop-blur-md shadow-sm">
             {NAV_LINKS.map((link) => {
               const isActive = activeSection === link.href.substring(1);
@@ -112,9 +111,8 @@ export default function Navbar({ onOpenResume }) {
             })}
           </nav>
 
-          {/* Right Action Buttons with Theme Switcher & Microinteractions */}
           <div className="hidden sm:flex items-center space-x-2.5">
-            {/* Theme Switcher Button */}
+            
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.92 }}
@@ -130,7 +128,6 @@ export default function Navbar({ onOpenResume }) {
               )}
             </motion.button>
 
-            {/* Resume Button */}
             <motion.button
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
@@ -141,7 +138,6 @@ export default function Navbar({ onOpenResume }) {
               <span>Resume</span>
             </motion.button>
 
-            {/* Contact CTA Button */}
             <motion.a
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
@@ -152,9 +148,8 @@ export default function Navbar({ onOpenResume }) {
             </motion.a>
           </div>
 
-          {/* Mobile Hamburger & Controls */}
           <div className="lg:hidden flex items-center space-x-2">
-            {/* Mobile Theme Toggle */}
+            
             <button
               onClick={toggleTheme}
               className="p-2 rounded-lg bg-zinc-100 dark:bg-[#14161e] border border-black/[0.08] dark:border-white/[0.08] text-zinc-700 dark:text-zinc-300 text-xs flex items-center"
@@ -190,7 +185,6 @@ export default function Navbar({ onOpenResume }) {
         </div>
       </div>
 
-      {/* Mobile Drawer */}
       {mobileMenuOpen && (
         <div className="lg:hidden mt-2 mx-4 p-4 rounded-xl bg-white/95 dark:bg-[#0f1117]/95 border border-black/[0.08] dark:border-white/[0.1] backdrop-blur-xl shadow-2xl transition-all animate-fadeIn">
           <nav className="flex flex-col space-y-1 font-mono text-xs">

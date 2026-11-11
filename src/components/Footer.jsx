@@ -14,7 +14,7 @@ export default function Footer() {
     <footer className="py-12 relative z-10 bg-zinc-100/80 dark:bg-[#07080a] border-t border-black/[0.08] dark:border-white/[0.06] text-zinc-600 dark:text-zinc-400">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
-          {/* Brand & Credit */}
+          
           <div className="flex flex-col items-center sm:items-start space-y-1 text-center sm:text-left">
             <p className="text-sm font-medium text-zinc-800 dark:text-zinc-200 font-mono">
               Designed &amp; Built by{" "}

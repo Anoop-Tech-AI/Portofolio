@@ -1,4 +1,3 @@
-/** @type {import('tailwindcss').Config} */
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   darkMode: "class",
@@ -20,7 +19,7 @@ export default {
           dim: "#5e616d",
         },
         accent: {
-          DEFAULT: "#f59e0b", // Editorial Amber
+          DEFAULT: "#f59e0b", 
           amber: "#f59e0b",
           orange: "#ea580c",
           sky: "#38bdf8",

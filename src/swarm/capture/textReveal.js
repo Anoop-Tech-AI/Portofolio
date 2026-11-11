@@ -1,9 +1,3 @@
-/**
- * Swarm Rebuild - Typewriter Text Preparation and Reveal Engine
- * Tribute to Joel Califa (https://califa.github.io/swarm-site/)
- * Adapted from Dhvanil Patel (https://github.com/DhvanilPatel/swarm-cursors)
- */
-
 import { boxyStyle } from "./pageBg.js";
 
 export const ATOMIC = new Set([
@@ -103,4 +97,3 @@ export function reveal(it, n) {
   }
   return last;
 }
-

@@ -57,7 +57,6 @@ export default function Contact() {
     e.preventDefault();
     if (!validate()) return;
 
-    // Direct mailto generation with encoded parameters
     const subjectEncoded = encodeURIComponent(
       `[Portfolio Inquiry] ${formData.subject}`,
     );
@@ -66,10 +65,8 @@ export default function Contact() {
     );
     const mailtoUrl = `mailto:${personalInfo.email}?subject=${subjectEncoded}&body=${bodyEncoded}`;
 
-    // Open user's email client
     window.location.href = mailtoUrl;
 
-    // Honest status notification without pretending background delivery happened
     setStatusNotification({
       type: "info",
       title: "Email Client Opened & Draft Prepared",
@@ -90,7 +87,7 @@ export default function Contact() {
       className="py-24 relative z-10 border-t border-black/[0.08] dark:border-white/[0.06]"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Editorial Section Header */}
+        
         <motion.div
           variants={fadeUp}
           initial="hidden"
@@ -100,7 +97,7 @@ export default function Contact() {
         >
           <div>
             <span className="text-xs font-mono uppercase tracking-widest text-amber-700 dark:text-amber-400 font-bold block mb-1">
-              06 // INITIATE COLLABORATION
+              06 
             </span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-zinc-900 dark:text-white tracking-tight">
               Have an interesting idea? Let's build something.

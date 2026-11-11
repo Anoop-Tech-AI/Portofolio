@@ -1,5 +1,3 @@
-// Brand and custom icons for developer profiles
-
 export function GithubIcon({ className = "w-4 h-4" }) {
   return (
     <svg

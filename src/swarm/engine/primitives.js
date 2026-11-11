@@ -1,9 +1,3 @@
-/**
- * Swarm Rebuild - Task Execution Primitives and Motion Generators
- * Tribute to Joel Califa (https://califa.github.io/swarm-site/)
- * Adapted from Dhvanil Patel (https://github.com/DhvanilPatel/swarm-cursors)
- */
-
 import { clamp, easeInOut, easeOut, rand, bump } from "../core/constants.js";
 
 export function* wait(t) {
@@ -588,4 +582,3 @@ export function attachPrimitives(EngineClass) {
     restyle,
   });
 }
-

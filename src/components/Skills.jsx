@@ -93,7 +93,7 @@ export default function Skills() {
       className="py-24 relative z-10 border-t border-black/[0.08] dark:border-white/[0.06]"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Editorial Section Header */}
+        
         <motion.div
           variants={fadeUp}
           initial="hidden"
@@ -103,7 +103,7 @@ export default function Skills() {
         >
           <div>
             <span className="text-xs font-mono uppercase tracking-widest text-amber-700 dark:text-amber-400 font-bold block mb-1">
-              03 // TECHNICAL TOOLING
+              03 
             </span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-zinc-900 dark:text-white tracking-tight">
               Skills & Architecture
@@ -115,9 +115,8 @@ export default function Skills() {
           </p>
         </motion.div>
 
-        {/* Legend & Filter Controls */}
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-8">
-          {/* Category Tabs */}
+          
           <div className="flex flex-wrap items-center gap-1.5 p-1 rounded-xl bg-zinc-100 dark:bg-[#121419] border border-black/[0.08] dark:border-white/[0.06]">
             <motion.button
               whileHover={{ scale: 1.02 }}
@@ -148,7 +147,6 @@ export default function Skills() {
             ))}
           </div>
 
-          {/* Search bar */}
           <div className="relative w-full lg:w-72">
             <Search className="w-4 h-4 text-zinc-400 dark:text-zinc-500 absolute left-3 top-1/2 -translate-y-1/2" />
             <input
@@ -161,7 +159,6 @@ export default function Skills() {
           </div>
         </div>
 
-        {/* Legend indicator bar */}
         <div className="flex flex-wrap items-center gap-4 text-xs font-mono text-zinc-600 dark:text-zinc-400 mb-8 px-1">
           <span className="flex items-center gap-1.5">
             <span className="w-2 h-2 rounded-full bg-emerald-500 inline-block" />
@@ -186,7 +183,6 @@ export default function Skills() {
           )}
         </div>
 
-        {/* Categories Grid (6 Core Domains) */}
         <motion.div
           layout
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
@@ -204,7 +200,7 @@ export default function Skills() {
                 className="p-6 rounded-2xl bg-white dark:bg-[#12141a] border border-black/[0.08] dark:border-white/[0.06] transition-all flex flex-col justify-between group shadow-sm dark:shadow-lg"
               >
                 <div>
-                  {/* Category Header */}
+                  
                   <div className="flex items-center justify-between pb-3 mb-4 border-b border-black/[0.06] dark:border-white/[0.05]">
                     <div className="flex items-center space-x-2.5">
                       <div className="p-2 rounded-lg bg-zinc-100 dark:bg-[#0e1015] border border-black/[0.06] dark:border-white/[0.06]">
@@ -224,7 +220,6 @@ export default function Skills() {
                     </span>
                   </div>
 
-                  {/* Actively Used Technologies */}
                   {cat.activelyUsed.length > 0 && (
                     <div className="mb-4">
                       <span className="text-[10px] font-mono uppercase tracking-wider text-emerald-700 dark:text-emerald-400/90 mb-2 flex items-center gap-1 font-semibold">
@@ -258,7 +253,6 @@ export default function Skills() {
                     </div>
                   )}
 
-                  {/* Exploring Technologies */}
                   {cat.exploring.length > 0 && (
                     <div>
                       <span className="text-[10px] font-mono uppercase tracking-wider text-amber-700 dark:text-amber-400/90 mb-2 flex items-center gap-1 font-semibold">
@@ -297,7 +291,6 @@ export default function Skills() {
           </AnimatePresence>
         </motion.div>
 
-        {/* Skill-to-Project Connection Drawer */}
         <AnimatePresence>
           {activeSkillHighlight && relatedProjectsForSkill.length > 0 && (
             <motion.div

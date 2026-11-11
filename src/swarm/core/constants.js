@@ -1,9 +1,3 @@
-/**
- * Swarm Rebuild - Core Constants and Utility Helpers
- * Tribute to Joel Califa (https://califa.github.io/swarm-site/)
- * Adapted from Dhvanil Patel (https://github.com/DhvanilPatel/swarm-cursors)
- */
-
 export const KEY = "__swarmRebuild";
 
 export const NAMES = [
@@ -28,7 +22,7 @@ export const PALETTES = {
   cyber: CYBER_PALETTE,
 };
 
-export const COLORS = CYBER_PALETTE; // Modern default; switchable via theme
+export const COLORS = CYBER_PALETTE; 
 
 export const BLUE = "#0D99FF";
 export const RED = "#F24822";

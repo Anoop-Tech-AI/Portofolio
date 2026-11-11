@@ -1,9 +1,3 @@
-/**
- * Swarm Rebuild - Core Entry Point for Web Integration
- * Tribute to Joel Califa (https://califa.github.io/swarm-site/)
- * Adapted from Dhvanil Patel (https://github.com/DhvanilPatel/swarm-cursors)
- */
-
 import { KEY } from "./core/constants.js";
 import { App, getLastShot } from "./ui/App.js";
 import { captureModel } from "./capture/captureModel.js";
@@ -59,7 +53,6 @@ export function initSwarm({ autoStart = true } = {}) {
     debug: { captureModel, detectEnv, Sound },
   };
 
-  // Keyboard shortcut: Alt + Shift + S to toggle rebuild
   window.addEventListener("keydown", (e) => {
     if (e.altKey && e.shiftKey && (e.key === "S" || e.key === "s")) {
       e.preventDefault();
@@ -68,7 +61,7 @@ export function initSwarm({ autoStart = true } = {}) {
   });
 
   if (autoStart) {
-    // Give React DOM a brief moment to mount and settle before scanning
+    
     setTimeout(() => {
       if (!app) startSwarm();
     }, 450);

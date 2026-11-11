@@ -107,7 +107,7 @@ export default function Projects() {
       className="py-24 relative z-10 border-t border-black/[0.08] dark:border-white/[0.06] bg-transparent dark:bg-[#0b0c10]"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
+        
         <motion.div
           variants={fadeUp}
           initial="hidden"
@@ -117,7 +117,7 @@ export default function Projects() {
         >
           <div>
             <span className="text-xs font-mono uppercase tracking-widest text-amber-700 dark:text-amber-400 font-bold block mb-1">
-              04 // ENGINEERING PORTFOLIO
+              04 
             </span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-zinc-900 dark:text-white tracking-tight">
               Featured Projects
@@ -131,9 +131,7 @@ export default function Projects() {
         </motion.div>
 
         <div className="space-y-12">
-          {/* ========================================================
-              PROJECT 1: RETAILMIND-AI (FLAGSHIP SHOWCASE)
-             ======================================================== */}
+          
           {retailMind && (
             <motion.div
               id={`project-${retailMind.id}`}
@@ -143,11 +141,11 @@ export default function Projects() {
               viewport={VIEW}
               className="relative rounded-2xl bg-white dark:bg-[#12141c] border border-amber-500/30 dark:border-amber-500/20 overflow-hidden shadow-sm dark:shadow-2xl p-6 sm:p-9 transition-all hover:border-amber-500/50"
             >
-              {/* Subtle ambient light */}
+              
               <div className="absolute top-0 right-0 w-80 h-80 bg-amber-500/[0.05] dark:bg-amber-500/[0.04] rounded-full blur-3xl pointer-events-none" />
 
               <div className="space-y-6">
-                {/* Header & Meta Row */}
+                
                 <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-5 border-b border-black/[0.06] dark:border-white/[0.06]">
                   <div>
                     <div className="flex flex-wrap items-center gap-2 mb-2">
@@ -168,7 +166,6 @@ export default function Projects() {
                     </p>
                   </div>
 
-                  {/* Actions: Explore Project & GitHub */}
                   <div className="flex items-center gap-2.5">
                     <button
                       onClick={() => setSelectedProject(retailMind)}
@@ -191,12 +188,10 @@ export default function Projects() {
                   </div>
                 </div>
 
-                {/* 1-2 Sentence Punchy Description */}
                 <p className="text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed max-w-3xl">
                   {retailMind.shortDescription}
                 </p>
 
-                {/* ── INTERACTIVE ARCHITECTURE EXPLORER ── */}
                 <div className="pt-2">
                   <div className="flex items-center justify-between pb-2 mb-3 border-b border-black/[0.06] dark:border-white/[0.06]">
                     <span className="text-xs font-mono text-amber-700 dark:text-amber-400 font-bold uppercase tracking-wider flex items-center gap-1.5">
@@ -208,7 +203,6 @@ export default function Projects() {
                     </span>
                   </div>
 
-                  {/* Sequential Stage Buttons */}
                   <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 mb-3">
                     {RETAIL_STAGES.map((stg, i) => {
                       const isSelected = activeStageIndex === i;
@@ -237,7 +231,6 @@ export default function Projects() {
                     })}
                   </div>
 
-                  {/* Stage Inspector Card */}
                   <div className="p-4 rounded-xl bg-zinc-50 dark:bg-[#0e1017] border border-black/[0.06] dark:border-white/[0.06] text-xs space-y-2">
                     <div className="flex items-center space-x-2 text-amber-700 dark:text-amber-400 font-mono font-bold">
                       <CurrentStageIcon className="w-4 h-4" />
@@ -267,7 +260,6 @@ export default function Projects() {
                   </div>
                 </div>
 
-                {/* Technology Stack Pills */}
                 <div className="pt-3 border-t border-black/[0.06] dark:border-white/[0.06] flex flex-wrap items-center gap-1.5">
                   <span className="text-[11px] font-mono uppercase tracking-wider text-zinc-500 mr-2 font-semibold">
                     Tech Stack:
@@ -285,9 +277,6 @@ export default function Projects() {
             </motion.div>
           )}
 
-          {/* ========================================================
-              PROJECT 2: MEDSAFE AI (HEALTHCARE CASE STUDY)
-             ======================================================== */}
           {medSafe && (
             <motion.div
               id={`project-${medSafe.id}`}
@@ -298,7 +287,7 @@ export default function Projects() {
               className="relative rounded-2xl bg-white dark:bg-[#12151f] border border-sky-500/30 dark:border-sky-500/20 overflow-hidden shadow-sm dark:shadow-xl p-6 sm:p-9 transition-all hover:border-sky-500/50"
             >
               <div className="space-y-5">
-                {/* Header */}
+                
                 <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-5 border-b border-black/[0.06] dark:border-white/[0.06]">
                   <div>
                     <div className="flex items-center gap-2 mb-2">
@@ -319,7 +308,6 @@ export default function Projects() {
                     </p>
                   </div>
 
-                  {/* Actions */}
                   <div className="flex items-center gap-2.5">
                     <button
                       onClick={() => setSelectedProject(medSafe)}
@@ -342,12 +330,10 @@ export default function Projects() {
                   </div>
                 </div>
 
-                {/* 1-2 Sentence Description */}
                 <p className="text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed max-w-3xl">
                   {medSafe.shortDescription}
                 </p>
 
-                {/* Clinical Pipeline Flow Glance */}
                 <div className="p-3.5 rounded-xl bg-zinc-50 dark:bg-[#0e111a] border border-black/[0.06] dark:border-white/[0.06] text-xs">
                   <span className="text-xs font-mono text-sky-700 dark:text-sky-400 uppercase tracking-wider block mb-2 font-bold flex items-center gap-1.5">
                     <Layers className="w-3.5 h-3.5" />
@@ -370,7 +356,6 @@ export default function Projects() {
                   </div>
                 </div>
 
-                {/* Tech Stack Pills */}
                 <div className="pt-2 border-t border-black/[0.06] dark:border-white/[0.06] flex flex-wrap items-center gap-1.5">
                   <span className="text-[11px] font-mono uppercase tracking-wider text-zinc-500 mr-2 font-semibold">
                     Tech Stack:
@@ -388,11 +373,8 @@ export default function Projects() {
             </motion.div>
           )}
 
-          {/* ========================================================
-              PROJECTS 3 & 4: 2-COLUMN GRID (STUDENT CRUD & DEVOPS)
-             ======================================================== */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {/* Student Management System */}
+            
             {studentCrud && (
               <motion.div
                 id={`project-${studentCrud.id}`}
@@ -422,12 +404,10 @@ export default function Projects() {
                     </p>
                   </div>
 
-                  {/* 1-2 sentence description */}
                   <p className="text-xs sm:text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed">
                     {studentCrud.shortDescription}
                   </p>
 
-                  {/* Tech stack */}
                   <div className="flex flex-wrap gap-1.5 pt-2">
                     {studentCrud.technologies.map((t) => (
                       <span
@@ -440,7 +420,6 @@ export default function Projects() {
                   </div>
                 </div>
 
-                {/* Actions */}
                 <div className="pt-5 mt-4 border-t border-black/[0.06] dark:border-white/[0.06] flex items-center justify-between text-xs font-mono">
                   <button
                     onClick={() => setSelectedProject(studentCrud)}
@@ -464,7 +443,6 @@ export default function Projects() {
               </motion.div>
             )}
 
-            {/* DevOps & CI/CD Practice */}
             {devops && (
               <motion.div
                 id={`project-${devops.id}`}
@@ -494,12 +472,10 @@ export default function Projects() {
                     </p>
                   </div>
 
-                  {/* 1-2 sentence description */}
                   <p className="text-xs sm:text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed">
                     {devops.shortDescription}
                   </p>
 
-                  {/* Tech stack */}
                   <div className="flex flex-wrap gap-1.5 pt-2">
                     {devops.technologies.map((t) => (
                       <span
@@ -512,7 +488,6 @@ export default function Projects() {
                   </div>
                 </div>
 
-                {/* Actions */}
                 <div className="pt-5 mt-4 border-t border-black/[0.06] dark:border-white/[0.06] flex items-center justify-between text-xs font-mono">
                   <button
                     onClick={() => setSelectedProject(devops)}
@@ -539,7 +514,6 @@ export default function Projects() {
         </div>
       </div>
 
-      {/* 8-Point Detailed Project Specifications Modal */}
       <ProjectModal
         project={selectedProject}
         isOpen={!!selectedProject}

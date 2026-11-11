@@ -1,9 +1,3 @@
-/**
- * Swarm Rebuild - Application Controller and Orchestrator
- * Tribute to Joel Califa (https://califa.github.io/swarm-site/)
- * Adapted from Dhvanil Patel (https://github.com/DhvanilPatel/swarm-cursors)
- */
-
 import { sleep, nextFrame, MIN_AGENTS } from "../core/constants.js";
 import { detectEnv } from "../core/env.js";
 import { captureModel } from "../capture/captureModel.js";
@@ -21,8 +15,6 @@ export function setLastShot(shot) {
   lastShot = shot;
 }
 
-// background.js may have hidden everything but media for its screenshot;
-// put the page back once our canvas covers it (or if we bail out early).
 export async function unhidePage() {
   if (!window.__swarmHidden) return;
   window.__swarmHidden = false;
@@ -379,7 +371,6 @@ export class App {
     v.root.querySelector('[data-a="speed"]').hidden = true;
     this.tour = false;
 
-    // Automatically fade out cursors and bottom dock after completion
     setTimeout(() => {
       if (!this.dead) {
         if (this.callbacks.stop) this.callbacks.stop(true);
@@ -427,4 +418,3 @@ export class App {
     }
   }
 }
-

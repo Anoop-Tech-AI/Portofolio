@@ -35,7 +35,7 @@ export default function ProblemSolving() {
       className="py-24 relative z-10 border-t border-black/[0.08] dark:border-white/[0.06]"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Editorial Section Header */}
+        
         <motion.div
           variants={fadeUp}
           initial="hidden"
@@ -45,7 +45,7 @@ export default function ProblemSolving() {
         >
           <div>
             <span className="text-xs font-mono uppercase tracking-widest text-amber-700 dark:text-amber-400 font-bold block mb-1">
-              05 // COMPUTATIONAL RIGOR
+              05 
             </span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-zinc-900 dark:text-white tracking-tight">
               Problem Solving & DSA
@@ -57,7 +57,6 @@ export default function ProblemSolving() {
           </p>
         </motion.div>
 
-        {/* 4 Pillars Grid with Staggered Motion */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
           {problemSolvingData.pillars.map((pillar, idx) => (
             <motion.div
@@ -85,7 +84,6 @@ export default function ProblemSolving() {
           ))}
         </div>
 
-        {/* Algorithmic Methodology Workflow */}
         <motion.div
           variants={fadeUp}
           initial="hidden"
@@ -122,7 +120,6 @@ export default function ProblemSolving() {
           </div>
         </motion.div>
 
-        {/* Coding Platform Profiles / Placeholders */}
         <motion.div
           variants={fadeUp}
           initial="hidden"

@@ -1,9 +1,3 @@
-/**
- * Swarm Rebuild - Page Background and Box Style Detection
- * Tribute to Joel Califa (https://califa.github.io/swarm-site/)
- * Adapted from Dhvanil Patel (https://github.com/DhvanilPatel/swarm-cursors)
- */
-
 import { alphaOf } from "../core/constants.js";
 
 export function boxyStyle(st) {
@@ -47,4 +41,3 @@ export function pageBackground() {
     from: null,
   };
 }
-

@@ -17,7 +17,7 @@ export default function About() {
       className="py-24 relative z-10 border-t border-black/[0.08] dark:border-white/[0.06]"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Editorial Section Header */}
+        
         <motion.div
           variants={fadeUp}
           initial="hidden"
@@ -27,7 +27,7 @@ export default function About() {
         >
           <div>
             <span className="text-xs font-mono uppercase tracking-widest text-amber-700 dark:text-amber-400 font-bold block mb-1">
-              01 // BACKGROUND & PHILOSOPHY
+              01 
             </span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-zinc-900 dark:text-white tracking-tight">
               About Me
@@ -39,9 +39,8 @@ export default function About() {
           </p>
         </motion.div>
 
-        {/* 2-Column Clean Editorial Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-          {/* Main Narrative: Exactly 4 Concise, High-Impact Paragraphs */}
+          
           <motion.div
             variants={fadeUp}
             initial="hidden"
@@ -60,7 +59,6 @@ export default function About() {
               </p>
             ))}
 
-            {/* Core Values Tagline */}
             <div className="pt-3 border-t border-black/[0.06] dark:border-white/[0.06] flex flex-wrap items-center gap-3 text-xs font-mono text-zinc-500">
               <span className="flex items-center gap-1.5 text-amber-700 dark:text-amber-400 font-semibold">
                 <Sparkles className="w-3.5 h-3.5" />
@@ -78,7 +76,6 @@ export default function About() {
             </div>
           </motion.div>
 
-          {/* Academic & Profile Context Card */}
           <motion.div
             variants={slideLeft}
             initial="hidden"
@@ -152,7 +149,6 @@ export default function About() {
               </div>
             </div>
 
-            {/* Developer Rule Card */}
             <div className="p-4 rounded-xl border border-amber-500/30 bg-amber-500/[0.05] dark:bg-amber-500/[0.03] text-xs font-mono space-y-1">
               <p className="text-amber-900 dark:text-amber-300 font-medium italic">
                 "Understanding technologies from first principles rather than

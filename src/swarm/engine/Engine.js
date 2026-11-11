@@ -1,9 +1,3 @@
-/**
- * Swarm Rebuild - Swarm Multi-Agent Engine and Kinematics
- * Tribute to Joel Califa (https://califa.github.io/swarm-site/)
- * Adapted from Dhvanil Patel (https://github.com/DhvanilPatel/swarm-cursors)
- */
-
 import {
   NAMES,
   COLORS,
@@ -572,4 +566,3 @@ export class Engine {
 }
 
 attachPrimitives(Engine);
-

@@ -1,9 +1,3 @@
-/**
- * Swarm Rebuild - DOM Blueprint Snapshot and Task Generator
- * Tribute to Joel Califa (https://califa.github.io/swarm-site/)
- * Adapted from Dhvanil Patel (https://github.com/DhvanilPatel/swarm-cursors)
- */
-
 import {
   MAX_ITEMS,
   MAX_WORLD_H,
@@ -1505,4 +1499,3 @@ export function captureModel(env, shot) {
 
   return { items, tasks, groups, guides, docW, docH, backdrops, portKey };
 }
-
