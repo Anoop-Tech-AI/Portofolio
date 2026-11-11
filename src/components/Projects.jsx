@@ -93,10 +93,6 @@ export default function Projects() {
 
   const retailMind = projectsData.find((p) => p.id === "retailmind-ai");
   const medSafe = projectsData.find((p) => p.id === "medsafe-ai");
-  const studentCrud = projectsData.find(
-    (p) => p.id === "student-management-system",
-  );
-  const devops = projectsData.find((p) => p.id === "devops-cicd-practice");
 
   const currentStage = RETAIL_STAGES[activeStageIndex];
   const CurrentStageIcon = currentStage.icon;
@@ -139,7 +135,7 @@ export default function Projects() {
               initial="hidden"
               whileInView="visible"
               viewport={VIEW}
-              className="relative rounded-2xl bg-white dark:bg-[#12141c] border border-amber-500/30 dark:border-amber-500/20 overflow-hidden shadow-sm dark:shadow-2xl p-6 sm:p-9 transition-all hover:border-amber-500/50"
+              className="relative rounded-3xl bg-white dark:bg-[#12141c] border border-amber-500/30 dark:border-amber-500/20 overflow-hidden shadow-sm dark:shadow-2xl p-7 sm:p-10 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-amber-500/50"
             >
               
               <div className="absolute top-0 right-0 w-80 h-80 bg-amber-500/[0.05] dark:bg-amber-500/[0.04] rounded-full blur-3xl pointer-events-none" />
@@ -203,7 +199,7 @@ export default function Projects() {
                     </span>
                   </div>
 
-                  <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 mb-3">
+                  <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5 mb-3">
                     {RETAIL_STAGES.map((stg, i) => {
                       const isSelected = activeStageIndex === i;
                       const StageIcon = stg.icon;
@@ -211,14 +207,14 @@ export default function Projects() {
                         <button
                           key={stg.step}
                           onClick={() => setActiveStageIndex(i)}
-                          className={`p-2.5 rounded-xl border text-left transition-all cursor-pointer flex flex-col justify-between ${
+                          className={`p-3 rounded-2xl border text-left transition-all duration-200 hover:-translate-y-1 hover:shadow-md cursor-pointer flex flex-col justify-between ${
                             isSelected
-                              ? "bg-amber-500/15 border-amber-500 text-amber-900 dark:text-amber-200 shadow-xs"
+                              ? "bg-amber-500/15 border-amber-500 text-amber-900 dark:text-amber-200 shadow-sm"
                               : "bg-zinc-50 dark:bg-[#13151f] border-black/[0.06] dark:border-white/[0.05] text-zinc-700 dark:text-zinc-300 hover:border-amber-500/40"
                           }`}
                         >
-                          <div className="flex items-center justify-between mb-1.5">
-                            <span className="text-[10px] font-mono font-bold text-amber-700 dark:text-amber-400">
+                          <div className="flex items-center justify-between mb-2">
+                            <span className="w-5 h-5 rounded-full bg-amber-500/15 border border-amber-500/30 flex items-center justify-center text-[10px] font-mono font-bold text-amber-700 dark:text-amber-400">
                               {stg.step}
                             </span>
                             <StageIcon className="w-3.5 h-3.5" />
@@ -267,7 +263,7 @@ export default function Projects() {
                   {retailMind.technologies.map((t) => (
                     <span
                       key={t}
-                      className="px-2.5 py-0.5 text-xs font-mono rounded bg-zinc-100 dark:bg-[#151722] text-zinc-800 dark:text-zinc-300 border border-black/[0.06] dark:border-white/[0.06]"
+                      className="px-3 py-1 text-xs font-mono rounded-full bg-zinc-100 dark:bg-[#151722] text-zinc-800 dark:text-zinc-300 border border-black/[0.06] dark:border-white/[0.06] transition-all hover:-translate-y-0.5 hover:border-amber-500/40 hover:shadow-xs"
                     >
                       {t}
                     </span>
@@ -284,7 +280,7 @@ export default function Projects() {
               initial="hidden"
               whileInView="visible"
               viewport={VIEW}
-              className="relative rounded-2xl bg-white dark:bg-[#12151f] border border-sky-500/30 dark:border-sky-500/20 overflow-hidden shadow-sm dark:shadow-xl p-6 sm:p-9 transition-all hover:border-sky-500/50"
+              className="relative rounded-3xl bg-white dark:bg-[#12151f] border border-sky-500/30 dark:border-sky-500/20 overflow-hidden shadow-sm dark:shadow-xl p-7 sm:p-10 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-sky-500/50"
             >
               <div className="space-y-5">
                 
@@ -339,13 +335,13 @@ export default function Projects() {
                     <Layers className="w-3.5 h-3.5" />
                     Clinical Safety Pipeline
                   </span>
-                  <div className="grid grid-cols-2 sm:grid-cols-5 gap-2">
+                  <div className="grid grid-cols-2 sm:grid-cols-5 gap-2.5">
                     {medSafe.architecture.map((n) => (
                       <div
                         key={n.step}
-                        className="p-2 rounded-lg bg-white dark:bg-[#141724] border border-black/[0.06] dark:border-white/[0.04]"
+                        className="p-3 rounded-2xl bg-white dark:bg-[#141724] border border-black/[0.06] dark:border-white/[0.04] transition-all duration-200 hover:-translate-y-1 hover:shadow-sm"
                       >
-                        <span className="text-[10px] font-mono text-sky-700 dark:text-sky-300 font-bold block">
+                        <span className="w-5 h-5 rounded-full bg-sky-500/15 border border-sky-500/30 flex items-center justify-center text-[10px] font-mono text-sky-700 dark:text-sky-300 font-bold mb-1">
                           {n.step}
                         </span>
                         <span className="font-semibold text-zinc-900 dark:text-zinc-200 block text-[11px] truncate">
@@ -363,7 +359,7 @@ export default function Projects() {
                   {medSafe.technologies.map((t) => (
                     <span
                       key={t}
-                      className="px-2.5 py-0.5 text-xs font-mono rounded bg-zinc-100 dark:bg-[#161a27] text-zinc-800 dark:text-zinc-300 border border-black/[0.06] dark:border-white/[0.06]"
+                      className="px-3 py-1 text-xs font-mono rounded-full bg-zinc-100 dark:bg-[#161a27] text-zinc-800 dark:text-zinc-300 border border-black/[0.06] dark:border-white/[0.06] transition-all hover:-translate-y-0.5 hover:border-sky-500/40 hover:shadow-xs"
                     >
                       {t}
                     </span>
@@ -372,145 +368,6 @@ export default function Projects() {
               </div>
             </motion.div>
           )}
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            
-            {studentCrud && (
-              <motion.div
-                id={`project-${studentCrud.id}`}
-                variants={fadeUp}
-                initial="hidden"
-                whileInView="visible"
-                viewport={VIEW}
-                className="p-6 sm:p-7 rounded-2xl bg-white dark:bg-[#121419] border border-black/[0.08] dark:border-white/[0.06] transition-all flex flex-col justify-between shadow-sm hover:border-emerald-500/40"
-              >
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between pb-3 border-b border-black/[0.06] dark:border-white/[0.06]">
-                    <span className="text-xs font-mono text-zinc-500 dark:text-zinc-400">
-                      {studentCrud.category}
-                    </span>
-                    <span className="text-[11px] font-mono px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-500/20 flex items-center gap-1 font-semibold">
-                      <CheckCircle2 className="w-3 h-3" />
-                      {studentCrud.status}
-                    </span>
-                  </div>
-
-                  <div>
-                    <h3 className="text-xl font-bold text-zinc-900 dark:text-white tracking-tight">
-                      {studentCrud.title}
-                    </h3>
-                    <p className="text-xs font-mono text-emerald-700 dark:text-emerald-400 mt-0.5">
-                      {studentCrud.subtitle}
-                    </p>
-                  </div>
-
-                  <p className="text-xs sm:text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed">
-                    {studentCrud.shortDescription}
-                  </p>
-
-                  <div className="flex flex-wrap gap-1.5 pt-2">
-                    {studentCrud.technologies.map((t) => (
-                      <span
-                        key={t}
-                        className="px-2 py-0.5 text-[11px] font-mono rounded bg-zinc-100 dark:bg-zinc-900 text-zinc-700 dark:text-zinc-400 border border-black/[0.06] dark:border-zinc-800"
-                      >
-                        {t}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="pt-5 mt-4 border-t border-black/[0.06] dark:border-white/[0.06] flex items-center justify-between text-xs font-mono">
-                  <button
-                    onClick={() => setSelectedProject(studentCrud)}
-                    className="text-emerald-700 dark:text-emerald-400 hover:text-emerald-800 dark:hover:text-emerald-300 font-semibold flex items-center gap-1 cursor-pointer"
-                  >
-                    <span>Explore Project</span>
-                    <ArrowUpRight className="w-3.5 h-3.5" />
-                  </button>
-                  {studentCrud.githubPlaceholder && (
-                    <a
-                      href={studentCrud.githubPlaceholder}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-zinc-500 hover:text-zinc-900 dark:hover:text-white"
-                      title="GitHub"
-                    >
-                      <GithubIcon className="w-4 h-4" />
-                    </a>
-                  )}
-                </div>
-              </motion.div>
-            )}
-
-            {devops && (
-              <motion.div
-                id={`project-${devops.id}`}
-                variants={fadeUp}
-                initial="hidden"
-                whileInView="visible"
-                viewport={VIEW}
-                className="p-6 sm:p-7 rounded-2xl bg-white dark:bg-[#121419] border border-black/[0.08] dark:border-white/[0.06] transition-all flex flex-col justify-between shadow-sm hover:border-purple-500/40"
-              >
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between pb-3 border-b border-black/[0.06] dark:border-white/[0.06]">
-                    <span className="text-xs font-mono text-zinc-500 dark:text-zinc-400">
-                      {devops.category}
-                    </span>
-                    <span className="text-[11px] font-mono px-2 py-0.5 rounded-full bg-purple-500/10 text-purple-700 dark:text-purple-400 border border-purple-500/20 flex items-center gap-1 font-semibold">
-                      <Clock className="w-3 h-3" />
-                      {devops.status}
-                    </span>
-                  </div>
-
-                  <div>
-                    <h3 className="text-xl font-bold text-zinc-900 dark:text-white tracking-tight">
-                      {devops.title}
-                    </h3>
-                    <p className="text-xs font-mono text-purple-700 dark:text-purple-400 mt-0.5">
-                      {devops.subtitle}
-                    </p>
-                  </div>
-
-                  <p className="text-xs sm:text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed">
-                    {devops.shortDescription}
-                  </p>
-
-                  <div className="flex flex-wrap gap-1.5 pt-2">
-                    {devops.technologies.map((t) => (
-                      <span
-                        key={t}
-                        className="px-2 py-0.5 text-[11px] font-mono rounded bg-zinc-100 dark:bg-zinc-900 text-zinc-700 dark:text-zinc-400 border border-black/[0.06] dark:border-zinc-800"
-                      >
-                        {t}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="pt-5 mt-4 border-t border-black/[0.06] dark:border-white/[0.06] flex items-center justify-between text-xs font-mono">
-                  <button
-                    onClick={() => setSelectedProject(devops)}
-                    className="text-purple-700 dark:text-purple-400 hover:text-purple-800 dark:hover:text-purple-300 font-semibold flex items-center gap-1 cursor-pointer"
-                  >
-                    <span>Explore Project</span>
-                    <ArrowUpRight className="w-3.5 h-3.5" />
-                  </button>
-                  {devops.githubPlaceholder && (
-                    <a
-                      href={devops.githubPlaceholder}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-zinc-500 hover:text-zinc-900 dark:hover:text-white"
-                      title="GitHub"
-                    >
-                      <GithubIcon className="w-4 h-4" />
-                    </a>
-                  )}
-                </div>
-              </motion.div>
-            )}
-          </div>
         </div>
       </div>
 

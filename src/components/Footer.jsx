@@ -29,7 +29,6 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Social Icons */}
           <div className="flex items-center space-x-3">
             <motion.a
               whileHover={{ scale: 1.08 }}

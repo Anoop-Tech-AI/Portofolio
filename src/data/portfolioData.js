@@ -27,24 +27,23 @@ export const personalInfo = {
   interests: [
     {
       title: "Software Engineering",
-      desc: "Clean architecture, fault-tolerant backends & modular systems",
+      desc: "Full-stack web apps, REST APIs & backend systems",
     },
     {
       title: "Artificial Intelligence",
-      desc: "Agentic workflows, RAG pipelines, BGE-M3 & vector search",
+      desc: "Machine learning, LLMs & intelligent applications",
     },
     {
       title: "Data Structures & Algorithms",
-      desc: "Asymptotic bounds, competitive programming & C++ STL",
+      desc: "Problem solving, core algorithms & C++ programming",
     },
   ],
   bioIntro:
     "I'm a Computer Science and Engineering student passionate about software development, artificial intelligence and solving real-world problems through technology.",
   aboutParagraphs: [
-    "I am an undergraduate Computer Science and Engineering student at Keshav Memorial Institute of Technology (KMIT), Hyderabad, graduating in 2028. My engineering journey centers on building reliable backends, exploring modern AI systems, and sharpening algorithmic problem solving.",
-    "What excites me most about software is understanding what happens beneath the syntax. Rather than treating libraries as black boxes, I focus on first principles — mastering memory management and computational complexity in C++, designing clean RESTful microservices in Node.js and FastAPI, and exploring vector embeddings.",
-    "In Artificial Intelligence, I focus on practical architectures: Retrieval-Augmented Generation (RAG) that grounds LLMs in verified facts, and multi-agent systems using LangGraph to break complex workflows into verifiable autonomous steps.",
-    "My goal is to grow into a disciplined software engineer capable of designing scalable, fault-tolerant systems and context-aware applications that create tangible impact.",
+    "I am an undergraduate Computer Science and Engineering student at Keshav Memorial Institute of Technology (KMIT), Hyderabad, graduating in 2028. I enjoy building web applications, exploring artificial intelligence, and working on data structures and algorithms.",
+    "I like understanding how things work under the hood, writing clean and maintainable code in C++, JavaScript, and Python, and creating practical projects from backend APIs to responsive user interfaces.",
+    "My goal is to continuously learn, sharpen my problem-solving skills, and grow into a skilled software engineer building useful software.",
   ],
 };
 
@@ -136,12 +135,7 @@ export const skillCategories = [
       "Core languages for high-performance systems, algorithms, and backend scripting",
     activelyUsed: ["Java", "Python", "C++", "JavaScript"],
     exploring: [],
-    relatedProjects: [
-      "retailmind-ai",
-      "medsafe-ai",
-      "student-management-system",
-      "devops-cicd-practice",
-    ],
+    relatedProjects: ["retailmind-ai", "medsafe-ai"],
   },
   {
     id: "web",
@@ -158,7 +152,7 @@ export const skillCategories = [
       "CSS",
     ],
     exploring: [],
-    relatedProjects: ["medsafe-ai", "student-management-system"],
+    relatedProjects: ["medsafe-ai"],
   },
   {
     id: "ai-ml",
@@ -184,7 +178,7 @@ export const skillCategories = [
       "Relational querying, document storage, and vector embedding persistence",
     activelyUsed: ["SQL", "MongoDB", "MongoDB Atlas"],
     exploring: [],
-    relatedProjects: ["retailmind-ai", "student-management-system"],
+    relatedProjects: ["retailmind-ai"],
   },
   {
     id: "tools",
@@ -194,7 +188,7 @@ export const skillCategories = [
       "Containerization, automated build workflows, version control, and developer environments",
     activelyUsed: ["Git", "GitHub", "Linux", "FastAPI"],
     exploring: ["Docker", "Kubernetes", "Jenkins", "Jupyter Notebook"],
-    relatedProjects: ["devops-cicd-practice", "retailmind-ai"],
+    relatedProjects: ["retailmind-ai"],
   },
   {
     id: "core-cs",
@@ -204,7 +198,7 @@ export const skillCategories = [
       "Theoretical computation, algorithmic discipline, and system architecture principles",
     activelyUsed: ["DSA", "Algorithms", "OOP"],
     exploring: ["DBMS", "Computer Networks", "Software Engineering"],
-    relatedProjects: ["retailmind-ai", "student-management-system"],
+    relatedProjects: ["retailmind-ai"],
   },
 ];
 
@@ -341,117 +335,6 @@ export const projectsData = [
       "text-sky-700 bg-sky-500/10 border-sky-500/30 dark:text-sky-300",
     themeAccent: "sky",
     githubPlaceholder: "https://github.com/placeholder-anoop/MedSafe-AI",
-  },
-  {
-    id: "student-management-system",
-    title: "Student Management System",
-    subtitle: "Modular Student CRUD Service with Mongoose",
-    tagline: "Backend Engineering • RESTful API",
-    shortDescription:
-      "A robust Node.js and Express RESTful service featuring full CRUD capabilities, strict Mongoose schema validation, input sanitization, and structured controller routing.",
-    problemStatement:
-      "Educational record portals require reliable data persistence with strict input hygiene, transactional safety, predictable error codes, and modular maintainability as schemas evolve.",
-    solution:
-      "Developed a clean RESTful backend service with full Create, Read, Update, and Delete operations for student academic records, incorporating input sanitization, schema constraints, and modular router/controller organization.",
-    architecture: [
-      {
-        step: "01",
-        name: "Express Routing",
-        desc: "Clean REST endpoints handling HTTP CRUD verbs with standardized response structures.",
-      },
-      {
-        step: "02",
-        name: "Validation Middleware",
-        desc: "Guards incoming payloads against invalid types, injection, and missing required attributes.",
-      },
-      {
-        step: "03",
-        name: "Controller Logic",
-        desc: "Decoupled business logic coordinating data processing and response status codes.",
-      },
-      {
-        step: "04",
-        name: "Mongoose Schema",
-        desc: "Strict schema constraints, compound indexes, and pre-save normalization hooks.",
-      },
-      {
-        step: "05",
-        name: "MongoDB Persistence",
-        desc: "Persistent document storage with reliable querying and error handling.",
-      },
-    ],
-    contribution:
-      "Implemented the entire backend architecture, API contract definitions, Mongoose schemas, validation middleware, and automated route testing.",
-    implementationDetails:
-      "Organized following the MVC controller-service-repository pattern. Routes are decoupled from database persistence layers, enabling simple testing with Jest and Postman collections.",
-    challenges:
-      "Preventing partial state mutations on complex multi-field updates; resolved by adopting atomic `$set` operations and strict schema pre-validation hooks.",
-    futureImprovements:
-      "Adding JWT role-based access control (Admin / Faculty / Student) and containerizing the service with Docker Compose for one-click setup.",
-    technologies: ["Node.js", "Express.js", "MongoDB", "Mongoose", "REST APIs"],
-    status: "Completed Project",
-    statusType: "completed",
-    category: "Backend & Database",
-    badgeColor:
-      "text-emerald-700 bg-emerald-500/10 border-emerald-500/30 dark:text-emerald-400",
-    themeAccent: "emerald",
-    githubPlaceholder:
-      "https://github.com/placeholder-anoop/Student-Management-System",
-  },
-  {
-    id: "devops-cicd-practice",
-    title: "DevOps & CI/CD Practice",
-    subtitle: "Automated Build, Containerization & Orchestration",
-    tagline: "Infrastructure Practice • Container Workflows",
-    shortDescription:
-      "Hands-on continuous integration and deployment pipeline automating Git commits into Maven builds, Docker container packaging, and local Kubernetes deployment.",
-    problemStatement:
-      "Manual software deployment leads to environment drift, configuration inconsistencies, and deployment delays. Modern software engineering demands automated validation pipelines.",
-    solution:
-      "Practiced and configured an end-to-end continuous integration and deployment pipeline that automates code commits into Maven builds, packages applications into Docker images, and deploys them to local Minikube Kubernetes pods.",
-    architecture: [
-      {
-        step: "01",
-        name: "Git Webhook Trigger",
-        desc: "Automated event fired upon code commits to main or release branches.",
-      },
-      {
-        step: "02",
-        name: "Jenkins Pipeline",
-        desc: "Declarative multi-stage pipeline managing clean build, test execution, and image tagging.",
-      },
-      {
-        step: "03",
-        name: "Maven Build & Test",
-        desc: "Compiles Java application artifacts, runs unit test suites, and verifies code stability.",
-      },
-      {
-        step: "04",
-        name: "Docker Image Build",
-        desc: "Multi-stage Dockerfile creating optimized, lightweight container images.",
-      },
-      {
-        step: "05",
-        name: "Kubernetes Pod Deploy",
-        desc: "Deploys containerized pods and services into a local Minikube cluster with health checks.",
-      },
-    ],
-    contribution:
-      "Authored Dockerfiles, declarative Jenkinsfile pipelines, and Kubernetes deployment and service YAML manifests.",
-    implementationDetails:
-      "Constructed reproducible multi-stage Dockerfiles that keep image sizes minimal. Built a declarative Jenkins pipeline containing lint, test, build, and deploy stages with status reporting.",
-    challenges:
-      "Managing service discovery and resource limits within local Minikube pods; solved through tailored service definitions, NodePort exposure, and memory boundaries.",
-    futureImprovements:
-      "Integrating GitHub Actions workflows, Helm charts for packaging, and automated vulnerability scanning with Trivy.",
-    technologies: ["Docker", "Kubernetes", "Jenkins", "Maven", "Git", "GitHub"],
-    status: "Hands-on Practice / Labs",
-    statusType: "in-progress",
-    category: "DevOps & Cloud",
-    badgeColor:
-      "text-purple-700 bg-purple-500/10 border-purple-500/30 dark:text-purple-400",
-    themeAccent: "purple",
-    githubPlaceholder: "https://github.com/placeholder-anoop/DevOps-Practice",
   },
 ];
 

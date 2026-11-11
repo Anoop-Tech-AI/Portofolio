@@ -35,7 +35,6 @@ export default function ProblemSolving() {
       className="py-24 relative z-10 border-t border-black/[0.08] dark:border-white/[0.06]"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
         <motion.div
           variants={fadeUp}
           initial="hidden"
@@ -45,19 +44,18 @@ export default function ProblemSolving() {
         >
           <div>
             <span className="text-xs font-mono uppercase tracking-widest text-amber-700 dark:text-amber-400 font-bold block mb-1">
-              05 
+              05
             </span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-zinc-900 dark:text-white tracking-tight">
-              Problem Solving & DSA
+              Problem Solving &amp; DSA
             </h2>
           </div>
           <p className="text-xs sm:text-sm font-mono text-zinc-600 dark:text-zinc-400 max-w-md">
-            Mathematical abstractions, asymptotic bounds, and competitive coding
-            in modern C++.
+            Algorithms, data structures, and competitive programming foundations in C++.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mb-12">
           {problemSolvingData.pillars.map((pillar, idx) => (
             <motion.div
               key={idx}
@@ -66,14 +64,22 @@ export default function ProblemSolving() {
               whileInView="visible"
               viewport={VIEW}
               custom={0.1 + idx * 0.08}
-              whileHover={{ y: -3, borderColor: "rgba(245,158,11,0.4)" }}
-              className="p-5 rounded-xl bg-white dark:bg-[#12141a] border border-black/[0.08] dark:border-white/[0.06] transition-all flex flex-col justify-between group shadow-sm dark:shadow-lg"
+              whileHover={{ y: -6, scale: 1.02 }}
+              className="p-6 sm:p-7 rounded-3xl bg-white dark:bg-[#12141a] border border-black/[0.08] dark:border-white/[0.06] transition-all flex flex-col justify-between group shadow-sm dark:shadow-lg hover:shadow-2xl hover:border-amber-500/50"
             >
               <div>
-                <div className="p-2 rounded-lg bg-zinc-100 dark:bg-[#0e1015] border border-black/[0.06] dark:border-white/[0.06] w-fit mb-3.5 group-hover:border-amber-500/40 transition-colors">
-                  {getPillarIcon(pillar.icon)}
-                </div>
-                <h3 className="text-sm font-bold text-zinc-900 dark:text-white mb-1.5 group-hover:text-amber-700 dark:group-hover:text-amber-300 transition-colors tracking-tight">
+                {idx % 2 === 0 ? (
+                  <div className="w-10 h-10 rounded-full bg-amber-500/10 border border-amber-500/25 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                    {getPillarIcon(pillar.icon)}
+                  </div>
+                ) : (
+                  <div className="w-8 h-8 rotate-45 rounded-[3px] bg-sky-500/10 border border-sky-500/25 flex items-center justify-center mb-4 my-1 mx-1 group-hover:rotate-90 transition-transform duration-300">
+                    <span className="-rotate-45">
+                      {getPillarIcon(pillar.icon)}
+                    </span>
+                  </div>
+                )}
+                <h3 className="text-sm font-bold text-zinc-900 dark:text-white mb-2 group-hover:text-amber-700 dark:group-hover:text-amber-300 transition-colors tracking-tight font-sans">
                   {pillar.title}
                 </h3>
                 <p className="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
@@ -89,11 +95,11 @@ export default function ProblemSolving() {
           initial="hidden"
           whileInView="visible"
           viewport={VIEW}
-          className="p-6 sm:p-8 rounded-xl bg-white dark:bg-[#111319] border border-black/[0.08] dark:border-white/[0.06] mb-12 shadow-sm dark:shadow-xl"
+          className="p-7 sm:p-9 rounded-3xl bg-white dark:bg-[#111319] border border-black/[0.08] dark:border-white/[0.06] mb-12 shadow-sm dark:shadow-xl transition-all hover:border-amber-500/40"
         >
-          <div className="flex items-center space-x-2 text-xs font-mono uppercase tracking-widest text-amber-700 dark:text-amber-400 mb-6 font-bold">
-            <Zap className="w-3.5 h-3.5" />
-            <span>Disciplined Problem Solving Protocol</span>
+          <div className="flex items-center space-x-2.5 text-xs font-mono uppercase tracking-widest text-amber-700 dark:text-amber-400 mb-6 font-bold">
+            <span className="w-2 h-2 rotate-45 bg-amber-500" />
+            <span>Problem Solving Workflow</span>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -104,11 +110,11 @@ export default function ProblemSolving() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={VIEW}
                 transition={{ duration: 0.35, delay: 0.15 + idx * 0.09 }}
-                className="space-y-2 border-l border-black/[0.08] dark:border-white/[0.06] pl-4"
+                className="space-y-2.5 border-l border-black/[0.08] dark:border-white/[0.06] pl-4"
               >
-                <span className="text-xl font-bold font-mono text-zinc-400 dark:text-zinc-600 block">
+                <div className="w-7 h-7 rounded-full bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-xs font-mono font-bold text-amber-800 dark:text-amber-300">
                   {step.step}
-                </span>
+                </div>
                 <h4 className="text-xs font-bold text-zinc-900 dark:text-white uppercase tracking-wider font-mono">
                   {step.title}
                 </h4>
@@ -125,14 +131,15 @@ export default function ProblemSolving() {
           initial="hidden"
           whileInView="visible"
           viewport={VIEW}
-          className="p-6 rounded-xl bg-zinc-50 dark:bg-[#0f1116] border border-black/[0.08] dark:border-white/[0.06]"
+          className="p-7 sm:p-8 rounded-3xl bg-zinc-50 dark:bg-[#0f1116] border border-black/[0.08] dark:border-white/[0.06]"
         >
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-6 pb-4 border-b border-black/[0.06] dark:border-white/[0.05]">
-            <span className="text-xs font-mono uppercase tracking-widest text-zinc-700 dark:text-zinc-400 font-bold">
-              Computational Profiles & Challenge Tracks
+            <span className="text-xs font-mono uppercase tracking-widest text-zinc-700 dark:text-zinc-400 font-bold flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-emerald-500" />
+              <span>Coding Platforms &amp; Practice</span>
             </span>
             <span className="text-[11px] font-mono text-zinc-500">
-              Continuous Practice • C++ Standard Template Library
+              C++ Standard Template Library • Ongoing Practice
             </span>
           </div>
 
@@ -147,20 +154,24 @@ export default function ProblemSolving() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={VIEW}
                 transition={{ duration: 0.35, delay: 0.1 + idx * 0.07 }}
-                whileHover={{ y: -3, scale: 1.02 }}
-                className="p-4 rounded-xl bg-white dark:bg-[#14161f] border border-black/[0.08] dark:border-white/[0.06] hover:border-amber-500/50 hover:bg-zinc-50 dark:hover:bg-[#181b26] transition-all text-left group shadow-xs cursor-pointer"
+                whileHover={{ y: -4, scale: 1.02 }}
+                className="p-5 rounded-2xl bg-white dark:bg-[#14161f] border border-black/[0.08] dark:border-white/[0.06] hover:border-amber-500/50 hover:bg-zinc-50 dark:hover:bg-[#181b26] transition-all text-left group shadow-xs hover:shadow-lg cursor-pointer"
               >
-                <div className="flex items-center justify-between mb-1">
-                  <span className="text-sm font-bold text-zinc-900 dark:text-white group-hover:text-amber-700 dark:group-hover:text-amber-300 transition-colors font-mono">
-                    {platform.name}
-                  </span>
+                <div className="flex items-center justify-between mb-2">
+                  <div className="flex items-center gap-2">
+                    <span className="w-2 h-2 rotate-45 bg-amber-500/70 group-hover:scale-125 transition-transform" />
+                    <span className="text-sm font-bold text-zinc-900 dark:text-white group-hover:text-amber-700 dark:group-hover:text-amber-300 transition-colors font-mono">
+                      {platform.name}
+                    </span>
+                  </div>
                   <ExternalLink className="w-3.5 h-3.5 text-zinc-400 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors" />
                 </div>
-                <span className="text-xs text-zinc-600 dark:text-zinc-400 block mb-2 font-mono">
+                <span className="text-xs text-zinc-600 dark:text-zinc-400 block mb-3 font-mono">
                   {platform.status}
                 </span>
-                <span className="text-[10px] text-zinc-500 dark:text-zinc-500 font-mono inline-block px-1.5 py-0.5 rounded bg-zinc-100 dark:bg-[#0c0d12] border border-black/[0.06] dark:border-white/[0.05]">
-                  {platform.focus}
+                <span className="text-[10px] text-zinc-600 dark:text-zinc-400 font-mono inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-zinc-100 dark:bg-[#0c0d12] border border-black/[0.06] dark:border-white/[0.05]">
+                  <span className="w-1 h-1 rounded-full bg-emerald-500" />
+                  <span>{platform.focus}</span>
                 </span>
               </motion.a>
             ))}

@@ -350,11 +350,6 @@ export function canvasPixels(el) {
   }
 }
 
-/**
- * Walk the live DOM and produce a blueprint the swarm can rebuild.
- * Items live in "world" coords (scroller content space) or, for fixed UI,
- * in screen coords on an "over"/"under" layer.
- */
 export function captureModel(env, shot) {
   const { ox, oy, sx, sy, vw, vh } = env.geom();
   const docW = Math.max(env.scrollWidth(), vw);
@@ -467,7 +462,6 @@ export function captureModel(env, shot) {
         "justify-content", "align-content", "row-gap", "column-gap",
       ]);
     } else if (d === "list-item" || d === "-webkit-box") {
-      // keep
     } else d = "block";
     s += `display:${d};padding:${pad("top")}px ${pad("right")}px ${pad("bottom")}px ${pad("left")}px;`;
     if (
@@ -1266,7 +1260,6 @@ export function captureModel(env, shot) {
     null
   );
 
-  // --------------------------------------------- repeated components (dup)
   const groups = [];
   const kindsSig = (n) => {
     let s = "";
@@ -1329,7 +1322,6 @@ export function captureModel(env, shot) {
     else twinKey.set(k, it);
   }
 
-  // ------------------------------------------------------------- tasks
   const tasks = [];
   const mk = (y, spec, deps, layer) => {
     const t = { id: tasks.length, y, spec, deps, state: "wait", doneAt: 0, layer };
@@ -1387,7 +1379,6 @@ export function captureModel(env, shot) {
     });
   }
 
-  // -------------------------------------------------- guides & snapping
   const guides = [];
   const texts = items.filter(
     (it) => it.kind === "text" && it.task && it.layer === "world" && it.fs >= 13 && it.tb.w > 30

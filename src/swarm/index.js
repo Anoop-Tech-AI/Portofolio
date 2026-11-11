@@ -61,9 +61,27 @@ export function initSwarm({ autoStart = true } = {}) {
   });
 
   if (autoStart) {
-    
-    setTimeout(() => {
-      if (!app) startSwarm();
-    }, 450);
+    let shouldBuild = true;
+    try {
+      if (sessionStorage.getItem("portfolio_swarm_rebuilt")) {
+        shouldBuild = false;
+      }
+      const navEntries = performance.getEntriesByType("navigation");
+      if (navEntries.length > 0 && navEntries[0].type === "reload") {
+        shouldBuild = false;
+      }
+      if (performance.navigation && performance.navigation.type === 1) {
+        shouldBuild = false;
+      }
+    } catch (_) {}
+
+    if (shouldBuild) {
+      try {
+        sessionStorage.setItem("portfolio_swarm_rebuilt", "true");
+      } catch (_) {}
+      setTimeout(() => {
+        if (!app) startSwarm();
+      }, 450);
+    }
   }
 }

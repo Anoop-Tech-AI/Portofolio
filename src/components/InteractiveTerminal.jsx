@@ -14,22 +14,22 @@ const PRESET_COMMANDS = {
       },
       { text: "Class of 2028 (Undergraduate)", type: "muted" },
       { text: "", type: "break" },
-      { text: "verified technical stack:", type: "accent" },
+      { text: "skills & technical stack:", type: "accent" },
       {
-        text: "  [✓] C++       STL · memory efficiency · asymptotic bounds",
+        text: "  [✓] C++       STL · Data Structures & Algorithms",
         type: "success",
       },
       {
-        text: "  [✓] Python    AI/ML · FastAPI · RAG pipelines",
+        text: "  [✓] Python    Machine Learning · FastAPI · Backend",
         type: "success",
       },
-      { text: "  [✓] Java      OOP · system architecture", type: "success" },
+      { text: "  [✓] Java      OOP · Problem Solving", type: "success" },
       {
-        text: "  [✓] React     modern UI · state & motion architecture",
+        text: "  [✓] React     Frontend Development · Modern UI",
         type: "success",
       },
       {
-        text: "  [✓] Node.js   REST APIs · Express · MongoDB Mongoose",
+        text: "  [✓] Node.js   REST APIs · Express · MongoDB",
         type: "success",
       },
     ],
@@ -53,14 +53,6 @@ const PRESET_COMMANDS = {
         text: "8f1d90e  MedSafe AI: React alert dashboard + JSON normalization",
         type: "muted",
       },
-      {
-        text: "3e6c118  Student CRUD: Mongoose schemas + Express REST endpoints",
-        type: "muted",
-      },
-      {
-        text: "d40f72b  DevOps: Jenkinsfile + Dockerfile + k8s deployment YAML",
-        type: "muted",
-      },
     ],
   },
   "ls projects": {
@@ -74,16 +66,8 @@ const PRESET_COMMANDS = {
         text: "drwx  MedSafe-AI/          [healthcare] clinical NER · FastAPI · React",
         type: "accent",
       },
-      {
-        text: "drwx  Student-CRUD/        [backend]  Node.js · Express · MongoDB",
-        type: "success",
-      },
-      {
-        text: "drwx  DevOps-Practice/     [infra]    Docker · Jenkins · Kubernetes",
-        type: "muted",
-      },
       { text: "", type: "break" },
-      { text: "4 engineering repositories cataloged", type: "muted" },
+      { text: "2 engineering repositories cataloged", type: "muted" },
     ],
   },
   echo: {
@@ -273,9 +257,9 @@ export default function InteractiveTerminal() {
         : [];
 
   return (
-    <div className="w-full max-w-xl mx-auto lg:max-w-none rounded-xl overflow-hidden border border-black/[0.08] dark:border-white/[0.08] bg-white dark:bg-[#0d0e13] shadow-[0_12px_40px_rgba(0,0,0,0.08)] dark:shadow-[0_24px_60px_rgba(0,0,0,0.5)] transition-colors">
+    <div className="w-full max-w-xl mx-auto lg:max-w-none rounded-3xl overflow-hidden border border-black/[0.08] dark:border-white/[0.08] bg-white dark:bg-[#0d0e13] shadow-[0_12px_40px_rgba(0,0,0,0.08)] dark:shadow-[0_24px_60px_rgba(0,0,0,0.5)] transition-all duration-300 hover:shadow-2xl hover:border-amber-500/40">
       
-      <div className="flex items-center justify-between px-4 py-2.5 bg-zinc-100/90 dark:bg-[#13151d] border-b border-black/[0.06] dark:border-white/[0.06]">
+      <div className="flex items-center justify-between px-5 py-3 bg-zinc-100/90 dark:bg-[#13151d] border-b border-black/[0.06] dark:border-white/[0.06]">
         <div className="flex items-center space-x-1.5">
           <span className="w-2.5 h-2.5 rounded-full bg-[#ff5f57]" />
           <span className="w-2.5 h-2.5 rounded-full bg-[#febc2e]" />
@@ -292,7 +276,7 @@ export default function InteractiveTerminal() {
             onClick={handleReplay}
             aria-label="Replay command"
             title="Replay command"
-            className="p-1 rounded text-zinc-500 hover:text-zinc-800 dark:hover:text-zinc-200 hover:bg-black/[0.04] dark:hover:bg-white/[0.04] transition-colors cursor-pointer"
+            className="p-1.5 rounded-full text-zinc-500 hover:text-zinc-800 dark:hover:text-zinc-200 hover:bg-black/[0.04] dark:hover:bg-white/[0.04] transition-colors cursor-pointer"
           >
             <RotateCcw className="w-3.5 h-3.5" />
           </motion.button>
@@ -302,7 +286,7 @@ export default function InteractiveTerminal() {
             whileTap={{ scale: 0.92 }}
             onClick={handleCopy}
             aria-label="Copy terminal output"
-            className="flex items-center space-x-1.5 px-2 py-1 rounded text-[11px] font-mono text-zinc-500 hover:text-zinc-800 dark:hover:text-zinc-200 hover:bg-black/[0.04] dark:hover:bg-white/[0.04] transition-colors cursor-pointer"
+            className="flex items-center space-x-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono text-zinc-500 hover:text-zinc-800 dark:hover:text-zinc-200 hover:bg-black/[0.04] dark:hover:bg-white/[0.04] transition-colors cursor-pointer"
           >
             {copied ? (
               <>
@@ -321,25 +305,28 @@ export default function InteractiveTerminal() {
         </div>
       </div>
 
-      <div className="flex items-center gap-1.5 px-3 py-2 bg-zinc-50 dark:bg-[#0f1118] border-b border-black/[0.06] dark:border-white/[0.04] overflow-x-auto">
+      <div className="flex items-center gap-2 px-4 py-2.5 bg-zinc-50 dark:bg-[#0f1118] border-b border-black/[0.06] dark:border-white/[0.04] overflow-x-auto">
         {TABS.map(({ key, label }) => (
           <motion.button
             key={key}
-            whileHover={{ scale: 1.02 }}
+            whileHover={{ y: -1.5, scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
             onClick={() => handleTabSwitch(key)}
-            className={`px-2.5 py-1 rounded text-[11px] font-mono whitespace-nowrap transition-all border cursor-pointer ${
+            className={`px-3 py-1.5 rounded-full text-[11px] font-mono whitespace-nowrap transition-all border cursor-pointer flex items-center gap-1.5 ${
               activeTab === key && customHistory.length === 0
-                ? "bg-amber-500/15 text-amber-800 dark:text-amber-300 border-amber-500/40 font-semibold shadow-sm"
-                : "text-zinc-600 hover:text-zinc-900 hover:bg-zinc-200/60 dark:text-zinc-500 dark:hover:text-zinc-300 dark:hover:bg-white/[0.03] border-transparent"
+                ? "bg-amber-500/15 text-amber-800 dark:text-amber-300 border-amber-500/40 font-semibold shadow-md"
+                : "text-zinc-600 hover:text-zinc-900 hover:bg-zinc-200/60 dark:text-zinc-500 dark:hover:text-zinc-300 dark:hover:bg-white/[0.03] border-transparent hover:border-black/[0.06] dark:hover:border-white/[0.06]"
             }`}
           >
-            {label}
+            {activeTab === key && customHistory.length === 0 && (
+              <span className="w-1.5 h-1.5 rotate-45 bg-amber-500 shrink-0" />
+            )}
+            <span>{label}</span>
           </motion.button>
         ))}
       </div>
 
-      <div className="p-4 sm:p-5 font-mono text-xs sm:text-[13px] leading-relaxed min-h-[240px] select-text">
+      <div className="p-5 sm:p-6 font-mono text-xs sm:text-[13px] leading-relaxed min-h-[240px] select-text">
         
         <div className="flex items-center space-x-1.5 text-zinc-500 dark:text-zinc-400 mb-3 flex-wrap">
           <span className="text-emerald-600 dark:text-emerald-400 font-bold">

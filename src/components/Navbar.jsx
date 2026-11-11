@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Menu, X, FileText, Terminal, Sun, Moon } from "lucide-react";
+import { Menu, X, Terminal, Sun, Moon } from "lucide-react";
 import { motion } from "motion/react";
 import { useTheme } from "../hooks/useTheme";
 
@@ -12,7 +12,7 @@ const NAV_LINKS = [
   { num: "06", name: "Contact", href: "#contact" },
 ];
 
-export default function Navbar({ onOpenResume }) {
+export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("hero");
@@ -59,7 +59,6 @@ export default function Navbar({ onOpenResume }) {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
-          
           <motion.a
             href="#"
             whileHover={{ scale: 1.02 }}
@@ -67,7 +66,7 @@ export default function Navbar({ onOpenResume }) {
             className="group flex items-center space-x-2.5 text-zinc-900 dark:text-white focus:outline-none"
             aria-label="Anoop Home"
           >
-            <div className="w-8 h-8 rounded-lg bg-amber-500/10 dark:bg-[#14161d] border border-amber-500/30 dark:border-white/[0.1] group-hover:border-amber-500/70 flex items-center justify-center text-amber-600 dark:text-amber-400 transition-colors">
+            <div className="w-8 h-8 rounded-full bg-amber-500/10 dark:bg-[#14161d] border border-amber-500/30 dark:border-white/[0.1] group-hover:border-amber-500/70 flex items-center justify-center text-amber-600 dark:text-amber-400 transition-colors">
               <Terminal className="w-4 h-4" />
             </div>
             <div className="flex items-center text-sm sm:text-base tracking-wider font-mono">
@@ -112,14 +111,13 @@ export default function Navbar({ onOpenResume }) {
           </nav>
 
           <div className="hidden sm:flex items-center space-x-2.5">
-            
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.92 }}
               onClick={toggleTheme}
               aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
               title={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
-              className="p-2 rounded-lg bg-zinc-100 hover:bg-zinc-200 dark:bg-[#14161f] dark:hover:bg-[#1b1e2a] text-zinc-700 dark:text-zinc-300 border border-black/[0.08] dark:border-white/[0.08] transition-colors cursor-pointer"
+              className="w-9 h-9 rounded-full bg-zinc-100 hover:bg-zinc-200 dark:bg-[#14161f] dark:hover:bg-[#1b1e2a] text-zinc-700 dark:text-zinc-300 border border-black/[0.08] dark:border-white/[0.08] transition-all hover:-translate-y-0.5 hover:shadow-sm flex items-center justify-center cursor-pointer"
             >
               {theme === "dark" ? (
                 <Sun className="w-4 h-4 text-amber-400 transition-transform hover:rotate-45" />
@@ -128,28 +126,17 @@ export default function Navbar({ onOpenResume }) {
               )}
             </motion.button>
 
-            <motion.button
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
-              onClick={onOpenResume}
-              className="inline-flex items-center space-x-1.5 px-3.5 py-1.5 text-xs font-mono rounded-lg text-zinc-700 dark:text-zinc-300 bg-zinc-100 hover:bg-zinc-200 dark:bg-[#12141a] dark:hover:bg-[#181a23] border border-black/[0.08] dark:border-white/[0.08] hover:border-black/[0.16] dark:hover:border-white/[0.16] transition-all cursor-pointer"
-            >
-              <FileText className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />
-              <span>Resume</span>
-            </motion.button>
-
             <motion.a
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
               href="#contact"
-              className="inline-flex items-center space-x-1.5 px-4 py-1.5 text-xs font-mono uppercase tracking-wider rounded-lg bg-amber-500 hover:bg-amber-400 text-black font-bold transition-all shadow-[0_0_15px_rgba(245,158,11,0.2)]"
+              className="inline-flex items-center space-x-1.5 px-5 py-2 text-xs font-mono uppercase tracking-wider rounded-full bg-amber-500 hover:bg-amber-400 text-black font-bold transition-all shadow-[0_0_15px_rgba(245,158,11,0.2)] hover:-translate-y-0.5 hover:shadow-lg"
             >
               <span>Get in Touch</span>
             </motion.a>
           </div>
 
           <div className="lg:hidden flex items-center space-x-2">
-            
             <button
               onClick={toggleTheme}
               className="p-2 rounded-lg bg-zinc-100 dark:bg-[#14161e] border border-black/[0.08] dark:border-white/[0.08] text-zinc-700 dark:text-zinc-300 text-xs flex items-center"
@@ -160,14 +147,6 @@ export default function Navbar({ onOpenResume }) {
               ) : (
                 <Moon className="w-4 h-4 text-zinc-700" />
               )}
-            </button>
-
-            <button
-              onClick={onOpenResume}
-              className="p-2 text-zinc-700 dark:text-zinc-300 rounded-lg bg-zinc-100 dark:bg-[#14161e] border border-black/[0.08] dark:border-white/[0.08] text-xs flex items-center gap-1 font-mono"
-              aria-label="View Resume"
-            >
-              <FileText className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />
             </button>
 
             <button
@@ -214,16 +193,6 @@ export default function Navbar({ onOpenResume }) {
               );
             })}
             <div className="pt-3 mt-2 border-t border-black/[0.06] dark:border-white/[0.06] flex flex-col gap-2">
-              <button
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  onOpenResume();
-                }}
-                className="w-full flex items-center justify-center space-x-2 py-2 text-xs font-mono text-zinc-800 dark:text-zinc-200 bg-zinc-100 dark:bg-[#151722] border border-black/[0.08] dark:border-white/[0.08] rounded-lg cursor-pointer"
-              >
-                <FileText className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />
-                <span>View Resume</span>
-              </button>
               <a
                 href="#contact"
                 onClick={() => setMobileMenuOpen(false)}
