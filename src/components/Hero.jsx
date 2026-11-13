@@ -247,7 +247,7 @@ export default function Hero() {
                 </div>
 
                 <div className="flex items-center justify-between pt-3 mt-3 border-t border-black/[0.06] dark:border-white/[0.06] text-[11px] font-mono text-zinc-500">
-                  <span>Anoop · dev</span>
+                  <span>Anoop</span>
                   <span className="text-amber-600 dark:text-amber-400 font-semibold">
                     Software &amp; AI
                   </span>

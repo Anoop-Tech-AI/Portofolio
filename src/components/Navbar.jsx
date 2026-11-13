@@ -71,7 +71,6 @@ export default function Navbar({ onOpenShortcuts }) {
               <span className="font-extrabold text-zinc-900 dark:text-white">
                 ANOOP
               </span>
-              <span className="text-zinc-500 text-xs ml-1">.dev</span>
             </div>
           </a>
 
