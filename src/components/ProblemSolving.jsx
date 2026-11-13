@@ -64,22 +64,21 @@ export default function ProblemSolving() {
               whileInView="visible"
               viewport={VIEW}
               custom={0.1 + idx * 0.08}
-              whileHover={{ y: -6, scale: 1.02 }}
-              className="p-6 sm:p-7 rounded-3xl bg-white dark:bg-[#12141a] border border-black/[0.08] dark:border-white/[0.06] transition-all flex flex-col justify-between group shadow-sm dark:shadow-lg hover:shadow-2xl hover:border-amber-500/50"
+              className="p-6 sm:p-7 rounded-3xl bg-white dark:bg-[#12141a] border border-black/[0.08] dark:border-white/[0.06] flex flex-col justify-between shadow-sm dark:shadow-lg"
             >
               <div>
                 {idx % 2 === 0 ? (
-                  <div className="w-10 h-10 rounded-full bg-amber-500/10 border border-amber-500/25 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                  <div className="w-10 h-10 rounded-full bg-amber-500/10 border border-amber-500/25 flex items-center justify-center mb-4">
                     {getPillarIcon(pillar.icon)}
                   </div>
                 ) : (
-                  <div className="w-8 h-8 rotate-45 rounded-[3px] bg-sky-500/10 border border-sky-500/25 flex items-center justify-center mb-4 my-1 mx-1 group-hover:rotate-90 transition-transform duration-300">
+                  <div className="w-8 h-8 rotate-45 rounded-[3px] bg-sky-500/10 border border-sky-500/25 flex items-center justify-center mb-4 my-1 mx-1">
                     <span className="-rotate-45">
                       {getPillarIcon(pillar.icon)}
                     </span>
                   </div>
                 )}
-                <h3 className="text-sm font-bold text-zinc-900 dark:text-white mb-2 group-hover:text-amber-700 dark:group-hover:text-amber-300 transition-colors tracking-tight font-sans">
+                <h3 className="text-sm font-bold text-zinc-900 dark:text-white mb-2 tracking-tight font-sans">
                   {pillar.title}
                 </h3>
                 <p className="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
@@ -95,7 +94,7 @@ export default function ProblemSolving() {
           initial="hidden"
           whileInView="visible"
           viewport={VIEW}
-          className="p-7 sm:p-9 rounded-3xl bg-white dark:bg-[#111319] border border-black/[0.08] dark:border-white/[0.06] mb-12 shadow-sm dark:shadow-xl transition-all hover:border-amber-500/40"
+          className="p-7 sm:p-9 rounded-3xl bg-white dark:bg-[#111319] border border-black/[0.08] dark:border-white/[0.06] mb-12 shadow-sm dark:shadow-xl"
         >
           <div className="flex items-center space-x-2.5 text-xs font-mono uppercase tracking-widest text-amber-700 dark:text-amber-400 mb-6 font-bold">
             <span className="w-2 h-2 rotate-45 bg-amber-500" />
@@ -154,17 +153,16 @@ export default function ProblemSolving() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={VIEW}
                 transition={{ duration: 0.35, delay: 0.1 + idx * 0.07 }}
-                whileHover={{ y: -4, scale: 1.02 }}
-                className="p-5 rounded-2xl bg-white dark:bg-[#14161f] border border-black/[0.08] dark:border-white/[0.06] hover:border-amber-500/50 hover:bg-zinc-50 dark:hover:bg-[#181b26] transition-all text-left group shadow-xs hover:shadow-lg cursor-pointer"
+                className="p-5 rounded-2xl bg-white dark:bg-[#14161f] border border-black/[0.08] dark:border-white/[0.06] text-left shadow-xs cursor-pointer"
               >
                 <div className="flex items-center justify-between mb-2">
                   <div className="flex items-center gap-2">
-                    <span className="w-2 h-2 rotate-45 bg-amber-500/70 group-hover:scale-125 transition-transform" />
-                    <span className="text-sm font-bold text-zinc-900 dark:text-white group-hover:text-amber-700 dark:group-hover:text-amber-300 transition-colors font-mono">
+                    <span className="w-2 h-2 rotate-45 bg-amber-500/70" />
+                    <span className="text-sm font-bold text-zinc-900 dark:text-white font-mono">
                       {platform.name}
                     </span>
                   </div>
-                  <ExternalLink className="w-3.5 h-3.5 text-zinc-400 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors" />
+                  <ExternalLink className="w-3.5 h-3.5 text-zinc-400" />
                 </div>
                 <span className="text-xs text-zinc-600 dark:text-zinc-400 block mb-3 font-mono">
                   {platform.status}

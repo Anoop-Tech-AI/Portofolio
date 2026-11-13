@@ -27,9 +27,6 @@ export default function Education() {
         </div>
 
         <div className="relative p-6 sm:p-10 rounded-2xl bg-[#11131a]/90 border border-zinc-800/90 shadow-2xl backdrop-blur-md overflow-hidden">
-          
-          <div className="absolute top-0 right-0 w-72 h-72 bg-cyan-500/5 rounded-full blur-3xl pointer-events-none" />
-
           <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-zinc-800/80">
             <div className="space-y-2">
               <div className="inline-flex items-center space-x-2 px-2.5 py-0.5 rounded-md bg-cyan-400/10 text-cyan-400 border border-cyan-400/20 text-xs font-mono">

@@ -62,11 +62,11 @@ export default function Timeline() {
                     className="absolute left-4 sm:left-1/2 -translate-x-1/2 z-10"
                   >
                     {isEven ? (
-                      <div className="w-9 h-9 rounded-full bg-white dark:bg-[#13151c] border-2 border-amber-500/70 flex items-center justify-center text-amber-500 shadow-md dark:shadow-[0_0_14px_rgba(245,158,11,0.3)]">
+                      <div className="w-9 h-9 rounded-full bg-white dark:bg-[#13151c] border-2 border-amber-500/70 flex items-center justify-center text-amber-500 shadow-sm">
                         <span className="w-2.5 h-2.5 rounded-full bg-amber-500" />
                       </div>
                     ) : (
-                      <div className="w-8 h-8 rotate-45 rounded-[3px] bg-white dark:bg-[#13151c] border-2 border-amber-500/70 flex items-center justify-center text-amber-500 shadow-md dark:shadow-[0_0_14px_rgba(245,158,11,0.3)]">
+                      <div className="w-8 h-8 rotate-45 rounded-[3px] bg-white dark:bg-[#13151c] border-2 border-amber-500/70 flex items-center justify-center text-amber-500 shadow-sm">
                         <span className="w-2.5 h-2.5 -rotate-45 bg-amber-500 rounded-[1px]" />
                       </div>
                     )}
@@ -83,12 +83,8 @@ export default function Timeline() {
                     }}
                     className="ml-12 sm:ml-0 sm:w-1/2 sm:px-8 w-full"
                   >
-                    <motion.div
-                      whileHover={{
-                        y: -5,
-                        borderColor: "rgba(245,158,11,0.5)",
-                      }}
-                      className="p-7 sm:p-8 rounded-3xl bg-white dark:bg-[#12141a] border border-black/[0.08] dark:border-white/[0.06] transition-all duration-300 shadow-sm dark:shadow-xl hover:shadow-2xl group"
+                    <div
+                      className="p-7 sm:p-8 rounded-3xl bg-white dark:bg-[#12141a] border border-black/[0.08] dark:border-white/[0.06] shadow-sm dark:shadow-xl"
                     >
                       <div className="flex items-center justify-between gap-2 mb-3 pb-3 border-b border-black/[0.06] dark:border-white/[0.04]">
                         <span className="text-xs font-mono font-bold text-amber-800 dark:text-amber-400 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 flex items-center gap-1.5">
@@ -100,7 +96,7 @@ export default function Timeline() {
                         </span>
                       </div>
 
-                      <h3 className="text-base sm:text-lg font-bold text-zinc-900 dark:text-white group-hover:text-amber-700 dark:group-hover:text-amber-300 transition-colors tracking-tight">
+                      <h3 className="text-base sm:text-lg font-bold text-zinc-900 dark:text-white tracking-tight">
                         {item.title}
                       </h3>
                       <p className="text-xs font-mono text-zinc-500 dark:text-zinc-400 mt-1 mb-3">
@@ -113,16 +109,15 @@ export default function Timeline() {
 
                       <div className="flex flex-wrap gap-2 pt-3 border-t border-black/[0.06] dark:border-white/[0.04]">
                         {item.skillsGained.map((skill) => (
-                          <motion.span
+                          <span
                             key={skill}
-                            whileHover={{ y: -1, scale: 1.05 }}
-                            className="text-[11px] font-mono px-3 py-1 rounded-full bg-zinc-100 dark:bg-[#0b0c10] text-zinc-700 dark:text-zinc-400 border border-black/[0.06] dark:border-white/[0.05] cursor-default transition-all hover:border-amber-500/40 hover:text-amber-800 dark:hover:text-amber-300"
+                            className="text-[11px] font-mono px-3 py-1 rounded-full bg-zinc-100 dark:bg-[#0b0c10] text-zinc-700 dark:text-zinc-400 border border-black/[0.06] dark:border-white/[0.05] cursor-default"
                           >
                             {skill}
-                          </motion.span>
+                          </span>
                         ))}
                       </div>
-                    </motion.div>
+                    </div>
                   </motion.div>
 
                   <div className="hidden sm:block sm:w-1/2" />

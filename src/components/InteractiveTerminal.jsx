@@ -42,15 +42,15 @@ const PRESET_COMMANDS = {
         type: "success",
       },
       {
-        text: "4b81e09  RetailMind-AI: architect LangGraph multi-agent query pipeline",
+        text: "e38a412  Forensic-AI-Writer: multi-format evidence ingestion & SHA-256 pipeline",
         type: "success",
       },
       {
-        text: "7d0e3a1  RetailMind-AI: benchmark hybrid BM25 and dense vector rankers",
+        text: "5c19d08  Forensic-AI-Writer: automated legal report generation & timeline correlation",
         type: "muted",
       },
       {
-        text: "1a82f45  algorithms: optimize graph traversal & dynamic programming suite",
+        text: "4b81e09  RetailMind-AI: architect LangGraph multi-agent query pipeline",
         type: "muted",
       },
     ],
@@ -62,8 +62,12 @@ const PRESET_COMMANDS = {
         text: "drwx  RetailMind-AI/       [flagship] agentic RAG · LangGraph · BGE-M3",
         type: "accent",
       },
+      {
+        text: "drwx  Forensic-AI-Writer/  [forensics] multi-evidence correlation · SHA-256 · React/Node",
+        type: "accent",
+      },
       { text: "", type: "break" },
-      { text: "1 engineering repository cataloged", type: "muted" },
+      { text: "2 engineering repositories cataloged", type: "muted" },
     ],
   },
   echo: {
@@ -253,8 +257,7 @@ export default function InteractiveTerminal() {
         : [];
 
   return (
-    <div className="w-full max-w-xl mx-auto lg:max-w-none rounded-3xl overflow-hidden border border-black/[0.08] dark:border-white/[0.08] bg-white dark:bg-[#0d0e13] shadow-[0_12px_40px_rgba(0,0,0,0.08)] dark:shadow-[0_24px_60px_rgba(0,0,0,0.5)] transition-all duration-300 hover:shadow-2xl hover:border-amber-500/40">
-      
+    <div className="w-full max-w-xl mx-auto lg:max-w-none rounded-3xl overflow-hidden border border-black/[0.08] dark:border-white/[0.08] bg-white dark:bg-[#0d0e13] shadow-sm dark:shadow-xl">
       <div className="flex items-center justify-between px-5 py-3 bg-zinc-100/90 dark:bg-[#13151d] border-b border-black/[0.06] dark:border-white/[0.06]">
         <div className="flex items-center space-x-1.5">
           <span className="w-2.5 h-2.5 rounded-full bg-[#ff5f57]" />
@@ -266,20 +269,16 @@ export default function InteractiveTerminal() {
         </div>
 
         <div className="flex items-center space-x-1">
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.92 }}
+          <button
             onClick={handleReplay}
             aria-label="Replay command"
             title="Replay command"
             className="p-1.5 rounded-full text-zinc-500 hover:text-zinc-800 dark:hover:text-zinc-200 hover:bg-black/[0.04] dark:hover:bg-white/[0.04] transition-colors cursor-pointer"
           >
             <RotateCcw className="w-3.5 h-3.5" />
-          </motion.button>
+          </button>
 
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.92 }}
+          <button
             onClick={handleCopy}
             aria-label="Copy terminal output"
             className="flex items-center space-x-1.5 px-2.5 py-1 rounded-full text-[11px] font-mono text-zinc-500 hover:text-zinc-800 dark:hover:text-zinc-200 hover:bg-black/[0.04] dark:hover:bg-white/[0.04] transition-colors cursor-pointer"
@@ -297,20 +296,18 @@ export default function InteractiveTerminal() {
                 <span>copy</span>
               </>
             )}
-          </motion.button>
+          </button>
         </div>
       </div>
 
       <div className="flex items-center gap-2 px-4 py-2.5 bg-zinc-50 dark:bg-[#0f1118] border-b border-black/[0.06] dark:border-white/[0.04] overflow-x-auto">
         {TABS.map(({ key, label }) => (
-          <motion.button
+          <button
             key={key}
-            whileHover={{ y: -1.5, scale: 1.03 }}
-            whileTap={{ scale: 0.97 }}
             onClick={() => handleTabSwitch(key)}
-            className={`px-3 py-1.5 rounded-full text-[11px] font-mono whitespace-nowrap transition-all border cursor-pointer flex items-center gap-1.5 ${
+            className={`px-3 py-1.5 rounded-full text-[11px] font-mono whitespace-nowrap transition-colors border cursor-pointer flex items-center gap-1.5 ${
               activeTab === key && customHistory.length === 0
-                ? "bg-amber-500/15 text-amber-800 dark:text-amber-300 border-amber-500/40 font-semibold shadow-md"
+                ? "bg-amber-500/15 text-amber-800 dark:text-amber-300 border-amber-500/40 font-semibold"
                 : "text-zinc-600 hover:text-zinc-900 hover:bg-zinc-200/60 dark:text-zinc-500 dark:hover:text-zinc-300 dark:hover:bg-white/[0.03] border-transparent hover:border-black/[0.06] dark:hover:border-white/[0.06]"
             }`}
           >
@@ -318,7 +315,7 @@ export default function InteractiveTerminal() {
               <span className="w-1.5 h-1.5 rotate-45 bg-amber-500 shrink-0" />
             )}
             <span>{label}</span>
-          </motion.button>
+          </button>
         ))}
       </div>
 
@@ -394,10 +391,11 @@ export default function InteractiveTerminal() {
             <span>&gt;</span>
           </div>
           <input
+            id="terminal-input"
             type="text"
             value={userInput}
             onChange={(e) => setUserInput(e.target.value)}
-            placeholder="Type 'help', 'skills', 'projects', or 'clear'..."
+            placeholder="Type 'help', 'skills', 'projects'... [/ to focus]"
             className="w-full bg-transparent text-xs text-zinc-900 dark:text-zinc-100 placeholder-zinc-400 dark:placeholder-zinc-600 focus:outline-none font-mono"
             aria-label="Interactive terminal input"
           />
@@ -413,7 +411,7 @@ export default function InteractiveTerminal() {
 
       <div className="flex items-center justify-between px-4 py-2 bg-zinc-100 dark:bg-[#0a0b0e] border-t border-black/[0.06] dark:border-white/[0.04] text-[10px] font-mono text-zinc-600 dark:text-zinc-500">
         <div className="flex items-center space-x-2">
-          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block animate-pulse" />
+          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block" />
           <span>KMIT, Hyderabad · Class of 2028</span>
         </div>
         <span>interactive shell · UTF-8</span>

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Menu, X, Terminal, Sun, Moon } from "lucide-react";
+import { Menu, X, Terminal, Sun, Moon, Keyboard } from "lucide-react";
 import { motion } from "motion/react";
 import { useTheme } from "../hooks/useTheme";
 
@@ -12,7 +12,7 @@ const NAV_LINKS = [
   { num: "06", name: "Contact", href: "#contact" },
 ];
 
-export default function Navbar() {
+export default function Navbar({ onOpenShortcuts }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("hero");
@@ -59,23 +59,21 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
-          <motion.a
+          <a
             href="#"
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            className="group flex items-center space-x-2.5 text-zinc-900 dark:text-white focus:outline-none"
+            className="flex items-center space-x-2.5 text-zinc-900 dark:text-white focus:outline-none"
             aria-label="Anoop Home"
           >
-            <div className="w-8 h-8 rounded-full bg-amber-500/10 dark:bg-[#14161d] border border-amber-500/30 dark:border-white/[0.1] group-hover:border-amber-500/70 flex items-center justify-center text-amber-600 dark:text-amber-400 transition-colors">
+            <div className="w-8 h-8 rounded-full bg-amber-500/10 dark:bg-[#14161d] border border-amber-500/30 dark:border-white/[0.1] flex items-center justify-center text-amber-600 dark:text-amber-400">
               <Terminal className="w-4 h-4" />
             </div>
             <div className="flex items-center text-sm sm:text-base tracking-wider font-mono">
               <span className="font-extrabold text-zinc-900 dark:text-white">
                 ANOOP
               </span>
-              <span className="text-zinc-500 text-xs ml-1">{"//dev"}</span>
+              <span className="text-zinc-500 text-xs ml-1">.dev</span>
             </div>
-          </motion.a>
+          </a>
 
           <nav className="hidden lg:flex items-center space-x-1 bg-white/80 dark:bg-[#12141a]/85 border border-black/[0.08] dark:border-white/[0.07] px-3.5 py-1.5 rounded-full backdrop-blur-md shadow-sm">
             {NAV_LINKS.map((link) => {
@@ -111,32 +109,46 @@ export default function Navbar() {
           </nav>
 
           <div className="hidden sm:flex items-center space-x-2.5">
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.92 }}
+            <button
+              onClick={onOpenShortcuts}
+              aria-label="Keyboard Shortcuts"
+              title="Keyboard shortcuts (?)"
+              className="w-9 h-9 rounded-full bg-zinc-100 hover:bg-zinc-200 dark:bg-[#14161f] dark:hover:bg-[#1b1e2a] text-zinc-700 dark:text-zinc-300 border border-black/[0.08] dark:border-white/[0.08] transition-colors flex items-center justify-center cursor-pointer"
+            >
+              <Keyboard className="w-4 h-4 text-zinc-700 dark:text-zinc-300" />
+            </button>
+
+            <button
               onClick={toggleTheme}
               aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
               title={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
-              className="w-9 h-9 rounded-full bg-zinc-100 hover:bg-zinc-200 dark:bg-[#14161f] dark:hover:bg-[#1b1e2a] text-zinc-700 dark:text-zinc-300 border border-black/[0.08] dark:border-white/[0.08] transition-all hover:-translate-y-0.5 hover:shadow-sm flex items-center justify-center cursor-pointer"
+              className="w-9 h-9 rounded-full bg-zinc-100 hover:bg-zinc-200 dark:bg-[#14161f] dark:hover:bg-[#1b1e2a] text-zinc-700 dark:text-zinc-300 border border-black/[0.08] dark:border-white/[0.08] transition-colors flex items-center justify-center cursor-pointer"
             >
               {theme === "dark" ? (
-                <Sun className="w-4 h-4 text-amber-400 transition-transform hover:rotate-45" />
+                <Sun className="w-4 h-4 text-amber-400" />
               ) : (
-                <Moon className="w-4 h-4 text-zinc-700 transition-transform hover:-rotate-12" />
+                <Moon className="w-4 h-4 text-zinc-700" />
               )}
-            </motion.button>
+            </button>
 
-            <motion.a
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
+            <a
               href="#contact"
-              className="inline-flex items-center space-x-1.5 px-5 py-2 text-xs font-mono uppercase tracking-wider rounded-full bg-amber-500 hover:bg-amber-400 text-black font-bold transition-all shadow-[0_0_15px_rgba(245,158,11,0.2)] hover:-translate-y-0.5 hover:shadow-lg"
+              className="inline-flex items-center space-x-1.5 px-5 py-2 text-xs font-mono uppercase tracking-wider rounded-full bg-amber-500 hover:bg-amber-400 text-black font-bold transition-colors shadow-sm"
             >
               <span>Get in Touch</span>
-            </motion.a>
+            </a>
           </div>
 
           <div className="lg:hidden flex items-center space-x-2">
+            <button
+              onClick={onOpenShortcuts}
+              className="p-2 rounded-lg bg-zinc-100 dark:bg-[#14161e] border border-black/[0.08] dark:border-white/[0.08] text-zinc-700 dark:text-zinc-300 text-xs flex items-center"
+              aria-label="Keyboard Shortcuts"
+              title="Keyboard shortcuts (?)"
+            >
+              <Keyboard className="w-4 h-4" />
+            </button>
+
             <button
               onClick={toggleTheme}
               className="p-2 rounded-lg bg-zinc-100 dark:bg-[#14161e] border border-black/[0.08] dark:border-white/[0.08] text-zinc-700 dark:text-zinc-300 text-xs flex items-center"

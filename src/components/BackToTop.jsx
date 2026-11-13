@@ -28,13 +28,11 @@ export default function BackToTop() {
           initial={{ opacity: 0, scale: 0.8, y: 10 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.8, y: 10 }}
-          whileHover={{ scale: 1.08 }}
-          whileTap={{ scale: 0.92 }}
           onClick={scrollToTop}
           aria-label="Back to Top"
-          className="fixed bottom-6 left-6 z-40 p-2.5 rounded-lg bg-white/90 dark:bg-[#14161f]/90 text-amber-700 dark:text-amber-400 border border-black/[0.08] dark:border-white/[0.08] shadow-[0_4px_20px_rgba(0,0,0,0.08)] dark:shadow-[0_4px_20px_rgba(0,0,0,0.5)] hover:border-amber-500/50 hover:bg-zinc-100 dark:hover:bg-[#1a1d28] transition-colors group cursor-pointer backdrop-blur-md"
+          className="fixed bottom-6 left-6 z-40 p-2.5 rounded-lg bg-white dark:bg-[#14161f] text-amber-700 dark:text-amber-400 border border-black/[0.08] dark:border-white/[0.08] shadow-sm hover:bg-zinc-100 dark:hover:bg-[#1a1d28] transition-colors cursor-pointer"
         >
-          <ArrowUp className="w-4 h-4 group-hover:-translate-y-0.5 transition-transform" />
+          <ArrowUp className="w-4 h-4" />
         </motion.button>
       )}
     </AnimatePresence>

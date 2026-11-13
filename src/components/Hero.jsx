@@ -5,74 +5,58 @@ import {
   Code2,
   BrainCircuit,
   Binary,
+  User,
 } from "lucide-react";
 import { motion } from "motion/react";
 import { personalInfo } from "../data/portfolioData";
-import InteractiveTerminal from "./InteractiveTerminal";
 
 const lineVariant = {
-  hidden: { opacity: 0, y: 24 },
+  hidden: { opacity: 0, y: 16 },
   visible: (i) => ({
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.5,
+      duration: 0.4,
       ease: [0.22, 1, 0.36, 1],
-      delay: 0.2 + i * 0.12,
+      delay: 0.15 + i * 0.1,
     },
   }),
 };
 
 const pillVariant = {
-  hidden: { opacity: 0, scale: 0.9 },
+  hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    scale: 1,
-    transition: { duration: 0.4, ease: "backOut", delay: 0.1 },
+    transition: { duration: 0.3, delay: 0.05 },
   },
 };
 
 const subtitleVariant = {
-  hidden: { opacity: 0, x: -16 },
+  hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    x: 0,
-    transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1], delay: 0.45 },
+    transition: { duration: 0.35, delay: 0.25 },
   },
 };
 
 const descVariant = {
-  hidden: { opacity: 0, y: 10 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.4, delay: 0.55 } },
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { duration: 0.35, delay: 0.35 } },
 };
 
 const btnVariant = {
-  hidden: { opacity: 0, y: 12 },
+  hidden: { opacity: 0 },
   visible: (i) => ({
     opacity: 1,
-    y: 0,
-    transition: { duration: 0.35, ease: "backOut", delay: 0.65 + i * 0.1 },
+    transition: { duration: 0.3, delay: 0.45 + i * 0.08 },
   }),
 };
 
-const terminalVariant = {
-  hidden: { opacity: 0, x: 30 },
+const frameVariant = {
+  hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    x: 0,
-    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.3 },
-  },
-};
-
-const floatVariant = {
-  float: {
-    y: [0, -6, 0],
-    transition: {
-      duration: 5,
-      ease: "easeInOut",
-      repeat: Infinity,
-      repeatType: "loop",
-    },
+    transition: { duration: 0.45, delay: 0.2 },
   },
 };
 
@@ -85,8 +69,6 @@ export default function Hero() {
       className="relative min-h-[90vh] flex items-center justify-center pt-28 pb-16 overflow-hidden"
     >
       <div className="absolute inset-0 bg-editorial-grid opacity-60 dark:opacity-60 pointer-events-none" />
-      <div className="absolute top-1/4 right-1/4 w-[420px] h-[280px] bg-amber-500/[0.06] dark:bg-amber-500/[0.05] rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-1/4 left-10 w-[340px] h-[240px] bg-sky-500/[0.04] dark:bg-sky-500/[0.03] rounded-full blur-[130px] pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
@@ -102,33 +84,18 @@ export default function Hero() {
             </motion.div>
 
             <div>
-              <motion.p
-                initial={{ opacity: 0, y: -6 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.35, delay: 0.15 }}
-                className="text-xs sm:text-sm font-mono tracking-widest uppercase text-amber-700 dark:text-amber-400 font-bold mb-2"
-              >
-                HELLO, I'M ANOOP
-              </motion.p>
-
-              <h1 className="text-3xl sm:text-5xl xl:text-6xl font-black tracking-tight leading-[1.1] uppercase overflow-hidden">
+              <h1 className="text-4xl sm:text-6xl xl:text-7xl font-black tracking-tight leading-[1.1]">
                 <motion.span
                   custom={0}
                   variants={lineVariant}
                   initial="hidden"
                   animate="visible"
-                  className="block text-zinc-900 dark:text-zinc-100"
+                  className="block text-zinc-900 dark:text-white"
                 >
-                  I BUILD SOFTWARE.
-                </motion.span>
-                <motion.span
-                  custom={1}
-                  variants={lineVariant}
-                  initial="hidden"
-                  animate="visible"
-                  className="block text-amber-600 dark:text-amber-400"
-                >
-                  I SOLVE PROBLEMS.
+                  Hello, I am{" "}
+                  <span className="text-amber-600 dark:text-amber-400">
+                    Anoop
+                  </span>
                 </motion.span>
               </h1>
             </div>
@@ -137,7 +104,7 @@ export default function Hero() {
               variants={subtitleVariant}
               initial="hidden"
               animate="visible"
-              className="space-y-0.5 border-l-2 border-amber-500/70 pl-4 py-0.5"
+              className="space-y-0.5 border-l-2 border-amber-500 pl-4 py-0.5"
             >
               <p className="text-sm sm:text-base font-semibold text-zinc-800 dark:text-zinc-200">
                 Computer Science &amp; Engineering Student •{" "}
@@ -160,9 +127,9 @@ export default function Hero() {
             </motion.p>
 
             <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.45, delay: 0.6 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.35, delay: 0.4 }}
               className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1"
             >
               {personalInfo.interests.map((interest, idx) => {
@@ -170,7 +137,7 @@ export default function Hero() {
                 return (
                   <div
                     key={interest.title}
-                    className="p-4 sm:p-5 rounded-2xl bg-white dark:bg-[#12141a] border border-black/[0.08] dark:border-white/[0.06] shadow-xs transition-all duration-200 hover:-translate-y-1.5 hover:shadow-lg hover:border-amber-500/50 hover:bg-amber-500/[0.03] cursor-default flex flex-col justify-between"
+                    className="p-4 sm:p-5 rounded-2xl bg-white dark:bg-[#12141a] border border-black/[0.08] dark:border-white/[0.06] shadow-xs flex flex-col justify-between"
                   >
                     <div>
                       <div className="flex items-center space-x-2.5 mb-2.5">
@@ -181,7 +148,7 @@ export default function Hero() {
                         )}
                         {idx === 1 && (
                           <div className="w-6 h-6 rotate-45 rounded-[2px] bg-sky-500/10 border border-sky-500/30 flex items-center justify-center shrink-0 my-0.5 mx-0.5">
-                            <Icon className="w-3 h-3 text-sky-600 dark:text-sky-400 -rotate-45" />
+                            <Icon className="w-3.5 h-3.5 text-sky-600 dark:text-sky-400 -rotate-45" />
                           </div>
                         )}
                         {idx === 2 && (
@@ -208,12 +175,10 @@ export default function Hero() {
                 variants={btnVariant}
                 initial="hidden"
                 animate="visible"
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.97 }}
               >
                 <a
                   href="#projects"
-                  className="inline-flex items-center space-x-2 px-6 py-3 rounded-full text-xs uppercase tracking-wider font-semibold transition-all bg-amber-500 hover:bg-amber-400 text-black font-bold shadow-[0_4px_16px_rgba(245,158,11,0.28)] hover:shadow-[0_6px_22px_rgba(245,158,11,0.44)] hover:-translate-y-0.5"
+                  className="inline-flex items-center space-x-2 px-6 py-3 rounded-full text-xs uppercase tracking-wider font-semibold bg-amber-500 hover:bg-amber-400 text-black font-bold transition-colors"
                 >
                   <span>Explore My Work</span>
                   <ArrowRight className="w-3.5 h-3.5" />
@@ -225,12 +190,10 @@ export default function Hero() {
                 variants={btnVariant}
                 initial="hidden"
                 animate="visible"
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.97 }}
               >
                 <a
                   href="#contact"
-                  className="inline-flex items-center space-x-2 px-6 py-3 rounded-full text-xs uppercase tracking-wider font-semibold transition-all bg-zinc-100 hover:bg-zinc-200 dark:bg-[#14161d] dark:hover:bg-[#1a1d26] text-zinc-800 dark:text-zinc-200 border border-black/[0.1] dark:border-white/[0.08] hover:-translate-y-0.5 hover:shadow-sm"
+                  className="inline-flex items-center space-x-2 px-6 py-3 rounded-full text-xs uppercase tracking-wider font-semibold bg-zinc-100 hover:bg-zinc-200 dark:bg-[#14161d] dark:hover:bg-[#1a1d26] text-zinc-800 dark:text-zinc-200 border border-black/[0.1] dark:border-white/[0.08] transition-colors"
                 >
                   <Mail className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />
                   <span>Contact Me</span>
@@ -240,36 +203,70 @@ export default function Hero() {
           </div>
 
           <motion.div
-            variants={terminalVariant}
+            variants={frameVariant}
             initial="hidden"
             animate="visible"
             className="lg:col-span-5 w-full flex justify-center"
           >
-            <motion.div
-              variants={floatVariant}
-              animate="float"
-              className="w-full"
-            >
-              <InteractiveTerminal />
-            </motion.div>
+            <div className="w-full max-w-md">
+              <div className="relative rounded-3xl overflow-hidden border border-black/[0.08] dark:border-white/[0.08] bg-white dark:bg-[#0d0e13] shadow-sm p-4 sm:p-5">
+                <div className="flex items-center justify-between pb-3 mb-3 border-b border-black/[0.06] dark:border-white/[0.06]">
+                  <div className="flex items-center space-x-2">
+                    <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 inline-block" />
+                    <span className="text-xs font-mono font-bold text-zinc-800 dark:text-zinc-200 uppercase tracking-wider">
+                      Portrait Space
+                    </span>
+                  </div>
+                  <span className="text-[11px] font-mono text-zinc-500">
+                    KMIT • Class of 2028
+                  </span>
+                </div>
+
+                <div className="relative w-full aspect-[4/5] rounded-2xl overflow-hidden border border-dashed border-black/[0.15] dark:border-white/[0.15] bg-zinc-50 dark:bg-[#12141c] flex flex-col items-center justify-center p-6 text-center">
+                  {personalInfo.avatar ? (
+                    <img
+                      src={personalInfo.avatar}
+                      alt="Anoop portrait"
+                      className="w-full h-full object-cover object-top rounded-2xl"
+                    />
+                  ) : (
+                    <div className="space-y-3 flex flex-col items-center">
+                      <div className="w-16 h-16 rounded-2xl bg-amber-500/10 dark:bg-amber-500/[0.08] border border-amber-500/30 flex items-center justify-center text-amber-600 dark:text-amber-400">
+                        <User className="w-8 h-8" />
+                      </div>
+                      <div className="space-y-1">
+                        <p className="text-sm font-bold text-zinc-900 dark:text-white font-mono">
+                          Portrait Image Slot
+                        </p>
+                        <p className="text-xs text-zinc-500 dark:text-zinc-400 font-mono max-w-[220px]">
+                          Space reserved for profile photograph
+                        </p>
+                      </div>
+                    </div>
+                  )}
+                </div>
+
+                <div className="flex items-center justify-between pt-3 mt-3 border-t border-black/[0.06] dark:border-white/[0.06] text-[11px] font-mono text-zinc-500">
+                  <span>Anoop · dev</span>
+                  <span className="text-amber-600 dark:text-amber-400 font-semibold">
+                    Software &amp; AI
+                  </span>
+                </div>
+              </div>
+            </div>
           </motion.div>
         </div>
       </div>
 
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.2, duration: 0.5 }}
-        className="absolute bottom-2 left-1/2 -translate-x-1/2 text-zinc-400 dark:text-zinc-600 hidden sm:flex flex-col items-center"
-      >
+      <div className="absolute bottom-2 left-1/2 -translate-x-1/2 text-zinc-400 dark:text-zinc-600 hidden sm:flex flex-col items-center">
         <a
           href="#about"
           aria-label="Scroll to About section"
           className="hover:text-zinc-700 dark:hover:text-zinc-400 transition-colors"
         >
-          <ChevronDown className="w-4 h-4 animate-bounce" />
+          <ChevronDown className="w-4 h-4" />
         </a>
-      </motion.div>
+      </div>
     </section>
   );
 }

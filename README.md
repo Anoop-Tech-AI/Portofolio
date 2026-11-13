@@ -28,6 +28,7 @@ Built with **React**, **Vite**, **Tailwind CSS**, and **Lucide Icons** following
   - Zero arbitrary percentages; cleanly presented tags and categories.
 - **Featured Projects:**
   - **RetailMind-AI:** Agentic Retail Recommendation System with Memory, RAG (BGE-M3, ChromaDB/FAISS), Amazon Reviews Dataset, and interactive multi-step pipeline breakdown.
+  - **Forensic AI Writer:** AI-powered digital forensic platform that ingests multi-format evidence (PDF, TXT, CSV, JSON, LOG, EVTX), calculates SHA-256 hashes for chain of custody, correlates cross-source findings, reconstructs incident timelines, and generates unified, court-ready forensic reports ([GitHub Repo](https://github.com/Anoop-Tech-AI/FORENSIC_AI_WRITER)).
   - **Student Management System:** Complete Node.js / Express / MongoDB / Mongoose RESTful CRUD application.
   - **DevOps & CI/CD Practice:** Automated containerization and orchestration workflows with Jenkins, Docker, Kubernetes, and Maven.
   - Clear differentiation between **Completed Projects** and **Under Development** initiatives.

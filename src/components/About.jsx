@@ -51,11 +51,11 @@ export default function About() {
             ))}
 
             <div className="pt-2 flex items-center gap-4">
-              <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-amber-500/10 border border-amber-500/25 text-amber-800 dark:text-amber-300 text-xs font-mono font-medium transition-all duration-200 hover:-translate-y-1 hover:shadow-md cursor-default">
+              <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-amber-500/10 border border-amber-500/25 text-amber-800 dark:text-amber-300 text-xs font-mono font-medium cursor-default">
                 <span className="w-2 h-2 rounded-full bg-amber-500" />
                 <span>KMIT 2024 - 2028</span>
               </div>
-              <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-sky-500/10 border border-sky-500/25 text-sky-800 dark:text-sky-300 text-xs font-mono font-medium transition-all duration-200 hover:-translate-y-1 hover:shadow-md cursor-default">
+              <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-sky-500/10 border border-sky-500/25 text-sky-800 dark:text-sky-300 text-xs font-mono font-medium cursor-default">
                 <span className="w-1.5 h-1.5 rotate-45 bg-sky-500" />
                 <span>Hyderabad, India</span>
               </div>
@@ -70,17 +70,17 @@ export default function About() {
             custom={0.15}
             className="lg:col-span-5"
           >
-            <div className="p-7 sm:p-8 rounded-3xl bg-white dark:bg-[#12141b] border border-black/[0.08] dark:border-white/[0.06] space-y-6 shadow-sm dark:shadow-xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-amber-500/50 group">
+            <div className="p-7 sm:p-8 rounded-3xl bg-white dark:bg-[#12141b] border border-black/[0.08] dark:border-white/[0.06] space-y-6 shadow-sm dark:shadow-xl">
               <div className="flex items-center justify-between pb-4 border-b border-black/[0.06] dark:border-white/[0.06]">
                 <div className="flex items-center gap-2.5">
-                  <div className="w-8 h-8 rounded-full bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-600 dark:text-amber-400 group-hover:scale-110 transition-transform">
+                  <div className="w-8 h-8 rounded-full bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-600 dark:text-amber-400">
                     <span className="w-2.5 h-2.5 rounded-full bg-amber-500" />
                   </div>
                   <h3 className="text-xs font-mono uppercase tracking-wider text-zinc-900 dark:text-white font-bold">
                     Education & Background
                   </h3>
                 </div>
-                <div className="w-6 h-6 rotate-45 rounded-[2px] bg-amber-500/10 border border-amber-500/30 flex items-center justify-center group-hover:rotate-90 transition-transform duration-300">
+                <div className="w-6 h-6 rotate-45 rounded-[2px] bg-amber-500/10 border border-amber-500/30 flex items-center justify-center">
                   <div className="w-1.5 h-1.5 -rotate-45 bg-amber-500" />
                 </div>
               </div>
@@ -135,7 +135,7 @@ export default function About() {
                     ].map((area, i) => (
                       <span
                         key={area}
-                        className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-zinc-100 dark:bg-white/[0.05] border border-black/[0.06] dark:border-white/[0.06] text-zinc-800 dark:text-zinc-200 text-xs font-medium transition-all duration-200 hover:-translate-y-1 hover:border-amber-500/50 hover:bg-amber-500/5 hover:shadow-sm cursor-default"
+                        className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-zinc-100 dark:bg-white/[0.05] border border-black/[0.06] dark:border-white/[0.06] text-zinc-800 dark:text-zinc-200 text-xs font-medium cursor-default"
                       >
                         {i % 2 === 0 ? (
                           <span className="w-1.5 h-1.5 rounded-full bg-amber-500 shrink-0" />

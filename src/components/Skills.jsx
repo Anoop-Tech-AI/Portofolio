@@ -115,32 +115,28 @@ export default function Skills() {
 
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-8">
           <div className="flex flex-wrap items-center gap-2">
-            <motion.button
-              whileHover={{ y: -2, scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
+            <button
               onClick={() => setSelectedCategory("all")}
-              className={`px-3.5 py-1.5 text-xs font-mono rounded-full transition-all cursor-pointer ${
+              className={`px-3.5 py-1.5 text-xs font-mono rounded-full transition-colors cursor-pointer ${
                 selectedCategory === "all"
-                  ? "bg-amber-500/20 text-amber-900 dark:text-amber-300 border border-amber-500/40 font-semibold shadow-md"
+                  ? "bg-amber-500/20 text-amber-900 dark:text-amber-300 border border-amber-500/40 font-semibold"
                   : "text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-black/[0.04] dark:hover:bg-white/[0.04] border border-transparent hover:border-black/[0.08] dark:hover:border-white/[0.08]"
               }`}
             >
               All Domains ({totalSkillCount})
-            </motion.button>
+            </button>
             {skillCategories.map((cat) => (
-              <motion.button
+              <button
                 key={cat.id}
-                whileHover={{ y: -2, scale: 1.03 }}
-                whileTap={{ scale: 0.97 }}
                 onClick={() => setSelectedCategory(cat.id)}
-                className={`px-3.5 py-1.5 text-xs font-mono rounded-full transition-all cursor-pointer ${
+                className={`px-3.5 py-1.5 text-xs font-mono rounded-full transition-colors cursor-pointer ${
                   selectedCategory === cat.id
-                    ? "bg-amber-500/20 text-amber-900 dark:text-amber-300 border border-amber-500/40 font-semibold shadow-md"
+                    ? "bg-amber-500/20 text-amber-900 dark:text-amber-300 border border-amber-500/40 font-semibold"
                     : "text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-black/[0.04] dark:hover:bg-white/[0.04] border border-transparent hover:border-black/[0.08] dark:hover:border-white/[0.08]"
                 }`}
               >
                 {cat.title}
-              </motion.button>
+              </button>
             ))}
           </div>
 
@@ -193,25 +189,24 @@ export default function Skills() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={VIEW}
                 transition={{ duration: 0.4, delay: idx * 0.06 }}
-                whileHover={{ y: -6, borderColor: "rgba(245,158,11,0.5)" }}
-                className="p-6 sm:p-7 rounded-3xl bg-white dark:bg-[#12141a] border border-black/[0.08] dark:border-white/[0.06] transition-all flex flex-col justify-between group shadow-sm dark:shadow-lg hover:shadow-2xl"
+                className="p-6 sm:p-7 rounded-3xl bg-white dark:bg-[#12141a] border border-black/[0.08] dark:border-white/[0.06] flex flex-col justify-between shadow-sm dark:shadow-lg"
               >
                 <div>
                   <div className="flex items-center justify-between pb-4 mb-4 border-b border-black/[0.06] dark:border-white/[0.05]">
                     <div className="flex items-center space-x-3">
                       {idx % 2 === 0 ? (
-                        <div className="w-10 h-10 rounded-full bg-amber-500/10 border border-amber-500/25 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                        <div className="w-10 h-10 rounded-full bg-amber-500/10 border border-amber-500/25 flex items-center justify-center shrink-0">
                           {getCategoryIcon(cat.iconName)}
                         </div>
                       ) : (
-                        <div className="w-8 h-8 rotate-45 rounded-[3px] bg-sky-500/10 border border-sky-500/25 flex items-center justify-center shrink-0 my-1 mx-1 group-hover:rotate-90 transition-transform duration-300">
+                        <div className="w-8 h-8 rotate-45 rounded-[3px] bg-sky-500/10 border border-sky-500/25 flex items-center justify-center shrink-0 my-1 mx-1">
                           <span className="-rotate-45">
                             {getCategoryIcon(cat.iconName)}
                           </span>
                         </div>
                       )}
                       <div>
-                        <h3 className="text-sm font-bold text-zinc-900 dark:text-white tracking-tight group-hover:text-amber-700 dark:group-hover:text-amber-300 transition-colors">
+                        <h3 className="text-sm font-bold text-zinc-900 dark:text-white tracking-tight">
                           {cat.title}
                         </h3>
                         <p className="text-[11px] text-zinc-500 dark:text-zinc-500 line-clamp-1">
@@ -234,24 +229,22 @@ export default function Skills() {
                         {cat.activelyUsed.map((skill) => {
                           const isSelected = activeSkillHighlight === skill;
                           return (
-                            <motion.button
+                            <button
                               key={skill}
-                              whileHover={{ y: -2, scale: 1.04 }}
-                              whileTap={{ scale: 0.96 }}
                               onClick={() =>
                                 setActiveSkillHighlight(
                                   isSelected ? null : skill,
                                 )
                               }
-                              className={`px-3 py-1.5 text-xs font-mono rounded-full border transition-all text-left cursor-pointer flex items-center gap-1.5 ${
+                              className={`px-3 py-1.5 text-xs font-mono rounded-full border transition-colors text-left cursor-pointer flex items-center gap-1.5 ${
                                 isSelected
-                                  ? "bg-amber-500/20 border-amber-500 text-amber-900 dark:text-amber-200 font-semibold shadow-md"
-                                  : "bg-zinc-50 dark:bg-[#0f1116] border-black/[0.08] dark:border-white/[0.06] text-zinc-800 dark:text-zinc-300 hover:border-amber-500/50 hover:bg-amber-500/5 hover:text-black dark:hover:text-white hover:shadow-xs"
+                                  ? "bg-amber-500/20 border-amber-500 text-amber-900 dark:text-amber-200 font-semibold shadow-sm"
+                                  : "bg-zinc-50 dark:bg-[#0f1116] border-black/[0.08] dark:border-white/[0.06] text-zinc-800 dark:text-zinc-300 hover:border-amber-500/50 hover:bg-amber-500/5"
                               }`}
                             >
                               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
                               <span>{skill}</span>
-                            </motion.button>
+                            </button>
                           );
                         })}
                       </div>
@@ -268,24 +261,22 @@ export default function Skills() {
                         {cat.exploring.map((skill) => {
                           const isSelected = activeSkillHighlight === skill;
                           return (
-                            <motion.button
+                            <button
                               key={skill}
-                              whileHover={{ y: -2, scale: 1.04 }}
-                              whileTap={{ scale: 0.96 }}
                               onClick={() =>
                                 setActiveSkillHighlight(
                                   isSelected ? null : skill,
                                 )
                               }
-                              className={`px-3 py-1.5 text-[11px] font-mono rounded-full border transition-all text-left cursor-pointer flex items-center gap-1.5 ${
+                              className={`px-3 py-1.5 text-[11px] font-mono rounded-full border transition-colors text-left cursor-pointer flex items-center gap-1.5 ${
                                 isSelected
-                                  ? "bg-amber-500/20 border-amber-500 text-amber-900 dark:text-amber-200 font-semibold shadow-md"
-                                  : "bg-amber-500/5 dark:bg-[#0f1116]/60 border-amber-500/20 dark:border-amber-500/15 text-zinc-700 dark:text-zinc-400 hover:border-amber-500/40 hover:text-amber-800 dark:hover:text-amber-300 hover:shadow-xs"
+                                  ? "bg-amber-500/20 border-amber-500 text-amber-900 dark:text-amber-200 font-semibold shadow-sm"
+                                  : "bg-amber-500/5 dark:bg-[#0f1116]/60 border-amber-500/20 dark:border-amber-500/15 text-zinc-700 dark:text-zinc-400 hover:border-amber-500/40"
                               }`}
                             >
                               <span className="w-1.5 h-1.5 rotate-45 bg-amber-500" />
                               <span>{skill}</span>
-                            </motion.button>
+                            </button>
                           );
                         })}
                       </div>
@@ -313,16 +304,14 @@ export default function Skills() {
               </div>
               <div className="flex flex-wrap gap-2.5">
                 {relatedProjectsForSkill.map((proj) => (
-                  <motion.a
+                  <a
                     key={proj.id}
-                    whileHover={{ y: -2, scale: 1.03 }}
-                    whileTap={{ scale: 0.97 }}
                     href={`#project-${proj.id}`}
-                    className="inline-flex items-center space-x-1.5 px-4 py-2 rounded-full bg-white dark:bg-[#141724] border border-amber-500/40 text-zinc-900 dark:text-white hover:border-amber-500 transition-all shadow-xs hover:shadow-md"
+                    className="inline-flex items-center space-x-1.5 px-4 py-2 rounded-full bg-white dark:bg-[#141724] border border-amber-500/40 text-zinc-900 dark:text-white transition-colors shadow-xs"
                   >
                     <span className="font-semibold">{proj.title}</span>
                     <ArrowUpRight className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />
-                  </motion.a>
+                  </a>
                 ))}
               </div>
             </motion.div>

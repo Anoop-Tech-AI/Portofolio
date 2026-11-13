@@ -10,6 +10,8 @@ import {
   Sparkles,
   Sliders,
   FileCheck,
+  ShieldAlert,
+  Layers,
 } from "lucide-react";
 import { motion } from "motion/react";
 import { projectsData } from "../data/portfolioData";
@@ -90,6 +92,7 @@ export default function Projects() {
   const [activeStageIndex, setActiveStageIndex] = useState(0);
 
   const retailMind = projectsData.find((p) => p.id === "retailmind-ai");
+  const forensicAI = projectsData.find((p) => p.id === "forensic-ai-writer");
 
   const currentStage = RETAIL_STAGES[activeStageIndex];
   const CurrentStageIcon = currentStage.icon;
@@ -132,13 +135,9 @@ export default function Projects() {
               initial="hidden"
               whileInView="visible"
               viewport={VIEW}
-              className="relative rounded-3xl bg-white dark:bg-[#12141c] border border-amber-500/30 dark:border-amber-500/20 overflow-hidden shadow-sm dark:shadow-2xl p-7 sm:p-10 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-amber-500/50"
+              className="relative rounded-3xl bg-white dark:bg-[#12141c] border border-black/[0.08] dark:border-white/[0.08] overflow-hidden p-7 sm:p-10"
             >
-              
-              <div className="absolute top-0 right-0 w-80 h-80 bg-amber-500/[0.05] dark:bg-amber-500/[0.04] rounded-full blur-3xl pointer-events-none" />
-
               <div className="space-y-6">
-                
                 <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-5 border-b border-black/[0.06] dark:border-white/[0.06]">
                   <div>
                     <div className="flex flex-wrap items-center gap-2 mb-2">
@@ -162,7 +161,7 @@ export default function Projects() {
                   <div className="flex items-center gap-2.5">
                     <button
                       onClick={() => setSelectedProject(retailMind)}
-                      className="px-5 py-2 text-xs font-mono font-bold rounded-full bg-amber-500 hover:bg-amber-400 text-black shadow-sm transition-all flex items-center gap-1.5 cursor-pointer hover:-translate-y-0.5 hover:shadow-md"
+                      className="px-5 py-2 text-xs font-mono font-bold rounded-full bg-amber-500 hover:bg-amber-400 text-black shadow-sm transition-colors flex items-center gap-1.5 cursor-pointer"
                     >
                       <span>Explore &amp; Playground</span>
                       <ArrowUpRight className="w-3.5 h-3.5" />
@@ -204,7 +203,7 @@ export default function Projects() {
                         <button
                           key={stg.step}
                           onClick={() => setActiveStageIndex(i)}
-                          className={`p-3 rounded-2xl border text-left transition-all duration-200 hover:-translate-y-1 hover:shadow-md cursor-pointer flex flex-col justify-between ${
+                          className={`p-3 rounded-2xl border text-left transition-colors cursor-pointer flex flex-col justify-between ${
                             isSelected
                               ? "bg-amber-500/15 border-amber-500 text-amber-900 dark:text-amber-200 shadow-sm"
                               : "bg-zinc-50 dark:bg-[#13151f] border-black/[0.06] dark:border-white/[0.05] text-zinc-700 dark:text-zinc-300 hover:border-amber-500/40"
@@ -260,7 +259,112 @@ export default function Projects() {
                   {retailMind.technologies.map((t) => (
                     <span
                       key={t}
-                      className="px-3 py-1 text-xs font-mono rounded-full bg-zinc-100 dark:bg-[#151722] text-zinc-800 dark:text-zinc-300 border border-black/[0.06] dark:border-white/[0.06] transition-all hover:-translate-y-0.5 hover:border-amber-500/40 hover:shadow-xs"
+                      className="px-3 py-1 text-xs font-mono rounded-full bg-zinc-100 dark:bg-[#151722] text-zinc-800 dark:text-zinc-300 border border-black/[0.06] dark:border-white/[0.06]"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          )}
+
+          {forensicAI && (
+            <motion.div
+              id={`project-${forensicAI.id}`}
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={VIEW}
+              className="relative rounded-3xl bg-white dark:bg-[#11141e] border border-black/[0.08] dark:border-white/[0.08] overflow-hidden p-7 sm:p-10"
+            >
+              <div className="space-y-6">
+                <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-5 border-b border-black/[0.06] dark:border-white/[0.06]">
+                  <div>
+                    <div className="flex flex-wrap items-center gap-2 mb-2">
+                      <span className="text-[11px] font-mono px-2.5 py-0.5 rounded-full bg-cyan-500/10 text-cyan-800 dark:text-cyan-300 border border-cyan-500/30 font-semibold flex items-center gap-1.5">
+                        <ShieldAlert className="w-3 h-3 text-cyan-600 dark:text-cyan-400" />
+                        DIGITAL FORENSICS AI
+                      </span>
+                      <span className="text-[11px] font-mono px-2.5 py-0.5 rounded-full bg-zinc-100 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 border border-black/[0.06] dark:border-zinc-800 flex items-center gap-1.5">
+                        <CheckCircle2 className="w-3 h-3 text-emerald-600 dark:text-emerald-400" />
+                        {forensicAI.status}
+                      </span>
+                    </div>
+
+                    <h3 className="text-2xl sm:text-3xl font-extrabold text-zinc-900 dark:text-white tracking-tight">
+                      {forensicAI.title}
+                    </h3>
+                    <p className="text-xs sm:text-sm text-cyan-700 dark:text-cyan-300 font-medium mt-0.5">
+                      {forensicAI.subtitle}
+                    </p>
+                  </div>
+
+                  <div className="flex items-center gap-2.5">
+                    <button
+                      onClick={() => setSelectedProject(forensicAI)}
+                      className="px-5 py-2 text-xs font-mono font-bold rounded-full bg-cyan-600 hover:bg-cyan-500 text-white shadow-sm transition-colors flex items-center gap-1.5 cursor-pointer"
+                    >
+                      <span>Explore &amp; Playground</span>
+                      <ArrowUpRight className="w-3.5 h-3.5" />
+                    </button>
+                    {forensicAI.githubPlaceholder && (
+                      <a
+                        href={forensicAI.githubPlaceholder}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-2.5 rounded-lg bg-zinc-100 hover:bg-zinc-200 dark:bg-[#161a27] text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white border border-black/[0.08] dark:border-white/[0.08] transition-colors"
+                        title="GitHub Repository"
+                      >
+                        <GithubIcon className="w-4 h-4" />
+                      </a>
+                    )}
+                  </div>
+                </div>
+
+                <p className="text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed max-w-4xl">
+                  {forensicAI.shortDescription}
+                </p>
+
+                <div className="p-4 sm:p-5 rounded-2xl bg-zinc-50 dark:bg-[#0c0e15] border border-black/[0.06] dark:border-white/[0.06] space-y-3">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 pb-2 border-b border-black/[0.05] dark:border-white/[0.05]">
+                    <span className="text-xs font-mono text-cyan-700 dark:text-cyan-400 uppercase tracking-wider font-bold flex items-center gap-1.5">
+                      <Layers className="w-3.5 h-3.5" />
+                      Standardized Forensic Investigation Pipeline
+                    </span>
+                    <span className="text-[11px] font-mono text-zinc-500">
+                      Multi-tier architecture · SHA-256 chain of custody
+                    </span>
+                  </div>
+
+                  <div className="grid grid-cols-2 sm:grid-cols-5 gap-2.5">
+                    {forensicAI.architecture.map((n) => (
+                      <div
+                        key={n.step}
+                        className="p-3 rounded-2xl bg-white dark:bg-[#141724] border border-black/[0.06] dark:border-white/[0.04]"
+                      >
+                        <span className="w-5 h-5 rounded-full bg-cyan-500/15 border border-cyan-500/30 flex items-center justify-center text-[10px] font-mono text-cyan-700 dark:text-cyan-300 font-bold mb-1">
+                          {n.step}
+                        </span>
+                        <span className="font-semibold text-zinc-900 dark:text-zinc-200 block text-[11px] truncate">
+                          {n.name}
+                        </span>
+                        <span className="text-[10px] text-zinc-500 block truncate mt-0.5">
+                          {n.desc}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="pt-2 border-t border-black/[0.06] dark:border-white/[0.06] flex flex-wrap items-center gap-1.5">
+                  <span className="text-[11px] font-mono uppercase tracking-wider text-zinc-500 mr-2 font-semibold">
+                    Tech Stack:
+                  </span>
+                  {forensicAI.technologies.map((t) => (
+                    <span
+                      key={t}
+                      className="px-3 py-1 text-xs font-mono rounded-full bg-zinc-100 dark:bg-[#151722] text-zinc-800 dark:text-zinc-300 border border-black/[0.06] dark:border-white/[0.06]"
                     >
                       {t}
                     </span>

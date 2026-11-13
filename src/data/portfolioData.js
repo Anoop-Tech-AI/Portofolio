@@ -1,11 +1,7 @@
 export const personalInfo = {
   name: "ANOOP",
   firstName: "Anoop",
-  headlinePillars: [
-    "I BUILD SOFTWARE.",
-    "I EXPLORE INTELLIGENCE.",
-    "I SOLVE PROBLEMS.",
-  ],
+  avatar: null,
   tagline: "Building Intelligent Solutions Through Code.",
   role: "Computer Science & Engineering Student",
   institution: "Keshav Memorial Institute of Technology (KMIT)",
@@ -97,18 +93,19 @@ export const developmentTimeline = [
   },
   {
     year: "2025 – Present",
-    title: "Intelligent Systems, RAG & Agentic AI",
-    tagline: "Pioneering Context-Aware Software",
+    title: "Intelligent Systems, RAG & Digital Forensics",
+    tagline: "Context-Aware AI & Automated Investigation Platforms",
     description:
-      "Ventured deeply into modern AI architectures. Architecting RetailMind-AI using LangGraph, BGE-M3 embeddings, and ChromaDB vector search for multi-agent retrieval-augmented generation.",
+      "Architecting RetailMind-AI (agentic RAG with LangGraph and BGE-M3 embeddings) and Forensic AI Writer (multi-source evidence ingestion, SHA-256 cryptographic chain of custody, and automated legal report generation).",
     status: "Active Exploration",
     skillsGained: [
       "Python",
-      "FastAPI",
+      "TensorFlow",
       "RAG",
-      "Vector Databases",
       "LangGraph",
-      "NLP",
+      "Digital Forensics",
+      "Node.js",
+      "MongoDB Atlas",
     ],
   },
   {
@@ -135,7 +132,7 @@ export const skillCategories = [
       "Core languages for high-performance systems, algorithms, and backend scripting",
     activelyUsed: ["Java", "Python", "C++", "JavaScript"],
     exploring: [],
-    relatedProjects: ["retailmind-ai"],
+    relatedProjects: ["retailmind-ai", "forensic-ai-writer"],
   },
   {
     id: "web",
@@ -152,7 +149,7 @@ export const skillCategories = [
       "CSS",
     ],
     exploring: [],
-    relatedProjects: [],
+    relatedProjects: ["forensic-ai-writer"],
   },
   {
     id: "ai-ml",
@@ -168,7 +165,7 @@ export const skillCategories = [
       "RAG",
     ],
     exploring: ["Agentic AI", "TensorFlow", "Keras", "ANN"],
-    relatedProjects: ["retailmind-ai"],
+    relatedProjects: ["retailmind-ai", "forensic-ai-writer"],
   },
   {
     id: "databases",
@@ -178,7 +175,7 @@ export const skillCategories = [
       "Relational querying, document storage, and vector embedding persistence",
     activelyUsed: ["SQL", "MongoDB", "MongoDB Atlas"],
     exploring: [],
-    relatedProjects: ["retailmind-ai"],
+    relatedProjects: ["retailmind-ai", "forensic-ai-writer"],
   },
   {
     id: "tools",
@@ -188,7 +185,7 @@ export const skillCategories = [
       "Containerization, automated build workflows, version control, and developer environments",
     activelyUsed: ["Git", "GitHub", "Linux", "FastAPI"],
     exploring: ["Docker", "Kubernetes", "Jenkins", "Jupyter Notebook"],
-    relatedProjects: ["retailmind-ai"],
+    relatedProjects: ["retailmind-ai", "forensic-ai-writer"],
   },
   {
     id: "core-cs",
@@ -271,6 +268,74 @@ export const projectsData = [
       "text-amber-700 bg-amber-500/10 border-amber-500/30 dark:text-amber-300",
     themeAccent: "amber",
     githubPlaceholder: "https://github.com/placeholder-anoop/RetailMind-AI",
+  },
+  {
+    id: "forensic-ai-writer",
+    title: "Forensic AI Writer",
+    subtitle:
+      "AI-Powered Digital Forensic Investigation & Automated Court-Ready Report Generation",
+    tagline:
+      "Digital Forensics • Evidence Correlation • Cryptographic Integrity & Automated Reporting",
+    shortDescription:
+      "An AI-powered digital forensic platform that ingests multi-format evidence (logs, CSV, JSON, EVTX, PDF), computes SHA-256 hashes for chain of custody, correlates cross-source findings, reconstructs incident timelines, and generates unified, evidence-backed forensic reports.",
+    problemStatement:
+      "Traditional forensic workflows face exponential data deluge across cloud, mobile, and IoT endpoints. Investigators spend up to 40% of their time manually reviewing fragmented logs and drafting voluminous reports, leading to analysis bottlenecks and risk of human error.",
+    solution:
+      "Engineered a scalable three-tier digital forensic suite combining automated multi-format evidence ingestion, SHA-256 cryptographic integrity verification, AI-driven anomaly and threat detection, cross-source timeline reconstruction, and one-click standardized forensic report export.",
+    architecture: [
+      {
+        step: "01",
+        name: "Intake & SHA-256 Hashing",
+        desc: "Ingests raw evidence files (PDF, TXT, CSV, JSON, LOG, EVTX) and computes cryptographic hashes to preserve chain of custody.",
+      },
+      {
+        step: "02",
+        name: "Artifact Parsing & Extraction",
+        desc: "Deep metadata extraction, event log parsing, and structured normalization across disparate digital sources.",
+      },
+      {
+        step: "03",
+        name: "AI Threat & Anomaly Detection",
+        desc: "TensorFlow & Python NLP models scan for anomalies, unauthorized privilege escalations, and hidden cyber threat patterns.",
+      },
+      {
+        step: "04",
+        name: "Cross-Evidence Correlation",
+        desc: "Synthesizes relationships between independent logs, reconstructing a unified chronological incident timeline.",
+      },
+      {
+        step: "05",
+        name: "Court-Ready Report Export",
+        desc: "Compiles verified facts, timelines, and analytical hypotheses into a standardized, court-ready PDF/document investigation report.",
+      },
+    ],
+    contribution:
+      "Architected the full-stack system: built the React/Tailwind investigation dashboard, Node.js/Express case management API, evidence ingestion pipeline with SHA-256 hash preservation, and Python-based anomaly correlation engine.",
+    implementationDetails:
+      "Developed a three-tier architecture with React.js, Tailwind CSS, and Material UI on the client; Node.js, Express, and JWT-based Role-Based Access Control (RBAC) on the backend; MongoDB Atlas for case and artifact metadata persistence; and Python/TensorFlow microservices for forensic log analysis and timeline reconstruction.",
+    challenges:
+      "Ensuring strict legal admissibility and evidence integrity while correlating asynchronous timestamps across divergent server time zones; solved by implementing normalized UTC epoch alignment and immutable cryptographic hashing logs.",
+    futureImprovements:
+      "Integrating blockchain-based verification for tamper-proof chain of custody, expanding deep learning models for multimedia (voice/video) forensics, and real-time threat intelligence feeds.",
+    technologies: [
+      "React.js",
+      "Node.js",
+      "Express.js",
+      "Python",
+      "TensorFlow",
+      "MongoDB Atlas",
+      "Tailwind CSS",
+      "SHA-256 Hashing",
+      "JWT Auth",
+      "REST APIs",
+    ],
+    status: "Completed / Active Development",
+    statusType: "completed",
+    category: "Digital Forensics & AI",
+    badgeColor:
+      "text-cyan-700 bg-cyan-500/10 border-cyan-500/30 dark:text-cyan-300",
+    themeAccent: "cyan",
+    githubPlaceholder: "https://github.com/Anoop-Tech-AI/FORENSIC_AI_WRITER",
   },
 ];
 

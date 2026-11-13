@@ -40,8 +40,7 @@ export default function CurrentlyExploring() {
               whileInView="visible"
               viewport={VIEW}
               custom={0.1 + idx * 0.08}
-              whileHover={{ y: -3, borderColor: "rgba(245,158,11,0.4)" }}
-              className="p-5 rounded-xl bg-white dark:bg-[#12141a] border border-black/[0.08] dark:border-white/[0.06] transition-all flex flex-col justify-between group shadow-sm"
+              className="p-5 rounded-xl bg-white dark:bg-[#12141a] border border-black/[0.08] dark:border-white/[0.06] flex flex-col justify-between shadow-sm"
             >
               <div>
                 <div className="flex items-center justify-between mb-2.5">
@@ -53,7 +52,7 @@ export default function CurrentlyExploring() {
                   </span>
                 </div>
 
-                <h3 className="text-sm font-bold text-zinc-900 dark:text-white mb-1.5 group-hover:text-amber-700 dark:group-hover:text-amber-300 transition-colors font-mono">
+                <h3 className="text-sm font-bold text-zinc-900 dark:text-white mb-1.5 font-mono">
                   {item.title}
                 </h3>
                 <p className="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
